@@ -7,6 +7,8 @@ const multiparser = require("./multiparser");
 const util = require("./util");
 const isIdentifierName = require("esutils").keyword.isIdentifierNameES6;
 
+const customizations = require("./_customizations");
+
 const docBuilders = require("./doc-builders");
 const concat = docBuilders.concat;
 const join = docBuilders.join;
@@ -1367,6 +1369,19 @@ function genericPrintNoParens(path, options, print, args) {
 
       const hasValue = n.declarations.some(decl => decl.init);
 
+      const isRequireBlock =
+        !isParentForLoop &&
+        hasValue &&
+        customizations.requireBlockKinds.has(n.kind) &&
+        customizations.isRequireBlock(printed);
+
+      if (isRequireBlock) {
+        customizations.applyElasticBreaks(printed);
+      }
+      if (!isParentForLoop) {
+        customizations.indentVarAssignment(printed.slice(1));
+      }
+
       let firstVariable;
       if (printed.length === 1) {
         firstVariable = printed[0];
@@ -1379,13 +1394,30 @@ function genericPrintNoParens(path, options, print, args) {
         isNodeStartingWithDeclare(n, options) ? "declare " : "",
         n.kind,
         firstVariable ? concat([" ", firstVariable]) : "",
-        indent(
+        (isParentForLoop ? indent : customizations.identity)(
           concat(
-            printed
-              .slice(1)
-              .map(p =>
-                concat([",", hasValue && !isParentForLoop ? hardline : line, p])
+            printed.slice(1).map(p =>
+              concat(
+                isParentForLoop
+                  ? [",", hasValue && !isParentForLoop ? hardline : line, p]
+                  : isRequireBlock
+                    ? [hardline, " ".repeat(n.kind.length - 1) + ", ", p]
+                    : [
+                        {
+                          type: "if-break",
+                          breakContents: "",
+                          flatContents: ","
+                        },
+                        line,
+                        {
+                          type: "if-break",
+                          breakContents: `${" ".repeat(n.kind.length - 1)}, `,
+                          flatContents: ""
+                        },
+                        p
+                      ]
               )
+            )
           )
         )
       ];
