@@ -1939,19 +1939,17 @@ function genericPrintNoParens(path, options, print, args) {
           // quasi literal), therefore we want to indent the JavaScript
           // expression inside at the beginning of ${ instead of the beginning
           // of the `.
-          let size = 0;
-          const value = childPath.getValue().value.raw;
-          const index = value.lastIndexOf("\n");
           const tabWidth = options.tabWidth;
-          if (index !== -1) {
-            size = util.getAlignmentSize(
-              // All the leading whitespaces
-              value.slice(index + 1).match(/^[ \t]*/)[0],
-              tabWidth
-            );
-          }
+          const indentSize = util.getIndentSize(
+            childPath.getValue().value.raw,
+            tabWidth
+          );
 
-          const aligned = addAlignmentToDoc(expressions[i], size, tabWidth);
+          const aligned = addAlignmentToDoc(
+            expressions[i],
+            indentSize,
+            tabWidth
+          );
 
           parts.push("${", aligned, lineSuffixBoundary, "}");
         }
@@ -3612,7 +3610,10 @@ function printMemberChain(path, options, print) {
 
   function rec(path) {
     const node = path.getValue();
-    if (node.type === "CallExpression" && isMemberish(node.callee)) {
+    if (
+      node.type === "CallExpression" &&
+      (isMemberish(node.callee) || node.callee.type === "CallExpression")
+    ) {
       printedNodes.unshift({
         node: node,
         printed: comments.printComments(

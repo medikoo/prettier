@@ -11,7 +11,7 @@ Prettier is an opinionated code formatter with support for:
 * [JSX](https://facebook.github.io/jsx/)
 * [Flow](https://flow.org/)
 * [TypeScript](https://www.typescriptlang.org/)
-* CSS, [LESS](http://lesscss.org/), and [SCSS](http://sass-lang.com)
+* CSS, [Less](http://lesscss.org/), and [SCSS](http://sass-lang.com)
 * [JSON](http://json.org/)
 * [GraphQL](http://graphql.org/)
 
@@ -52,6 +52,7 @@ conforms to a consistent style. (See this [blog post](http://jlongster.com/A-Pre
   + [Range](#range)
   + [Parser](#parser)
   + [Filepath](#filepath)
+  + [Require pragma](#require-pragma)
 * [Configuration File](#configuration-file)
   + [Basic Configuration](#basic-configuration)
   + [Configuration Overrides](#configuration-overrides)
@@ -290,6 +291,11 @@ Require a special comment, called a pragma, to be present in the file's first do
 
 Valid pragmas are `@prettier` and `@format`.
 
+<!--
+#### `--insert-pragma`
+Insert a `@format` pragma to the top of formatted files when pragma is absent.
+Works well when used in tandem with `--require-pragma`.
+-->
 #### `--list-different`
 
 Another useful flag is `--list-different` (or `-l`) which prints the filenames of files that are different from Prettier formatting. If there are differences the script errors out, which is useful in a CI scenario.
@@ -832,7 +838,7 @@ features enabled, but you can also use the
 All of JSX and Flow syntax is supported. In fact, the test suite in
 `tests/flow` *is* the entire Flow test suite and they all pass.
 
-Prettier also supports [TypeScript](https://www.typescriptlang.org/), CSS, [LESS](http://lesscss.org/), [SCSS](http://sass-lang.com), [JSON](http://json.org/), and [GraphQL](http://graphql.org/).
+Prettier also supports [TypeScript](https://www.typescriptlang.org/), CSS, [Less](http://lesscss.org/), [SCSS](http://sass-lang.com), [JSON](http://json.org/), and [GraphQL](http://graphql.org/).
 
 The minimum version of TypeScript supported is 2.1.3 as it introduces the ability to have leading `|` for type definitions which prettier outputs.
 
