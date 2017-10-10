@@ -1,6 +1,14 @@
 "use strict";
 
+const count = require("es5-ext/string/#/count");
 const tokensToString = require("./tokens-to-string");
+
+const resolveLengthCorrection = identifier => {
+  if (identifier[0] !== "{" && identifier[0] !== "[") {
+    return 0;
+  }
+  return 2 + count.call(identifier, ",");
+};
 
 module.exports = items => {
   const lengths = items.map(item => {
@@ -8,7 +16,7 @@ module.exports = items => {
       return null;
     }
     const str = tokensToString(item.parts[0].contents.parts[0]);
-    return str.length + (str[0] === "{" ? 2 : 0);
+    return str.length + resolveLengthCorrection(str);
   });
   const longestIdentLength = Math.max.apply(Math, lengths);
   items.forEach((item, index) => {
