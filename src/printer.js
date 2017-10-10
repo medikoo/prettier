@@ -8,6 +8,7 @@ const util = require("./util");
 const isIdentifierName = require("esutils").keyword.isIdentifierNameES6;
 
 const customizations = require("./_customizations");
+const capitalize = require("es5-ext/string/#/capitalize")
 
 const docBuilders = require("./doc-builders");
 const concat = docBuilders.concat;
@@ -1396,28 +1397,24 @@ function genericPrintNoParens(path, options, print, args) {
         firstVariable ? concat([" ", firstVariable]) : "",
         (isParentForLoop ? indent : customizations.identity)(
           concat(
-            printed.slice(1).map(p =>
-              concat(
-                isParentForLoop
-                  ? [",", hasValue && !isParentForLoop ? hardline : line, p]
-                  : isRequireBlock
-                    ? [hardline, " ".repeat(n.kind.length - 1) + ", ", p]
-                    : [
-                        {
-                          type: "if-break",
-                          breakContents: "",
-                          flatContents: ","
-                        },
-                        line,
-                        {
-                          type: "if-break",
-                          breakContents: `${" ".repeat(n.kind.length - 1)}, `,
-                          flatContents: ""
-                        },
-                        p
-                      ]
+            printed
+              .slice(1)
+              .map(p =>
+                concat(
+                  isParentForLoop
+                    ? [",", hasValue && !isParentForLoop ? hardline : line, p]
+                    : isRequireBlock
+                      ? [hardline, " ".repeat(n.kind.length - 1) + ", ", p]
+                      : [
+                          customizations.preVarBreakInstruction,
+                          line,
+                          customizations[
+                            `post${capitalize.call(n.kind)}BreakInstruction`
+                          ],
+                          p
+                        ]
+                )
               )
-            )
           )
         )
       ];
