@@ -1034,7 +1034,7 @@ f = (
   // TODO this is a very very very very long comment that makes it go > 80 columns
 ) => {};
 
-f = function(
+f = function (
   currentRequest: { a: number }
   // TODO this is a very very very very long comment that makes it go > 80 columns
 ) {};

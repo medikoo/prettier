@@ -217,7 +217,7 @@ a(
 
 exports.examples = [
   {
-    render: withGraphQLQuery("node(1234567890){image{uri}}", function(
+    render: withGraphQLQuery("node(1234567890){image{uri}}", function (
       container,
       data
     ) {
@@ -248,26 +248,26 @@ someReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReal
   ]
 );
 
-(function webpackUniversalModuleDefinition() {})(this, function(
+(function webpackUniversalModuleDefinition() {})(this, function (
   __WEBPACK_EXTERNAL_MODULE_85__,
   __WEBPACK_EXTERNAL_MODULE_115__
 ) {
-  return /******/ (function(modules) {
+  return /******/ (function (modules) {
     // webpackBootstrap
     /******/
   })(
     /************************************************************************/
     /******/ [
       /* 0 */
-      /***/ function(module, exports, __webpack_require__) {
+      /***/ function (module, exports, __webpack_require__) {
         /***/
       },
       /* 1 */
-      /***/ function(module, exports, __webpack_require__) {
+      /***/ function (module, exports, __webpack_require__) {
         /***/
       },
       /* 2 */
-      /***/ function(module, exports, __webpack_require__) {
+      /***/ function (module, exports, __webpack_require__) {
         /***/
       }
       /******/
@@ -513,7 +513,7 @@ foo(
   ) => {}
 );
 
-const contentTypes = function(tile, singleSelection) {
+const contentTypes = function (tile, singleSelection) {
   return compute(function contentTypesContentTypes(
     tile,
     searchString = "",

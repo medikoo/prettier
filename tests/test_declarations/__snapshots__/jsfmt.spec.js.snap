@@ -96,15 +96,15 @@ it("does something really long and complicated so I have to write a very long na
   console.log("hello!");
 });
 
-it("does something really long and complicated so I have to write a very long name for the test", function() {
+it("does something really long and complicated so I have to write a very long name for the test", function () {
   console.log("hello!");
 });
 
-it(\`does something really long and complicated so I have to write a very long name for the test\`, function() {
+it(\`does something really long and complicated so I have to write a very long name for the test\`, function () {
   console.log("hello!");
 });
 
-it(\`{foo + bar} does something really long and complicated so I have to write a very long name for the test\`, function() {
+it(\`{foo + bar} does something really long and complicated so I have to write a very long name for the test\`, function () {
   console.log("hello!");
 });
 

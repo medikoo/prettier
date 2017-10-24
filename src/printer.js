@@ -3239,6 +3239,7 @@ function printFunctionDeclaration(path, print, options) {
     printFunctionTypeParameters(path, options, print),
     group(
       concat([
+        n.id ? "" : " ",
         printFunctionParams(path, print, options),
         printReturnType(path, print)
       ])

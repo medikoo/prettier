@@ -60,7 +60,7 @@ module.exports = export_;
 var export_ = Object.assign(
   {},
   {
-    foo: function(param) {
+    foo: function (param) {
       return param;
     }
   }
@@ -135,7 +135,7 @@ class Foo {}
 class Bar extends Foo {}
 
 let tests = [
-  function() {
+  function () {
     const x = new Bar();
     (Object.getPrototypeOf(x): Foo);
   }
@@ -224,7 +224,7 @@ let tests = [
 // @flow
 
 let tests = [
-  function() {
+  function () {
     Object.doesNotExist();
   }
 ];
@@ -410,7 +410,7 @@ var a = { foo: "bar" };
 var b = { foo: "bar", ...{} };
 var c = {
   foo: "bar",
-  toString: function(): number {
+  toString: function (): number {
     return 123;
   }
 };
@@ -432,10 +432,10 @@ var aToString2 = a.toString;
 takesAString(aToString2());
 
 // set
-b.toString = function(): string {
+b.toString = function (): string {
   return "foo";
 };
-c.toString = function(): number {
+c.toString = function (): number {
   return 123;
 };
 
@@ -454,7 +454,7 @@ takesAString(y.toString());
 // ... on a primitive
 (123).toString();
 (123).toString;
-(123).toString = function() {}; // error
+(123).toString = function () {}; // error
 (123).toString(2);
 (123).toString("foo"); // error
 (123).toString(null); // error
@@ -472,7 +472,7 @@ var aHasOwnProperty2 = a.hasOwnProperty;
 takesABool(aHasOwnProperty2("bar"));
 
 // set
-b.hasOwnProperty = function() {
+b.hasOwnProperty = function () {
   return false;
 };
 
@@ -498,7 +498,7 @@ var aPropertyIsEnumerable2 = a.propertyIsEnumerable;
 takesABool(aPropertyIsEnumerable2("bar"));
 
 // set
-b.propertyIsEnumerable = function() {
+b.propertyIsEnumerable = function () {
   return false;
 };
 
@@ -524,7 +524,7 @@ var aValueOf2 = a.valueOf;
 takesAnObject(aValueOf2());
 
 // set
-b.valueOf = function() {
+b.valueOf = function () {
   return {};
 };
 
@@ -554,7 +554,7 @@ var aToLocaleString2 = a.toLocaleString;
 takesAString(aToLocaleString2());
 
 // set
-b.toLocaleString = function() {
+b.toLocaleString = function () {
   return "derp";
 };
 

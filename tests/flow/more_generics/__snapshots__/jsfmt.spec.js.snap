@@ -31,7 +31,7 @@ function foo8<U>(x:U,y):U {
  foo8(0,void 0);
 */
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-var foo1 = function<T>(x: T): T {
+var foo1 = function<T> (x: T): T {
   return x;
 };
 
@@ -39,7 +39,7 @@ function foo2<T, S>(x: T): S {
   return x;
 }
 
-var foo3 = function<T>(x: T): T {
+var foo3 = function<T> (x: T): T {
   return foo3(x);
 };
 
@@ -58,7 +58,7 @@ function foo5<T>(): Array<T> {
  var y: string = b[0];
 */
 
-var foo6 = function<R>(x: R): R {
+var foo6 = function<R> (x: R): R {
   return foo1(x);
 };
 

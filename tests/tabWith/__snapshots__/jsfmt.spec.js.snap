@@ -68,7 +68,7 @@ const c = () => {};
 function a() {
   return function b() {
     return () => {
-      return function() {
+      return function () {
         return c;
       };
     };
@@ -95,7 +95,7 @@ const c = () => {};
 function a() {
     return function b() {
         return () => {
-            return function() {
+            return function () {
                 return c;
             };
         };

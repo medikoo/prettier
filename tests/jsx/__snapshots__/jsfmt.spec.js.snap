@@ -384,7 +384,7 @@ exports[`expression.js 1`] = `
 </Something>;
 
 <Something>
-  {function() {
+  {function () {
     return (
       <SomethingElse>
         <span />
@@ -758,11 +758,11 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function() {
+const NonBreakingFunction = function () {
   return <div />;
 };
 
-const BreakingFunction = function() {
+const BreakingFunction = function () {
   return (
     <div>
       <div>bla bla bla</div>

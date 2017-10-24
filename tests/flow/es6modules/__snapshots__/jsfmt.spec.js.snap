@@ -205,7 +205,7 @@ export default function():number { return 42; }
  * @flow
  */
 
-export default function(): number {
+export default function (): number {
   return 42;
 }
 
@@ -224,7 +224,7 @@ export default function():number { return 42; }
  * @flow
  */
 
-export default function(): number {
+export default function (): number {
   return 42;
 }
 

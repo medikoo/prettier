@@ -50,7 +50,7 @@ let tests = [
 
 let tests = [
   // constructor
-  function() {
+  function () {
     new Boolean();
     new Boolean(0);
     new Boolean(-0);
@@ -62,7 +62,7 @@ let tests = [
   },
 
   // toString
-  function() {
+  function () {
     true.toString();
     let x: boolean = false;
     x.toString();
@@ -70,12 +70,12 @@ let tests = [
   },
 
   // valueOf
-  function() {
+  function () {
     (new Boolean(0).valueOf(): boolean);
   },
 
   // casting
-  function() {
+  function () {
     Boolean();
     Boolean(0);
     Boolean(-0);
@@ -133,7 +133,7 @@ function* generator(): Iterable<[string, number]> {
 
 let tests = [
   // good constructors
-  function() {
+  function () {
     let w = new Map();
     let x = new Map(null);
     let y = new Map([["foo", 123]]);
@@ -144,13 +144,13 @@ let tests = [
   },
 
   // bad constructors
-  function() {
+  function () {
     let x = new Map(["foo", 123]); // error
     let y: Map<number, string> = new Map([["foo", 123]]); // error
   },
 
   // get()
-  function(x: Map<string, number>) {
+  function (x: Map<string, number>) {
     (x.get("foo"): boolean); // error, string | void
     x.get(123); // error, wrong key type
   }
@@ -193,7 +193,7 @@ let tests = [
 
 let tests = [
   // constructor
-  function() {
+  function () {
     new RegExp("foo");
     new RegExp(/foo/);
     new RegExp("foo", "i");
@@ -203,7 +203,7 @@ let tests = [
   },
 
   // called as a function (equivalent to the constructor per ES6 21.2.3)
-  function() {
+  function () {
     RegExp("foo");
     RegExp(/foo/);
     RegExp("foo", "i");
@@ -213,7 +213,7 @@ let tests = [
   },
 
   // invalid flags
-  function() {
+  function () {
     RegExp("foo", "z"); // error
     new RegExp("foo", "z"); // error
   }
