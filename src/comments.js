@@ -1042,7 +1042,7 @@ function printTrailingComment(commentPath, print, options) {
     );
   } else if (isBlock) {
     // Trailing block comments never need a newline
-    return concat([" ", contents]);
+    return concat([contents.startsWith("/*, ") ? "" : " ", contents]);
   }
 
   return concat([lineSuffix(" " + contents), !isBlock ? breakParent : ""]);
