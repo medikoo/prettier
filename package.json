@@ -54,6 +54,7 @@
     "eslint-plugin-import": "2.6.1",
     "eslint-plugin-prettier": "2.1.2",
     "eslint-plugin-react": "7.1.0",
+    "fs2": "^0.2.7",
     "jest": "21.1.0",
     "markdown-toc": "1.1.0",
     "mkdirp": "0.5.1",
