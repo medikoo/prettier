@@ -136,6 +136,11 @@ pkgWithoutDependencies.scripts = {
   prepublishOnly:
     "node -e \"assert.equal(require('.').version, require('..').version)\""
 };
+pkgWithoutDependencies.name = "prettier-elastic-vars";
+pkgWithoutDependencies.description =
+	"Prettier (code formatter) with elastic vars formatting";
+pkgWithoutDependencies.repository = "medikoo/prettier-elastic-vars";
+delete pkgWithoutDependencies.homepage;
 pipe(JSON.stringify(pkgWithoutDependencies, null, 2)).to("dist/package.json");
 
 shell.echo("Copy README.md");
