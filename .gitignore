@@ -1,5 +1,5 @@
 /node_modules
-npm-debug.log
+*.log
 /errors
 /test.js
 /test.ts
@@ -7,6 +7,7 @@ npm-debug.log
 /.vscode
 /dist
 /website/node_modules
+/website/build
 .DS_Store
 coverage
 .idea

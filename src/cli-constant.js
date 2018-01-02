@@ -187,6 +187,12 @@ const detailedOptions = normalizeDetailedOptions({
     description:
       "Print the names of files that are different from Prettier's formatting."
   },
+  loglevel: {
+    type: "choice",
+    description: "What level of logs to report.",
+    default: "warn",
+    choices: ["silent", "error", "warn", "debug"]
+  },
   parser: {
     type: "choice",
     category: CATEGORY_FORMAT,
@@ -201,7 +207,8 @@ const detailedOptions = normalizeDetailedOptions({
       "less",
       "scss",
       "json",
-      "graphql"
+      "graphql",
+      "markdown"
     ],
     description: "Which parser to use.",
     getter: (value, argv) => (argv["flow-parser"] ? "flow" : value)
@@ -263,6 +270,10 @@ const detailedOptions = normalizeDetailedOptions({
     type: "path",
     forwardToApi: "filepath",
     description: "Path to the file to pretend that stdin comes from."
+  },
+  "support-info": {
+    type: "boolean",
+    description: "Print support information as JSON."
   },
   "tab-width": {
     type: "int",
@@ -333,13 +344,7 @@ const minimistOptions = {
       (current, option) =>
         Object.assign({ [option.name]: option.alias }, current),
       {}
-    ),
-  unknown: param => {
-    if (param.startsWith("-")) {
-      console.warn(`Ignored unknown option: ${param}\n`);
-      return false;
-    }
-  }
+    )
 };
 
 const usageSummary = `
