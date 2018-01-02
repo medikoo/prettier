@@ -559,6 +559,9 @@ function genericPrintNoParens(path, options, print, args) {
         (args && args.expandLastArg) ||
         path.getParentNode().type === "JSXExpressionContainer";
 
+      const printTrailingComma =
+        args && args.expandLastArg && shouldPrintComma(options, "all");
+
       // In order to avoid confusion between
       // a => a ? a : a
       // a <= a ? a : a
@@ -583,10 +586,7 @@ function genericPrintNoParens(path, options, print, args) {
                 ])
               ),
               shouldAddSoftLine
-                ? concat([
-                    ifBreak(shouldPrintComma(options, "all") ? "," : ""),
-                    softline
-                  ])
+                ? concat([ifBreak(printTrailingComma ? "," : ""), softline])
                 : ""
             ])
           )
