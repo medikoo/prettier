@@ -2980,12 +2980,6 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
-magic-string@^0.15.2:
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.15.2.tgz#0681d7388741bbc3addaa65060992624c6c09e9c"
-  dependencies:
-    vlq "^0.2.1"
-
 magic-string@^0.16.0:
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.16.0.tgz#970ebb0da7193301285fb1aa650f39bdd81eb45a"
