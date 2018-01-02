@@ -406,7 +406,8 @@ function genericPrintNoParens(path, options, print, args) {
         i++;
       } while (
         firstNonMemberParent &&
-        firstNonMemberParent.type === "MemberExpression"
+        (firstNonMemberParent.type === "MemberExpression" ||
+          firstNonMemberParent.type === "TSNonNullExpression")
       );
 
       const shouldInline =
@@ -977,9 +978,13 @@ function genericPrintNoParens(path, options, print, args) {
       let separatorParts = [];
       const props = propsAndLoc.sort((a, b) => a.loc - b.loc).map(prop => {
         const result = concat(separatorParts.concat(group(prop.printed)));
-        separatorParts = hasNodeIgnoreComment(prop.node)
-          ? [line]
-          : [separator, line];
+        separatorParts = [separator, line];
+        if (
+          hasNodeIgnoreComment(prop.node) &&
+          prop.node.type === "TSPropertySignature"
+        ) {
+          separatorParts.shift();
+        }
         if (util.isNextLineEmpty(options.originalText, prop.node)) {
           separatorParts.push(hardline);
         }
@@ -2315,11 +2320,13 @@ function genericPrintNoParens(path, options, print, args) {
       // | C
 
       const parent = path.getParentNode();
+
       // If there's a leading comment, the parent is doing the indentation
       const shouldIndent =
         parent.type !== "TypeParameterInstantiation" &&
         parent.type !== "GenericTypeAnnotation" &&
         parent.type !== "TSTypeReference" &&
+        parent.type !== "FunctionTypeParam" &&
         !(
           (parent.type === "TypeAlias" ||
             parent.type === "VariableDeclarator") &&
@@ -2338,7 +2345,7 @@ function genericPrintNoParens(path, options, print, args) {
       // | child2
       const printed = path.map(typePath => {
         let printedType = typePath.call(print);
-        if (!shouldHug && shouldIndent) {
+        if (!shouldHug) {
           printedType = align(2, printedType);
         }
         return comments.printComments(typePath, () => printedType, options);
@@ -2352,6 +2359,26 @@ function genericPrintNoParens(path, options, print, args) {
         ifBreak(concat([shouldIndent ? line : "", "| "])),
         join(concat([line, "| "]), printed)
       ]);
+
+      let hasParens;
+
+      if (n.type === "TSUnionType") {
+        const greatGrandParent = path.getParentNode(2);
+        const greatGreatGrandParent = path.getParentNode(3);
+
+        hasParens =
+          greatGrandParent &&
+          greatGrandParent.type === "TSParenthesizedType" &&
+          greatGreatGrandParent &&
+          (greatGreatGrandParent.type === "TSUnionType" ||
+            greatGreatGrandParent.type === "TSIntersectionType");
+      } else {
+        hasParens = path.needsParens(options);
+      }
+
+      if (hasParens) {
+        return group(concat([indent(code), softline]));
+      }
 
       return group(shouldIndent ? indent(code) : code);
     }
@@ -3122,6 +3149,8 @@ function printArgumentsList(path, options, print) {
 
     const somePrintedArgumentsWillBreak = printedArguments.some(willBreak);
 
+    const maybeTrailingComma = shouldPrintComma(options, "all") ? "," : "";
+
     return concat([
       somePrintedArgumentsWillBreak ? breakParent : "",
       conditionalGroup(
@@ -3131,7 +3160,9 @@ function printArgumentsList(path, options, print) {
               indent(concat(["(", softline, concat(printedExpanded)])),
               concat(["(", concat(printedExpanded)])
             ),
-            somePrintedArgumentsWillBreak ? softline : "",
+            somePrintedArgumentsWillBreak
+              ? concat([ifBreak(maybeTrailingComma), softline])
+              : "",
             ")"
           ]),
           shouldGroupFirst
@@ -3153,7 +3184,7 @@ function printArgumentsList(path, options, print) {
             concat([
               "(",
               indent(concat([line, concat(printedArguments)])),
-              shouldPrintComma(options, "all") ? "," : "",
+              maybeTrailingComma,
               line,
               ")"
             ]),
@@ -4842,6 +4873,7 @@ function classPropMayCauseASIProblems(path) {
   // so isn't properly tested yet.
   if (
     (name === "static" || name === "get" || name === "set") &&
+    !node.value &&
     !node.typeAnnotation
   ) {
     return true;
@@ -5012,12 +5044,21 @@ function shouldHugArguments(fun) {
     fun.params.length === 1 &&
     !fun.params[0].comments &&
     (fun.params[0].type === "ObjectPattern" ||
+      fun.params[0].type === "ArrayPattern" ||
       (fun.params[0].type === "Identifier" &&
         fun.params[0].typeAnnotation &&
         fun.params[0].typeAnnotation.type === "TypeAnnotation" &&
         isObjectType(fun.params[0].typeAnnotation.typeAnnotation)) ||
       (fun.params[0].type === "FunctionTypeParam" &&
-        isObjectType(fun.params[0].typeAnnotation))) &&
+        isObjectType(fun.params[0].typeAnnotation)) ||
+      (fun.params[0].type === "AssignmentPattern" &&
+        (fun.params[0].left.type === "ObjectPattern" ||
+          fun.params[0].left.type === "ArrayPattern") &&
+        (fun.params[0].right.type === "Identifier" ||
+          (fun.params[0].right.type === "ObjectExpression" &&
+            fun.params[0].right.properties.length === 0) ||
+          (fun.params[0].right.type === "ArrayExpression" &&
+            fun.params[0].right.elements.length === 0)))) &&
     !fun.rest
   );
 }
