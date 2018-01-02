@@ -22,6 +22,7 @@ var OPTIONS = [
   "insertPragma",
   "requirePragma",
   "proseWrap",
+  "arrowParens",
   "doc",
   "ast",
   "output2"
@@ -158,6 +159,18 @@ window.onload = function() {
 
   document.getElementById("button-clear").onclick = function() {
     inputEditor.setValue("");
+  };
+
+  var optionsElement = document.getElementById("options-details");
+  document.getElementById("button-options").onclick = function() {
+    var classes = optionsElement.classList;
+    if (classes.contains("open")) {
+      classes.remove("open");
+      this.innerHTML = "Show options";
+    } else {
+      classes.add("open");
+      this.innerHTML = "Hide options";
+    }
   };
 
   var clipboard = new Clipboard("#button-copy-link, #button-copy-markdown", {

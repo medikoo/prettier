@@ -1,6 +1,6 @@
 {
   "name": "prettier",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Prettier is an opinionated code formatter",
   "bin": {
     "prettier": "./bin/prettier.js"
@@ -23,7 +23,7 @@
     "dashify": "0.2.2",
     "diff": "3.2.0",
     "editorconfig": "0.14.2",
-    "editorconfig-to-prettier": "0.0.4",
+    "editorconfig-to-prettier": "0.0.5",
     "emoji-regex": "6.5.1",
     "es5-ext": "^0.10.35",
     "escape-string-regexp": "1.0.5",
@@ -68,7 +68,7 @@
     "fs2": "^0.2.7",
     "jest": "21.1.0",
     "mkdirp": "0.5.1",
-    "prettier": "1.8.2",
+    "prettier": "1.9.0",
     "prettylint": "1.0.0",
     "rimraf": "2.6.2",
     "rollup": "0.41.6",
