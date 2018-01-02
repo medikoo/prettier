@@ -11,12 +11,6 @@ const fill = docBuilders.fill;
 const align = docBuilders.align;
 const docPrinter = require("./doc-printer");
 const printDocToString = docPrinter.printDocToString;
-const escapeStringRegexp = require("escape-string-regexp");
-
-// http://spec.commonmark.org/0.25/#ascii-punctuation-character
-const asciiPunctuationPattern = escapeStringRegexp(
-  "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-);
 
 const SINGLE_LINE_NODE_TYPES = [
   "heading",
@@ -46,7 +40,8 @@ const INLINE_NODE_TYPES = [
 
 const INLINE_NODE_WRAPPER_TYPES = INLINE_NODE_TYPES.concat([
   "tableCell",
-  "paragraph"
+  "paragraph",
+  "heading"
 ]);
 
 function genericPrint(path, options, print) {
@@ -65,16 +60,17 @@ function genericPrint(path, options, print) {
           node =>
             node.type === "word"
               ? node.value
-              : node.value === "" ? "" : printLine(path, line, options)
+              : node.value === "" ? "" : printLine(path, node.value, options)
         )
     );
   }
 
   switch (node.type) {
     case "root":
-      return normalizeDoc(
-        concat([printChildren(path, options, print), hardline])
-      );
+      return concat([
+        normalizeDoc(printChildren(path, options, print)),
+        hardline
+      ]);
     case "paragraph":
       return printChildren(path, options, print, {
         postprocessor: fill
@@ -82,22 +78,34 @@ function genericPrint(path, options, print) {
     case "sentence":
       return printChildren(path, options, print);
     case "word":
-      return getAncestorNode(path, "inlineCode")
-        ? node.value
-        : node.value
-            .replace(/(^|[^\\])\*/g, "$1\\*") // escape all unescaped `*` and `_`
-            .replace(/\b(^|[^\\])_\b/g, "$1\\_"); // `1_2_3` is not considered emphasis
+      return node.value
+        .replace(/[*]/g, "\\*") // escape all `*`
+        .replace(
+          new RegExp(
+            [
+              `(^|[${util.punctuationCharRange}])(_+)`,
+              `(_+)([${util.punctuationCharRange}]|$)`
+            ].join("|"),
+            "g"
+          ),
+          (_, text1, underscore1, underscore2, text2) =>
+            (underscore1
+              ? `${text1}${underscore1}`
+              : `${underscore2}${text2}`
+            ).replace(/_/g, "\\_")
+        ); // escape all `_` except concating with non-punctuation, e.g. `1_2_3` is not considered emphasis
     case "whitespace": {
       const parentNode = path.getParentNode();
       const index = parentNode.children.indexOf(node);
       const nextNode = parentNode.children[index + 1];
 
-      // leading char that may cause different syntax
-      if (nextNode && /^>|^([-+*]|#{1,6})$/.test(nextNode.value)) {
-        return node.value === "" ? "" : " ";
-      }
+      const proseWrap =
+        // leading char that may cause different syntax
+        nextNode && /^>|^([-+*]|#{1,6}|[0-9]+[.)])$/.test(nextNode.value)
+          ? "never"
+          : options.proseWrap;
 
-      return printLine(path, node.value === "" ? softline : line, options);
+      return printLine(path, node.value, { proseWrap });
     }
     case "emphasis": {
       const parentNode = path.getParentNode();
@@ -108,17 +116,13 @@ function genericPrint(path, options, print) {
         (prevNode &&
           prevNode.type === "sentence" &&
           prevNode.children.length > 0 &&
-          prevNode.children[prevNode.children.length - 1].type === "word" &&
-          new RegExp(`[^${asciiPunctuationPattern}]$`).test(
-            prevNode.children[prevNode.children.length - 1].value
-          )) ||
+          util.getLast(prevNode.children).type === "word" &&
+          !util.getLast(prevNode.children).hasTrailingPunctuation) ||
         (nextNode &&
           nextNode.type === "sentence" &&
           nextNode.children.length > 0 &&
           nextNode.children[0].type === "word" &&
-          new RegExp(`^[^${asciiPunctuationPattern}]`).test(
-            nextNode.children[0].value
-          ));
+          !nextNode.children[0].hasLeadingPunctuation);
       const style =
         hasPrevOrNextWord || getAncestorNode(path, "emphasis") ? "*" : "_";
       return concat([style, printChildren(path, options, print), style]);
@@ -130,14 +134,8 @@ function genericPrint(path, options, print) {
     case "inlineCode": {
       const backtickCount = util.getMaxContinuousCount(node.value, "`");
       const style = backtickCount === 1 ? "``" : "`";
-      const gap = backtickCount ? printLine(path, line, options) : "";
-      return concat([
-        style,
-        gap,
-        printChildren(path, options, print),
-        gap,
-        style
-      ]);
+      const gap = backtickCount ? " " : "";
+      return concat([style, gap, node.value, gap, style]);
     }
     case "link":
       switch (options.originalText[node.position.start.offset]) {
@@ -185,9 +183,10 @@ function genericPrint(path, options, print) {
         )
       ) {
         // indented code block
+        const alignment = " ".repeat(4);
         return align(
-          4,
-          concat([" ".repeat(4), join(hardline, node.value.split("\n"))])
+          alignment,
+          concat([alignment, join(hardline, node.value.split("\n"))])
         );
       }
 
@@ -207,10 +206,12 @@ function genericPrint(path, options, print) {
     }
     case "yaml":
       return concat(["---", hardline, node.value, hardline, "---"]);
+    case "toml":
+      return concat(["+++", hardline, node.value, hardline, "+++"]);
     case "html": {
       const parentNode = path.getParentNode();
       return parentNode.type === "root" &&
-        parentNode.children[parentNode.children.length - 1] === node
+        util.getLast(parentNode.children) === node
         ? node.value.trimRight()
         : node.value;
     }
@@ -238,7 +239,10 @@ function genericPrint(path, options, print) {
                 : isGitDiffFriendlyOrderedList ? 1 : node.start + index) +
               (nthSiblingIndex % 2 === 0 ? ". " : ") ")
             : nthSiblingIndex % 2 === 0 ? "* " : "- ";
-          return concat([prefix, align(prefix.length, childPath.call(print))]);
+          return concat([
+            prefix,
+            align(" ".repeat(prefix.length), childPath.call(print))
+          ]);
         }
       });
     }
@@ -247,7 +251,12 @@ function genericPrint(path, options, print) {
         node.checked === null ? "" : node.checked ? "[x] " : "[ ] ";
       return concat([
         prefix,
-        align(prefix.length, printChildren(path, options, print))
+        printChildren(path, options, print, {
+          processor: (childPath, index) =>
+            index === 0 && childPath.getValue().type !== "list"
+              ? align(" ".repeat(prefix.length), childPath.call(print))
+              : childPath.call(print)
+        })
       ]);
     }
     case "thematicBreak": {
@@ -306,7 +315,12 @@ function genericPrint(path, options, print) {
     case "tableCell":
       return printChildren(path, options, print);
     case "break":
-      return concat(["\\", hardline]);
+      return concat([
+        /\s/.test(options.originalText[node.position.start.offset])
+          ? "  "
+          : "\\",
+        hardline
+      ]);
     case "tableRow": // handled in "table"
     default:
       throw new Error(`Unknown markdown type ${JSON.stringify(node.type)}`);
@@ -359,10 +373,15 @@ function getAncestorNode(path, typeOrTypes) {
   return counter === -1 ? null : path.getParentNode(counter);
 }
 
-function printLine(path, lineOrSoftline, options) {
+function printLine(path, value, options) {
+  if (options.proseWrap === "preserve" && value === "\n") {
+    return hardline;
+  }
+
   const isBreakable =
-    options.proseWrap && !getAncestorNode(path, SINGLE_LINE_NODE_TYPES);
-  return lineOrSoftline === line
+    options.proseWrap === "always" &&
+    !getAncestorNode(path, SINGLE_LINE_NODE_TYPES);
+  return value !== ""
     ? isBreakable ? line : " "
     : isBreakable ? softline : "";
 }
@@ -614,7 +633,7 @@ function printTitle(title) {
 
 function normalizeParts(parts) {
   return parts.reduce((current, part) => {
-    const lastPart = current[current.length - 1];
+    const lastPart = util.getLast(current);
 
     if (typeof lastPart === "string" && typeof part === "string") {
       current.splice(-1, 1, lastPart + part);

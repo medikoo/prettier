@@ -1,12 +1,14 @@
 "use strict";
 
-const cosmiconfig = require("cosmiconfig");
+const thirdParty = require("./third-party");
 const minimatch = require("minimatch");
 const path = require("path");
 const mem = require("mem");
 
+const resolveEditorConfig = require("./resolve-config-editorconfig");
+
 const getExplorerMemoized = mem(opts =>
-  cosmiconfig("prettier", {
+  thirdParty.cosmiconfig("prettier", {
     sync: opts.sync,
     cache: opts.cache,
     rcExtensions: true,
@@ -26,23 +28,47 @@ function getLoadFunction(opts) {
   return getExplorerMemoized(opts).load;
 }
 
-function resolveConfig(filePath, opts) {
+function _resolveConfig(filePath, opts, sync) {
   opts = Object.assign({ useCache: true }, opts);
-  const load = getLoadFunction({ cache: !!opts.useCache, sync: false });
-  return load(filePath, opts.config).then(result => {
-    return !result ? null : mergeOverrides(result, filePath);
-  });
+  const loadOpts = {
+    cache: !!opts.useCache,
+    sync: !!sync,
+    editorconfig: !!opts.editorconfig
+  };
+  const load = getLoadFunction(loadOpts);
+  const loadEditorConfig = resolveEditorConfig.getLoadFunction(loadOpts);
+  const arr = [load, loadEditorConfig].map(l => l(filePath, opts.config));
+
+  const unwrapAndMerge = arr => {
+    const result = arr[0];
+    const editorConfigured = arr[1];
+    const merged = Object.assign(
+      {},
+      editorConfigured,
+      mergeOverrides(Object.assign({}, result), filePath)
+    );
+
+    if (!result && !editorConfigured) {
+      return null;
+    }
+
+    return merged;
+  };
+
+  if (loadOpts.sync) {
+    return unwrapAndMerge(arr);
+  }
+
+  return Promise.all(arr).then(unwrapAndMerge);
 }
 
-resolveConfig.sync = (filePath, opts) => {
-  opts = Object.assign({ useCache: true }, opts);
-  const load = getLoadFunction({ cache: !!opts.useCache, sync: true });
-  const result = load(filePath, opts.config);
-  return !result ? null : mergeOverrides(result, filePath);
-};
+const resolveConfig = (filePath, opts) => _resolveConfig(filePath, opts, false);
+
+resolveConfig.sync = (filePath, opts) => _resolveConfig(filePath, opts, true);
 
 function clearCache() {
   mem.clear(getExplorerMemoized);
+  resolveEditorConfig.clearCache();
 }
 
 function resolveConfigFile(filePath) {

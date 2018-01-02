@@ -1,5 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`css-prop.js 1`] = `
+function SomeComponent (props) {
+  // Create styles as if you're calling css and the class will be applied to the component
+  return (<div css={\`
+    color: blue;
+    font-size: 17 px;
+
+    &:hover {
+      color: green;
+    }
+
+    & .some-class {
+      font-size: 20px;
+    }
+  \`}>
+    This will be blue until hovered.
+    <div className="some-class">
+      This font size will be 20px
+    </div>
+  </div>)
+}
+
+const TestComponent = ({ children, ...props }) => (
+  <div css={\`color: white; background: black\`}>
+    {children}
+  </div>
+);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function SomeComponent(props) {
+  // Create styles as if you're calling css and the class will be applied to the component
+  return (
+    <div
+      css={\`
+        color: blue;
+        font-size: 17 px;
+
+        &:hover {
+          color: green;
+        }
+
+        & .some-class {
+          font-size: 20px;
+        }
+      \`}
+    >
+      This will be blue until hovered.
+      <div className="some-class">This font size will be 20px</div>
+    </div>
+  );
+}
+
+const TestComponent = ({ children, ...props }) => (
+  <div
+    css={\`
+      color: white;
+      background: black;
+    \`}
+  >
+    {children}
+  </div>
+);
+
+`;
+
 exports[`expressions.js 1`] = `
 const long = \`long \${a//comment
   .b} long longlong \${a.b.c.d.e} long longlong \${a.b.c.d.e} long longlong \${a.b.c.d.e} long long\`;
@@ -36,17 +100,21 @@ console.log(
 console.log(\`brew cask audit --download \${_.map(definitions, 'caskName').join(' ')}\`)
 
 console.log(\`\\nApparently jetbrains changed the release artifact for \${app.name}@\${app.jetbrains.version}.\\n\`);
+
+descirbe('something', () => {
+  test(\`{pass: false} expect(\${small}).toBeGreaterThanOrEqual(\${big})\`, () => {});
+})
+
+throw new Error(\`pretty-format: Option "theme" has a key "\${key}" whose value "\${value}" is undefined in ansi-styles.\`,)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const long = \`long \${
   a.b //comment
 } long longlong \${a.b.c.d.e} long longlong \${a.b.c.d.e} long longlong \${
   a.b.c.d.e
 } long long\`;
-const long = \`long \${a.b.c.d.e} long longlong \${
-  loooooooooooooooooong
-} long longlong \${loooooooooooooooooong} long longlong \${
-  loooooooooooooooooong
-} long long\`;
+const long = \`long \${
+  a.b.c.d.e
+} long longlong \${loooooooooooooooooong} long longlong \${loooooooooooooooooong} long longlong \${loooooooooooooooooong} long long\`;
 
 const long = \`long long long long long long long long long long long \${
   a.b.c.d.e
@@ -92,6 +160,14 @@ console.log(
   \`\\nApparently jetbrains changed the release artifact for \${app.name}@\${
     app.jetbrains.version
   }.\\n\`
+);
+
+descirbe("something", () => {
+  test(\`{pass: false} expect(\${small}).toBeGreaterThanOrEqual(\${big})\`, () => {});
+});
+
+throw new Error(
+  \`pretty-format: Option "theme" has a key "\${key}" whose value "\${value}" is undefined in ansi-styles.\`
 );
 
 `;
