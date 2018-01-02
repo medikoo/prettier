@@ -29,7 +29,7 @@ exports[`attr-comments.js 1`] = `
 <Component
   propFn={
     // comment
-    function(arg) {
+    function (arg) {
       fn(arg);
     }
   }
