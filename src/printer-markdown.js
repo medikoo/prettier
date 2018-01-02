@@ -18,7 +18,12 @@ const asciiPunctuationPattern = escapeStringRegexp(
   "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
 );
 
-const SINGLE_LINE_NODE_TYPES = ["heading", "tableCell", "footnoteDefinition"];
+const SINGLE_LINE_NODE_TYPES = [
+  "heading",
+  "tableCell",
+  "footnoteDefinition",
+  "link"
+];
 
 const SIBLING_NODE_TYPES = ["listItem", "definition", "footnoteDefinition"];
 
@@ -60,7 +65,7 @@ function genericPrint(path, options, print) {
           node =>
             node.type === "word"
               ? node.value
-              : node.value === "" ? "" : printLine(path, line)
+              : node.value === "" ? "" : printLine(path, line, options)
         )
     );
   }
@@ -87,12 +92,12 @@ function genericPrint(path, options, print) {
       const index = parentNode.children.indexOf(node);
       const nextNode = parentNode.children[index + 1];
 
-      // special prefix that may cause different meaning
-      if (nextNode && nextNode.value.match(/^(#{1,6}|>+)|^(-|\+|\*)$/)) {
+      // leading char that may cause different syntax
+      if (nextNode && /^>|^([-+*]|#{1,6})$/.test(nextNode.value)) {
         return node.value === "" ? "" : " ";
       }
 
-      return printLine(path, node.value === "" ? softline : line);
+      return printLine(path, node.value === "" ? softline : line, options);
     }
     case "emphasis": {
       const parentNode = path.getParentNode();
@@ -104,15 +109,15 @@ function genericPrint(path, options, print) {
           prevNode.type === "sentence" &&
           prevNode.children.length > 0 &&
           prevNode.children[prevNode.children.length - 1].type === "word" &&
-          prevNode.children[prevNode.children.length - 1].value.match(
-            new RegExp(`[^${asciiPunctuationPattern}]$`)
+          new RegExp(`[^${asciiPunctuationPattern}]$`).test(
+            prevNode.children[prevNode.children.length - 1].value
           )) ||
         (nextNode &&
           nextNode.type === "sentence" &&
           nextNode.children.length > 0 &&
           nextNode.children[0].type === "word" &&
-          nextNode.children[0].value.match(
-            new RegExp(`^[^${asciiPunctuationPattern}]`)
+          new RegExp(`^[^${asciiPunctuationPattern}]`).test(
+            nextNode.children[0].value
           ));
       const style =
         hasPrevOrNextWord || getAncestorNode(path, "emphasis") ? "*" : "_";
@@ -125,7 +130,7 @@ function genericPrint(path, options, print) {
     case "inlineCode": {
       const backtickCount = util.getMaxContinuousCount(node.value, "`");
       const style = backtickCount === 1 ? "``" : "`";
-      const gap = backtickCount ? printLine(path, line) : "";
+      const gap = backtickCount ? printLine(path, line, options) : "";
       return concat([
         style,
         gap,
@@ -354,8 +359,9 @@ function getAncestorNode(path, typeOrTypes) {
   return counter === -1 ? null : path.getParentNode(counter);
 }
 
-function printLine(path, lineOrSoftline) {
-  const isBreakable = !getAncestorNode(path, SINGLE_LINE_NODE_TYPES);
+function printLine(path, lineOrSoftline, options) {
+  const isBreakable =
+    options.proseWrap && !getAncestorNode(path, SINGLE_LINE_NODE_TYPES);
   return lineOrSoftline === line
     ? isBreakable ? line : " "
     : isBreakable ? softline : "";
