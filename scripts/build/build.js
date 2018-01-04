@@ -99,8 +99,9 @@ pkgWithoutDependencies.scripts = {
     "node -e \"assert.equal(require('.').version, require('..').version)\""
 };
 pkgWithoutDependencies.name = "prettier-elastic-vars";
+pkgWithoutDependencies.prettierVersion = pkgWithoutDependencies.version;
 pkgWithoutDependencies.description =
-	"Prettier (code formatter) with elastic vars formatting";
+  "Prettier (code formatter) with elastic vars formatting";
 pkgWithoutDependencies.repository = "medikoo/prettier-elastic-vars";
 delete pkgWithoutDependencies.homepage;
 pipe(JSON.stringify(pkgWithoutDependencies, null, 2)).to("dist/package.json");
