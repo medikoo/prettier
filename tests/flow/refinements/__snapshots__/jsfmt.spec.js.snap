@@ -2877,10 +2877,10 @@ type Error = {
 function handleStatus(status: Success | Error) {
   switch (status.type) {
     case SUCCESS:
-      console.log(\`Successful: \${status.message}\`);
+      console.log(\`Successful: \${ status.message }\`);
       break;
     default:
-      console.log(\`Errored: \${status.error}\`);
+      console.log(\`Errored: \${ status.error }\`);
   }
 }
 

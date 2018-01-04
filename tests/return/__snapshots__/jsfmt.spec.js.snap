@@ -45,7 +45,7 @@ function f() {
 
   return (
     !filePath.includes(coverageDirectory) &&
-    !filePath.endsWith(\`.\${SNAPSHOT_EXTENSION}\`)
+    !filePath.endsWith(\`.\${ SNAPSHOT_EXTENSION }\`)
   );
 }
 

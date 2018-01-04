@@ -235,7 +235,7 @@ foo(
 
 pipe.write(
   \`\\n  \${chalk.dim(
-    \`\\u203A and \${more} more \${more} more \${more} more \${more}\`
+    \`\\u203A and \${ more } more \${ more } more \${ more } more \${ more }\`
   )}\`
 );
 
@@ -421,7 +421,7 @@ foo(
 
 pipe.write(
   \`\\n  \${chalk.dim(
-    \`\\u203A and \${more} more \${more} more \${more} more \${more}\`,
+    \`\\u203A and \${ more } more \${ more } more \${ more } more \${ more }\`,
   )}\`,
 );
 

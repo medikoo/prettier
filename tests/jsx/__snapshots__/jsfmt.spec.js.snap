@@ -658,7 +658,7 @@ exports[`hug.js 1`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -673,7 +673,7 @@ exports[`hug.js 1`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}

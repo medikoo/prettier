@@ -2031,7 +2031,18 @@ function genericPrintNoParens(path, options, print, args) {
 
           const aligned = addAlignmentToDoc(printed, indentSize, tabWidth);
 
-          parts.push(group(concat(["${", aligned, lineSuffixBoundary, "}"])));
+          parts.push(
+            group(
+              concat([
+                "${",
+                customizations.paddingBreakInstruction,
+                aligned,
+                lineSuffixBoundary,
+                customizations.paddingBreakInstruction,
+                "}"
+              ])
+            )
+          );
         }
       }, "quasis");
 

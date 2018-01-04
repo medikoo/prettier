@@ -487,7 +487,7 @@ this_really_should_split_across_lines = (
 unstable_before = (
   <div className="yourScore">
     Your score:{" "}
-    <span className="score">{\`\${mini.crosstable.users[sessionUserId]} - \${
+    <span className="score">{\`\${ mini.crosstable.users[sessionUserId] } - \${
       mini.crosstable.users[user.id]
     }\`}</span>
   </div>
@@ -496,7 +496,7 @@ unstable_before = (
 unstable_after_first_run = (
   <div className="yourScore">
     Your score:{" "}
-    <span className="score">{\`\${mini.crosstable.users[sessionUserId]} - \${
+    <span className="score">{\`\${ mini.crosstable.users[sessionUserId] } - \${
       mini.crosstable.users[user.id]
     }\`}</span>
   </div>
