@@ -9,7 +9,7 @@ const embed = require("./embed");
 const printerOptions = require("./options");
 const clean = require("./clean");
 
-const customizations = require("./_customizations");
+const customizations = require("../_customizations");
 const capitalize = require("es5-ext/string/#/capitalize");
 
 const doc = require("../doc");
