@@ -30,7 +30,27 @@ and add this config to your `package.json`:
 
 See https://github.com/okonet/lint-staged#configuration for more details about how you can configure lint-staged.
 
-## Option 2. [pre-commit](https://github.com/pre-commit/pre-commit)
+## Option 2. [pretty-quick](https://github.com/azz/pretty-quick)
+
+Install it along with [husky](https://github.com/typicode/husky):
+
+```bash
+yarn add pretty-quick husky --dev
+```
+
+and add this config to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "precommit": "pretty-quick --staged"
+  }
+}
+```
+
+Find more info from [here](https://github.com/azz/pretty-quick).
+
+## Option 3. [pre-commit](https://github.com/pre-commit/pre-commit) (Python version)
 
 Copy the following config into your `.pre-commit-config.yaml` file:
 
@@ -43,7 +63,7 @@ Copy the following config into your `.pre-commit-config.yaml` file:
 
 Find more info from [here](http://pre-commit.com).
 
-## Option 3. bash script
+## Option 4. bash script
 
 Alternately you can save this script as `.git/hooks/pre-commit` and give it execute permission:
 

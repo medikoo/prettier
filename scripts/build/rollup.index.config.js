@@ -8,7 +8,7 @@ import * as path from "path";
 const external = ["assert"];
 
 if (process.env.BUILD_TARGET !== "website") {
-  external.push(path.resolve("src/third-party.js"));
+  external.push(path.resolve("src/common/third-party.js"));
 }
 
 export default Object.assign(baseConfig, {
@@ -17,14 +17,19 @@ export default Object.assign(baseConfig, {
   format: "cjs",
   plugins: [
     replace({
-      "process.env.NODE_ENV": JSON.stringify("production")
+      "process.env.NODE_ENV": JSON.stringify("production"),
+      // See comment in jest.config.js
+      "require('graceful-fs')": "require('fs')"
     }),
     json(),
-    resolve({ preferBuiltins: true }),
+    resolve({
+      preferBuiltins: true,
+      extensions: [".js", ".json"]
+    }),
     commonjs()
   ],
   external,
   paths: {
-    [path.resolve("src/third-party.js")]: "./third-party"
+    [path.resolve("src/common/third-party.js")]: "./third-party"
   }
 });

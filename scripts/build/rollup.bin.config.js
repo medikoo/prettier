@@ -11,9 +11,16 @@ export default Object.assign(baseConfig, {
   format: "cjs",
   banner: "#!/usr/bin/env node",
   plugins: [
-    replace({ "#!/usr/bin/env node": "" }),
+    replace({
+      "#!/usr/bin/env node": "",
+      // See comment in jest.config.js
+      "require('graceful-fs')": "require('fs')"
+    }),
     json(),
-    resolve({ preferBuiltins: true }),
+    resolve({
+      preferBuiltins: true,
+      extensions: [".js", ".json"]
+    }),
     commonjs()
   ],
   external: [
@@ -24,9 +31,9 @@ export default Object.assign(baseConfig, {
     "assert",
     "util",
     "events",
-    path.resolve("src/third-party.js")
+    path.resolve("src/common/third-party.js")
   ],
   paths: {
-    [path.resolve("src/third-party.js")]: "../third-party"
+    [path.resolve("src/common/third-party.js")]: "../third-party"
   }
 });
