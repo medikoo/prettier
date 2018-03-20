@@ -15,21 +15,12 @@ describe("cursorOffset should not be affected by full-width character", () => {
   }).test({
     /**
      * const x = [
-     *   "中文",
-     *   "中文",
-     *        ^ offset = 26
-     *   "中文",
-     *   "中文",
-     *   "中文",
-     *   "中文",
-     *   "中文",
-     *   "中文",
-     *   "中文",
-     *   "中文",
-     *   "中文"
+     *   "中文", "中文", "中文", "中文", "中文", "中文", "中文", "中文","中文",
+     *                ^ offset = 24
+     *   "中文", "中文",
      * ];
      */
-    stderr: "26\n",
+    stderr: "24\n",
     status: 0
   });
 });

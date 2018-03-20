@@ -69,9 +69,7 @@ group(
       options.tabWidth,
       concat([line, join(concat([",", line]), printed)])
     ),
-    options.trailingComma ? "," : "",
-    line,
-    ")"
+    options.trailingComma ? "," : "", line, ")"
   ]),
   { shouldBreak: true }
 );

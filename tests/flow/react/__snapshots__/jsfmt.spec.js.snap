@@ -1613,8 +1613,7 @@ var React = require("react");
 var Example = React.createClass({
   propTypes: {
     prop: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
+      React.PropTypes.string, React.PropTypes.number
     ]).isRequired
   },
   render() {
@@ -1682,8 +1681,7 @@ var DynamicArrayExample = React.createClass({
 var DynamicElemExample = React.createClass({
   propTypes: {
     dyn: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      (() => {}: Function)
+      React.PropTypes.string, (() => {}: Function)
     ])
   }
 });

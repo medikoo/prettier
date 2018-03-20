@@ -5105,7 +5105,7 @@ function printArrayItems(path, options, printPath, print) {
   let separatorParts = [];
 
   path.each(childPath => {
-    printedElements.push(concat(separatorParts));
+    printedElements.push(...separatorParts);
     printedElements.push(group(print(childPath)));
 
     separatorParts = [",", line];
@@ -5117,7 +5117,9 @@ function printArrayItems(path, options, printPath, print) {
     }
   }, printPath);
 
-  return concat(printedElements);
+  const concatBlock = concat(printedElements);
+  concatBlock.groupLines = true;
+  return concatBlock;
 }
 
 function hasDanglingComments(node) {

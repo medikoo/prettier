@@ -59,8 +59,7 @@ namespace Y3 {
 
 namespace Y4 {
   public enum Color {
-    Blue,
-    Red
+    Blue, Red
   }
 }
 
@@ -74,8 +73,7 @@ namespace YY3 {
 
 namespace YY4 {
   private enum Color {
-    Blue,
-    Red
+    Blue, Red
   }
 }
 
@@ -89,8 +87,7 @@ namespace YYY3 {
 
 namespace YYY4 {
   static enum Color {
-    Blue,
-    Red
+    Blue, Red
   }
 }
 

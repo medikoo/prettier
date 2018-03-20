@@ -6,6 +6,8 @@ const concat = docBuilders.concat;
 const fill = docBuilders.fill;
 const cursor = docBuilders.cursor;
 
+const customizations = require("../_customizations/doc-printer");
+
 const MODE_BREAK = 1;
 const MODE_FLAT = 2;
 
@@ -154,12 +156,29 @@ function printDocToString(doc, options) {
           out.push(cursor.placeholder);
 
           break;
-        case "concat":
-          for (let i = doc.parts.length - 1; i >= 0; i--) {
-            cmds.push([ind, mode, doc.parts[i]]);
+        case "concat": {
+          let docParts = doc.parts;
+          if (
+            doc.groupLines &&
+            mode === MODE_BREAK &&
+            !customizations.isLineBreaking(doc, mode, MODE_BREAK, MODE_FLAT)
+          ) {
+            docParts = customizations.groupLines(
+              ind,
+              MODE_FLAT,
+              width,
+              pos,
+              doc,
+              options,
+              fits
+            );
+          }
+          for (let i = docParts.length - 1; i >= 0; i--) {
+            cmds.push([ind, mode, docParts[i]]);
           }
 
           break;
+        }
         case "indent":
           cmds.push([makeIndent(ind, options), mode, doc.contents]);
 

@@ -903,14 +903,9 @@ function logical12b(y: number): number {
  */
 function logical13(x: number): Array<{ x: string }> {
   return [
-    { x: x && "bar" },
-    { x: true && "bar" },
-    { x: true && false },
-    { x: false && false },
-    { x: 1 && "bar" },
-    { x: "foo" && "bar" },
-    { x: "foo" && "bar" },
-    { x: "foo" && "bar" }
+    { x: x && "bar" }, { x: true && "bar" }, { x: true && false },
+    { x: false && false }, { x: 1 && "bar" }, { x: "foo" && "bar" },
+    { x: "foo" && "bar" }, { x: "foo" && "bar" }
   ];
 }
 
@@ -919,14 +914,9 @@ function logical13(x: number): Array<{ x: string }> {
  */
 function logical14(x: number): Array<{ x: string }> {
   return [
-    { x: x || "bar" },
-    { x: false || "bar" },
-    { x: false || true },
-    { x: true || false },
-    { x: 0 || "bar" },
-    { x: "foo" || "bar" },
-    { x: "foo" || "bar" },
-    { x: "foo" || "bar" }
+    { x: x || "bar" }, { x: false || "bar" }, { x: false || true },
+    { x: true || false }, { x: 0 || "bar" }, { x: "foo" || "bar" },
+    { x: "foo" || "bar" }, { x: "foo" || "bar" }
   ];
 }
 
