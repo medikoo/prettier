@@ -5,7 +5,7 @@ const getSupportInfo = require("../common/support").getSupportInfo;
 const normalizer = require("./options-normalizer");
 const loadPlugins = require("../common/load-plugins");
 const resolveParser = require("./parser").resolveParser;
-const getPrinter = require("./get-printer");
+const getPlugin = require("./get-plugin");
 
 const hiddenDefaults = {
   astFormat: "estree",
@@ -26,7 +26,8 @@ function normalize(options, opts) {
   const supportOptions = getSupportInfo(null, {
     plugins,
     pluginsLoaded: true,
-    showUnreleased: true
+    showUnreleased: true,
+    showDeprecated: true
   }).options;
   const defaults = supportOptions.reduce(
     (reduced, optionInfo) =>
@@ -49,15 +50,41 @@ function normalize(options, opts) {
     }
   }
 
-  const parser = resolveParser(rawOptions);
+  const parser = resolveParser(
+    !rawOptions.parser
+      ? rawOptions
+      : // handle deprecated parsers
+        normalizer.normalizeApiOptions(
+          rawOptions,
+          [supportOptions.find(x => x.name === "parser")],
+          { passThrough: true, logger: false }
+        )
+  );
   rawOptions.astFormat = parser.astFormat;
   rawOptions.locEnd = parser.locEnd;
   rawOptions.locStart = parser.locStart;
-  rawOptions.printer = getPrinter(rawOptions);
 
-  Object.keys(defaults).forEach(k => {
+  const plugin = getPlugin(rawOptions);
+  rawOptions.printer = plugin.printers[rawOptions.astFormat];
+
+  const pluginDefaults = supportOptions
+    .filter(
+      optionInfo =>
+        optionInfo.pluginDefaults && optionInfo.pluginDefaults[plugin.name]
+    )
+    .reduce(
+      (reduced, optionInfo) =>
+        Object.assign(reduced, {
+          [optionInfo.name]: optionInfo.pluginDefaults[plugin.name]
+        }),
+      {}
+    );
+
+  const mixedDefaults = Object.assign({}, defaults, pluginDefaults);
+
+  Object.keys(mixedDefaults).forEach(k => {
     if (rawOptions[k] == null) {
-      rawOptions[k] = defaults[k];
+      rawOptions[k] = mixedDefaults[k];
     }
   });
 
