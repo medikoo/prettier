@@ -11,9 +11,7 @@ export {Foo};
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // @flow
 
-declare class Foo {
-  bar?: () => string;
-}
+declare class Foo { bar?: () => string }
 
 export { Foo };
 

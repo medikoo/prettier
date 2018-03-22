@@ -1349,9 +1349,7 @@ $ yarn add --dev eslint-config-prettier
 .eslintrc.json:
 
 \`\`\`json
-{
-  "extends": ["prettier"]
-}
+{ "extends": ["prettier"] }
 \`\`\`
 
 ### Pre-commit Hook
@@ -1371,12 +1369,8 @@ and add this config to your \`package.json\`:
 
 \`\`\`json
 {
-  "scripts": {
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"]
-  }
+  "scripts": { "precommit": "lint-staged" },
+  "lint-staged": { "*.{js,json,css}": ["prettier --write", "git add"] }
 }
 \`\`\`
 
@@ -1760,10 +1754,7 @@ JSON:
 
 \`\`\`json
 // .prettierrc
-{
-  "printWidth": 100,
-  "parser": "flow"
-}
+{ "printWidth": 100, "parser": "flow" }
 \`\`\`
 
 YAML:
@@ -1785,14 +1776,7 @@ JSON:
 \`\`\`json
 {
   "semi": false,
-  "overrides": [
-    {
-      "files": "*.test.js",
-      "options": {
-        "semi": true
-      }
-    }
-  ]
+  "overrides": [{ "files": "*.test.js", "options": { "semi": true } }]
 }
 \`\`\`
 
@@ -1813,14 +1797,7 @@ may also be a string or array of strings.
 To get prettier to format its own \`.prettierrc\` file, you can do:
 
 \`\`\`json
-{
-  "overrides": [
-    {
-      "files": ".prettierrc",
-      "options": { "parser": "json" }
-    }
-  ]
-}
+{ "overrides": [{ "files": ".prettierrc", "options": { "parser": "json" } }] }
 \`\`\`
 
 For more information on how to use the CLI to locate a file, see the [CLI](#cli)
@@ -3320,9 +3297,7 @@ $ yarn add --dev eslint-config-prettier
 .eslintrc.json:
 
 \`\`\`json
-{
-  "extends": ["prettier"]
-}
+{ "extends": ["prettier"] }
 \`\`\`
 
 ### Pre-commit Hook
@@ -3342,12 +3317,8 @@ and add this config to your \`package.json\`:
 
 \`\`\`json
 {
-  "scripts": {
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"]
-  }
+  "scripts": { "precommit": "lint-staged" },
+  "lint-staged": { "*.{js,json,css}": ["prettier --write", "git add"] }
 }
 \`\`\`
 
@@ -3731,10 +3702,7 @@ JSON:
 
 \`\`\`json
 // .prettierrc
-{
-  "printWidth": 100,
-  "parser": "flow"
-}
+{ "printWidth": 100, "parser": "flow" }
 \`\`\`
 
 YAML:
@@ -3756,14 +3724,7 @@ JSON:
 \`\`\`json
 {
   "semi": false,
-  "overrides": [
-    {
-      "files": "*.test.js",
-      "options": {
-        "semi": true
-      }
-    }
-  ]
+  "overrides": [{ "files": "*.test.js", "options": { "semi": true } }]
 }
 \`\`\`
 
@@ -3784,14 +3745,7 @@ may also be a string or array of strings.
 To get prettier to format its own \`.prettierrc\` file, you can do:
 
 \`\`\`json
-{
-  "overrides": [
-    {
-      "files": ".prettierrc",
-      "options": { "parser": "json" }
-    }
-  ]
-}
+{ "overrides": [{ "files": ".prettierrc", "options": { "parser": "json" } }] }
 \`\`\`
 
 For more information on how to use the CLI to locate a file, see the [CLI](#cli)

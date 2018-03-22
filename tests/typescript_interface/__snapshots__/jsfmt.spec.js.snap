@@ -238,9 +238,7 @@ declare module "selenium-webdriver" {
 
 export interface Edge {
   cursor: {};
-  node: {
-    id: {};
-  };
+  node: { id: {} };
 }
 
 interface Test {
@@ -276,9 +274,7 @@ declare module "selenium-webdriver" {
 
 export interface Edge {
   cursor: {}
-  node: {
-    id: {}
-  }
+  node: { id: {} }
 }
 
 interface Test {

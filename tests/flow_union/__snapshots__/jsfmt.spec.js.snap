@@ -29,20 +29,10 @@ export function aPrettyLongFunctionE(aRatherLongParameterName: Array<{
 } | null> | null | void): string[] {}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 interface RelayProps {
-  articles:
-    | Array<{
-        __id: string
-      } | null>
-    | null
-    | void
-    | 1;
+  articles: Array<{ __id: string } | null> | null | void | 1;
 }
 
-interface RelayProps {
-  articles: Array<{
-    __id: string
-  } | null> | null | void;
-}
+interface RelayProps { articles: Array<{ __id: string } | null> | null | void }
 
 export function aPrettyLongFunction(
   aRatherLongParamName: string | null
@@ -66,9 +56,7 @@ export function aPrettyLongFunctionD(
 export function aShortFn(aShortParmName: MyType | null): string[] {}
 
 export function aPrettyLongFunctionE(
-  aRatherLongParameterName: Array<{
-    __id: string
-  } | null> | null | void
+  aRatherLongParameterName: Array<{ __id: string } | null> | null | void
 ): string[] {}
 
 `;

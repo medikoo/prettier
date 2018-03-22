@@ -240,10 +240,7 @@ differentArgTypes(
 moreArgTypes(
   [1, 2, 3],
 
-  {
-    name: "Hello World",
-    age: 29
-  },
+  { name: "Hello World", age: 29 },
 
   doSomething(
     // Hello world
@@ -306,19 +303,14 @@ doSomething.apply(
 doAnotherThing(
   "node",
 
-  {
-    solution_type,
-    time_frame
-  }
+  { solution_type, time_frame }
 );
 
 stuff.doThing(
   someStuff,
 
   -1,
-  {
-    accept: node => doSomething(node)
-  }
+  { accept: node => doSomething(node) }
 );
 
 doThing(
@@ -326,9 +318,7 @@ doThing(
 
   // This is important
   true,
-  {
-    decline: creditCard => takeMoney(creditCard)
-  }
+  { decline: creditCard => takeMoney(creditCard) }
 );
 
 func(

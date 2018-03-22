@@ -51,17 +51,9 @@ var f = {
   set ["d"](x: number) {}
 };
 
-type T = {
-  get a(): number,
-  set b(x: number): void,
-  c: 10
-};
+type T = { get a(): number, set b(x: number): void, c: 10 };
 
-declare class Foo {
-  get a(): number;
-  set b(x: number): void;
-  c: 10;
-}
+declare class Foo { get a(): number; set b(x: number): void; c: 10 }
 
 class Bar {
   get a() {

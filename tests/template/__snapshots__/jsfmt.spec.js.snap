@@ -237,17 +237,11 @@ this._pipe.write(\`
     a
   \`;
 
-(): {
-  someLong: boolean,
-  t: boolean
-} => \`
+(): { someLong: boolean, t: boolean } => \`
   a
 \`;
 
-(): {
-  someLong: boolean,
-  t: boolean
-} =>
+(): { someLong: boolean, t: boolean } =>
   \`
     a
   \`;

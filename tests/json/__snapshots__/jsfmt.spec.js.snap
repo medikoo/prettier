@@ -58,12 +58,7 @@ exports[`multi-line.json 1`] = `
 {"key1":[true,false,null],"key2":{"key3":[1,2,"3",
 1e10,1e-3]}}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-{
-  "key1": [true, false, null],
-  "key2": {
-    "key3": [1, 2, "3", 1e10, 1e-3]
-  }
-}
+{ "key1": [true, false, null], "key2": { "key3": [1, 2, "3", 1e10, 1e-3] } }
 
 `;
 
@@ -71,12 +66,7 @@ exports[`multi-line.json 2`] = `
 {"key1":[true,false,null],"key2":{"key3":[1,2,"3",
 1e10,1e-3]}}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-{
-  "key1": [true, false, null],
-  "key2": {
-    "key3": [1, 2, "3", 1e10, 1e-3]
-  }
-}
+{ "key1": [true, false, null], "key2": { "key3": [1, 2, "3", 1e10, 1e-3] } }
 
 `;
 
@@ -169,13 +159,8 @@ exports[`pass1.json 1`] = `
 ,"rosebud"]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [
   "JSON Test Pattern pass1",
-  { "object with 1 member": ["array with 1 element"] },
-  {},
-  [],
-  -42,
-  true,
-  false,
-  null,
+  { "object with 1 member": ["array with 1 element"] }, {}, [], -42, true,
+  false, null,
   {
     "integer": 1234567890,
     "real": -9876.54321,
@@ -211,17 +196,7 @@ exports[`pass1.json 1`] = `
     "/\\\\\\"\\uCAFE\\uBABE\\uAB98\\uFCDE\\ubcda\\uef4A\\b\\f\\n\\r\\t\`1~!@#$%^&*()_+-=[]{}|;:',./<>?":
       "A key can be any string"
   },
-  0.5,
-  98.6,
-  99.44,
-  1066,
-  1e1,
-  0.1e1,
-  1e-1,
-  1,
-  2,
-  2,
-  "rosebud"
+  0.5, 98.6, 99.44, 1066, 1e1, 0.1e1, 1e-1, 1, 2, 2, "rosebud"
 ]
 
 `;
@@ -287,13 +262,8 @@ exports[`pass1.json 2`] = `
 ,"rosebud"]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [
   "JSON Test Pattern pass1",
-  { "object with 1 member": ["array with 1 element"] },
-  {},
-  [],
-  -42,
-  true,
-  false,
-  null,
+  { "object with 1 member": ["array with 1 element"] }, {}, [], -42, true,
+  false, null,
   {
     "integer": 1234567890,
     "real": -9876.54321,
@@ -329,17 +299,7 @@ exports[`pass1.json 2`] = `
     "/\\\\\\"\\uCAFE\\uBABE\\uAB98\\uFCDE\\ubcda\\uef4A\\b\\f\\n\\r\\t\`1~!@#$%^&*()_+-=[]{}|;:',./<>?":
       "A key can be any string"
   },
-  0.5,
-  98.6,
-  99.44,
-  1066,
-  1e1,
-  0.1e1,
-  1e-1,
-  1,
-  2,
-  2,
-  "rosebud"
+  0.5, 98.6, 99.44, 1066, 1e1, 0.1e1, 1e-1, 1, 2, 2, "rosebud"
 ]
 
 `;
@@ -377,9 +337,7 @@ exports[`top-block-comment.json 1`] = `
   "foo": "bar"
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/* comment */ {
-  "foo": "bar"
-}
+/* comment */ { "foo": "bar" }
 
 `;
 
@@ -388,9 +346,7 @@ exports[`top-block-comment.json 2`] = `
   "foo": "bar"
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/* comment */ {
-  "foo": "bar"
-}
+/* comment */ { "foo": "bar" }
 
 `;
 
@@ -403,9 +359,7 @@ exports[`top-line-comment.json 1`] = `
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // comment 1
 // comment 2
-{
-  "foo": "bar"
-}
+{ "foo": "bar" }
 
 `;
 
@@ -418,9 +372,7 @@ exports[`top-line-comment.json 2`] = `
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // comment 1
 // comment 2
-{
-  "foo": "bar"
-}
+{ "foo": "bar" }
 
 `;
 
@@ -431,11 +383,7 @@ exports[`trailingComma.notjson 1`] = `
   "k3": "v3"
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-{
-  "k1": "v1",
-  "k2": "v2",
-  "k3": "v3"
-}
+{ "k1": "v1", "k2": "v2", "k3": "v3" }
 
 `;
 
@@ -446,10 +394,6 @@ exports[`trailingComma.notjson 2`] = `
   "k3": "v3"
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-{
-  "k1": "v1",
-  "k2": "v2",
-  "k3": "v3"
-}
+{ "k1": "v1", "k2": "v2", "k3": "v3" }
 
 `;

@@ -70,9 +70,7 @@ type Props = {
 };
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // (DispatchProps & StateProps); WHY DON'T YOU WORK FLOW!!!!!!!!!
-type Props = {
-  isPlaying: boolean
-};
+type Props = { isPlaying: boolean };
 
 type Props = {
   // (DispatchProps & StateProps); WHY DON'T YOU WORK FLOW!!!!!!!!!

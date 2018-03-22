@@ -53,9 +53,7 @@ exports[`CLI overrides gets ignored when config exists with --config-precedence 
 }
 \\"use strict\\";
 
-module.exports = {
-        tabWidth: 8
-};
+module.exports = { tabWidth: 8 };
 "
 `;
 
@@ -69,9 +67,7 @@ exports[`CLI overrides take lower precedence with --config-precedence file-overr
 }
 \\"use strict\\";
 
-module.exports = {
-        tabWidth: 8
-};
+module.exports = { tabWidth: 8 };
 "
 `;
 

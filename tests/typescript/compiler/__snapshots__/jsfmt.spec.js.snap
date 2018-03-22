@@ -452,9 +452,7 @@ namespace global {
 
 function foo(global: number) {}
 
-let obj = {
-  global: "123"
-};
+let obj = { global: "123" };
 
 `;
 
@@ -501,11 +499,7 @@ const shouldFail: { important: boolean } = output.x.children;
 // Repro from #13351
 
 type Meta<T, A> = {
-  [P in keyof T]: {
-    value: T[P];
-    also: A;
-    readonly children: Meta<T[P], A>;
-  }
+  [P in keyof T]: { value: T[P]; also: A; readonly children: Meta<T[P], A> }
 };
 
 interface Input {

@@ -27,9 +27,7 @@ exports[`code.md 1`] = `
 >     "unobtrusive/react",
 >     "unobtrusive/flowtype"
 >   ],
->   "env": {
->     "browser": true
->   }
+>   "env": { "browser": true }
 > }
 > \`\`\`
 

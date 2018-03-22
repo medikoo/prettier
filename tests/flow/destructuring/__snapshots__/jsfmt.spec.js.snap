@@ -182,9 +182,7 @@ obj_rest({ p: { q: 0, r: null } });
 function obj_prop_annot(
   {
     p = true // error: boolean ~> string
-  }: {
-    p: string
-  } = {
+  }: { p: string } = {
     p: 0 // error: number ~> string
   }
 ) {
@@ -193,9 +191,7 @@ function obj_prop_annot(
 
 var {
   p = true // error: boolean ~> string
-}: {
-  p: string
-} = {
+}: { p: string } = {
   p: 0 // error: number ~> string
 };
 (p: void); // error: string ~> void
@@ -550,9 +546,7 @@ function bar() {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // @flow
 
-var { x } = {
-  x: { foo: "foo" }
-};
+var { x } = { x: { foo: "foo" } };
 
 function bar() {
   x.bar;

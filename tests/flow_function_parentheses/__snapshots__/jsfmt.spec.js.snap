@@ -98,9 +98,7 @@ interface F {
 
 type ExtractType = <A>(B<C>) => D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-type Banana = {
-  eat: string => boolean
-};
+type Banana = { eat: string => boolean };
 
 type Hex = { n: 0x01 };
 
@@ -191,9 +189,7 @@ interface F {
 
 type ExtractType = <A>(B<C>) => D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-type Banana = {
-  eat: string => boolean,
-};
+type Banana = { eat: string => boolean };
 
 type Hex = { n: 0x01 };
 
@@ -284,9 +280,7 @@ interface F {
 
 type ExtractType = <A>(B<C>) => D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-type Banana = {
-  eat: (string) => boolean
-};
+type Banana = { eat: (string) => boolean };
 
 type Hex = { n: 0x01 };
 

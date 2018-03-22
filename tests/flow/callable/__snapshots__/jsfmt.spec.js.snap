@@ -12,10 +12,7 @@ function f(x) {
 
 (f: F);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-type F = {
-  (x: string): number,
-  p?: string
-};
+type F = { (x: string): number, p?: string };
 
 function f(x) {
   return x.length;
@@ -55,16 +52,12 @@ foo(Boolean);
 var dict: { [k: string]: any } = {};
 dict(); // error, callable signature not found
 
-interface ICall {
-  (x: string): void;
-}
+interface ICall { (x: string): void }
 declare var icall: ICall;
 icall(0); // error, number ~> string
 icall.call(null, 0); // error, number ~> string
 
-type Callable = {
-  (x: string): void
-};
+type Callable = { (x: string): void };
 
 declare var callable: Callable;
 callable(0); // error, number ~> string

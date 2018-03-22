@@ -153,12 +153,7 @@ a(
   a("long-nested-value", "long-nested-value2", "long-nested-value3")
 );
 
-a.b().c(
-  {
-    d
-  },
-  () => {}
-);
+a.b().c({ d }, () => {});
 
 `;
 
@@ -198,12 +193,7 @@ a(
   a("long-nested-value", "long-nested-value2", "long-nested-value3"),
 );
 
-a.b().c(
-  {
-    d,
-  },
-  () => {},
-);
+a.b().c({ d }, () => {});
 
 `;
 
@@ -243,12 +233,7 @@ a(
   a("long-nested-value", "long-nested-value2", "long-nested-value3")
 );
 
-a.b().c(
-  {
-    d,
-  },
-  () => {}
-);
+a.b().c({ d }, () => {});
 
 `;
 
@@ -261,13 +246,7 @@ exports[`jsx.js 1`] = `
   }
 />;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<div
-  onClick={() =>
-    doSomething({
-      foo: bar
-    })
-  }
-/>;
+<div onClick={() => doSomething({ foo: bar })} />;
 
 `;
 
@@ -280,13 +259,7 @@ exports[`jsx.js 2`] = `
   }
 />;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<div
-  onClick={() =>
-    doSomething({
-      foo: bar,
-    })
-  }
-/>;
+<div onClick={() => doSomething({ foo: bar })} />;
 
 `;
 
@@ -299,13 +272,7 @@ exports[`jsx.js 3`] = `
   }
 />;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<div
-  onClick={() =>
-    doSomething({
-      foo: bar,
-    })
-  }
-/>;
+<div onClick={() => doSomething({ foo: bar })} />;
 
 `;
 
@@ -332,13 +299,7 @@ const aLong = {
   eHasABooleanExpression: a === a,
 };
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const a = {
-  b: true,
-  c: {
-    c1: "hello"
-  },
-  d: false
-};
+const a = { b: true, c: { c1: "hello" }, d: false };
 
 const aLong = {
   bHasALongName: "a-long-value",
@@ -379,13 +340,7 @@ const aLong = {
   eHasABooleanExpression: a === a,
 };
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const a = {
-  b: true,
-  c: {
-    c1: "hello",
-  },
-  d: false,
-};
+const a = { b: true, c: { c1: "hello" }, d: false };
 
 const aLong = {
   bHasALongName: "a-long-value",
@@ -426,13 +381,7 @@ const aLong = {
   eHasABooleanExpression: a === a,
 };
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const a = {
-  b: true,
-  c: {
-    c1: "hello",
-  },
-  d: false,
-};
+const a = { b: true, c: { c1: "hello" }, d: false };
 
 const aLong = {
   bHasALongName: "a-long-value",

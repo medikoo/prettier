@@ -46,10 +46,7 @@ exports[`attr-comments.js 1`] = `
   }
   propArrowWithBreak={
     // comment
-    arg =>
-      fn({
-        makeItBreak
-      })
+    arg => fn({ makeItBreak })
   }
   propArray={
     // comment
@@ -562,9 +559,7 @@ exports[`expression.js 1`] = `
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -597,9 +592,7 @@ exports[`expression.js 1`] = `
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 

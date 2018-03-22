@@ -52,15 +52,7 @@ type DuplexStreamOptions = ReadableStreamOptions &
 export type ReallyBigSocketServer = ReallyBigSocketServerInterface &
   ReallyBigSocketServerStatics;
 
-type Props = {
-  propA: X
-} & {
-  propB: X
-} & {
-  propC: X
-} & {
-  propD: X
-};
+type Props = { propA: X } & { propB: X } & { propC: X } & { propD: X };
 
 type Props = {
   focusedChildren?: React.Children,
@@ -78,10 +70,7 @@ type DuplexStreamOptions = ReadableStreamOptions & {
 type DuplexStreamOptions = {
   allowHalfOpen?: boolean,
   readableObjectMode?: boolean
-} & {
-  allowHalfOpen?: boolean,
-  readableObjectMode?: boolean
-};
+} & { allowHalfOpen?: boolean, readableObjectMode?: boolean };
 
 type DuplexStreamOptions = ReadableStreamOptions &
   WritableStreamOptions & {
@@ -93,9 +82,6 @@ type DuplexStreamOptions = ReadableStreamOptions &
   WritableStreamOptions & {
     allowHalfOpen?: boolean,
     readableObjectMode?: boolean
-  } & {
-    allowHalfOpen?: boolean,
-    readableObjectMode?: boolean
-  };
+  } & { allowHalfOpen?: boolean, readableObjectMode?: boolean };
 
 `;

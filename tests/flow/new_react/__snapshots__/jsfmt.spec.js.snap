@@ -86,9 +86,7 @@ module.exports = {
 };
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /* @providesModule Mixin */
-module.exports = {
-  success: function () {}
-};
+module.exports = { success: function () {} };
 
 `;
 
@@ -342,17 +340,13 @@ Foo.bar();
 var FooLegacy = React.createClass({
   is_mounted: (undefined: ?boolean),
 
-  propTypes: {
-    x: React.PropTypes.number.isRequired
-  },
+  propTypes: { x: React.PropTypes.number.isRequired },
 
   getDefaultProps(): DefaultProps {
     return {};
   },
 
-  statics: {
-    bar(): void {}
-  },
+  statics: { bar(): void {} },
 
   qux(): void {
     var _: string = this.props.x;
@@ -569,10 +563,7 @@ var FooProps = React.createClass({
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var React = require("react");
 var TestProps = React.createClass({
-  propTypes: {
-    x: React.PropTypes.string,
-    z: React.PropTypes.number
-  },
+  propTypes: { x: React.PropTypes.string, z: React.PropTypes.number },
 
   getDefaultProps: function () {
     return { x: "", y: 0 };
@@ -778,9 +769,7 @@ import React from "React";
 
 class JDiv extends React.Component {
   // static defaultProps: { };
-  props: {
-    id: string
-  };
+  props: { id: string };
 }
 
 // Should be a type error ('id' takes a string, not a number..)
@@ -850,9 +839,7 @@ var ReactClass = React.createClass({
 
 var React = require("react");
 
-type State = {
-  bar: ?{ qux: string }
-};
+type State = { bar: ?{ qux: string } };
 
 var ReactClass = React.createClass({
   getInitialState: function (): State {
@@ -891,9 +878,7 @@ module.exports = Comp;
 
 var React = require("react");
 
-type FooState = {
-  key: ?Object
-};
+type FooState = { key: ?Object };
 
 var Comp = React.createClass({
   getInitialState: function (): FooState {
@@ -930,9 +915,7 @@ var TestState = React.createClass({
 var React = require("react");
 var TestState = React.createClass({
   getInitialState: function (): { x: string } {
-    return {
-      x: ""
-    };
+    return { x: "" };
   },
 
   test: function () {

@@ -90,9 +90,7 @@ module.exports = Object.freeze({
  * @flow
  */
 
-module.exports = Object.freeze({
-  numberValue1: 1
-});
+module.exports = Object.freeze({ numberValue1: 1 });
 
 `;
 
@@ -651,9 +649,7 @@ module.exports = {
  * @flow
  */
 
-module.exports = {
-  numberValue: 42
-};
+module.exports = { numberValue: 42 };
 
 `;
 

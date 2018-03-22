@@ -9,9 +9,7 @@ type State = {
   | { discriminant: "BAZ"; baz: any } 
 );
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-type State = {
-  sharedProperty: any
-} & (
+type State = { sharedProperty: any } & (
   | { discriminant: "FOO", foo: any }
   | { discriminant: "BAR", bar: any }
   | { discriminant: "BAZ", baz: any }

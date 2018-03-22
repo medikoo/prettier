@@ -74,13 +74,9 @@ const d = {
 //   foo(): void {}
 // }
 
-const a = {
-  bar(): void {}
-};
+const a = { bar(): void {} };
 
-const b = {
-  bar: function (): void {}
-};
+const b = { bar: function (): void {} };
 
 const c = {
   m<T>(x: T): T {
