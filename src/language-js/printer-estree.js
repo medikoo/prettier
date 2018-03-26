@@ -1404,7 +1404,7 @@ function printPathNoParens(path, options, print, args) {
             printed
               .slice(1)
               .map(p =>
-                concat(
+                (isParentForLoop ? concat : customizations.identity)(
                   isParentForLoop
                     ? [",", hasValue && !isParentForLoop ? hardline : line, p]
                     : isRequireBlock
