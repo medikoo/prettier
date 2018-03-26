@@ -28,13 +28,16 @@ module.exports = function(ind, MODE_FLAT, width, pos, doc, options, fits) {
     // ","
     // { "type": "line" }
     //
-    // We stop at every "group" and check if it fits curent line with eventual postfix ","
+    // We stop at every "group" and check if it fits curent line with eventual "," postfixes
     if (currentPart && currentPart.type === "group") {
       // In sparse arrays there can be more than one coma
       // We detect how many we included, to know where to split groups if that one
       // doesn't fit the line
       currentItemStartIndex = currentIndex;
-      while (doc.parts[currentIndex + 1] === ",") {
+      while (
+        doc.parts[currentIndex + 1] &&
+        doc.parts[currentIndex + 1].type !== "line"
+      ) {
         currentPart = doc.parts[++currentIndex];
       }
       currentItemEndIndex = currentIndex + 1;
