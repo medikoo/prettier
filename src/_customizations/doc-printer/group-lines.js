@@ -7,6 +7,8 @@
 
 "use strict";
 
+const mainGroupTypes = new Set(["concat", "group", "indent"]);
+
 module.exports = function(ind, MODE_FLAT, width, pos, doc, options, fits) {
   const contents = { type: "concat" };
   const next = [ind, MODE_FLAT, contents];
@@ -29,10 +31,7 @@ module.exports = function(ind, MODE_FLAT, width, pos, doc, options, fits) {
     // { "type": "line" }
     //
     // We stop at every "group" and check if it fits curent line with eventual "," postfixes
-    if (currentPart && currentPart.type === "group") {
-      // In sparse arrays there can be more than one coma
-      // We detect how many we included, to know where to split groups if that one
-      // doesn't fit the line
+    if (currentPart && mainGroupTypes.has(currentPart.type)) {
       currentItemStartIndex = currentIndex;
       while (
         doc.parts[currentIndex + 1] &&
@@ -87,7 +86,7 @@ module.exports = function(ind, MODE_FLAT, width, pos, doc, options, fits) {
           // Pass through any fruther coma or newline, until next group
           while (
             doc.parts[currentIndex + 1] &&
-            doc.parts[currentIndex + 1].type !== "group"
+            !mainGroupTypes.has(doc.parts[currentIndex + 1].type)
           ) {
             currentPart = doc.parts[++currentIndex];
             groupedParts.push(currentPart);
