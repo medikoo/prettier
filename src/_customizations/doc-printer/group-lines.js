@@ -8,6 +8,7 @@
 "use strict";
 
 const mainGroupTypes = new Set(["concat", "group", "indent"]);
+const lineBreakTypes = new Set(["line", "if-break"]);
 
 module.exports = function(ind, MODE_FLAT, width, pos, doc, options, fits) {
   const contents = { type: "concat" };
@@ -35,7 +36,7 @@ module.exports = function(ind, MODE_FLAT, width, pos, doc, options, fits) {
       currentItemStartIndex = currentIndex;
       while (
         doc.parts[currentIndex + 1] &&
-        doc.parts[currentIndex + 1].type !== "line"
+        !lineBreakTypes.has(doc.parts[currentIndex + 1].type)
       ) {
         currentPart = doc.parts[++currentIndex];
       }

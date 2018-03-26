@@ -1432,7 +1432,16 @@ function printPathNoParens(path, options, print, args) {
         parts.push(semi);
       }
 
-      return group(concat(parts));
+      const concatResult = concat(parts);
+
+      if (
+        !isParentForLoop &&
+        !isRequireBlock &&
+        !customizations.includesAssignment(parts)
+      ) {
+        concatResult.groupLines = true;
+      }
+      return group(concatResult);
     }
     case "VariableDeclarator":
       return printAssignment(
