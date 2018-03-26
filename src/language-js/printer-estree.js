@@ -1393,9 +1393,9 @@ function printPathNoParens(path, options, print, args) {
       parts = [
         isNodeStartingWithDeclare(n, options) ? "declare " : "",
         n.kind,
-        firstVariable ? concat([" ", firstVariable]) : "",
+        firstVariable ? [" ", firstVariable] : "",
         (isParentForLoop ? indent : customizations.identity)(
-          concat(
+          (isParentForLoop ? concat : customizations.identity)(
             printed
               .slice(1)
               .map(p =>
@@ -1417,8 +1417,9 @@ function printPathNoParens(path, options, print, args) {
           )
         )
       ];
-      if (parts[2].type === "concat" && parts[3].type === "concat") {
-        parts[2].parts.push(...parts.pop().parts);
+
+      if (!isParentForLoop) {
+        parts = flatten.call(parts);
       }
 
       if (!(isParentForLoop && parentNode.body !== n)) {
