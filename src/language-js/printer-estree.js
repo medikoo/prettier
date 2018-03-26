@@ -1393,7 +1393,12 @@ function printPathNoParens(path, options, print, args) {
       parts = [
         isNodeStartingWithDeclare(n, options) ? "declare " : "",
         n.kind,
-        firstVariable ? [" ", firstVariable] : "",
+        firstVariable
+          ? (isParentForLoop ? concat : customizations.identity)([
+              " ",
+              firstVariable
+            ])
+          : "",
         (isParentForLoop ? indent : customizations.identity)(
           (isParentForLoop ? concat : customizations.identity)(
             printed
