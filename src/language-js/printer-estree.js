@@ -1417,6 +1417,9 @@ function printPathNoParens(path, options, print, args) {
           )
         )
       ];
+      if (parts[2].type === "concat" && parts[3].type === "concat") {
+        parts[2].parts.push(...parts.pop().parts);
+      }
 
       if (!(isParentForLoop && parentNode.body !== n)) {
         parts.push(semi);
