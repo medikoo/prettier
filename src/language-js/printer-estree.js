@@ -11,6 +11,7 @@ const clean = require("./clean");
 
 const customizations = require("../_customizations");
 const capitalize = require("es5-ext/string/#/capitalize");
+const flatten = require("es5-ext/array/#/flatten");
 
 const doc = require("../doc");
 const docBuilders = doc.builders;
