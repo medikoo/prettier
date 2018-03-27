@@ -3287,10 +3287,15 @@ function printArgumentsList(path, options, print) {
     ]);
   }
 
+  const printedArgumentsConcat = concat(
+    flatten.call(printedArguments.map(concat => concat.parts))
+  );
+  printedArgumentsConcat.groupLines = true;
+
   return group(
     concat([
       "(",
-      indent(concat([softline, concat(printedArguments)])),
+      indent(concat([softline, printedArgumentsConcat])),
       ifBreak(shouldPrintComma(options, "all") ? "," : ""),
       softline,
       ")"

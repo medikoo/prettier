@@ -728,8 +728,7 @@ let tests = [
   function () {
     const _root = document.createDocumentFragment();
     const i = document.createNodeIterator(
-      _root,
-      NodeFilter.SHOW_DOCUMENT_FRAGMENT
+      _root, NodeFilter.SHOW_DOCUMENT_FRAGMENT
     );
     const root: typeof _root = i.root;
     const referenceNode: typeof _root | DocumentFragment = i.referenceNode;
@@ -812,8 +811,7 @@ let tests = [
   function () {
     const _root = document.createDocumentFragment();
     const w = document.createTreeWalker(
-      _root,
-      NodeFilter.SHOW_DOCUMENT_FRAGMENT
+      _root, NodeFilter.SHOW_DOCUMENT_FRAGMENT
     );
     const root: typeof _root = w.root;
     const currentNode: typeof _root | DocumentFragment = w.currentNode;
@@ -841,9 +839,7 @@ let tests = [
   // NodeFilterInterface
   function () {
     document.createNodeIterator(
-      document.body,
-      -1,
-      node => NodeFilter.FILTER_ACCEPT
+      document.body, -1, node => NodeFilter.FILTER_ACCEPT
     ); // valid
     document.createNodeIterator(document.body, -1, node => "accept"); // invalid
     document.createNodeIterator(document.body, -1, {
@@ -856,9 +852,7 @@ let tests = [
   },
   function () {
     document.createTreeWalker(
-      document.body,
-      -1,
-      node => NodeFilter.FILTER_ACCEPT
+      document.body, -1, node => NodeFilter.FILTER_ACCEPT
     ); // valid
     document.createTreeWalker(document.body, -1, node => "accept"); // invalid
     document.createTreeWalker(document.body, -1, {

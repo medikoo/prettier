@@ -537,9 +537,7 @@ exports[`expression.js 1`] = `
 <BookingIntroPanel
   logClick={data =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 />;
@@ -547,9 +545,7 @@ exports[`expression.js 1`] = `
 <BookingIntroPanel
   logClick={data => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 />;
@@ -570,9 +566,7 @@ exports[`expression.js 1`] = `
 <BookingIntroPanel>
   {data =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 </BookingIntroPanel>;
@@ -580,9 +574,7 @@ exports[`expression.js 1`] = `
 <BookingIntroPanel>
   {data => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 </BookingIntroPanel>;

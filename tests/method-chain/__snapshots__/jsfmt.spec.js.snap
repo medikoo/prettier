@@ -15,8 +15,7 @@ function a() {
   function b() {
     queryThenMutateDOM(() => {
       title = SomeThing.call(
-        root,
-        "someLongStringThatPushesThisTextReallyFar"
+        root, "someLongStringThatPushesThisTextReallyFar"
       )[0];
     });
   }
@@ -688,8 +687,7 @@ wrapper
 wrapper
   .find("SomewhatLongNodeName")
   .prop("longPropFunctionName")(
-    "argument",
-    "second argument that pushes this group past 80 characters"
+    "argument", "second argument that pushes this group past 80 characters"
   )
   .then(function () {
     doSomething();

@@ -51,8 +51,7 @@ deepCopyAndAsyncMapLeavesA(
 );
 
 deepCopyAndAsyncMapLeavesB(
-  1337,
-  { source: sourceValue, destination: destination[sourceKey] },
+  1337, { source: sourceValue, destination: destination[sourceKey] },
   { valueMapper, overwriteExistingKeys }
 );
 
@@ -64,14 +63,12 @@ deepCopyAndAsyncMapLeavesC(
 
 function someFunction(url) {
   return get(url).then(
-    json => dispatch(success(json)),
-    error => dispatch(failed(error))
+    json => dispatch(success(json)), error => dispatch(failed(error))
   );
 }
 
 const mapChargeItems = fp.flow(
-  l => (l < 10 ? l : 1),
-  l => Immutable.Range(l).toMap()
+  l => (l < 10 ? l : 1), l => Immutable.Range(l).toMap()
 );
 
 expect(

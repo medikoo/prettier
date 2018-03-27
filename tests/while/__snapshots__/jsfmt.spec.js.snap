@@ -38,27 +38,18 @@ do {} while (
 
 if (
   someVeryLongFunc(
-    someVeryLongArgA,
-    someVeryLongArgB,
-    someVeryLongArgC,
-    someVeryLongArgD
+    someVeryLongArgA, someVeryLongArgB, someVeryLongArgC, someVeryLongArgD
   )
 ) {
 }
 while (
   someVeryLongFunc(
-    someVeryLongArgA,
-    someVeryLongArgB,
-    someVeryLongArgC,
-    someVeryLongArgD
+    someVeryLongArgA, someVeryLongArgB, someVeryLongArgC, someVeryLongArgD
   )
 ) {}
 do {} while (
   someVeryLongFunc(
-    someVeryLongArgA,
-    someVeryLongArgB,
-    someVeryLongArgC,
-    someVeryLongArgD
+    someVeryLongArgA, someVeryLongArgB, someVeryLongArgC, someVeryLongArgD
   )
 );
 

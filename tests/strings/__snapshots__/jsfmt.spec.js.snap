@@ -212,8 +212,7 @@ const env = \${JSON.stringify(
     asdfasff: "wefwefw",
     fefef: "sf sdfs fdsfdsf s dfsfds"
   },
-  null,
-  "\\t"
+  null, "\\t"
 )});
 \`;
 
@@ -230,9 +229,7 @@ const makeBody = (store, assets, html) =>
       bodyStyles={[]}
       stringScripts={[
         \`window.__INITIAL_STATE__ = \${JSON.stringify(
-          store.getState(),
-          null,
-          2
+          store.getState(), null, 2
         )};\`
       ]}
       content={[
@@ -393,8 +390,7 @@ const env = \${JSON.stringify(
     asdfasff: "wefwefw",
     fefef: "sf sdfs fdsfdsf s dfsfds",
   },
-  null,
-  "\\t",
+  null, "\\t",
 )});
 \`;
 
@@ -411,9 +407,7 @@ const makeBody = (store, assets, html) =>
       bodyStyles={[]}
       stringScripts={[
         \`window.__INITIAL_STATE__ = \${JSON.stringify(
-          store.getState(),
-          null,
-          2,
+          store.getState(), null, 2,
         )};\`,
       ]}
       content={[

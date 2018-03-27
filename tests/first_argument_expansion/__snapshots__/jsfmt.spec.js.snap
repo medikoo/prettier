@@ -178,8 +178,7 @@ compose(
 );
 
 renderThing(
-  a => <div>Content. So much to say. Oh my. Are we done yet?</div>,
-  args
+  a => <div>Content. So much to say. Oh my. Are we done yet?</div>, args
 );
 
 setTimeout(
