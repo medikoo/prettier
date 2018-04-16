@@ -1,3 +1,5 @@
+__WARNING: This package was renamed to `prettier-elastic`__
+
 # prettier-elastic-vars
 
 ## Fork of a [Prettier](https://github.com/prettier/prettier) tweaked to provide alternative formatting for `var`, `let` and `const` declarations
