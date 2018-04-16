@@ -446,7 +446,7 @@ gql\`
       a:   string
   }
 
-  \${stuff}
+  \${ stuff }
 
   "\\x"
   type  Bar   {
