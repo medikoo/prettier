@@ -23,6 +23,8 @@ var OPTIONS = [
   "requirePragma",
   "proseWrap",
   "arrowParens",
+  "rangeStart",
+  "rangeEnd",
   "doc",
   "ast",
   "output2"
@@ -36,6 +38,91 @@ const DEFAULT_OPTIONS = {
   options: undefined,
   content: ""
 };
+
+function createRangeOverlay(rangeStartLocation, rangeEndLocation) {
+  var rangeStartLine = rangeStartLocation.line;
+  var rangeEndLine = rangeEndLocation.line;
+  var rangeStartPos = rangeStartLocation.pos;
+  var rangeEndPos = rangeEndLocation.pos;
+  var isEndOnSameLineAsStart = rangeStartLine === rangeEndLine;
+  var highlightedToken = "searching";
+
+  return {
+    token: function(stream) {
+      var currentLine = stream.lineOracle.line;
+
+      // we are on the line containing rangeStart
+      if (currentLine === rangeStartLine) {
+        // on the same line as, but not reached rangeStart yet,
+        // jump straight to it
+        if (rangeStartPos > stream.pos) {
+          stream.pos = rangeStartPos;
+          return;
+        }
+        // the rangeEnd is on the same line as the rangeStart
+        if (isEndOnSameLineAsStart) {
+          // we are still within the range,
+          // keep iterating along the string stream,
+          // marking it as highlighted
+          if (stream.pos < rangeEndPos) {
+            stream.pos += 1;
+            return highlightedToken;
+          }
+          // we've moved outside of the range
+          // just skip to the end
+          return stream.skipToEnd();
+        }
+        // keep iterating along the string stream,
+        // marking it as highlighted
+        stream.pos += 1;
+        return highlightedToken;
+      }
+
+      // we are on the line containing rangeEnd
+      if (currentLine === rangeEndLine) {
+        // keep iterating along the string stream,
+        // marking it as highlighted
+        if (rangeEndPos > stream.pos) {
+          stream.pos += 1;
+          return highlightedToken;
+        }
+        // we've moved outside of the range
+        // just skip to the end
+        return stream.skipToEnd();
+      }
+
+      // we are on a line which is completely included
+      // within the range, mark it all as highlighted
+      if (currentLine > rangeStartLine && currentLine < rangeEndLine) {
+        stream.skipToEnd();
+        return highlightedToken;
+      }
+
+      // no action can be required on the current line
+      // as it must fall outside of the range,
+      // so just skip to the end
+      return stream.skipToEnd();
+    }
+  };
+}
+
+function indexToEditorLocation(editorContent, index) {
+  var line = 0;
+  var count = 0;
+  var startIndex = 0;
+  for (var c, i = 0; count < index && i < editorContent.length; i++) {
+    count++;
+    c = editorContent[i];
+    if (c === "\n") {
+      line++;
+      startIndex = count;
+    }
+  }
+  return {
+    line: line,
+    pos: count - startIndex
+  };
+}
 
 window.onload = function() {
   var state = (function loadState(hash) {
@@ -213,7 +300,9 @@ function getOptions() {
     if (elem.tagName === "SELECT") {
       options[option] = elem.value;
     } else if (elem.type === "number") {
-      options[option] = Number(elem.value);
+      if (elem.value !== "") {
+        options[option] = Number(elem.value);
+      }
     } else {
       var isInverted = elem.hasAttribute("data-inverted");
       options[option] = isInverted ? !elem.checked : elem.checked;
@@ -279,6 +368,8 @@ function getCodemirrorMode(options) {
   }
 }
 
+var inputEditorOverlay;
+
 function formatAsync() {
   var options = getOptions();
   setEditorStyles();
@@ -289,6 +380,27 @@ function formatAsync() {
     )
   );
   replaceHash(value);
+
+  if (
+    typeof options.rangeStart === "number" &&
+    typeof options.rangeEnd === "number"
+  ) {
+    var rangeStartLocation = indexToEditorLocation(
+      inputEditor.getValue(),
+      options.rangeStart
+    );
+    var rangeEndLocation = indexToEditorLocation(
+      inputEditor.getValue(),
+      options.rangeEnd
+    );
+    inputEditor.removeOverlay(inputEditorOverlay);
+    inputEditorOverlay = createRangeOverlay(
+      rangeStartLocation,
+      rangeEndLocation
+    );
+    inputEditor.addOverlay(inputEditorOverlay);
+  }
+
   worker.postMessage({
     text: inputEditor.getValue() || getExample(options.parser),
     options: options,
@@ -379,6 +491,17 @@ function getExample(parser) {
         "",
         "}"
       ].join("\n");
+    case "flow":
+      return [
+        "declare export function graphql<Props, Variables, Component: React$ComponentType<Props>>",
+        "  (query: GQLDocument, config?: Config<Props, QueryConfigOptions<Variables>>):",
+        "  (Component: Component) => React$ComponentType<$Diff<React$ElementConfig<Component>, {",
+        "    data: Object|void,",
+        "    mutate: Function|void",
+        "  }>>",
+        "",
+        'declare type FetchPolicy = "cache-first" | "cache-and-network" | "network-only" | "cache-only"'
+      ].join("\n");
     case "typescript":
       return [
         "interface MyInterface {",
@@ -439,6 +562,20 @@ function getExample(parser) {
         "  }",
         "}"
       ].join("\n");
+    case "less":
+      // Copied from http://lesscss.org/features/#detached-rulesets-feature
+      return [
+        "@my-ruleset: {",
+        "    .my-selector {",
+        "      @media tv {",
+        "        background-color: black;",
+        "      }",
+        "    }",
+        "  };",
+        "@media (orientation:portrait) {",
+        "    @my-ruleset();",
+        "}"
+      ].join("\n");
     case "json":
       // Excerpted & adapted from Wikipedia, under the Creative Commons Attribution-ShareAlike License
       // https://en.wikipedia.org/wiki/JSON#Example
@@ -456,6 +593,61 @@ function getExample(parser) {
         '      "trailing": "commas by accident"},',
         "  ],",
         "}"
+      ].join("\n");
+    case "graphql":
+      return [
+        "query Browse($offset: Int, $limit: Int, $categories: [String!], $search: String) {",
+        "  browse(limit: $limit, offset: $offset, categories: $categories, search: $search) {",
+        "    total,",
+        "    results {",
+        "        title",
+        "        price",
+        "    }",
+        "  }",
+        "}"
+      ].join("\n");
+    case "markdown":
+      return [
+        "Header",
+        "======",
+        "",
+        "_Look,_ code blocks are formatted *too!*",
+        "",
+        "``` js",
+        "function identity(x) { return x }",
+        "```",
+        "",
+        "Pilot|Airport|Hours",
+        "--|:--:|--:",
+        "John Doe|SKG|1338",
+        "Jane Roe|JFK|314",
+        "",
+        "- - - - - - - - - - - - - - -",
+        "",
+        "+ List",
+        " + with a [link] (/to/somewhere)",
+        "+ and [another one]",
+        "",
+        "",
+        "  [another one]:  http://example.com 'Example title'",
+        "",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Curabitur consectetur maximus risus, sed maximus tellus tincidunt et."
+      ].join("\n");
+    case "vue":
+      return [
+        "<template>",
+        "  <p>Templates are not formatted yet ...",
+        "    </p>",
+        "</template>",
+        "",
+        "<script>",
+        "let Prettier = format => { your.js('though') }",
+        "</script>",
+        "",
+        "<style>",
+        ".and { css: too! important }",
+        "</style>"
       ].join("\n");
     default:
       return "";

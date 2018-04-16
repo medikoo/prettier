@@ -54,8 +54,6 @@ function parseValueNodes(nodes) {
 
     if (isUnquotedDataURLCall) {
       node.group.groups = [stringifyGroup(node)];
-
-      return node;
     }
 
     if (node.type === "paren" && node.value === "(") {
@@ -232,6 +230,7 @@ function parseNestedCSS(node) {
 
       try {
         node.selector = parseSelector(selector);
+        node.raws.selector = selector;
       } catch (e) {
         // Fail silently. It's better to print it as is than to try and parse it
         // Note: A common failure is for SCSS nested properties. `background:

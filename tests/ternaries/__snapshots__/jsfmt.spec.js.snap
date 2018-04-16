@@ -313,7 +313,9 @@ aaaaaaaaaaaaaaa
   ? bbbbbbbbbbbbbbbbbb
   : ccccccccccccccc
     ? ddddddddddddddd
-    : eeeeeeeeeeeeeee ? fffffffffffffff : gggggggggggggggg;
+    : eeeeeeeeeeeeeee
+      ? fffffffffffffff
+      : gggggggggggggggg;
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   ? aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -558,7 +560,9 @@ aaaaaaaaaaaaaaa
     ? bbbbbbbbbbbbbbbbbb
     : ccccccccccccccc
         ? ddddddddddddddd
-        : eeeeeeeeeeeeeee ? fffffffffffffff : gggggggggggggggg;
+        : eeeeeeeeeeeeeee
+            ? fffffffffffffff
+            : gggggggggggggggg;
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     ? aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -814,7 +818,9 @@ aaaaaaaaaaaaaaa
 	? bbbbbbbbbbbbbbbbbb
 	: ccccccccccccccc
 		? ddddddddddddddd
-		: eeeeeeeeeeeeeee ? fffffffffffffff : gggggggggggggggg;
+		: eeeeeeeeeeeeeee
+			? fffffffffffffff
+			: gggggggggggggggg;
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	? aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -1059,7 +1065,9 @@ aaaaaaaaaaaaaaa
 	? bbbbbbbbbbbbbbbbbb
 	: ccccccccccccccc
 		? ddddddddddddddd
-		: eeeeeeeeeeeeeee ? fffffffffffffff : gggggggggggggggg;
+		: eeeeeeeeeeeeeee
+			? fffffffffffffff
+			: gggggggggggggggg;
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	? aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -1223,7 +1231,9 @@ a => a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 debug ? (this.state.isVisible ? "partially visible" : "hidden") : null;
 debug
-  ? this.state.isVisible && somethingComplex ? "partially visible" : "hidden"
+  ? this.state.isVisible && somethingComplex
+    ? "partially visible"
+    : "hidden"
   : null;
 
 a =>
@@ -1250,7 +1260,9 @@ a => a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 debug ? (this.state.isVisible ? "partially visible" : "hidden") : null;
 debug
-    ? this.state.isVisible && somethingComplex ? "partially visible" : "hidden"
+    ? this.state.isVisible && somethingComplex
+        ? "partially visible"
+        : "hidden"
     : null;
 
 a =>
@@ -1277,7 +1289,9 @@ a => a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 debug ? (this.state.isVisible ? "partially visible" : "hidden") : null;
 debug
-	? this.state.isVisible && somethingComplex ? "partially visible" : "hidden"
+	? this.state.isVisible && somethingComplex
+		? "partially visible"
+		: "hidden"
 	: null;
 
 a =>
@@ -1304,7 +1318,9 @@ a => a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 debug ? (this.state.isVisible ? "partially visible" : "hidden") : null;
 debug
-	? this.state.isVisible && somethingComplex ? "partially visible" : "hidden"
+	? this.state.isVisible && somethingComplex
+		? "partially visible"
+		: "hidden"
 	: null;
 
 a =>

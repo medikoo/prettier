@@ -34,15 +34,16 @@ If the plugin is unable to be found automatically, you can load them with:
 
 ## Official Plugins
 
-* [`@prettier/plugin-python`](https://github.com/prettier/prettier-python)
-* [`@prettier/plugin-php`](https://github.com/prettier/prettier-php)
-* [`@prettier/plugin-swift`](https://github.com/prettier/prettier-swift)
+* [`@prettier/plugin-python`](https://github.com/prettier/plugin-python)
+* [`@prettier/plugin-php`](https://github.com/prettier/plugin-php)
+* [`@prettier/plugin-swift`](https://github.com/prettier/plugin-swift)
 
 ## Community Plugins
 
-* [`prettier-plugin-java`](https://github.com/thorbenvh8/prettier-java)
-* [`iamsolankiamit/prettier-ruby`](https://github.com/iamsolankiamit/prettier-ruby)
-* [`benjie/prettier-plugin-pg`](https://github.com/benjie/prettier-plugin-pg)
+* [`prettier-plugin-elm`](https://github.com/gicentre/prettier-plugin-elm) by [**@giCentre**](https://github.com/gicentre)
+* [`prettier-plugin-java`](https://github.com/thorbenvh8/prettier-java) by [**@thorbenvh8**](https://github.com/thorbenvh8)
+* [`prettier-plugin-pg`](https://github.com/benjie/prettier-plugin-pg) by [**@benjie**](https://github.com/benjie)
+* [`prettier-plugin-ruby`](https://github.com/iamsolankiamit/prettier-ruby) by [**@iamsolankiamit**](https://github.com/iamsolankiamit)
 
 ## Developing Plugins
 
@@ -84,6 +85,7 @@ export const parsers = {
     parse,
     // The name of the AST that
     astFormat: "dance-ast",
+    hasPragma,
     locStart,
     locEnd
   }
@@ -96,10 +98,16 @@ The signature of the `parse` function is:
 function parse(text: string, parsers: object, options: object): AST;
 ```
 
-The location extraction functions (`locStart` and `locEnd`) return the beginning and the end location of a given AST node:
+The location extraction functions (`locStart` and `locEnd`) return the starting and ending locations of a given AST node:
 
 ```ts
 function locStart(node: object): number;
+```
+
+The pragma detection function (`hasPragma`) should return if the text contains the pragma comment.
+
+```ts
+function hasPragma(text: string): boolean;
 ```
 
 ### `printers`
@@ -112,12 +120,13 @@ The key must match the `astFormat` that the parser produces. The value contains 
 export const printers = {
   "dance-ast": {
     print,
-    embed
+    embed,
+    insertPragma
   }
 };
 ```
 
-Printing is a recursive process of coverting an AST node (represented by a path to that node) into a doc. The doc is constructed using the [builder commands](https://github.com/prettier/prettier/blob/master/commands.md):
+Printing is a recursive process of converting an AST node (represented by a path to that node) into a doc. The doc is constructed using the [builder commands](https://github.com/prettier/prettier/blob/master/commands.md):
 
 ```js
 const { concat, join, line, ifBreak, group } = require("prettier").doc.builders;
@@ -155,6 +164,12 @@ function embed(
 
 If you don't want to switch to a different parser, simply return `null` or `undefined`.
 
+A plugin can implement how a pragma comment is inserted in the resulting code when the `--insert-pragma` option is used, in the `insertPragma` function. Its signature is:
+
+```ts
+function insertPragma(text: string): string;
+```
+
 ### `options`
 
 `options` is an object containing the custom options your plugin supports.
@@ -174,7 +189,7 @@ options: {
 
 ### `defaultOptions`
 
-If your plugin requires different default values for some of prettier's core options, you can specify them in `defaultOptions`:
+If your plugin requires different default values for some of Prettier's core options, you can specify them in `defaultOptions`:
 
 ```
 defaultOptions: {
@@ -184,7 +199,7 @@ defaultOptions: {
 
 ### Utility functions
 
-A `util` module from prettier core is considered a private API and is not meant to be consumed by plugins. Instead, the `util-shared` module provides the following limited set of utility functions for plugins:
+A `util` module from Prettier core is considered a private API and is not meant to be consumed by plugins. Instead, the `util-shared` module provides the following limited set of utility functions for plugins:
 
 ```ts
 makeString(rawContent: string, enclosingQuote: string, unescapeUnnecessarEscapes: boolean): string;
@@ -207,4 +222,4 @@ prettier.format(code, {
 });
 ```
 
-This will resolve a plugin relative to the current working direcrory.
+This will resolve a plugin relative to the current working directory.

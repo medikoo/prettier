@@ -8,6 +8,9 @@ const sharedUtil = require("../common/util-shared");
 const isIdentifierName = require("esutils").keyword.isIdentifierNameES6;
 const embed = require("./embed");
 const clean = require("./clean");
+const insertPragma = require("./pragma").insertPragma;
+const handleComments = require("./comments");
+const pathNeedsParens = require("./needs-parens");
 
 const customizations = require("../_customizations");
 const capitalize = require("es5-ext/string/#/capitalize");
@@ -121,8 +124,8 @@ function genericPrint(path, options, printPath, args) {
     );
   } else {
     // Nodes with decorators can't have parentheses, so we can avoid
-    // computing path.needsParens() except in this case.
-    needsParens = path.needsParens(options);
+    // computing pathNeedsParens() except in this case.
+    needsParens = pathNeedsParens(path, options);
   }
 
   const parts = [];
@@ -190,7 +193,8 @@ function formatTernaryOperator(path, options, print, operatorOptions) {
       operatorName: "ConditionalExpression",
       consequentNode: "consequent",
       alternateNode: "alternate",
-      testNode: "test"
+      testNode: "test",
+      breakNested: true
     },
     operatorOptions || {}
   );
@@ -278,11 +282,11 @@ function formatTernaryOperator(path, options, print, operatorOptions) {
     );
   }
 
-  // In JSX mode, we want a whole chain of ConditionalExpressions to all
+  // We want a whole chain of ConditionalExpressions to all
   // break if any of them break. That means we should only group around the
   // outer-most ConditionalExpression.
   const maybeGroup = doc =>
-    jsxMode
+    operatorOpts.breakNested
       ? parent === firstNonConditionalParent ? group(doc) : doc
       : group(doc); // Always group in normal mode.
 
@@ -303,6 +307,15 @@ function formatTernaryOperator(path, options, print, operatorOptions) {
       )
     )
   );
+}
+
+function getTypeScriptMappedTypeModifier(tokenNode, keyword) {
+  if (tokenNode.type === "TSPlusToken") {
+    return "+" + keyword;
+  } else if (tokenNode.type === "TSMinusToken") {
+    return "-" + keyword;
+  }
+  return keyword;
 }
 
 function printPathNoParens(path, options, print, args) {
@@ -440,6 +453,9 @@ function printPathNoParens(path, options, print, args) {
       const shouldIndentIfInlining =
         parent.type === "AssignmentExpression" ||
         parent.type === "VariableDeclarator" ||
+        parent.type === "ClassProperty" ||
+        parent.type === "TSAbstractClassProperty" ||
+        parent.type === "ClassPrivateProperty" ||
         parent.type === "ObjectProperty" ||
         parent.type === "Property";
 
@@ -964,7 +980,7 @@ function printPathNoParens(path, options, print, args) {
           )) ||
         // Keep test declarations on a single line
         // e.g. `it('long name', () => {`
-        (!isNew && isTestCall(n))
+        (!isNew && isTestCall(n, path.getParentNode()))
       ) {
         return concat([
           isNew ? "new " : "",
@@ -1315,7 +1331,7 @@ function printPathNoParens(path, options, print, args) {
         return "" + n.value;
       }
       // TypeScript workaround for eslint/typescript-eslint-parser#267
-      // See corresponding workaround in fast-path.js needsParens()
+      // See corresponding workaround in needs-parens.js
       const grandParent = path.getParentNode(1);
       const isTypeScriptDirective =
         options.parser === "typescript" &&
@@ -1480,13 +1496,26 @@ function printPathNoParens(path, options, print, args) {
       parts.push(opening);
 
       if (n.alternate) {
-        if (n.consequent.type === "BlockStatement") {
-          parts.push(" else");
-        } else {
-          parts.push(hardline, "else");
+        const commentOnOwnLine =
+          (hasTrailingComment(n.consequent) &&
+            n.consequent.comments.some(
+              comment =>
+                comment.trailing && !privateUtil.isBlockComment(comment)
+            )) ||
+          needsHardlineAfterDanglingComment(n);
+        const elseOnSameLine =
+          n.consequent.type === "BlockStatement" && !commentOnOwnLine;
+        parts.push(elseOnSameLine ? " " : hardline);
+
+        if (hasDanglingComments(n)) {
+          parts.push(
+            comments.printDanglingComments(path, options, true),
+            commentOnOwnLine ? hardline : " "
+          );
         }
 
         parts.push(
+          "else",
           group(
             adjustClause(
               n.alternate,
@@ -1667,9 +1696,15 @@ function printPathNoParens(path, options, print, args) {
     // Note: ignoring n.lexical because it has no printing consequences.
     case "SwitchStatement":
       return concat([
-        "switch (",
-        path.call(print, "discriminant"),
-        ") {",
+        group(
+          concat([
+            "switch (",
+            indent(concat([softline, path.call(print, "discriminant")])),
+            softline,
+            ")"
+          ])
+        ),
+        " {",
         n.cases.length > 0
           ? indent(
               concat([
@@ -2434,7 +2469,7 @@ function printPathNoParens(path, options, print, args) {
           (greatGreatGrandParent.type === "TSUnionType" ||
             greatGreatGrandParent.type === "TSIntersectionType");
       } else {
-        hasParens = path.needsParens(options);
+        hasParens = pathNeedsParens(path, options);
       }
 
       if (hasParens) {
@@ -2770,13 +2805,21 @@ function printPathNoParens(path, options, print, args) {
             concat([
               options.bracketSpacing ? line : softline,
               n.readonlyToken
-                ? concat([path.call(print, "readonlyToken"), " "])
+                ? concat([
+                    getTypeScriptMappedTypeModifier(
+                      n.readonlyToken,
+                      "readonly"
+                    ),
+                    " "
+                  ])
                 : "",
               printTypeScriptModifiers(path, options, print),
               "[",
               path.call(print, "typeParameter"),
               "]",
-              n.questionToken ? "?" : "",
+              n.questionToken
+                ? getTypeScriptMappedTypeModifier(n.questionToken, "?")
+                : "",
               ": ",
               path.call(print, "typeAnnotation")
             ])
@@ -2968,7 +3011,8 @@ function printPathNoParens(path, options, print, args) {
         operatorName: "TSConditionalType",
         consequentNode: "trueType",
         alternateNode: "falseType",
-        testNode: "checkType"
+        testNode: "checkType",
+        breakNested: false
       });
 
     case "TSInferType":
@@ -3205,9 +3249,6 @@ function printArgumentsList(path, options, print) {
     return concat(parts);
   }, "arguments");
 
-  // This is just an optimization; I think we could return the
-  // conditional group for all function calls, but it's more expensive
-  // so only do it for specific forms.
   const shouldGroupFirst = shouldGroupFirstArg(args);
   const shouldGroupLast = shouldGroupLastArg(args);
   if (shouldGroupFirst || shouldGroupLast) {
@@ -3622,6 +3663,10 @@ function printExportDeclaration(path, options, print) {
     comments.printDanglingComments(path, options, /* sameIndent */ true)
   );
 
+  if (needsHardlineAfterDanglingComment(decl)) {
+    parts.push(hardline);
+  }
+
   if (decl.declaration) {
     parts.push(path.call(print, "declaration"));
 
@@ -3630,6 +3675,7 @@ function printExportDeclaration(path, options, print) {
       (decl.declaration.type !== "ClassDeclaration" &&
         decl.declaration.type !== "FunctionDeclaration" &&
         decl.declaration.type !== "TSAbstractClassDeclaration" &&
+        decl.declaration.type !== "TSInterfaceDeclaration" &&
         decl.declaration.type !== "DeclareClass" &&
         decl.declaration.type !== "DeclareFunction")
     ) {
@@ -5008,7 +5054,7 @@ function exprNeedsASIProtection(path, options) {
   const node = path.getValue();
 
   const maybeASIProblem =
-    path.needsParens(options) ||
+    pathNeedsParens(path, options) ||
     node.type === "ParenthesizedExpression" ||
     node.type === "TypeCastExpression" ||
     (node.type === "ArrowFunctionExpression" &&
@@ -5305,6 +5351,18 @@ function hasDanglingComments(node) {
   );
 }
 
+function needsHardlineAfterDanglingComment(node) {
+  if (!node.comments) {
+    return false;
+  }
+  const lastDanglingComment = privateUtil.getLast(
+    node.comments.filter(comment => !comment.leading && !comment.trailing)
+  );
+  return (
+    lastDanglingComment && !privateUtil.isBlockComment(lastDanglingComment)
+  );
+}
+
 function isLiteral(node) {
   return (
     node.type === "BooleanLiteral" ||
@@ -5339,24 +5397,76 @@ function isObjectType(n) {
 }
 
 // eg; `describe("some string", (done) => {})`
-function isTestCall(n) {
+function isTestCall(n, parent) {
+  const unitTestRe = /^(skip|(f|x)?(it|describe|test))$/;
+
+  if (n.arguments.length === 1) {
+    if (
+      n.callee.type === "Identifier" &&
+      n.callee.name === "async" &&
+      parent &&
+      parent.type === "CallExpression" &&
+      isTestCall(parent)
+    ) {
+      return isFunctionOrArrowExpression(n.arguments[0].type);
+    }
+
+    if (isUnitTestSetUp(n)) {
+      return (
+        isFunctionOrArrowExpression(n.arguments[0].type) ||
+        isIdentiferAsync(n.arguments[0])
+      );
+    }
+  } else if (n.arguments.length === 2) {
+    if (
+      ((n.callee.type === "Identifier" && unitTestRe.test(n.callee.name)) ||
+        isSkipOrOnlyBlock(n)) &&
+      (isTemplateLiteral(n.arguments[0]) || isStringLiteral(n.arguments[0]))
+    ) {
+      return (
+        (isFunctionOrArrowExpression(n.arguments[1].type) &&
+          n.arguments[1].params.length <= 1) ||
+        isIdentiferAsync(n.arguments[1])
+      );
+    }
+  }
+  return false;
+}
+
+function isSkipOrOnlyBlock(node) {
   const unitTestRe = /^(skip|(f|x)?(it|describe|test))$/;
   return (
-    ((n.callee.type === "Identifier" && unitTestRe.test(n.callee.name)) ||
-      (n.callee.type === "MemberExpression" &&
-        n.callee.object.type === "Identifier" &&
-        n.callee.property.type === "Identifier" &&
-        unitTestRe.test(n.callee.object.name) &&
-        (n.callee.property.name === "only" ||
-          n.callee.property.name === "skip"))) &&
-    n.arguments.length === 2 &&
-    (n.arguments[0].type === "StringLiteral" ||
-      n.arguments[0].type === "TemplateLiteral" ||
-      (n.arguments[0].type === "Literal" &&
-        typeof n.arguments[0].value === "string")) &&
-    (n.arguments[1].type === "FunctionExpression" ||
-      n.arguments[1].type === "ArrowFunctionExpression") &&
-    n.arguments[1].params.length <= 1
+    node.callee.type === "MemberExpression" &&
+    node.callee.object.type === "Identifier" &&
+    node.callee.property.type === "Identifier" &&
+    unitTestRe.test(node.callee.object.name) &&
+    (node.callee.property.name === "only" ||
+      node.callee.property.name === "skip")
+  );
+}
+
+function isTemplateLiteral(node) {
+  return node.type === "TemplateLiteral";
+}
+
+function isIdentiferAsync(node) {
+  return (
+    node.type === "CallExpression" &&
+    node.callee.type === "Identifier" &&
+    node.callee.name === "async"
+  );
+}
+
+function isFunctionOrArrowExpression(type) {
+  return type === "FunctionExpression" || type === "ArrowFunctionExpression";
+}
+
+function isUnitTestSetUp(n) {
+  const unitTestSetUpRe = /^(before|after)(Each|All)$/;
+  return (
+    n.callee.type === "Identifier" &&
+    unitTestSetUpRe.test(n.callee.name) &&
+    n.arguments.length === 1
   );
 }
 
@@ -5465,9 +5575,15 @@ function printJsDocComment(comment) {
 module.exports = {
   print: genericPrint,
   embed,
+  insertPragma,
   massageAstNode: clean,
   hasPrettierIgnore,
   willPrintOwnComments,
   canAttachComment,
-  printComment
+  printComment,
+  handleComments: {
+    ownLine: handleComments.handleOwnLineComment,
+    endOfLine: handleComments.handleEndOfLineComment,
+    remaining: handleComments.handleRemainingComment
+  }
 };

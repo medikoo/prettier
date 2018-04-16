@@ -93,10 +93,16 @@ function genericPrint(path, options, print) {
         node.value.type === "value-root" &&
         node.value.group.type === "value-value" &&
         node.prop === "composes";
+      const ruleAncestorNode = getAncestorNode(path, "css-rule");
+      const isiCSS =
+        ruleAncestorNode &&
+        ruleAncestorNode.raws.selector &&
+        (ruleAncestorNode.raws.selector.startsWith(":import") ||
+          ruleAncestorNode.raws.selector.startsWith(":export"));
 
       return concat([
         node.raws.before.replace(/[\s;]/g, ""),
-        maybeToLowerCase(node.prop),
+        isiCSS ? node.prop : maybeToLowerCase(node.prop),
         node.raws.between.trim() === ":" ? ":" : node.raws.between.trim(),
         isValueExtend ? "" : " ",
         isComposed
@@ -378,7 +384,11 @@ function genericPrint(path, options, print) {
       return path.call(print, "group");
     }
     case "value-comment": {
-      return concat(["/*", node.value, "*/"]);
+      return concat([
+        node.inline ? "//" : "/*",
+        node.value,
+        node.inline ? "" : "*/"
+      ]);
     }
     case "value-comma_group": {
       const parentNode = path.getParentNode();
@@ -435,6 +445,15 @@ function genericPrint(path, options, print) {
 
         // Ignore `~` in Less (i.e. `content: ~"^//* some horrible but needed css hack";`)
         if (iNode.value === "~") {
+          continue;
+        }
+
+        if (
+          (iPrevNode &&
+            iPrevNode.type === "value-comment" &&
+            iPrevNode.inline) ||
+          (iNextNode.type === "value-comment" && iNextNode.inline)
+        ) {
           continue;
         }
 
@@ -564,6 +583,8 @@ function genericPrint(path, options, print) {
           } else {
             parts.push(" ");
           }
+        } else if (iNode.type === "value-comment" && iNode.inline) {
+          parts.push(hardline);
         } else if (
           isNextMathOperator ||
           isNextEqualityOperator ||
@@ -688,6 +709,9 @@ function genericPrint(path, options, print) {
     }
     case "value-atword": {
       return concat(["@", node.value]);
+    }
+    case "value-unicode-range": {
+      return node.value;
     }
     default:
       /* istanbul ignore next */
@@ -935,6 +959,7 @@ function maybeToLowerCase(value) {
     value.includes("#") ||
     value.startsWith("%") ||
     value.startsWith("--") ||
+    value.startsWith(":--") ||
     (value.includes("(") && value.includes(")"))
     ? value
     : value.toLowerCase();

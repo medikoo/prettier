@@ -5,6 +5,7 @@ const support = require("../common/support");
 const doc = require("../doc");
 const docBuilders = doc.builders;
 const hardline = docBuilders.hardline;
+const literalline = docBuilders.literalline;
 const concat = docBuilders.concat;
 const markAsRoot = docBuilders.markAsRoot;
 
@@ -12,7 +13,9 @@ function embed(path, print, textToDoc, options) {
   const node = path.getValue();
 
   if (node.type === "code") {
-    const parser = getParserName(node.lang);
+    // only look for the first string so as to support [markdown-preview-enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/code-chunk)
+    const lang = node.lang.split(/\s/, 1)[0];
+    const parser = getParserName(lang);
     if (parser) {
       const styleUnit = options.__inJsTemplate ? "~" : "`";
       const style = styleUnit.repeat(
@@ -24,7 +27,7 @@ function embed(path, print, textToDoc, options) {
           style,
           node.lang,
           hardline,
-          replaceNewlinesWithHardlines(doc),
+          replaceNewlinesWithLiterallines(doc),
           style
         ])
       );
@@ -51,7 +54,7 @@ function embed(path, print, textToDoc, options) {
     return null;
   }
 
-  function replaceNewlinesWithHardlines(doc) {
+  function replaceNewlinesWithLiterallines(doc) {
     return util.mapDoc(
       doc,
       currentDoc =>
@@ -59,7 +62,7 @@ function embed(path, print, textToDoc, options) {
           ? concat(
               currentDoc
                 .split(/(\n)/g)
-                .map((v, i) => (i % 2 === 0 ? v : hardline))
+                .map((v, i) => (i % 2 === 0 ? v : literalline))
             )
           : currentDoc
     );

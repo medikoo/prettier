@@ -1,5 +1,188 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CRLF.css 1`] = `
+/*
+ * Comment 1
+ */
+#header {
+    /*
+     * Comment 2
+     */
+    color: red;
+}
+
+@media only screen and (max-width: 600px) {
+    /*
+     * Comment 3
+     */
+    body {
+        background-color: lightblue; /* Comment 4 */
+        color: red; /* Comment 5 */
+    }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+ * Comment 1
+ */
+#header {
+  /*
+     * Comment 2
+     */
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  /*
+     * Comment 3
+     */
+  body {
+    background-color: lightblue; /* Comment 4 */
+    color: red; /* Comment 5 */
+  }
+}
+
+`;
+
+exports[`CRLF.less 1`] = `
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+// Comment 1
+/*
+ * Comment 2
+ */
+#header {
+  // Comment 3
+  /*
+   * Comment 4
+   */
+  color: @light-blue;
+}
+
+@media only screen and (max-width: 600px) {
+  // Comment 1
+  /*
+   * Comment 5
+   */
+  body {
+    background-color: lightblue; // Comment 6
+    color: red; /* Comment 7 */
+  }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+// Comment 1
+/*
+ * Comment 2
+ */
+#header {
+  // Comment 3
+  /*
+   * Comment 4
+   */
+  color: @light-blue;
+}
+
+@media only screen and (max-width: 600px) {
+  // Comment 1
+  /*
+   * Comment 5
+   */
+  body {
+    background-color: lightblue; // Comment 6
+    color: red; /* Comment 7 */
+  }
+}
+
+`;
+
+exports[`CRLF.scss 1`] = `
+$nice-blue: #5B83AD;
+$light-blue: $nice-blue + #111;
+
+// Comment 1
+/*
+ * Comment 2
+ */
+#header {
+    // Comment 3
+    /*
+     * Comment 4
+     */
+    color: @light-blue;
+}
+
+@media only screen and (max-width: 600px) {
+    // Comment 1
+    /*
+     * Comment 5
+     */
+    body {
+        background-color: lightblue; // Comment 6
+        color: red; /* Comment 7 */
+    }
+}
+
+@mixin create-rules($padding) {
+    //
+    // Comment 8
+    //
+    .abc {
+        padding: $padding;
+    }
+    /**
+     * Comment 9
+     */
+    .def {
+        padding: $padding;
+    }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$nice-blue: #5b83ad;
+$light-blue: $nice-blue + #111;
+
+// Comment 1
+/*
+ * Comment 2
+ */
+#header {
+  // Comment 3
+  /*
+     * Comment 4
+     */
+  color: @light-blue;
+}
+
+@media only screen and (max-width: 600px) {
+  // Comment 1
+  /*
+     * Comment 5
+     */
+  body {
+    background-color: lightblue; // Comment 6
+    color: red; /* Comment 7 */
+  }
+}
+
+@mixin create-rules($padding) {
+  //
+  // Comment 8
+  //
+  .abc {
+    padding: $padding;
+  }
+  /**
+     * Comment 9
+     */
+  .def {
+    padding: $padding;
+  }
+}
+
+`;
+
 exports[`at-rules.css 1`] = `
 @charset "utf-8"; /* comment 1 */
 
@@ -402,6 +585,32 @@ exports[`if-eslit-at-rule-decloration.scss 1`] = `
   }
   @return false;
 }
+
+`;
+
+exports[`lists.scss 1`] = `
+$my-list:
+  'foo', // Foo
+  'bar'; // Bar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$my-list: "foo",
+  // Foo
+    "bar"; // Bar
+
+`;
+
+exports[`maps.scss 1`] = `
+$my-map: (
+  'foo': 1, // Foo
+  'bar': 2, // Bar
+);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$my-map: (
+  "foo": 1,
+  // Foo
+    "bar": 2,
+  // Bar
+);
 
 `;
 
@@ -897,6 +1106,20 @@ exports[`selectors.scss 1`] = `
   // comment 23
 }
 // comment 24
+
+.foo
+// comment 25
+.bar
+// comment 26
+{}
+
+.foo
+// comment 27
++
+// comment 28
+.bar
+// comment 29
+{}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .powerPathNavigator .helm button.pressedButton, // comment 1
 .powerPathNavigator .helm button:active:not(.disabledButton),
@@ -947,6 +1170,22 @@ exports[`selectors.scss 1`] = `
   // comment 23
 }
 // comment 24
+
+.foo
+// comment 25
+.bar
+// comment 26
+ {
+}
+
+.foo
+// comment 27
++
+// comment 28
+.bar
+// comment 29
+ {
+}
 
 `;
 

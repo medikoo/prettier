@@ -2,6 +2,7 @@
 
 const privateUtil = require("../common/util");
 const embed = require("./embed");
+const pragma = require("./pragma");
 const doc = require("../doc");
 const docBuilders = doc.builders;
 const concat = docBuilders.concat;
@@ -64,10 +65,7 @@ function genericPrint(path, options, print) {
 
   switch (node.type) {
     case "root":
-      return concat([
-        normalizeDoc(printChildren(path, options, print)),
-        hardline
-      ]);
+      return concat([normalizeDoc(printRoot(path, options, print)), hardline]);
     case "paragraph":
       return printChildren(path, options, print, {
         postprocessor: fill
@@ -205,15 +203,20 @@ function genericPrint(path, options, print) {
       ]);
     }
     case "yaml":
-      return concat(["---", hardline, node.value, hardline, "---"]);
-    case "toml":
-      return concat(["+++", hardline, node.value, hardline, "+++"]);
+    case "toml": {
+      const style = node.type === "yaml" ? "---" : "+++";
+      return node.value
+        ? concat([style, hardline, node.value, hardline, style])
+        : concat([style, hardline, style]);
+    }
     case "html": {
       const parentNode = path.getParentNode();
-      return parentNode.type === "root" &&
+      return replaceNewlinesWithHardlines(
+        parentNode.type === "root" &&
         privateUtil.getLast(parentNode.children) === node
-        ? node.value.trimRight()
-        : node.value;
+          ? node.value.trimRight()
+          : node.value
+      );
     }
     case "list": {
       const nthSiblingIndex = getNthListSiblingIndex(
@@ -388,6 +391,10 @@ function getNthListSiblingIndex(node, parentNode) {
   );
 }
 
+function replaceNewlinesWithHardlines(str) {
+  return join(hardline, str.split("\n"));
+}
+
 function getNthSiblingIndex(node, parentNode, condition) {
   condition = condition || (() => true);
 
@@ -527,6 +534,68 @@ function printTable(path, options, print) {
   }
 }
 
+function printRoot(path, options, print) {
+  /** @typedef {{ index: number, offset: number }} IgnorePosition */
+  /** @type {Array<{start: IgnorePosition, end: IgnorePosition}>} */
+  const ignoreRanges = [];
+
+  /** @type {IgnorePosition | null} */
+  let ignoreStart = null;
+
+  const children = path.getValue().children;
+  children.forEach((childNode, index) => {
+    switch (isPrettierIgnore(childNode)) {
+      case "start":
+        if (ignoreStart === null) {
+          ignoreStart = { index, offset: childNode.position.end.offset };
+        }
+        break;
+      case "end":
+        if (ignoreStart !== null) {
+          ignoreRanges.push({
+            start: ignoreStart,
+            end: { index, offset: childNode.position.start.offset }
+          });
+          ignoreStart = null;
+        }
+        break;
+      default:
+        // do nothing
+        break;
+    }
+  });
+
+  return printChildren(path, options, print, {
+    processor: (childPath, index) => {
+      if (ignoreRanges.length !== 0) {
+        const ignoreRange = ignoreRanges[0];
+
+        if (index === ignoreRange.start.index) {
+          return concat([
+            children[ignoreRange.start.index].value,
+            options.originalText.slice(
+              ignoreRange.start.offset,
+              ignoreRange.end.offset
+            ),
+            children[ignoreRange.end.index].value
+          ]);
+        }
+
+        if (ignoreRange.start.index < index && index < ignoreRange.end.index) {
+          return false;
+        }
+
+        if (index === ignoreRange.end.index) {
+          ignoreRanges.shift();
+          return false;
+        }
+      }
+
+      return childPath.call(print);
+    }
+  });
+}
+
 function printChildren(path, options, print, events) {
   events = events || {};
 
@@ -536,28 +605,15 @@ function printChildren(path, options, print, events) {
   const node = path.getValue();
   const parts = [];
 
-  let counter = 0;
   let lastChildNode;
-  let prettierIgnore = false;
 
   path.map((childPath, index) => {
     const childNode = childPath.getValue();
 
-    const result = prettierIgnore
-      ? options.originalText.slice(
-          childNode.position.start.offset,
-          childNode.position.end.offset
-        )
-      : processor(childPath, index);
-
-    prettierIgnore = false;
-
+    const result = processor(childPath, index);
     if (result !== false) {
-      prettierIgnore = isPrettierIgnore(childNode);
-
       const data = {
         parts,
-        index: counter++,
         prevNode: lastChildNode,
         parentNode: node,
         options
@@ -587,10 +643,15 @@ function printChildren(path, options, print, events) {
   return postprocessor(parts);
 }
 
+/** @return {false | 'next' | 'start' | 'end'} */
 function isPrettierIgnore(node) {
-  return (
-    node.type === "html" && /^<!--\s*prettier-ignore\s*-->$/.test(node.value)
+  if (node.type !== "html") {
+    return false;
+  }
+  const match = node.value.match(
+    /^<!--\s*prettier-ignore(?:-(start|end))?\s*-->$/
   );
+  return match === null ? false : match[1] ? match[1] : "next";
 }
 
 function shouldNotPrePrintHardline(node, data) {
@@ -615,7 +676,7 @@ function shouldPrePrintDoubleHardline(node, data) {
   const isPrevNodeLooseListItem =
     data.prevNode && data.prevNode.type === "listItem" && data.prevNode.loose;
 
-  const isPrevNodePrettierIgnore = isPrettierIgnore(data.prevNode);
+  const isPrevNodePrettierIgnore = isPrettierIgnore(data.prevNode) === "next";
 
   return (
     isPrevNodeLooseListItem ||
@@ -714,20 +775,45 @@ function clamp(value, min, max) {
   return value < min ? min : value > max ? max : value;
 }
 
-function clean(ast, newObj) {
-  // for markdown codeblock
+function clean(ast, newObj, parent) {
+  // for codeblock
   if (ast.type === "code") {
     delete newObj.value;
   }
-  // for markdown whitespace: "\n" and " " are considered the same
+  // for whitespace: "\n" and " " are considered the same
   if (ast.type === "whitespace" && ast.value === "\n") {
     newObj.value = " ";
   }
+  // for insert pragma
+  if (
+    parent &&
+    parent.type === "root" &&
+    (parent.children[0] === ast ||
+      ((parent.children[0].type === "yaml" ||
+        parent.children[0].type === "toml") &&
+        parent.children[1] === ast)) &&
+    ast.type === "html" &&
+    pragma.startWithPragma(ast.value)
+  ) {
+    return null;
+  }
+}
+
+function hasPrettierIgnore(path) {
+  const index = +path.getName();
+
+  if (index === 0) {
+    return false;
+  }
+
+  const prevNode = path.getParentNode().children[index - 1];
+  return isPrettierIgnore(prevNode) === "next";
 }
 
 module.exports = {
   print: genericPrint,
   embed,
   massageAstNode: clean,
-  hasPrettierIgnore: privateUtil.hasIgnoreComment
+  hasPrettierIgnore,
+  insertPragma: pragma.insertPragma
 };
