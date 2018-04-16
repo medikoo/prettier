@@ -1,15 +1,15 @@
-# prettier-elastic-vars
+# prettier-elastic
 
-## Fork of a [Prettier](https://github.com/prettier/prettier) tweaked to provide alternative formatting for `var`, `let` and `const` declarations
+## Fork of a [Prettier](https://github.com/prettier/prettier) tweaked to provide alternative formatting for `var`, `let` and `const` declarations and other improvements
 
 ### Installation
 
-	$ npm install prettier-elastic-vars
+	$ npm install prettier-elastic
 
 ### Usage
 
 ```javascript
-var prettier = require("prettier-elastic-vars");
+var prettier = require("prettier-elastic");
 
 // Same as with original prettier
 prettier.format(src, options);
@@ -18,7 +18,7 @@ prettier.format(src, options);
 ### Examples
 
 <table>
-<thead><tr><th>prettier</th><th>prettier-elastic-vars</th></thead>
+<thead><tr><th>prettier</th><th>prettier-elastic</th></thead>
 <tbody>
 <tr>
 <td>
