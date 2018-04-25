@@ -4256,20 +4256,11 @@ function printMemberChain(path, options, print) {
     printIndentedGroup(groups.slice(shouldMerge ? 2 : 1))
   ]);
 
-  const callExpressionCount = printedNodes.filter(
-    tuple => tuple.node.type === "CallExpression"
-  ).length;
-
   // We don't want to print in one line if there's:
   //  * A comment.
-  //  * 3 or more chained calls.
   //  * Any group but the last one has a hard line.
   // If the last group is a function it's okay to inline if it fits.
-  if (
-    hasComment ||
-    callExpressionCount >= 3 ||
-    printedGroups.slice(0, -1).some(willBreak)
-  ) {
+  if (hasComment || printedGroups.slice(0, -1).some(willBreak)) {
     return group(expanded);
   }
 
