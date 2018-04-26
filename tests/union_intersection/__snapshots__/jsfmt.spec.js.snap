@@ -120,14 +120,7 @@ type Props = {
 };
 
 declare class FormData {
-  append(
-    options?:
-      | string
-      | {
-          filepath?: string,
-          filename?: string
-        }
-  ): void;
+  append(options?: string | { filepath?: string, filename?: string }): void;
 }
 
 `;
