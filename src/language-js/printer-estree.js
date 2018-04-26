@@ -39,7 +39,6 @@ const docUtils = doc.utils;
 const willBreak = docUtils.willBreak;
 const isLineNext = docUtils.isLineNext;
 const isEmpty = docUtils.isEmpty;
-const rawText = docUtils.rawText;
 
 function shouldPrintComma(options, level) {
   level = level || "es5";
@@ -287,7 +286,9 @@ function formatTernaryOperator(path, options, print, operatorOptions) {
   // outer-most ConditionalExpression.
   const maybeGroup = doc =>
     operatorOpts.breakNested
-      ? parent === firstNonConditionalParent ? group(doc) : doc
+      ? parent === firstNonConditionalParent
+        ? group(doc)
+        : doc
       : group(doc); // Always group in normal mode.
 
   // Break the closing paren to keep the chain right after it:
@@ -1968,7 +1969,9 @@ function printPathNoParens(path, options, print, args) {
           concat([
             hasOwnLineComment
               ? hardline
-              : hasComment && !isOpeningFragment ? " " : "",
+              : hasComment && !isOpeningFragment
+                ? " "
+                : "",
             comments.printDanglingComments(path, options, true)
           ])
         ),
@@ -2422,7 +2425,7 @@ function printPathNoParens(path, options, print, args) {
         parent.type !== "TSTypeParameterInstantiation" &&
         parent.type !== "GenericTypeAnnotation" &&
         parent.type !== "TSTypeReference" &&
-        parent.type !== "FunctionTypeParam" &&
+        !(parent.type === "FunctionTypeParam" && !parent.name) &&
         !(
           (parent.type === "TypeAlias" ||
             parent.type === "VariableDeclarator") &&
@@ -5570,6 +5573,10 @@ function printJsDocComment(comment) {
     ),
     "*/"
   ]);
+}
+
+function rawText(node) {
+  return node.extra ? node.extra.raw : node.raw;
 }
 
 module.exports = {

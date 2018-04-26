@@ -49,6 +49,17 @@ type Props = {
       }
   ) => void
 };
+
+declare class FormData {
+  append(
+    options?:
+      | string
+      | {
+          filepath?: string,
+          filename?: string
+        }
+  ): void;
+}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 type T5 =
   | "1"
@@ -107,5 +118,16 @@ type Comment =
 type Props = {
   onChange: ({ name: string } | { title: string } | { year: year }) => void
 };
+
+declare class FormData {
+  append(
+    options?:
+      | string
+      | {
+          filepath?: string,
+          filename?: string
+        }
+  ): void;
+}
 
 `;

@@ -500,7 +500,9 @@ function printString(raw, options, isDirectiveLiteral) {
   const enclosingQuote =
     options.parser === "json"
       ? double.quote
-      : shouldUseAlternateQuote ? alternate.quote : preferred.quote;
+      : shouldUseAlternateQuote
+        ? alternate.quote
+        : preferred.quote;
 
   // Directives are exact code unit sequences, which means that you can't
   // change the escape sequences they use.
@@ -596,20 +598,6 @@ function getMaxContinuousCount(str, target) {
     (maxCount, result) => Math.max(maxCount, result.length / target.length),
     0
   );
-}
-
-function mapDoc(doc, callback) {
-  if (doc.parts) {
-    const parts = doc.parts.map(part => mapDoc(part, callback));
-    return callback(Object.assign({}, doc, { parts }));
-  }
-
-  if (doc.contents) {
-    const contents = mapDoc(doc.contents, callback);
-    return callback(Object.assign({}, doc, { contents }));
-  }
-
-  return callback(doc);
 }
 
 /**
@@ -793,7 +781,6 @@ module.exports = {
   punctuationCharRange,
   getStringWidth,
   splitText,
-  mapDoc,
   getMaxContinuousCount,
   getPrecedence,
   shouldFlatten,

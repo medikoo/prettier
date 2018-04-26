@@ -1,5 +1,6 @@
 "use strict";
 
+const docUtils = require("../doc/doc-utils");
 const privateUtil = require("../common/util");
 const embed = require("./embed");
 const pragma = require("./pragma");
@@ -58,7 +59,9 @@ function genericPrint(path, options, print) {
           node =>
             node.type === "word"
               ? node.value
-              : node.value === "" ? "" : printLine(path, node.value, options)
+              : node.value === ""
+                ? ""
+                : printLine(path, node.value, options)
         )
     );
   }
@@ -249,9 +252,13 @@ function genericPrint(path, options, print) {
             const rawPrefix = node.ordered
               ? (index === 0
                   ? node.start
-                  : isGitDiffFriendlyOrderedList ? 1 : node.start + index) +
+                  : isGitDiffFriendlyOrderedList
+                    ? 1
+                    : node.start + index) +
                 (nthSiblingIndex % 2 === 0 ? ". " : ") ")
-              : nthSiblingIndex % 2 === 0 ? "* " : "- ";
+              : nthSiblingIndex % 2 === 0
+                ? "* "
+                : "- ";
 
             // do not print trailing spaces for empty list item since it might be treated as `break` node
             // by [doc-printer](https://github.com/prettier/prettier/blob/1.10.2/src/doc/doc-printer.js#L395-L405),
@@ -282,7 +289,9 @@ function genericPrint(path, options, print) {
         "]",
         node.referenceType === "full"
           ? concat(["[", node.identifier, "]"])
-          : node.referenceType === "collapsed" ? "[]" : ""
+          : node.referenceType === "collapsed"
+            ? "[]"
+            : ""
       ]);
     case "imageReference":
       switch (node.referenceType) {
@@ -442,8 +451,12 @@ function printLine(path, value, options) {
     options.proseWrap === "always" &&
     !getAncestorNode(path, SINGLE_LINE_NODE_TYPES);
   return value !== ""
-    ? isBreakable ? line : " "
-    : isBreakable ? softline : "";
+    ? isBreakable
+      ? line
+      : " "
+    : isBreakable
+      ? softline
+      : "";
 }
 
 function printTable(path, options, print) {
@@ -707,7 +720,7 @@ function shouldRemainTheSameContent(path) {
 }
 
 function normalizeDoc(doc) {
-  return privateUtil.mapDoc(doc, currentDoc => {
+  return docUtils.mapDoc(doc, currentDoc => {
     if (!currentDoc.parts) {
       return currentDoc;
     }
@@ -752,7 +765,11 @@ function printTitle(title, options) {
   const quote =
     singleCount > doubleCount
       ? '"'
-      : doubleCount > singleCount ? "'" : options.singleQuote ? "'" : '"';
+      : doubleCount > singleCount
+        ? "'"
+        : options.singleQuote
+          ? "'"
+          : '"';
   title = title.replace(new RegExp(`(${quote})`, "g"), "\\$1");
   return ` ${quote}${title}${quote}`;
 }
