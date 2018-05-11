@@ -3301,6 +3301,11 @@ function shouldGroupFirstArg(args) {
   }
 
   const firstArg = args[0];
+  if (firstArg.type === "FunctionExpression") {
+    if (!firstArg.body.body.length && !firstArg.body.directives.length) {
+      return false;
+    }
+  }
   const secondArg = args[1];
   return (
     (!firstArg.comments || !firstArg.comments.length) &&
