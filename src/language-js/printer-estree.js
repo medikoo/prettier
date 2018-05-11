@@ -3330,6 +3330,7 @@ function printArgumentsList(path, options, print) {
   let anyArgEmptyLine = false;
   let hasEmptyLineFollowingFirstArg = false;
   const lastArgIndex = args.length - 1;
+  const separators = [];
   const printedArguments = path.map((argPath, index) => {
     const arg = argPath.getNode();
     const parts = [print(argPath)];
@@ -3342,9 +3343,9 @@ function printArgumentsList(path, options, print) {
       }
 
       anyArgEmptyLine = true;
-      parts.push(",", hardline, hardline);
+      separators.push([",", hardline, hardline]);
     } else {
-      parts.push(",", line);
+      separators.push([",", line]);
     }
 
     return concat(parts);
@@ -3364,12 +3365,7 @@ function printArgumentsList(path, options, print) {
     path.each(argPath => {
       if (shouldGroupFirst && i === 0) {
         printedExpanded = [
-          concat([
-            argPath.call(p => print(p, { expandFirstArg: true })),
-            printedArguments.length > 1 ? "," : "",
-            hasEmptyLineFollowingFirstArg ? hardline : line,
-            hasEmptyLineFollowingFirstArg ? hardline : ""
-          ])
+          argPath.call(p => print(p, { expandFirstArg: true }))
         ].concat(printedArguments.slice(1));
       }
       if (shouldGroupLast && i === args.length - 1) {
@@ -3384,14 +3380,32 @@ function printArgumentsList(path, options, print) {
 
     const maybeTrailingComma = shouldPrintComma(options, "all") ? "," : "";
 
+    const joinPrinted = (target, index = 0, end = 0) => {
+      const res = [];
+
+      for (let i = index; i < target.length; i++) {
+        if (i !== 0) {
+          if (separators[i - 1]) {
+            res.push(...separators[i - 1]);
+          }
+        }
+        if (i === target.length + end) {
+          break;
+        }
+        res.push(target[i]);
+      }
+
+      return concat(res);
+    };
+
     return concat([
       somePrintedArgumentsWillBreak ? breakParent : "",
       conditionalGroup(
         [
           concat([
             ifBreak(
-              indent(concat(["(", softline, concat(printedExpanded)])),
-              concat(["(", concat(printedExpanded)])
+              indent(concat(["(", softline, joinPrinted(printedExpanded)])),
+              concat(["(", joinPrinted(printedExpanded)])
             ),
             somePrintedArgumentsWillBreak
               ? concat([ifBreak(maybeTrailingComma), softline])
@@ -3402,12 +3416,12 @@ function printArgumentsList(path, options, print) {
             ? concat([
                 "(",
                 group(printedExpanded[0], { shouldBreak: true }),
-                concat(printedExpanded.slice(1)),
+                joinPrinted(printedExpanded, 1),
                 ")"
               ])
             : concat([
                 "(",
-                concat(printedArguments.slice(0, -1)),
+                joinPrinted(printedArguments, 0, -1),
                 group(privateUtil.getLast(printedExpanded), {
                   shouldBreak: true
                 }),
@@ -3416,7 +3430,7 @@ function printArgumentsList(path, options, print) {
           group(
             concat([
               "(",
-              indent(concat([line, concat(printedArguments)])),
+              indent(concat([line, joinPrinted(printedArguments)])),
               maybeTrailingComma,
               line,
               ")"
@@ -3430,7 +3444,14 @@ function printArgumentsList(path, options, print) {
   }
 
   const printedArgumentsConcat = concat(
-    flatten.call(printedArguments.map(concat => concat.parts))
+    flatten.call(
+      printedArguments.map(
+        (concat, index) =>
+          !separators[index - 1]
+            ? concat.parts
+            : separators[index - 1].concat(concat.parts)
+      )
+    )
   );
   printedArgumentsConcat.groupLines = true;
 
