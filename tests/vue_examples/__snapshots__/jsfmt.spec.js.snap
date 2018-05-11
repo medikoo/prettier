@@ -92,9 +92,7 @@ export default {
     index: Number,
     rootPath: String
   },
-  data() {
-    return { showDetail: false, detailIssue: Store.detail };
-  },
+  data() { return { showDetail: false, detailIssue: Store.detail }; },
   computed: {
     issueDetailVisible() {
       return (
@@ -103,12 +101,8 @@ export default {
     }
   },
   methods: {
-    mouseDown() {
-      this.showDetail = true;
-    },
-    mouseMove() {
-      this.showDetail = false;
-    },
+    mouseDown() { this.showDetail = true; },
+    mouseMove() { this.showDetail = false; },
     showIssue(e) {
       if (e.target.classList.contains("js-no-trigger")) return;
 
@@ -238,9 +232,7 @@ export default {
     index: Number,
     rootPath: String,
   },
-  data() {
-    return { showDetail: false, detailIssue: Store.detail };
-  },
+  data() { return { showDetail: false, detailIssue: Store.detail }; },
   computed: {
     issueDetailVisible() {
       return (
@@ -249,12 +241,8 @@ export default {
     },
   },
   methods: {
-    mouseDown() {
-      this.showDetail = true;
-    },
-    mouseMove() {
-      this.showDetail = false;
-    },
+    mouseDown() { this.showDetail = true; },
+    mouseMove() { this.showDetail = false; },
     showIssue(e) {
       if (e.target.classList.contains("js-no-trigger")) return;
 
