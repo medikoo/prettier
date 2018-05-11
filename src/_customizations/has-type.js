@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const isObject = require("es5-ext/object/is-object");
 const isArray = Array.isArray;
@@ -28,7 +28,6 @@ module.exports = function (data, type) {
         return;
       }
       if (!isObject(item[key])) {
-        ignoredKeys.add(key);
         return;
       }
       stack.push(item[key]);
