@@ -893,24 +893,11 @@ function printPathNoParens(path, options, print, args) {
 
       parts.push("{");
 
-      // Babel 6
-      if (hasDirectives) {
-        path.each(childPath => {
-          parts.push(indent(concat([hardline, print(childPath), semi])));
-          if (
-            sharedUtil.isNextLineEmpty(
-              options.originalText,
-              childPath.getValue(),
-              options
-            )
-          ) {
-            parts.push(hardline);
-          }
-        }, "directives");
-      }
-
       const canBeInline = (() => {
         let result;
+        if (hasDirectives && hasContent) {
+          return false;
+        }
         if (parent.type === "CatchClause") {
           result = parentParent.isInlineBlockOk;
         } else if (parent.type == "TryStatement") {
@@ -918,7 +905,8 @@ function printPathNoParens(path, options, print, args) {
         } else if (
           parent.type !== "ClassMethod" &&
           parent.type !== "FunctionDeclaration" &&
-          parent.type !== "FunctionExpression"
+          parent.type !== "FunctionExpression" &&
+          parent.type !== "ObjectMethod"
         ) {
           return false;
         } else {
@@ -932,6 +920,22 @@ function printPathNoParens(path, options, print, args) {
       const lineMode = canBeInline ? line : hardline;
 
       const contentParts = [];
+
+      // Babel 6
+      if (hasDirectives) {
+        path.each(childPath => {
+          contentParts.push(indent(concat([lineMode, print(childPath), semi])));
+          if (
+            sharedUtil.isNextLineEmpty(
+              options.originalText,
+              childPath.getValue(),
+              options
+            )
+          ) {
+            contentParts.push(lineMode);
+          }
+        }, "directives");
+      }
 
       if (hasContent) {
         contentParts.push(indent(concat([lineMode, naked])));
