@@ -89,21 +89,16 @@ setTimeout(/* blip */ function() {
   thing();
 }, 500);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-setTimeout(function () {
-  thing();
-}, 500);
+setTimeout(function () { thing(); }, 500);
 
-["a", "b", "c"].reduce(function (item, thing) {
-  return thing + " " + item;
-}, "letters:");
+["a", "b", "c"].reduce(function (item, thing) { return thing + " " + item; },
+"letters:");
 
 func(() => {
   thing();
 }, identifier);
 
-func(function () {
-  thing();
-}, this.props.timeout * 1000);
+func(function () { thing(); }, this.props.timeout * 1000);
 
 func(that => {
   thing();
@@ -129,13 +124,9 @@ compose(a => {
   return a.thing;
 }, b => b * b);
 
-somthing.reduce(function (item, thing) {
-  return (thing.blah = item);
-}, {});
+somthing.reduce(function (item, thing) { return (thing.blah = item); }, {});
 
-somthing.reduce(function (item, thing) {
-  return thing.push(item);
-}, []);
+somthing.reduce(function (item, thing) { return thing.push(item); }, []);
 
 reallyLongLongLongLongLongLongLongLongLongLongLongLongLongLongMethod(
   (f, g, h) => {
@@ -146,13 +137,7 @@ reallyLongLongLongLongLongLongLongLongLongLongLongLongLongLongMethod(
 
 // Don't do the rest of these
 
-func(
-  function () {
-    thing();
-  },
-  true,
-  false
-);
+func(function () { thing(); }, true, false);
 
 func(
   () => {
@@ -183,17 +168,10 @@ renderThing(
 
 setTimeout(
   // Something
-  function () {
-    thing();
-  },
+  function () { thing(); },
   500
 );
 
-setTimeout(
-  /* blip */ function () {
-    thing();
-  },
-  500
-);
+setTimeout(/* blip */ function () { thing(); }, 500);
 
 `;

@@ -24,9 +24,7 @@ export async function foo() {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // @flow
 
-export async function foo() {
-  return 123;
-}
+export async function foo() { return 123; }
 
 `;
 
@@ -108,9 +106,7 @@ var Foo = {
     return { bar: arg };
   },
 
-  d: function (arg: string): { bar: string } {
-    return { bar: arg };
-  },
+  d: function (arg: string): { bar: string } { return { bar: arg }; },
 
   // return type annotation may be omitted, but if so, input positions on
   // observed return type (e.g. param types in a function type) must come

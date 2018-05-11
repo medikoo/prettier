@@ -161,9 +161,7 @@ const x = \`a long string \${1 +
   2 +
   3 +
   2 +
-  (function () {
-    return 3;
-  })() +
+  (function () { return 3; })() +
   3 +
   2 +
   3 +
@@ -339,9 +337,7 @@ const x = \`a long string \${1 +
   2 +
   3 +
   2 +
-  (function () {
-    return 3;
-  })() +
+  (function () { return 3; })() +
   3 +
   2 +
   3 +

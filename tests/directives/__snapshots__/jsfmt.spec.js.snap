@@ -153,9 +153,7 @@ function f() {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "use strict";
 
-function fn() {
-  "use strict";
-}
+function fn() { "use strict"; }
 
 function f() {
   "ngInject";

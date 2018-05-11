@@ -59,9 +59,7 @@ while (node) {
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class C {
-  m() {
-    return new C();
-  }
+  m() { return new C(); }
 }
 function blah() {}
 var node: ?C = new C();

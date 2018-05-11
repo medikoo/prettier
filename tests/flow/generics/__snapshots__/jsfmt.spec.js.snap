@@ -47,12 +47,8 @@ var fn : function<string> = function() { return 'foo'; } // error, arity 0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class C<X> {
   x: X;
-  constructor(x: X) {
-    this.x = x;
-  }
-  get(): X {
-    return this.x;
-  }
+  constructor(x: X) { this.x = x; }
+  get(): X { return this.x; }
 }
 
 class D<T> {
@@ -85,9 +81,7 @@ class F<X> {}
 class G<Y> extends F<Array<Y>> {}
 class H<Z> extends G<Array<Z>> {
   x: Z;
-  foo(x: Z) {
-    this.x = x;
-  }
+  foo(x: Z) { this.x = x; }
 }
 
 var h1 = new H();
@@ -95,11 +89,7 @@ h1.foo(["..."]);
 var h2: F<Array<Array<Array<number>>>> = h1;
 
 var obj: Object<string, string> = {}; // error, arity 0
-var fn: Function<string> = function () {
-  return "foo";
-}; // error, arity 0
-var fn: function<string> = function () {
-  return "foo";
-}; // error, arity 0
+var fn: Function<string> = function () { return "foo"; }; // error, arity 0
+var fn: function<string> = function () { return "foo"; }; // error, arity 0
 
 `;

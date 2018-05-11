@@ -95,9 +95,7 @@ function takes_string(_: string) {}
 var global_x = "hello";
 
 function global_f() {}
-function global_g() {
-  global_x = 42;
-}
+function global_g() { global_x = 42; }
 
 global_f();
 takes_string(global_x); // ok
@@ -114,9 +112,7 @@ function local_func() {
   var local_x = "hello";
 
   function local_f() {}
-  function local_g() {
-    local_x = 42;
-  }
+  function local_g() { local_x = 42; }
 
   local_f();
   takes_string(local_x); // ok
@@ -132,12 +128,7 @@ function local_func() {
 
 var global_y = "hello";
 
-var global_o = {
-  f: function () {},
-  g: function () {
-    global_y = 42;
-  }
-};
+var global_o = { f: function () {}, g: function () { global_y = 42; } };
 
 global_o.f();
 takes_string(global_y); // ok
@@ -153,12 +144,7 @@ global_y = 42; // shouldn't pollute linear refinement
 function local_meth() {
   var local_y = "hello";
 
-  var local_o = {
-    f: function () {},
-    g: function () {
-      local_y = 42;
-    }
-  };
+  var local_o = { f: function () {}, g: function () { local_y = 42; } };
 
   local_o.f();
   takes_string(local_y); // ok
@@ -193,9 +179,7 @@ function example(b: bool): number {
 //
 function example(b: boolean): number {
   var x = 0;
-  function f() {
-    x = "";
-  }
+  function f() { x = ""; }
   if (b) {
     f();
   }

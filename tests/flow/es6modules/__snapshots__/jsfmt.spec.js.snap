@@ -53,22 +53,12 @@ class Base {
 class Test extends Base {
   static childProp: number;
 
-  static staticNumber1(): number {
-    return 1;
-  }
-  static staticNumber2(): number {
-    return 2;
-  }
-  static staticNumber3(): number {
-    return 3;
-  }
+  static staticNumber1(): number { return 1; }
+  static staticNumber2(): number { return 2; }
+  static staticNumber3(): number { return 3; }
 
-  instNumber1(): number {
-    return 1;
-  }
-  instNumber2(): number {
-    return 2;
-  }
+  instNumber1(): number { return 1; }
+  instNumber2(): number { return 2; }
 }
 
 module.exports = Test;
@@ -162,9 +152,7 @@ export default class { givesANum(): number { return 42; }};
  */
 
 export default class {
-  givesANum(): number {
-    return 42;
-  }
+  givesANum(): number { return 42; }
 }
 
 `;
@@ -183,9 +171,7 @@ export default class { givesANum(): number { return 42; }};
  */
 
 export default class {
-  givesANum(): number {
-    return 42;
-  }
+  givesANum(): number { return 42; }
 }
 
 `;
@@ -203,9 +189,7 @@ export default function():number { return 42; }
  * @flow
  */
 
-export default function (): number {
-  return 42;
-}
+export default function (): number { return 42; }
 
 `;
 
@@ -222,9 +206,7 @@ export default function():number { return 42; }
  * @flow
  */
 
-export default function (): number {
-  return 42;
-}
+export default function (): number { return 42; }
 
 `;
 
@@ -247,9 +229,7 @@ new Foo();
  */
 
 export default class Foo {
-  givesANum(): number {
-    return 42;
-  }
+  givesANum(): number { return 42; }
 }
 
 // Regression test for https://github.com/facebook/flow/issues/511
@@ -273,9 +253,7 @@ export default class Foo { givesANum(): number { return 42; }};
  */
 
 export default class Foo {
-  givesANum(): number {
-    return 42;
-  }
+  givesANum(): number { return 42; }
 }
 
 `;
@@ -293,9 +271,7 @@ export default function foo():number { return 42; }
  * @flow
  */
 
-export default function foo(): number {
-  return 42;
-}
+export default function foo(): number { return 42; }
 
 `;
 
@@ -312,9 +288,7 @@ export default function foo():number { return 42; }
  * @flow
  */
 
-export default function foo(): number {
-  return 42;
-}
+export default function foo(): number { return 42; }
 
 `;
 
@@ -532,13 +506,9 @@ export { specifierNumber2 as specifierNumber2Renamed };
 export { specifierNumber3 };
 export { groupedSpecifierNumber1, groupedSpecifierNumber2 };
 
-export function givesANumber(): number {
-  return 42;
-}
+export function givesANumber(): number { return 42; }
 export class NumberGenerator {
-  givesANumber(): number {
-    return 42;
-  }
+  givesANumber(): number { return 42; }
 }
 
 export var varDeclNumber1 = 1, varDeclNumber2 = 2;
@@ -583,13 +553,9 @@ export { specifierNumber4 };
 export { specifierNumber5 as specifierNumber5Renamed };
 export { groupedSpecifierNumber3, groupedSpecifierNumber4 };
 
-export function givesANumber2(): number {
-  return 42;
-}
+export function givesANumber2(): number { return 42; }
 export class NumberGenerator2 {
-  givesANumber(): number {
-    return 42;
-  }
+  givesANumber(): number { return 42; }
 }
 
 export var varDeclNumber3 = 1, varDeclNumber4 = 2;

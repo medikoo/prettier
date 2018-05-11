@@ -400,9 +400,7 @@ class X {}
 class Y {}
 
 // Any property can be set on a dict with string keys.
-function set_prop_to_string_key(o: { [k: string]: any }) {
-  o.prop = "ok";
-}
+function set_prop_to_string_key(o: { [k: string]: any }) { o.prop = "ok"; }
 
 // **UNSOUND**
 // This is allowed by design. We don't track get/set and we don't wrap the
@@ -725,16 +723,12 @@ var c: { [key: string]: ?string } = b; // 2 errors, since c['x'] = null updates 
 // 2 errors (number !~> string, string !~> number)
 function foo0(
   x: Array<{ [key: string]: number }>
-): Array<{ [key: string]: string }> {
-  return x;
-}
+): Array<{ [key: string]: string }> { return x; }
 
 // error, fooBar:string !~> number (x's dictionary)
 function foo1(
   x: Array<{ [key: string]: number }>
-): Array<{ [key: string]: number, fooBar: string }> {
-  return x;
-}
+): Array<{ [key: string]: number, fooBar: string }> { return x; }
 
 function foo2(
   x: Array<{ [key: string]: mixed }>
@@ -744,16 +738,12 @@ function foo2(
 }
 
 // OK, since we assume dictionaries have every key
-function foo3(x: { [key: string]: number }): { foo: number } {
-  return x;
-}
+function foo3(x: { [key: string]: number }): { foo: number } { return x; }
 
 // error: foo can't exist in x
 function foo4(x: {
   [key: string]: number
-}): { [key: string]: number, foo: string } {
-  return x;
-}
+}): { [key: string]: number, foo: string } { return x; }
 
 // error, some prop in x could be incompatible (covariance)
 function foo5(x: Array<{ [key: string]: number }>): Array<{ foo: number }> {
@@ -765,9 +755,7 @@ function foo6(x: Array<{ foo: number }>): Array<{ [key: string]: number }> {
   return x;
 }
 
-function foo7(x: { bar: string, [key: string]: number }) {
-  (x.bar: string);
-}
+function foo7(x: { bar: string, [key: string]: number }) { (x.bar: string); }
 
 function foo8(x: { [key: string]: number }) {
   (x.foo: string); // error

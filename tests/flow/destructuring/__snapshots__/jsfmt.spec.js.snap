@@ -201,9 +201,7 @@ function obj_rest_err({ ...o } = 0) {} // error: expected object instead of numb
 function arr_elem_err([x] = null) {} // error: element 0 cannot be accessed on null
 function arr_rest_err([...a] = null) {} // error: expected array instead of null
 
-function gen<T>(x: T, { p = x }: { p: T }): T {
-  return p;
-}
+function gen<T>(x: T, { p = x }: { p: T }): T { return p; }
 
 // Default values in destructuring unwrap optional types
 obj_prop_fun(({}: { p?: { q?: null } })); // ok
@@ -315,9 +313,7 @@ foo({ p: 0, z: [1, 2] });
 
 [a, , b, ...c] = [0, 1, true, 3];
 
-function bar({ x, ...z }) {
-  var o: { x: string, y: number } = z;
-}
+function bar({ x, ...z }) { var o: { x: string, y: number } = z; }
 bar({ x: "", y: 0 });
 
 var spread = { y: "" };
@@ -548,8 +544,6 @@ function bar() {
 
 var { x } = { x: { foo: "foo" } };
 
-function bar() {
-  x.bar;
-}
+function bar() { x.bar; }
 
 `;

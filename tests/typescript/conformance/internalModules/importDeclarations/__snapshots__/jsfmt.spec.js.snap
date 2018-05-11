@@ -134,9 +134,7 @@ var c: { name: string };
 var c: C.a.B.Id;
 
 namespace X {
-  export function Y() {
-    return 42;
-  }
+  export function Y() { return 42; }
 
   export namespace Y {
     export class Point {
@@ -262,9 +260,7 @@ var p: clolias.Point;
 var p: clodule.Point;
 var p: { x: number; y: number };
 
-function fundule() {
-  return { x: 0, y: 0 };
-}
+function fundule() { return { x: 0, y: 0 }; }
 
 namespace fundule {
   export interface Point {

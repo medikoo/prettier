@@ -6,9 +6,7 @@ function foo(x) { return [x, x > 0, "number " + x]; }
 var [n, b, s] = foo(42);
 n * s.length;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function foo(x) {
-  return [x, x > 0, "number " + x];
-}
+function foo(x) { return [x, x > 0, "number " + x]; }
 
 var [n, b, s] = foo(42);
 n * s.length;
@@ -25,9 +23,7 @@ module.exports = C;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class C {
   x: number;
-  constructor(x: number) {
-    this.x = x;
-  }
+  constructor(x: number) { this.x = x; }
 }
 
 module.exports = C;
@@ -103,22 +99,14 @@ var o2 = { y: 0, foo: foo, bar: bar };
 o.bar();
 var y: number = o2.bar();
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function C() {
-  this.x = 0;
-}
-C.prototype.foo = function () {
-  return this.x;
-};
+function C() { this.x = 0; }
+C.prototype.foo = function () { return this.x; };
 
 var c = new C();
 var x: string = c.foo();
 
-function foo() {
-  return this.y;
-}
-function bar() {
-  return this.foo();
-}
+function foo() { return this.y; }
+function bar() { return this.foo(); }
 var o = { y: "", foo: foo, bar: bar };
 var o2 = { y: 0, foo: foo, bar: bar };
 

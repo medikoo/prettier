@@ -3,9 +3,7 @@
 exports[`argument-name-clash.js 1`] = `
 function f(a,a){return a}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f(a, a) {
-  return a;
-}
+function f(a, a) { return a; }
 
 `;
 
@@ -24,9 +22,7 @@ var package = require("../package");
 /**
  * My amazing comment
  */
-function myFunction() {
-  return "StringGainz";
-}
+function myFunction() { return "StringGainz"; }
 
 `;
 

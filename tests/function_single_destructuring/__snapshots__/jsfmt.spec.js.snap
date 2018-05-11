@@ -33,29 +33,21 @@ promise.then(([firstResult, secondResult, thirdResult, fourthResult, fifthResult
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function excludeFirstFiveResults([
   first, second, third, fourth, fifth, ...rest
-]) {
-  return rest;
-}
+]) { return rest; }
 
 function excludeFirstFiveResults([
   first, second, third, fourth, fifth, ...rest
-] = DEFAULT_FIVE_RESULTS) {
-  return rest;
-}
+] = DEFAULT_FIVE_RESULTS) { return rest; }
 
 function excludeFirstFiveResults(
   [
     firstResult, secondResult, thirdResult, fourthResult, fifthResult, ...rest
   ] = [1, 2, 3, 4, 5]
-) {
-  return rest;
-}
+) { return rest; }
 
 function excludeFirstFiveResults([
   first, second, third, fourth, fifth, ...rest
-]: Result[]) {
-  return rest;
-}
+]: Result[]) { return rest; }
 
 const excludeFirstFiveResults = ([
   first, second, third, fourth, fifth, ...rest
@@ -66,9 +58,7 @@ const excludeFirstFiveResults = ([
 class A {
   excludeFirstFiveResults([
     first, second, third, fourth, fifth, ...restOfResults
-  ]) {
-    return restOfResults;
-  }
+  ]) { return restOfResults; }
 }
 
 promise.then(
@@ -200,9 +190,7 @@ function StatelessFunctionalComponent({
   searchFilters,
   title,
   items
-}) {
-  return <div />;
-}
+}) { return <div />; }
 
 function StatelessFunctionalComponent({
   isActive = true,
@@ -213,9 +201,7 @@ function StatelessFunctionalComponent({
   searchFilters = null,
   title = "",
   items = []
-} = {}) {
-  return <div />;
-}
+} = {}) { return <div />; }
 
 function StatelessFunctionalComponent(
   {
@@ -228,9 +214,7 @@ function StatelessFunctionalComponent(
     title = "",
     items = []
   } = { isActive: true }
-) {
-  return <div />;
-}
+) { return <div />; }
 
 function StatelessFunctionalComponent({
   isActive,
@@ -241,9 +225,7 @@ function StatelessFunctionalComponent({
   searchFilters,
   title,
   items
-}: MyType | null | void) {
-  return <div />;
-}
+}: MyType | null | void) { return <div />; }
 
 const StatelessFunctionalComponent = ({
   isActive,
@@ -277,9 +259,7 @@ class C {
     searchFilters,
     title,
     items
-  }) {
-    return <div />;
-  }
+  }) { return <div />; }
 }
 
 type T = ({

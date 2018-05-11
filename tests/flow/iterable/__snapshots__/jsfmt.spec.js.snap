@@ -61,9 +61,7 @@ function miss_the_cache(x: Array<string | number>): Iterable<string> { return x;
  * Hashtbl.hash_param
  */
 
-function fill_the_cache(x: Array<any | any>): Iterable<string> {
-  return x;
-}
+function fill_the_cache(x: Array<any | any>): Iterable<string> { return x; }
 
 // Error: number ~> string
 function miss_the_cache(x: Array<string | number>): Iterable<string> {
@@ -134,9 +132,7 @@ function makeIterator(coin_flip: () => boolean ): Iterator<string> {
 
 function makeIterator(coin_flip: () => boolean): Iterator<string> {
   return {
-    "@@iterator"() {
-      return makeIterator(coin_flip);
-    },
+    "@@iterator"() { return makeIterator(coin_flip); },
     next(): IteratorResult<string, void> {
       var done = coin_flip();
       if (!done) {
@@ -150,9 +146,7 @@ function makeIterator(coin_flip: () => boolean): Iterator<string> {
 
 function makeIterator(coin_flip: () => boolean): Iterator<string> {
   return {
-    "@@iterator"() {
-      return makeIterator(coin_flip);
-    },
+    "@@iterator"() { return makeIterator(coin_flip); },
     next(): IteratorResult<string, void> {
       var done = coin_flip();
       if (done) {
@@ -189,16 +183,10 @@ function mapTest4(map: Map<number, string>): Iterable<string> {
 function mapTest1(map: Map<string, number>): Iterable<[string, number]> {
   return map;
 }
-function mapTest2<K, V>(map: Map<K, V>): Iterable<[K, V]> {
-  return map;
-}
-function mapTest3(map: Map<string, number>): Iterable<*> {
-  return map;
-}
+function mapTest2<K, V>(map: Map<K, V>): Iterable<[K, V]> { return map; }
+function mapTest3(map: Map<string, number>): Iterable<*> { return map; }
 // Error - Map is an Iterable<[K, V]>
-function mapTest4(map: Map<number, string>): Iterable<string> {
-  return map;
-}
+function mapTest4(map: Map<number, string>): Iterable<string> { return map; }
 
 `;
 
@@ -221,19 +209,11 @@ function setTest4(set: Set<string>): Iterable<number> {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /* @flow */
 
-function setTest1(set: Set<string>): Iterable<string> {
-  return set;
-}
-function setTest2<T>(set: Set<T>): Iterable<T> {
-  return set;
-}
-function setTest3(set: Set<string>): Iterable<*> {
-  return set;
-}
+function setTest1(set: Set<string>): Iterable<string> { return set; }
+function setTest2<T>(set: Set<T>): Iterable<T> { return set; }
+function setTest3(set: Set<string>): Iterable<*> { return set; }
 // Error string ~> number
-function setTest4(set: Set<string>): Iterable<number> {
-  return set;
-}
+function setTest4(set: Set<string>): Iterable<number> { return set; }
 
 `;
 

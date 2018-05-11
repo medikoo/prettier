@@ -225,25 +225,15 @@ const B = React.createClass({
 });
 
 const C = React.createClass({
-  getInitialState(): Object {
-    return { foo: 0 };
-  },
+  getInitialState(): Object { return { foo: 0 }; },
   m() {
     this.state.foo; // OK: state is unknown
   }
 });
 
 const D = React.createClass({
-  mixins: [
-    {
-      getInitialState(): Object {
-        return { foo: 0 };
-      }
-    }
-  ],
-  getInitialState() {
-    return { bar: 0 };
-  },
+  mixins: [{ getInitialState(): Object { return { foo: 0 }; } }],
+  getInitialState() { return { bar: 0 }; },
   m() {
     this.state.foo; // OK: state is unknown (due to unknown mixin)
   }
@@ -261,9 +251,7 @@ const E = React.createClass({
 });
 
 const F = React.createClass({
-  getInitialState(): { [string]: mixed } {
-    return { foo: 0 };
-  },
+  getInitialState(): { [string]: mixed } { return { foo: 0 }; },
   m() {
     this.state.foo;
     this.state.bar;
@@ -297,18 +285,8 @@ const I = React.createClass({
 });
 
 const J = React.createClass({
-  mixins: [
-    {
-      getInitialState() {
-        return this.constructor.calculateState();
-      }
-    }
-  ],
-  statics: {
-    calculateState() {
-      return { foo: 0 };
-    }
-  },
+  mixins: [{ getInitialState() { return this.constructor.calculateState(); } }],
+  statics: { calculateState() { return { foo: 0 }; } },
   m() {
     (this.state.foo: empty); // number ~> empty
   }
@@ -331,9 +309,7 @@ const K = React.createClass({
 
 const L = React.createClass({
   propTypes: { foo: React.PropTypes.string.isRequired },
-  getInitialState() {
-    return { bar: 0 };
-  },
+  getInitialState() { return { bar: 0 }; },
   componentWillMount() {
     (this.props.foo: empty); // string ~> empty
     return 0; // number ~> void
@@ -472,9 +448,7 @@ import React from "react";
 
 // initial state = None
 React.createClass({
-  f() {
-    this.setState({ q: 0 });
-  },
+  f() { this.setState({ q: 0 }); },
   g() {
     (this.state.q: empty); // number ~> empty
   }
@@ -482,12 +456,8 @@ React.createClass({
 
 // initial state = Some (exact & sealed) [lit]
 React.createClass({
-  getInitialState() {
-    return { p: 0 };
-  },
-  f() {
-    this.setState({ q: 0 });
-  },
+  getInitialState() { return { p: 0 }; },
+  f() { this.setState({ q: 0 }); },
   g() {
     (this.state.q: empty); // number ~> empty
   }
@@ -495,12 +465,8 @@ React.createClass({
 
 // initial state = Some (exact & sealed) [annot]
 React.createClass({
-  getInitialState(): {| p: number |} {
-    return { p: 0 };
-  },
-  f() {
-    this.setState({ q: 0 });
-  },
+  getInitialState(): {| p: number |} { return { p: 0 }; },
+  f() { this.setState({ q: 0 }); },
   g() {
     (this.state.q: empty); // number ~> empty
   }
@@ -508,9 +474,7 @@ React.createClass({
 
 // initial state = Some (inexact & sealed) [annot]
 React.createClass({
-  getInitialState(): { p: number } {
-    return { p: 0 };
-  },
+  getInitialState(): { p: number } { return { p: 0 }; },
   f() {
     this.setState({ q: 0 }); // property \`q\` not found
   },
@@ -521,19 +485,9 @@ React.createClass({
 
 // mixins = (exact & sealed) + (exact & sealed)
 React.createClass({
-  mixins: [
-    {
-      getInitialState() {
-        return { foo: 0 };
-      }
-    }
-  ],
-  getInitialState() {
-    return { bar: 0 };
-  },
-  f() {
-    this.setState({ baz: 0 });
-  },
+  mixins: [{ getInitialState() { return { foo: 0 }; } }],
+  getInitialState() { return { bar: 0 }; },
+  f() { this.setState({ baz: 0 }); },
   g() {
     (this.state.baz: empty); // number ~> empty
   }
@@ -541,16 +495,8 @@ React.createClass({
 
 // mixins = (exact & sealed) + (inexact & sealed)
 React.createClass({
-  mixins: [
-    {
-      getInitialState(): { foo: number } {
-        return { foo: 0 };
-      }
-    }
-  ],
-  getInitialState() {
-    return { bar: 0 };
-  },
+  mixins: [{ getInitialState(): { foo: number } { return { foo: 0 }; } }],
+  getInitialState() { return { bar: 0 }; },
   f() {
     this.setState({ baz: 0 }); // property \`baz\`  not found
   },
@@ -720,9 +666,7 @@ import React from "react";
 
 class Bar extends React.Component {
   props: { test: number };
-  render() {
-    return <div>{this.props.test}</div>;
-  }
+  render() { return <div>{this.props.test}</div>; }
 }
 
 class Foo extends React.Component {
@@ -1706,13 +1650,9 @@ React.createClass({
       .isRequired
   },
 
-  f() {
-    (this.props.foo.baz: string);
-  },
+  f() { (this.props.foo.baz: string); },
 
-  g() {
-    this.props.foo.baz = 0;
-  }
+  g() { this.props.foo.baz = 0; }
 });
 
 React.createClass({
@@ -1823,13 +1763,9 @@ import React from "react";
 React.createClass({
   propTypes: { foo: React.PropTypes.string.isRequired },
 
-  f() {
-    (this.props.baz: string);
-  },
+  f() { (this.props.baz: string); },
 
-  g() {
-    this.props.baz = 0;
-  }
+  g() { this.props.baz = 0; }
 });
 
 `;

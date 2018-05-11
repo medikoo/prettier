@@ -42,12 +42,8 @@ function* g() {
 (a || b)![tokenKey];
 (void 0)!;
 
-async function f() {
-  return (await foo())!;
-}
+async function f() { return (await foo())!; }
 
-function* g() {
-  return (yield* foo())!;
-}
+function* g() { return (yield* foo())!; }
 
 `;

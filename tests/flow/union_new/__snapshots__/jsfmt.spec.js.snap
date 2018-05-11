@@ -70,12 +70,8 @@ type K = B | C;
 type I = { which(): number };
 
 export default class A {
-  static foo(p: K): boolean {
-    return false;
-  }
-  static bar(p: I & K): boolean {
-    return this.foo(p);
-  }
+  static foo(p: K): boolean { return false; }
+  static bar(p: I & K): boolean { return this.foo(p); }
 }
 
 `;
@@ -97,14 +93,10 @@ export class C extends A {
 import A from "./issue-824";
 
 export class B extends A {
-  which(): number {
-    return 1;
-  }
+  which(): number { return 1; }
 }
 export class C extends A {
-  which(): number {
-    return 2;
-  }
+  which(): number { return 2; }
 }
 
 `;
@@ -158,9 +150,7 @@ import type { Foobar } from "./issue-1455-helper";
 
 function create(content: ?Foobar | String | Array<String>) {}
 
-function node(content: ?Foobar | String | Array<String>) {
-  create(content);
-}
+function node(content: ?Foobar | String | Array<String>) { create(content); }
 
 `;
 
@@ -207,9 +197,7 @@ type B = Common & { type: "B", foo: Array<number> };
 
 type MyType = A | B;
 
-function print(x: number) {
-  console.log(x);
-}
+function print(x: number) { console.log(x); }
 
 function printAll(val: MyType) {
   print(val.foo); // <--- foo could be an array
@@ -254,9 +242,7 @@ type B = { type: "B", foo: Array<number> } & Common;
 
 type MyType = A | B;
 
-function print(x: number) {
-  console.log(x);
-}
+function print(x: number) { console.log(x); }
 
 function printAll(val: MyType) {
   if (val.type === "A") {
@@ -451,9 +437,7 @@ type A6 = B6[];
 // example with object types
 //////////////////////////////
 
-function obj(a: A1 | A2) {
-  return a.x;
-}
+function obj(a: A1 | A2) { return a.x; }
 
 const obj_result = obj({ x: "" }); // currently an error! (expect it to be OK)
 
@@ -475,9 +459,7 @@ type B2 = string;
 // similar example with function types
 ///////////////////////////////////////
 
-function fun(a: A3 | A4) {
-  return a();
-}
+function fun(a: A3 | A4) { return a(); }
 
 const fun_result = fun(() => "");
 
@@ -779,9 +761,7 @@ function fun(a: ((x: number) => void) | ((x: string) => void)) {}
 const a1 = (x => {}: A1);
 fun(a1);
 
-function fun_call(x: string) {
-  a1(x);
-}
+function fun_call(x: string) { a1(x); }
 
 type A1 = (x: B1) => void;
 
@@ -796,12 +776,8 @@ function arr(a: number[] | string[]) {}
 const a2 = ([]: A2);
 arr(a2);
 
-function arr_set(x: string, i: number) {
-  a2[i] = x;
-}
-function arr_get(i: number): string {
-  return a2[i];
-}
+function arr_set(x: string, i: number) { a2[i] = x; }
+function arr_get(i: number): string { return a2[i]; }
 
 type A2 = B2[];
 
@@ -850,14 +826,10 @@ function arr_set(x: string, i: number) { a2[i] = x; }
 
 function fun(a: ((x: number) => number) | ((x: string) => string)) {}
 
-function a1(x) {
-  return x;
-}
+function a1(x) { return x; }
 fun(a1);
 
-function fun_call(x: string): string {
-  return a1(x);
-}
+function fun_call(x: string): string { return a1(x); }
 
 /////////////////////////////
 // example with array types
@@ -868,9 +840,7 @@ function arr(a: number[] | string[]) {}
 var a2 = [];
 arr(a2);
 
-function arr_set(x: string, i: number) {
-  a2[i] = x;
-}
+function arr_set(x: string, i: number) { a2[i] = x; }
 
 `;
 
@@ -911,9 +881,7 @@ class C<X> { }
 // example with generic class inheritance
 //////////////////////////////////////////
 
-function inst(a: E<B4>): C<number> | C<string> {
-  return a;
-}
+function inst(a: E<B4>): C<number> | C<string> { return a; }
 
 const mk_C = () => C;
 const mk_D = () => D;
@@ -1073,9 +1041,7 @@ foo((x): number => square(x))
 // interference
 ////////////////
 
-function square(x? = 0) {
-  return x * x;
-}
+function square(x? = 0) { return x * x; }
 
 function foo(f: ((_: ?number) => ?number) | (() => void)) {}
 foo((x): number => square(x));
@@ -1158,9 +1124,7 @@ check_poly_inst(new P);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // @noflow
 
-function id<X>(x: X): X {
-  return x;
-}
+function id<X>(x: X): X { return x; }
 
 /////////////////////////
 // primitive annotations
@@ -1292,9 +1256,7 @@ type F<X> = { f: F<X>, x: X };
 type G = { x: number };
 type H = { x: string };
 
-function rec(x: F<string>): G | H {
-  return x;
-}
+function rec(x: F<string>): G | H { return x; }
 
 `;
 
@@ -1344,9 +1306,7 @@ declare class C<X> { get(): X }
 
 function union(o: { x: string } | { x: number }) {}
 
-function foo(c: C<number>) {
-  union({ x: c.get() });
-}
+function foo(c: C<number>) { union({ x: c.get() }); }
 
 `;
 
@@ -1439,9 +1399,7 @@ function bar(x: Bar) {}
 bar(() => qux());
 
 var x = false;
-function qux() {
-  return x;
-}
+function qux() { return x; }
 x = "";
 
 `;
@@ -1485,9 +1443,7 @@ new C().m(f());
 
 declare class C { m(x: number): void; m(x: string): void }
 
-function f() {
-  return 0;
-}
+function f() { return 0; }
 
 new C().m(f());
 
@@ -1511,9 +1467,7 @@ declare class D {
 
 // constructor overloads
 
-function m<X>() {
-  return new D();
-}
+function m<X>() { return new D(); }
 
 declare class D { constructor(_: void): void; constructor(_: null): void }
 
@@ -1584,13 +1538,9 @@ type T = { type: "FOO", x: number } | { type: "BAR", x: string };
 
 ({ type: bar(), x: (str(): string) }: T);
 
-function bar() {
-  return "BAR";
-}
+function bar() { return "BAR"; }
 
-function str() {
-  return "hello";
-}
+function str() { return "hello"; }
 
 `;
 

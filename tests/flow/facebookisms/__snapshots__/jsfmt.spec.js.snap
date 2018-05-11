@@ -212,9 +212,7 @@ let tests = [
   },
 
   // too few args
-  function (mergeInto: $Facebookism$MergeInto) {
-    mergeInto();
-  },
+  function (mergeInto: $Facebookism$MergeInto) { mergeInto(); },
 
   // passed as a function
   function (mergeInto: $Facebookism$MergeInto) {

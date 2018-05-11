@@ -51,9 +51,7 @@ if (m.bind(this)(x)) { }
 //    (including \`havoc\`) should be retained.
 
 class C {
-  m() {
-    return true;
-  }
+  m() { return true; }
   a: 1;
 
   n() {
@@ -209,9 +207,7 @@ if ((x = r(s) || 1)) {
 
 declare var dollars: mixed;
 
-function foo(x: mixed) {
-  return 1;
-}
+function foo(x: mixed) { return 1; }
 foo(dollars) || 0;
 
 Number(dollars) || 0;

@@ -12,14 +12,10 @@ class X {
     }
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-async function* a() {
-  yield* b();
-}
+async function* a() { yield* b(); }
 
 class X {
-  async *b() {
-    yield* a();
-  }
+  async *b() { yield* a(); }
 }
 
 `;
@@ -42,18 +38,10 @@ async () => {
   obj[await x];
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-async function f() {
-  (await f()).length;
-}
-async function g() {
-  invariant((await driver.navigator.getUrl()).substr(-7));
-}
-function* f() {
-  !(yield a);
-}
-async function f() {
-  a = !(await f());
-}
+async function f() { (await f()).length; }
+async function g() { invariant((await driver.navigator.getUrl()).substr(-7)); }
+function* f() { !(yield a); }
+async function f() { a = !(await f()); }
 async () => {
   new A(await x);
   obj[await x];
@@ -97,9 +85,7 @@ async function *f(){ await (yield x); }
 
 async function f(){ await (() => {}); }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-async function* f() {
-  await (yield x);
-}
+async function* f() { await (yield x); }
 
 async function f() {
   await (() => {});

@@ -48,9 +48,7 @@ require([
   Triangle,
   Circle,
   Star
-) {
-  console.log("some code");
-});
+) { console.log("some code"); });
 
 define([
   "jquery", "common/global.context", "common/log.event", "some_project/square",
@@ -65,8 +63,6 @@ define([
   Triangle,
   Circle,
   Star
-) {
-  console.log("some code");
-});
+) { console.log("some code"); });
 
 `;

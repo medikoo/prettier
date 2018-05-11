@@ -449,23 +449,15 @@ function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB
   // Comment
-) {
-  a;
-}
+) { a; }
 function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB
   // Comment
-) {
-  a;
-}
+) { a; }
 
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
+this.getAttribute(function (s) /*string*/ { console.log(); });
+this.getAttribute(function (s) /*string*/ { console.log(); });
 
 `;
 
@@ -540,23 +532,15 @@ function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB,
   // Comment
-) {
-  a;
-}
+) { a; }
 function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB,
   // Comment
-) {
-  a;
-}
+) { a; }
 
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
+this.getAttribute(function (s) /*string*/ { console.log(); });
+this.getAttribute(function (s) /*string*/ { console.log(); });
 
 `;
 
@@ -631,22 +615,14 @@ function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB
   // Comment
-) {
-  a;
-}
+) { a; }
 function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB
   // Comment
-) {
-  a;
-}
+) { a; }
 
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
+this.getAttribute(function (s) /*string*/ { console.log(); });
+this.getAttribute(function (s) /*string*/ { console.log(); });
 
 `;

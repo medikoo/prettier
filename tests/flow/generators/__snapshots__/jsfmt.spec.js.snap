@@ -185,45 +185,31 @@ class GeneratorExamples {
   }
 
   *delegate_yield_generator() {
-    function* inner() {
-      yield "";
-    }
+    function* inner() { yield ""; }
 
     yield* inner();
   }
 
   *delegate_return_generator() {
-    function* inner() {
-      return "";
-    }
+    function* inner() { return ""; }
 
     var x: number = yield* inner(); // error: string ~> number
   }
 
   // only generators can make use of a value passed to next
-  *delegate_next_iterable(xs: Array<number>) {
-    yield* xs;
-  }
+  *delegate_next_iterable(xs: Array<number>) { yield* xs; }
 
-  *delegate_yield_iterable(xs: Array<number>) {
-    yield* xs;
-  }
+  *delegate_yield_iterable(xs: Array<number>) { yield* xs; }
 
   *delegate_return_iterable(xs: Array<number>) {
     var x: void = yield* xs; // ok: Iterator has no yield value
   }
 
-  *generic_yield<Y>(y: Y): Generator<Y, void, void> {
-    yield y;
-  }
+  *generic_yield<Y>(y: Y): Generator<Y, void, void> { yield y; }
 
-  *generic_return<R>(r: R): Generator<void, R, void> {
-    return r;
-  }
+  *generic_return<R>(r: R): Generator<void, R, void> { return r; }
 
-  *generic_next<N>(): Generator<void, N, N> {
-    return yield undefined;
-  }
+  *generic_next<N>(): Generator<void, N, N> { return yield undefined; }
 }
 
 var examples = new GeneratorExamples();
@@ -516,9 +502,7 @@ function* delegate_next_generator() {
 delegate_next_generator().next("");
 
 function* delegate_yield_generator() {
-  function* inner() {
-    yield "";
-  }
+  function* inner() { yield ""; }
 
   yield* inner();
 }
@@ -527,22 +511,16 @@ for (var x of delegate_yield_generator()) {
 }
 
 function* delegate_return_generator() {
-  function* inner() {
-    return "";
-  }
+  function* inner() { return ""; }
 
   var x: number = yield* inner(); // error: string ~> number
 }
 
 // only generators can make use of a value passed to next
-function* delegate_next_iterable(xs: Array<number>) {
-  yield* xs;
-}
+function* delegate_next_iterable(xs: Array<number>) { yield* xs; }
 delegate_next_iterable([]).next(""); // error: Iterator has no next value
 
-function* delegate_yield_iterable(xs: Array<number>) {
-  yield* xs;
-}
+function* delegate_yield_iterable(xs: Array<number>) { yield* xs; }
 for (var x of delegate_yield_iterable([])) {
   (x: string); // error: number ~> string
 }
@@ -551,17 +529,11 @@ function* delegate_return_iterable(xs: Array<number>) {
   var x: void = yield* xs; // ok: Iterator has no yield value
 }
 
-function* generic_yield<Y>(y: Y): Generator<Y, void, void> {
-  yield y;
-}
+function* generic_yield<Y>(y: Y): Generator<Y, void, void> { yield y; }
 
-function* generic_return<R>(r: R): Generator<void, R, void> {
-  return r;
-}
+function* generic_return<R>(r: R): Generator<void, R, void> { return r; }
 
-function* generic_next<N>(): Generator<void, N, N> {
-  return yield undefined;
-}
+function* generic_next<N>(): Generator<void, N, N> { return yield undefined; }
 
 function* multiple_return(b) {
   if (b) {
@@ -677,11 +649,8 @@ function test1(gen: Generator<void, string, void>) {
 // However, a generator can "refuse" the return by catching an exception and
 // yielding or returning internally.
 function* refuse_return() {
-  try {
-    yield 1;
-  } finally {
-    return 0;
-  }
+  try { yield 1; }
+  finally { return 0; }
 }
 var refuse_return_gen = refuse_return();
 var refuse_return_result = refuse_return_gen.return("string");
@@ -719,11 +688,8 @@ if (yield_return_value !== undefined) {
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function* catch_return() {
-  try {
-    yield 0;
-  } catch (e) {
-    return e;
-  }
+  try { yield 0; }
+  catch (e) { return e; }
 }
 
 var catch_return_value = catch_return().throw("").value;

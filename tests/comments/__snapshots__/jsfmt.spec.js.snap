@@ -1133,9 +1133,7 @@ class X {
 function f(
   a: number
   // some comment here
-): number {
-  return a + 1;
-}
+): number { return a + 1; }
 
 var x = {
   getSectionMode(
@@ -1488,9 +1486,7 @@ function taggedTemplate() {
   );
 }
 
-function inlineComment() {
-  return /* hi */ 42 || 42;
-}
+function inlineComment() { return /* hi */ 42 || 42; }
 
 `;
 
@@ -1638,10 +1634,12 @@ finally // comment 6
 // comment 1
 try {
   // comment 2
-} catch (e) {
+}
+catch (e) {
   // comment 3
   // comment 4
-} finally { // comment 6
+} // comment 6
+finally {
   // comment 5
   // comment 7
 }

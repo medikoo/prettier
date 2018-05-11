@@ -32,13 +32,9 @@ let [x, y] = [1, 2];
  * returns EmptyT.
  */
 export const X = {
-  returnsATuple: function (): [number, number] {
-    return [1, 2];
-  },
+  returnsATuple: function (): [number, number] { return [1, 2]; },
 
-  test: function () {
-    let [a, b] = this.returnsATuple();
-  }
+  test: function () { let [a, b] = this.returnsATuple(); }
 };
 
 `;
@@ -78,17 +74,9 @@ const a = { bar(): void {} };
 
 const b = { bar: function (): void {} };
 
-const c = {
-  m<T>(x: T): T {
-    return x;
-  }
-};
+const c = { m<T>(x: T): T { return x; } };
 
-const d = {
-  m: function<T> (x: T): T {
-    return x;
-  }
-};
+const d = { m: function<T> (x: T): T { return x; } };
 
 `;
 
@@ -126,9 +114,7 @@ class C<X> {}
 var cn: C<number> = new C();
 cn;
 
-function foo() {
-  return C;
-}
+function foo() { return C; }
 var D = foo();
 var dn: D<number> = new C();
 dn;
@@ -206,19 +192,13 @@ function qux(x?) {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // @flow
 
-function foo(x?: string) {
-  return x;
-}
+function foo(x?: string) { return x; }
 
 foo();
 
-function bar(obj: { x?: string }) {
-  return obj.x;
-}
+function bar(obj: { x?: string }) { return obj.x; }
 
-function qux(x?) {
-  return x;
-}
+function qux(x?) { return x; }
 
 `;
 
@@ -302,8 +282,7 @@ try {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // @flow
 
-try {
-  throw "foo";
-} catch (e) {}
+try { throw "foo"; }
+catch (e) {}
 
 `;

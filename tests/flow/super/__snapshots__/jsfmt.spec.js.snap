@@ -217,9 +217,7 @@ class H extends A {
 }
 
 class I_ {
-  constructor(leaked_this) {
-    leaked_this.foo();
-  }
+  constructor(leaked_this) { leaked_this.foo(); }
   foo() {}
 }
 class I extends I_ {
@@ -269,9 +267,7 @@ class K extends K_ {
 // the constructor returns false (a non-object), but \`super()\` returns false,
 // which then similarly causes \`new L()\` to return an instance of \`L\`.
 class L_ {
-  constructor() {
-    return false;
-  }
+  constructor() { return false; }
 }
 class L extends L_ {
   constructor() {
@@ -285,14 +281,10 @@ class L extends L_ {
 // similarly, the converse is true: if the parent's constructor returns an
 // object, then the child does too.
 class M_ {
-  constructor() {
-    return { foo: "foo" };
-  }
+  constructor() { return { foo: "foo" }; }
 }
 class M extends M_ {
-  constructor() {
-    return super();
-  }
+  constructor() { return super(); }
 }
 (new M_(): { foo: string });
 (new M(): { foo: string });
@@ -306,9 +298,7 @@ class N_ {
   }
 }
 class N extends N_ {
-  constructor() {
-    return super();
-  }
+  constructor() { return super(); }
 }
 (new N_(): N_);
 (new N(): N);
@@ -322,9 +312,7 @@ class D {
 module.exports = D;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class D {
-  foo(): number {
-    return 0;
-  }
+  foo(): number { return 0; }
 }
 module.exports = D;
 
@@ -356,16 +344,12 @@ class B extends A {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class A {
   constructor(x: number) {}
-  static staticMethod(x: string): string {
-    return x;
-  }
+  static staticMethod(x: string): string { return x; }
   f(x: string) {}
 }
 
 class B extends A {
-  constructor(x: string, y: number) {
-    super(x);
-  }
+  constructor(x: string, y: number) { super(x); }
 
   static anotherStatic() {
     (super.staticMethod("foo"): number); // error, string !~> number
@@ -390,12 +374,8 @@ module.exports = C;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var D = require("./import");
 class C extends D {
-  constructor() {
-    return super();
-  }
-  foo() {
-    return super.foo();
-  }
+  constructor() { return super(); }
+  foo() { return super.foo(); }
 }
 module.exports = C;
 

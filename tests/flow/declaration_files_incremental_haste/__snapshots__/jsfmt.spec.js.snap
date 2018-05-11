@@ -7,9 +7,7 @@ export function foo(): Implementation { return new Implementation; }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /* @providesModule A */
 class Implementation {}
-export function foo(): Implementation {
-  return new Implementation();
-}
+export function foo(): Implementation { return new Implementation(); }
 
 `;
 

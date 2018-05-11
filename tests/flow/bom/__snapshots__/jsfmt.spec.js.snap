@@ -185,9 +185,7 @@ o.disconnect(); // correct
 function callback(
   arr: Array<MutationRecord>,
   observer: MutationObserver
-): void {
-  return;
-}
+): void { return; }
 const o: MutationObserver = new MutationObserver(callback); // correct
 new MutationObserver((arr: Array<MutationRecord>) => true); // correct
 new MutationObserver(() => {}); // correct

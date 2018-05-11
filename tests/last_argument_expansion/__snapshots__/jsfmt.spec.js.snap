@@ -488,9 +488,7 @@ const contentTypes = function (tile, singleSelection) {
     contentTypesArray = [],
     selectedGroup,
     singleSelection
-  ) {
-    selectedGroup = (tile.state && tile.state.group) || selectedGroup;
-  });
+  ) { selectedGroup = (tile.state && tile.state.group) || selectedGroup; });
 };
 
 `;

@@ -178,9 +178,7 @@ var zipResultEle = zipResult[0]; // [string, number]
 var zipResultEleEle = zipResult[0][0]; // string
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-﻿function combine<T, U>(x: T, y: U): [T, U] {
-  return [x, y];
-}
+﻿function combine<T, U>(x: T, y: U): [T, U] { return [x, y]; }
 
 var combineResult = combine("string", 10);
 var combineEle1 = combineResult[0]; // string

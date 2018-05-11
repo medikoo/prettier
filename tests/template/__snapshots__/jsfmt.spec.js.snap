@@ -320,9 +320,7 @@ function* f() {
 (b = c)\`\`;
 
 // "AwaitExpression"
-async function f() {
-  (await b)\`\`;
-}
+async function f() { (await b)\`\`; }
 
 // "BinaryExpression"
 (b + c)\`\`;
@@ -364,8 +362,6 @@ new B()\`\`;
 (++b)\`\`;
 
 // "YieldExpression"
-function* f() {
-  (yield 1)\`\`;
-}
+function* f() { (yield 1)\`\`; }
 
 `;

@@ -110,9 +110,7 @@ class C {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class C {
   x: ?number | string;
-  constructor() {
-    this.x = null;
-  }
+  constructor() { this.x = null; }
 }
 
 `;
@@ -182,12 +180,8 @@ var p = new Promise(function(resolve, reject) {
         return str.toFixed();
     });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-var p = new Promise(function (resolve, reject) {
-  resolve(5);
-})
-  .then(function (num) {
-    return num.toFixed();
-  })
+var p = new Promise(function (resolve, reject) { resolve(5); })
+  .then(function (num) { return num.toFixed(); })
   .then(function (str) {
     // This should fail because str is string, not number
     return str.toFixed();
@@ -428,9 +422,7 @@ foo(y);
 // type Bar = (() => C) | (() => string);
 type Bar = () => C | string; // workaround
 
-function f() {
-  return "";
-}
+function f() { return ""; }
 function bar(x: Bar) {}
 bar(f);
 
@@ -5570,9 +5562,7 @@ type Data = {
 class SecurityCheckupTypedLogger {
   _data: Data;
 
-  setError(value: ErrorCode) {
-    this._data["error"] = value;
-  }
+  setError(value: ErrorCode) { this._data["error"] = value; }
 
   // Bug: right now, any incompatible type coming into a huge
   // union might blow the recursion limit.

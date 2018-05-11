@@ -74,9 +74,7 @@ var d: number = b[0];
 var e: Array<string> = a.reverse();
 
 var f = [""];
-var g: number = f.map(function () {
-  return 0;
-})[0];
+var g: number = f.map(function () { return 0; })[0];
 
 var h: Array<number> = [1, 2, 3];
 var i: Array<string> = ["a", "b", "c"];
@@ -96,11 +94,10 @@ function reduce_test() {
 
   [0, 1, 2, 3, 4].reduce(function (previousValue, currentValue, index, array) {
     return previousValue + currentValue + array[index];
-  }, 10);
+  },
+  10);
 
-  var total = [0, 1, 2, 3].reduce(function (a, b) {
-    return a + b;
-  });
+  var total = [0, 1, 2, 3].reduce(function (a, b) { return a + b; });
 
   var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function (a, b) {
     return a.concat(b);

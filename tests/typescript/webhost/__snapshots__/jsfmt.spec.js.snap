@@ -124,12 +124,8 @@ namespace TypeScript.WebTsc {
     return {
       args: args,
       newLine: "\\r\\n",
-      write(s: string): void {
-        WScript.StdOut.Write(s);
-      },
-      writeErr(s: string): void {
-        WScript.StdErr.Write(s);
-      },
+      write(s: string): void { WScript.StdOut.Write(s); },
+      writeErr(s: string): void { WScript.StdErr.Write(s); },
       readFile(fileName: string, encoding?: string): string {
         if (!fso.FileExists(fileName)) {
           return undefined;
@@ -171,29 +167,17 @@ namespace TypeScript.WebTsc {
       resolvePath(path: string): string {
         return fso.GetAbsolutePathName(path);
       },
-      fileExists(path: string): boolean {
-        return fso.FileExists(path);
-      },
-      directoryExists(path: string) {
-        return fso.FolderExists(path);
-      },
+      fileExists(path: string): boolean { return fso.FileExists(path); },
+      directoryExists(path: string) { return fso.FolderExists(path); },
       createDirectory(directoryName: string) {
         if (!this.directoryExists(directoryName)) {
           fso.CreateFolder(directoryName);
         }
       },
-      getExecutingFilePath() {
-        return WScript.ScriptFullName;
-      },
-      getCurrentDirectory() {
-        return "";
-      },
-      getMemoryUsage() {
-        return 0;
-      },
-      exit(exitCode?: number): void {
-        WScript.Quit(exitCode);
-      },
+      getExecutingFilePath() { return WScript.ScriptFullName; },
+      getCurrentDirectory() { return ""; },
+      getMemoryUsage() { return 0; },
+      exit(exitCode?: number): void { WScript.Quit(exitCode); },
       useCaseSensitiveFileNames: false
     };
   }

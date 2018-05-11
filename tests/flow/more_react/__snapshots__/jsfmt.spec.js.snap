@@ -73,9 +73,7 @@ module.exports = App;
 var React = require("react");
 
 // expect args to be strings
-function foo(p: string, q: string): string {
-  return p + q;
-}
+function foo(p: string, q: string): string { return p + q; }
 
 var App = React.createClass({
   getDefaultProps: function (): { y: string } {

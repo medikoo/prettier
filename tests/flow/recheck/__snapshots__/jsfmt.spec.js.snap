@@ -11,9 +11,7 @@ module.exports = foo;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // @flow
 
-function foo(x: number): string {
-  return 5;
-}
+function foo(x: number): string { return 5; }
 
 foo(0);
 
@@ -86,12 +84,8 @@ module.exports = { C, D };
 // @flow
 
 import { C, E } from "./b0";
-function foo() {
-  return C;
-}
-function bar() {
-  return E;
-}
+function foo() { return C; }
+function bar() { return E; }
 let X = foo();
 class F extends X {}
 class D extends F {}
@@ -149,9 +143,7 @@ export function bar(props: { x: number }) {
 
 import { foo } from "./c1";
 
-export function bar(props: { x: number }) {
-  foo({ x: 0 });
-}
+export function bar(props: { x: number }) { foo({ x: 0 }); }
 
 `;
 

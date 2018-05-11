@@ -4,8 +4,6 @@ exports[`classInsideBlock.ts 1`] = `
 function foo() {
     class C { }
 }~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function foo() {
-  class C {}
-}
+function foo() { class C {} }
 
 `;

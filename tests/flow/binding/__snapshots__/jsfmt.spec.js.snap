@@ -665,9 +665,7 @@ function default_param_1() {
   // function binding in scope in default expr
   function f(
     x: () => string = f // error: number ~> string
-  ): number {
-    return 0;
-  }
+  ): number { return 0; }
 }
 
 function default_param_2() {
@@ -838,30 +836,22 @@ function f3() {
   var s: string = foo(); // ok, finds hoisted outer
   {
     var n: number = foo(); // ok, finds hoisted inner
-    function foo() {
-      return 0;
-    }
+    function foo() { return 0; }
   }
   var s2: string = foo(); // ok, hoisted outer not clobbered
-  function foo() {
-    return "";
-  }
+  function foo() { return ""; }
 }
 
 // out-of-scope TDZ not enforced. sometimes right...
 function f4() {
-  function g() {
-    return x + c;
-  } // ok, g doesn't run in TDZ
+  function g() { return x + c; } // ok, g doesn't run in TDZ
   let x = 0;
   const c = 0;
 }
 
 // ...sometimes wrong
 function f5() {
-  function g() {
-    return x;
-  }
+  function g() { return x; }
   g(); // should error, but doesn't currently
   let x = 0;
   const c = 0;
@@ -888,9 +878,7 @@ var z: C = new C(); // ok
 
 var a: number; // not an error per se - only if used before init
 
-function f(n: number) {
-  return n;
-}
+function f(n: number) { return n; }
 
 f(a); // error: undefined ~/> number
 

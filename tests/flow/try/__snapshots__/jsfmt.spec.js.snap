@@ -308,25 +308,21 @@ function f() {
 // error if used prior to init
 function f() {
   var y: number = x; // error
-  try {
-    var x: number = 0;
-  } catch (e) {}
+  try { var x: number = 0; }
+  catch (e) {}
 }
 
 // another non-dominated post
 function f() {
-  try {
-    var x: number = 0;
-  } catch (e) {}
+  try { var x: number = 0; }
+  catch (e) {}
   var y: number = x; // error
 }
 
 // ditto
 function f() {
-  try {
-  } catch (e) {
-    var x: number = 0;
-  }
+  try {}
+  catch (e) { var x: number = 0; }
   var y: number = x; // error
 }
 
@@ -416,62 +412,45 @@ function corge(): string {
  */
 
 function foo(x: ?number): string {
-  try {
-  } catch (e) {
-    return "bar";
-  }
+  try {}
+  catch (e) { return "bar"; }
   console.log();
   return "foo";
 }
 
 function bar(): string {
-  try {
-    return "foo";
-  } catch (e) {
-    return "bar";
-  }
+  try { return "foo"; }
+  catch (e) { return "bar"; }
 }
 
 function baz(): string {
-  try {
-    throw new Error("foo");
-  } catch (e) {
-    return "foo";
-  }
+  try { throw new Error("foo"); }
+  catch (e) { return "foo"; }
   return "bar"; // unreachable
 }
 
 function qux(): string {
-  try {
-    throw new Error("foo");
-  } catch (e) {}
+  try { throw new Error("foo"); }
+  catch (e) {}
   console.log();
   return "bar";
 }
 
 function quux(): string {
-  try {
-    return qux();
-  } catch (e) {}
+  try { return qux(); }
+  catch (e) {}
   return "bar";
 }
 
 function bliffl(): string {
-  try {
-    throw new Error("foo");
-  } catch (e) {
-    return "foo";
-  } finally {
-    return "bar";
-  }
+  try { throw new Error("foo"); }
+  catch (e) { return "foo"; }
+  finally { return "bar"; }
 }
 
 function corge(): string {
-  try {
-    return "foo";
-  } catch (e) {
-    throw new Error("bar");
-  }
+  try { return "foo"; }
+  catch (e) { throw new Error("bar"); }
   bar(); // unreachable
 }
 
@@ -544,11 +523,8 @@ function foo() {
 
 function bar(response) {
   var payload;
-  try {
-    payload = JSON.parse(response);
-  } catch (e) {
-    throw new Error("...");
-  }
+  try { payload = JSON.parse(response); }
+  catch (e) { throw new Error("..."); }
   // here via [try] only.
   if (payload.error) {
     // ok
@@ -558,10 +534,8 @@ function bar(response) {
 
 function qux() {
   var x = 5;
-  try {
-    throw -1;
-  } finally {
-  }
+  try { throw -1; }
+  finally {}
   x(); // unreachable
 }
 

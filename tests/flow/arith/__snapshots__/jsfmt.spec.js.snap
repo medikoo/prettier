@@ -111,28 +111,16 @@ function foo() {
 }
 
 // test MaybeT(NumT)
-function bar0(x: ?number, y: number) {
-  num(x + y);
-}
-function bar1(x: number, y: ?number) {
-  num(x + y);
-}
+function bar0(x: ?number, y: number) { num(x + y); }
+function bar1(x: number, y: ?number) { num(x + y); }
 
 // test OptionalT(NumT)
-function bar2(x?: number, y: number) {
-  num(x + y);
-}
-function bar3(x: number, y?: number) {
-  num(x + y);
-}
+function bar2(x?: number, y: number) { num(x + y); }
+function bar3(x: number, y?: number) { num(x + y); }
 
 // test OptionalT(MaybeT(NumT))
-function bar4(x?: ?number, y: number) {
-  num(x + y);
-}
-function bar5(x: number, y?: ?number) {
-  num(x + y);
-}
+function bar4(x?: ?number, y: number) { num(x + y); }
+function bar5(x: number, y?: ?number) { num(x + y); }
 
 num(null + null); // === 0
 num(undefined + undefined); // === NaN
@@ -224,21 +212,11 @@ function f<A,B>(a: A, b: B): B {return b + a; } // error
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /* @flow */
 
-function f<A>(a: A): A {
-  return a + a;
-} // error
-function f<A, B>(a: A, b: B): A {
-  return a + b;
-} // error
-function f<A, B>(a: A, b: B): A {
-  return b + a;
-} // error
-function f<A, B>(a: A, b: B): B {
-  return a + b;
-} // error
-function f<A, B>(a: A, b: B): B {
-  return b + a;
-} // error
+function f<A>(a: A): A { return a + a; } // error
+function f<A, B>(a: A, b: B): A { return a + b; } // error
+function f<A, B>(a: A, b: B): A { return b + a; } // error
+function f<A, B>(a: A, b: B): B { return a + b; } // error
+function f<A, B>(a: A, b: B): B { return b + a; } // error
 
 `;
 

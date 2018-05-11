@@ -53,13 +53,9 @@ module.exports = B;
 
 var A = require("A").cls;
 
-function B() {
-  this.b = "...";
-}
+function B() { this.b = "..."; }
 
-function f(): number {
-  return this.b;
-}
+function f(): number { return this.b; }
 
 B.prototype.s = 0;
 B.prototype.fn = f;
@@ -120,9 +116,7 @@ module.exports = "D for dummy";
 
 var f = require("A").fn;
 
-function g(): string {
-  return this.i;
-}
+function g(): string { return this.i; }
 
 var o = { fn: g, ...{} };
 o.i = true;
@@ -166,14 +160,10 @@ function foo(x: Array<number>): string {
   return x.length;
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function fn2(x) {
-  return x.length * 4;
-}
+function fn2(x) { return x.length * 4; }
 fn2({ length: "hi" });
 
-function foo(x: Array<number>): string {
-  return x.length;
-}
+function foo(x: Array<number>): string { return x.length; }
 
 `;
 

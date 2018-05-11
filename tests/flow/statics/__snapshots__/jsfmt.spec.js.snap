@@ -16,9 +16,7 @@ class C {
   static x: string;
 }
 
-C.g = function (x: string) {
-  C.f(x);
-};
+C.g = function (x: string) { C.f(x); };
 C.g(0);
 
 var x: number = C.x;
@@ -34,12 +32,8 @@ C.g = function(x) { return x; };
 var x:string = new C().f();
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function C() {}
-C.prototype.f = function () {
-  return C.g(0);
-};
-C.g = function (x) {
-  return x;
-};
+C.prototype.f = function () { return C.g(0); };
+C.g = function (x) { return x; };
 
 var x: string = new C().f();
 

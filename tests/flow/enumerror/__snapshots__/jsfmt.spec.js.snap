@@ -32,9 +32,7 @@ function union2keys(s: Union): Keys { return s; } // ok
 
 function isActive(ad: {
   state: $Keys<{ PAUSED: string, ACTIVE: string, DELETED: string }>
-}): boolean {
-  return ad.state === "ACTIVE";
-}
+}): boolean { return ad.state === "ACTIVE"; }
 isActive({ state: "PAUSE" });
 
 var MyStates = { PAUSED: "PAUSED", ACTIVE: "ACTIVE", DELETED: "DELETED" };
@@ -46,11 +44,7 @@ isActive2({ state: "PAUSE" });
 type Keys = $Keys<{ x: any, y: any }>;
 type Union = "x" | "y";
 
-function keys2union(s: Keys): Union {
-  return s;
-} // ok
-function union2keys(s: Union): Keys {
-  return s;
-} // ok
+function keys2union(s: Keys): Union { return s; } // ok
+function union2keys(s: Union): Keys { return s; } // ok
 
 `;

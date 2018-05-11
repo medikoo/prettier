@@ -39,9 +39,7 @@ function f({ data: { name } }) {}
 const UserComponent = function ({
   name: { first, last },
   organisation: { address: { street: orgStreetAddress, postcode: orgPostcode } }
-}) {
-  return;
-};
+}) { return; };
 
 const { a, b, c, d: { e } } = someObject;
 

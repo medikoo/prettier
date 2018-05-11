@@ -83,9 +83,7 @@ class B extends A {
     B.bar(0); // error
     B.qux(0); // error
   }
-  static create(): A {
-    return new this();
-  }
+  static create(): A { return new this(); }
 
   static badCreate(): number {
     return new this(); // error B ~> number
@@ -95,9 +93,7 @@ class B extends A {
 class C<X> {
   static x: X;
   static bar(x: X) {}
-  static create(): C<*> {
-    return new this();
-  }
+  static create(): C<*> { return new this(); }
 }
 
 class D extends C<string> {

@@ -11,9 +11,7 @@ abstract class A {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 abstract class A {
   abstract get a();
-  abstract get aa() {
-    return 1;
-  }
+  abstract get aa() { return 1; }
   abstract set b(x: string);
   abstract set bb(x: string) {}
 }
@@ -27,9 +25,7 @@ class abstract {
 
 new abstract;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class abstract {
-  foo() {
-    return 1;
-  }
+  foo() { return 1; }
 }
 
 new abstract();
@@ -189,13 +185,9 @@ NewB(B);~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class A {}
 abstract class B extends A {}
 
-function NewA(Factory: typeof A) {
-  return new A();
-}
+function NewA(Factory: typeof A) { return new A(); }
 
-function NewB(Factory: typeof B) {
-  return new B();
-}
+function NewB(Factory: typeof B) { return new B(); }
 
 NewA(A);
 NewA(B);
@@ -245,9 +237,7 @@ class C<T> extends A {}
 class D extends A {}
 
 class E<T> extends A {
-  foo() {
-    return this.t;
-  }
+  foo() { return this.t; }
 }
 
 class F<T> extends A {
@@ -255,9 +245,7 @@ class F<T> extends A {
 }
 
 class G<T> extends A {
-  foo() {
-    return this.t;
-  }
+  foo() { return this.t; }
   bar(t: T) {}
 }
 
@@ -438,9 +426,7 @@ class H {
 class A {}
 
 abstract class B {
-  foo(): number {
-    return this.bar();
-  }
+  foo(): number { return this.bar(); }
   abstract bar(): number;
 }
 
@@ -450,9 +436,7 @@ var BB: typeof B = B;
 var AA: typeof A = BB;
 new AA();
 
-function constructB(Factory: typeof B) {
-  new Factory();
-}
+function constructB(Factory: typeof B) { new Factory(); }
 
 var BB = B;
 new BB();
@@ -465,16 +449,12 @@ class C extends B {}
 abstract class D extends B {}
 
 class E extends B {
-  bar() {
-    return 1;
-  }
+  bar() { return 1; }
 }
 
 abstract class F extends B {
   abstract foo(): number;
-  bar() {
-    return 2;
-  }
+  bar() { return 2; }
 }
 
 abstract class G {
@@ -743,40 +723,24 @@ abstract class BB extends AA {
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class A {
-  foo() {
-    return 1;
-  }
+  foo() { return 1; }
 }
 
 abstract class B extends A {
   abstract foo();
-  bar() {
-    super.foo();
-  }
-  baz() {
-    return this.foo;
-  }
+  bar() { super.foo(); }
+  baz() { return this.foo; }
 }
 
 class C extends B {
-  foo() {
-    return 2;
-  }
-  qux() {
-    return super.foo() || super.foo;
-  }
-  norf() {
-    return super.bar();
-  }
+  foo() { return 2; }
+  qux() { return super.foo() || super.foo; }
+  norf() { return super.bar(); }
 }
 
 class AA {
-  foo() {
-    return 1;
-  }
-  bar() {
-    return this.foo();
-  }
+  foo() { return 1; }
+  bar() { return this.foo(); }
 }
 
 abstract class BB extends AA {
@@ -808,9 +772,7 @@ abstract class A {
 }
 
 class B extends A {
-  foo() {
-    return 1;
-  }
+  foo() { return 1; }
 }
 
 abstract class C extends A {

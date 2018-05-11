@@ -40,12 +40,8 @@ module.exports = C;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class C {
   foo() {}
-  bar() {
-    return;
-  }
-  fn(x: number) {
-    return x;
-  }
+  bar() { return; }
+  fn(x: number) { return x; }
 }
 
 function f(x): number {

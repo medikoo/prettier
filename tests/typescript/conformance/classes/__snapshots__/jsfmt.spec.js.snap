@@ -312,9 +312,7 @@ class Base {
 }
 
 class Derived extends Base {
-  constructor(x: number, y: number, public z: number) {
-    super(x, y);
-  }
+  constructor(x: number, y: number, public z: number) { super(x, y); }
 }
 
 const Printable = <T extends Constructor<Base>>(
@@ -322,9 +320,7 @@ const Printable = <T extends Constructor<Base>>(
 ): Constructor<Printable> & { message: string } & T =>
   class extends superClass {
     static message = "hello";
-    print() {
-      const output = this.x + "," + this.y;
-    }
+    print() { const output = this.x + "," + this.y; }
   };
 
 function Tagged<T extends Constructor<{}>>(
@@ -362,9 +358,7 @@ class Thing3 extends Thing2 {
     super(10, 20, 30);
     this._tag = tag;
   }
-  test() {
-    this.print();
-  }
+  test() { this.print(); }
 }
 
 `;
@@ -442,17 +436,13 @@ class Base {
 }
 
 class Derived extends Base {
-  constructor(x: number, y: number, public z: number) {
-    super(x, y);
-  }
+  constructor(x: number, y: number, public z: number) { super(x, y); }
 }
 
 const Printable = <T extends Constructor<Base>>(superClass: T) =>
   class extends superClass {
     static message = "hello";
-    print() {
-      const output = this.x + "," + this.y;
-    }
+    print() { const output = this.x + "," + this.y; }
   };
 
 function Tagged<T extends Constructor<{}>>(superClass: T) {
@@ -488,9 +478,7 @@ class Thing3 extends Thing2 {
     super(10, 20, 30);
     this._tag = tag;
   }
-  test() {
-    this.print();
-  }
+  test() { this.print(); }
 }
 
 // Repro from #13805
@@ -701,9 +689,7 @@ class C3 extends Mixed3 {
     this.p;
     this.f();
   }
-  f() {
-    return super.f();
-  }
+  f() { return super.f(); }
 }
 
 `;
@@ -726,8 +712,6 @@ class C {
   x: string;
 }
 
-function foo() {
-  class C3 {}
-}
+function foo() { class C3 {} }
 
 `;

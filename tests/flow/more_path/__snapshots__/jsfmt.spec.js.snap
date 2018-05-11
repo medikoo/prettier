@@ -62,9 +62,7 @@ module.exports = true;
 /* @providesModule Condition */
 
 function f(x: number) {}
-function g() {
-  return 42 || "hello";
-}
+function g() { return 42 || "hello"; }
 
 var x = g();
 if (typeof x === "string") {
@@ -73,9 +71,7 @@ if (typeof x === "string") {
 f(x);
 
 class A {}
-function h() {
-  return 42 || new A();
-}
+function h() { return 42 || new A(); }
 
 var y = h();
 if (y instanceof A) {
@@ -83,9 +79,7 @@ if (y instanceof A) {
 }
 //f(y);
 
-function bar() {
-  return true;
-}
+function bar() { return true; }
 
 class C {
   qux() {}

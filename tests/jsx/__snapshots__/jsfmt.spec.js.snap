@@ -36,9 +36,7 @@ exports[`attr-comments.js 1`] = `
 <Component
   propFn={
     // comment
-    function (arg) {
-      fn(arg);
-    }
+    function (arg) { fn(arg); }
   }
   propArrowFn={
     // comment
@@ -936,9 +934,7 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function () {
-  return <div />;
-};
+const NonBreakingFunction = function () { return <div />; };
 
 const BreakingFunction = function () {
   return (
@@ -949,9 +945,7 @@ const BreakingFunction = function () {
 };
 
 class NonBreakingClass extends React.component {
-  render() {
-    return <div />;
-  }
+  render() { return <div />; }
 }
 
 class BreakingClass extends React.component {

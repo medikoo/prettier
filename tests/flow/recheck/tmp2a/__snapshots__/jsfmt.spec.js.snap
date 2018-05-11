@@ -11,9 +11,7 @@ module.exports = foo;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // @flow
 
-function foo(x: number): number {
-  return 5;
-}
+function foo(x: number): number { return 5; }
 
 foo("");
 

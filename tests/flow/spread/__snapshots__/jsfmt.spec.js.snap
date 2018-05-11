@@ -32,13 +32,9 @@ function parseTimeframe(line: string): { begin: number; end: number } {
     };
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function parseTimestamp(timestamp: string): number {
-  return 0;
-}
+function parseTimestamp(timestamp: string): number { return 0; }
 
-function parseCounter(line: string): number {
-  return 0;
-}
+function parseCounter(line: string): number { return 0; }
 
 function parseGroup(
   lines: Array<string>
@@ -73,9 +69,7 @@ foo({foo: 42});
  * @flow
  */
 
-function foo(o) {
-  bar({ ...o });
-}
+function foo(o) { bar({ ...o }); }
 function bar(_: { foo: number }) {}
 foo({ foo: 42 });
 

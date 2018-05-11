@@ -111,18 +111,12 @@ class H<T> {
 
 class A<T> {
   x: T;
-  constructor(x: T) {
-    this.x = x;
-  }
-  m<T>(x: T): A<T> {
-    return new A(x);
-  }
+  constructor(x: T) { this.x = x; }
+  m<T>(x: T): A<T> { return new A(x); }
 }
 
 class B<T> extends A<T> {
-  m<T>(x: T): B<T> {
-    return new B(x);
-  }
+  m<T>(x: T): B<T> { return new B(x); }
 }
 
 interface C<T> { m<T>(x: T): C<T> }
@@ -137,12 +131,8 @@ declare class F<T> extends E<T> { m<T>(x: T): F<T> }
 
 class G<T> {
   x: T;
-  constructor(x: T) {
-    this.x = x;
-  }
-  m<T: T>(x: T): G<T> {
-    return new G(x);
-  } // T-as-bound is G's T
+  constructor(x: T) { this.x = x; }
+  m<T: T>(x: T): G<T> { return new G(x); } // T-as-bound is G's T
 }
 
 declare var g: G<number | string>;
