@@ -327,9 +327,7 @@ jest.mock(
   "../SearchSource",
   () =>
     class {
-      findMatchingTests(pattern) {
-        return { paths: [] };
-      }
+      findMatchingTests(pattern) { return { paths: [] }; }
     }
 );
 
@@ -500,9 +498,7 @@ jest.mock(
   "../SearchSource",
   () =>
     class {
-      findMatchingTests(pattern) {
-        return { paths: [] };
-      }
+      findMatchingTests(pattern) { return { paths: [] }; }
     }
 );
 
