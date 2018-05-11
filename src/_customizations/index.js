@@ -2,6 +2,8 @@
 
 module.exports = {
   applyElasticBreaks: require("./apply-elastic-breaks"),
+  docPrinter: require("./doc-printer"),
+  hasType: require("./has-type"),
   identity: i => i,
   includesAssignment: require("./includes-assignment"),
   indentVarAssignment: require("./indent-var-assignment"),

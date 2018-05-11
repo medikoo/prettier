@@ -884,7 +884,9 @@ function printPathNoParens(path, options, print, args) {
           parent.type === "ForStatement" ||
           parent.type === "WhileStatement" ||
           parent.type === "DoWhileStatement" ||
-          (parent.type === "CatchClause" && !parentParent.finalizer))
+          (parent.type === "TryStatement" && parent.isInlineBlockOk) ||
+          (parent.type === "CatchClause" &&
+            (!parentParent.finalizer || parentParent.isInlineBlockOk)))
       ) {
         return "{}";
       }
@@ -907,13 +909,42 @@ function printPathNoParens(path, options, print, args) {
         }, "directives");
       }
 
+      const canBeInline = (() => {
+        let result;
+        if (parent.type === "CatchClause") {
+          result = parentParent.isInlineBlockOk;
+        } else if (parent.type == "TryStatement") {
+          result = parent.isInlineBlockOk;
+        } else if (
+          parent.type !== "FunctionDeclaration" &&
+          parent.type !== "FunctionExpression"
+        ) {
+          return false;
+        } else {
+          result = !customizations.docPrinter.isLineBreaking(naked, 2, 1, 2);
+        }
+        if (!result) {
+          return false;
+        }
+        return !customizations.hasType(n.body, "BlockStatement");
+      })();
+      const lineMode = canBeInline ? line : hardline;
+
+      const contentParts = [];
+
       if (hasContent) {
-        parts.push(indent(concat([hardline, naked])));
+        contentParts.push(indent(concat([lineMode, naked])));
       }
 
-      parts.push(comments.printDanglingComments(path, options));
-      parts.push(hardline, "}");
+      contentParts.push(comments.printDanglingComments(path, options));
+      contentParts.push(lineMode);
 
+      if (canBeInline) {
+        parts.push(group(concat(contentParts)));
+      } else {
+        parts.push.apply(parts, contentParts);
+      }
+      parts.push("}");
       return concat(parts);
     }
     case "ReturnStatement":
@@ -1679,13 +1710,70 @@ function printPathNoParens(path, options, print, args) {
         ": ",
         path.call(print, "body")
       ]);
-    case "TryStatement":
+    case "TryStatement": {
+      let isLineBreaking = false;
+      // Check if try {} is line breaking
+      path.call(blockPath => {
+        const naked = blockPath.call(bodyPath => {
+          return printStatementSequence(bodyPath, options, print);
+        }, "body");
+        isLineBreaking = customizations.docPrinter.isLineBreaking(
+          naked,
+          2,
+          1,
+          2
+        );
+      }, "block");
+      if (!isLineBreaking && n.handler) {
+        // check if catch {} is line breaking
+        path.call(
+          blockPath => {
+            const naked = blockPath.call(bodyPath => {
+              return printStatementSequence(bodyPath, options, print);
+            }, "body");
+            isLineBreaking = customizations.docPrinter.isLineBreaking(
+              naked,
+              2,
+              1,
+              2
+            );
+          },
+          "handler",
+          "body"
+        );
+      }
+      if (!isLineBreaking && n.finalizer) {
+        // check if finally {} is line breaking
+        path.call(blockPath => {
+          const naked = blockPath.call(bodyPath => {
+            return printStatementSequence(bodyPath, options, print);
+          }, "body");
+          isLineBreaking = customizations.docPrinter.isLineBreaking(
+            naked,
+            2,
+            1,
+            2
+          );
+        }, "finalizer");
+      }
+      if (!isLineBreaking) {
+        n.isInlineBlockOk = true;
+      }
       return concat([
         "try ",
         path.call(print, "block"),
-        n.handler ? concat([" ", path.call(print, "handler")]) : "",
-        n.finalizer ? concat([" finally ", path.call(print, "finalizer")]) : ""
+        n.handler
+          ? concat([isLineBreaking ? " " : line, path.call(print, "handler")])
+          : "",
+        n.finalizer
+          ? concat([
+              isLineBreaking ? " " : line,
+              "finally ",
+              path.call(print, "finalizer")
+            ])
+          : ""
       ]);
+    }
     case "CatchClause":
       return concat([
         "catch ",
