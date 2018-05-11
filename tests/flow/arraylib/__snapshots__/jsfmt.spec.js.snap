@@ -94,8 +94,7 @@ function reduce_test() {
 
   [0, 1, 2, 3, 4].reduce(function (previousValue, currentValue, index, array) {
     return previousValue + currentValue + array[index];
-  },
-  10);
+  }, 10);
 
   var total = [0, 1, 2, 3].reduce(function (a, b) { return a + b; });
 
