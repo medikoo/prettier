@@ -916,6 +916,7 @@ function printPathNoParens(path, options, print, args) {
         } else if (parent.type == "TryStatement") {
           result = parent.isInlineBlockOk;
         } else if (
+          parent.type !== "ClassMethod" &&
           parent.type !== "FunctionDeclaration" &&
           parent.type !== "FunctionExpression"
         ) {
