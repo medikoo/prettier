@@ -7,6 +7,8 @@ module.exports = {
   identity: i => i,
   includesAssignment: require("./includes-assignment"),
   indentVarAssignment: require("./indent-var-assignment"),
+  isNakedLineBreaking: require("./is-naked-line-breaking"),
+  isPathLineBreaking: require("./is-path-line-breaking"),
   isRequireBlock: require("./is-require-block"),
   requireBlockKinds: new Set(["const", "var"]),
   preVarBreakInstruction: {

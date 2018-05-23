@@ -910,7 +910,7 @@ function printPathNoParens(path, options, print, args) {
         ) {
           return false;
         } else {
-          result = !customizations.docPrinter.isLineBreaking(naked, 2, 1, 2);
+          result = !customizations.isNakedLineBreaking(naked);
         }
         if (!result) {
           return false;
@@ -1719,29 +1719,27 @@ function printPathNoParens(path, options, print, args) {
       let isLineBreaking = false;
       // Check if try {} is line breaking
       path.call(blockPath => {
-        const naked = blockPath.call(bodyPath => {
-          return printStatementSequence(bodyPath, options, print);
+        blockPath.call(bodyPath => {
+          isLineBreaking = customizations.isPathLineBreaking(
+            bodyPath,
+            printStatementSequence,
+            options,
+            print
+          );
         }, "body");
-        isLineBreaking = customizations.docPrinter.isLineBreaking(
-          naked,
-          2,
-          1,
-          2
-        );
       }, "block");
       if (!isLineBreaking && n.handler) {
         // check if catch {} is line breaking
         path.call(
           blockPath => {
-            const naked = blockPath.call(bodyPath => {
-              return printStatementSequence(bodyPath, options, print);
+            blockPath.call(bodyPath => {
+              isLineBreaking = customizations.isPathLineBreaking(
+                bodyPath,
+                printStatementSequence,
+                options,
+                print
+              );
             }, "body");
-            isLineBreaking = customizations.docPrinter.isLineBreaking(
-              naked,
-              2,
-              1,
-              2
-            );
           },
           "handler",
           "body"
@@ -1750,15 +1748,14 @@ function printPathNoParens(path, options, print, args) {
       if (!isLineBreaking && n.finalizer) {
         // check if finally {} is line breaking
         path.call(blockPath => {
-          const naked = blockPath.call(bodyPath => {
-            return printStatementSequence(bodyPath, options, print);
+          blockPath.call(bodyPath => {
+            isLineBreaking = customizations.isPathLineBreaking(
+              bodyPath,
+              printStatementSequence,
+              options,
+              print
+            );
           }, "body");
-          isLineBreaking = customizations.docPrinter.isLineBreaking(
-            naked,
-            2,
-            1,
-            2
-          );
         }, "finalizer");
       }
       if (!isLineBreaking) {
