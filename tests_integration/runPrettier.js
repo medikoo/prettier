@@ -9,7 +9,7 @@ const prettierRootDir = isProduction ? process.env.PRETTIER_DIR : "../";
 const prettierPkg = require(path.join(prettierRootDir, "package.json"));
 const prettierCli = path.join(
   prettierRootDir,
-  prettierPkg.bin["prettier-elastic"]
+  prettierPkg.bin.prettier || prettierPkg.bin["prettier-elastic"]
 );
 
 const thirdParty = isProduction
