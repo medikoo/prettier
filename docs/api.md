@@ -57,9 +57,37 @@ If `options.editorconfig` is `true` and an [`.editorconfig` file](http://editorc
 
 Use `prettier.resolveConfig.sync(filePath [, options])` if you'd like to use sync version.
 
+## `prettier.resolveConfigFile(filePath [, options])`
+
+`resolveConfigFile` can be used to find the path of the Prettier's configuration file will be used when resolving the config (i.e. when calling `resolveConfig`). A promise is returned which will resolve to:
+
+* The path of the configuration file.
+* `null`, if no file was found.
+
+The promise will be rejected if there was an error parsing the configuration file.
+
+If `options.useCache` is `false`, all caching will be bypassed.
+
 ## `prettier.clearConfigCache()`
 
 As you repeatedly call `resolveConfig`, the file system structure will be cached for performance. This function will clear the cache. Generally this is only needed for editor integrations that know that the file system has changed since the last format took place.
+
+## `prettier.getFileInfo(filePath [, options])`
+
+`getFileInfo` can be used by editor extensions to decide if a particular file needs to be formatted. This method returns a promise, which resolves to an object with the following properties:
+
+```typescript
+{
+  ignored: boolean,
+  inferredParser: string | null,
+}
+```
+
+Setting `options.ignorePath` (`string`) and `options.withNodeModules` (`boolean`) influence the value of `ignored` (`false` by default).
+
+Providing [plugin](./plugins.md) paths in `options.plugins` (`string[]`) helps extract `inferredParser` for files that are not supported by Prettier core.
+
+Use `prettier.getFileInfo.sync(filePath [, options])` if you'd like to use sync version.
 
 ## `prettier.getSupportInfo([version])`
 
@@ -73,7 +101,7 @@ The support information looks like this:
 {
   languages: Array<{
     name: string,
-    since: string,
+    since?: string,
     parsers: string[],
     group?: string,
     tmScope: string,

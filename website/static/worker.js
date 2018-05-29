@@ -4,7 +4,7 @@
 var parsersLoaded = {};
 
 // "Polyfills" in order for all the code to run
-/* eslint-disable */
+/* eslint-disable no-undef, no-global-assign */
 self.global = self;
 self.util = {};
 self.path = {};
@@ -20,12 +20,12 @@ self.Buffer = {
   }
 };
 self.constants = {};
-module$1 = module = os = crypto = {};
+module$1 = module = os = crypto = buffer = {};
 self.fs = { readFile: function() {} };
 os.homedir = function() {
   return "/home/prettier";
 };
-os.EOL = '\n';
+os.EOL = "\n";
 self.process = {
   argv: [],
   env: { PRETTIER_DEBUG: true },
@@ -43,21 +43,26 @@ self.require = function require(path) {
     return { PassThrough() {} };
   }
   if (path === "./third-party") {
-    return {};
+    return { findParentDir() {} };
   }
 
   if (~path.indexOf("parser-")) {
-    var parser = path.replace(/.+-/, "");
+    var parser = path.replace(/^.*parser-/, "");
     if (!parsersLoaded[parser]) {
       importScripts("lib/parser-" + parser + ".js");
       parsersLoaded[parser] = true;
     }
-    return self[parser];
+    return self[
+      parser.replace(/-/g, "_") // `json-stringify` is not a valid identifier
+    ];
   }
 
   return self[path];
 };
-
+self.__dirname = "";
+self.events = {
+  EventEmitter: function() {}
+};
 /* eslint-enable */
 
 var prettier;
@@ -69,61 +74,76 @@ if (typeof prettier === "undefined") {
   prettier = index; // eslint-disable-line
 }
 
-self.onmessage = function(message) {
-  var options = message.data.options || {};
-  options.parser = options.parser || "babylon";
-
-  delete options.ast;
-  delete options.doc;
-  delete options.output2;
-
-  var formatted = formatCode(message.data.text, options);
-  var doc;
-  var ast;
-  var formatted2;
-
-  if (message.data.ast) {
-    var actualAst;
-    var errored = false;
-    try {
-      actualAst = prettier.__debug.parse(message.data.text, options).ast;
-      ast = JSON.stringify(actualAst);
-    } catch (e) {
-      errored = true;
-      ast = String(e);
-    }
-    if (!errored) {
-      try {
-        ast = formatCode(ast, { parser: "json" });
-      } catch (e) {
-        ast = JSON.stringify(actualAst, null, 2);
-      }
-    }
-  }
-
-  if (message.data.doc) {
-    try {
-      doc = prettier.__debug.formatDoc(
-        prettier.__debug.printToDoc(message.data.text, options),
-        { parser: "babylon" }
-      );
-    } catch (e) {
-      doc = String(e);
-    }
-  }
-
-  if (message.data.formatted2) {
-    formatted2 = formatCode(formatted, options);
-  }
-
+self.onmessage = function(event) {
   self.postMessage({
-    formatted: formatted,
-    doc: doc,
-    ast: ast,
-    formatted2: formatted2,
-    version: prettier.version
+    uid: event.data.uid,
+    message: handleMessage(event.data.message)
   });
 };
+
+function handleMessage(message) {
+  if (message.type === "meta") {
+    return {
+      type: "meta",
+      supportInfo: JSON.parse(JSON.stringify(prettier.getSupportInfo())),
+      version: prettier.version
+    };
+  }
+
+  if (message.type === "format") {
+    var options = message.options || {};
+
+    delete options.ast;
+    delete options.doc;
+    delete options.output2;
+
+    var response = {
+      formatted: formatCode(message.code, options),
+      debug: {
+        ast: null,
+        doc: null,
+        reformatted: null
+      }
+    };
+
+    if (message.debug.ast) {
+      var ast;
+      var errored = false;
+      try {
+        ast = JSON.stringify(prettier.__debug.parse(message.code, options).ast);
+      } catch (e) {
+        errored = true;
+        ast = String(e);
+      }
+
+      if (!errored) {
+        try {
+          ast = formatCode(ast, { parser: "json" });
+        } catch (e) {
+          ast = JSON.stringify(ast, null, 2);
+        }
+      }
+      response.debug.ast = ast;
+    }
+
+    if (message.debug.doc) {
+      try {
+        response.debug.doc = prettier.__debug.formatDoc(
+          prettier.__debug.printToDoc(message.code, options),
+          { parser: "babylon" }
+        );
+      } catch (e) {
+        response.debug.doc = String(e);
+      }
+    }
+
+    if (message.debug.reformat) {
+      response.debug.reformatted = formatCode(response.formatted, options);
+    }
+
+    return response;
+  }
+}
 
 function formatCode(text, options) {
   try {

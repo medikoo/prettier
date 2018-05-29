@@ -1,14 +1,15 @@
 "use strict";
 
-const docBuilders = require("../doc/doc-builders");
-const concat = docBuilders.concat;
-const join = docBuilders.join;
-const softline = docBuilders.softline;
-const hardline = docBuilders.hardline;
-const line = docBuilders.line;
-const group = docBuilders.group;
-const indent = docBuilders.indent;
-const ifBreak = docBuilders.ifBreak;
+const {
+  concat,
+  join,
+  softline,
+  hardline,
+  line,
+  group,
+  indent,
+  ifBreak
+} = require("../doc").builders;
 
 // http://w3c.github.io/html/single-page.html#void-elements
 const voidTags = [
@@ -148,10 +149,10 @@ function print(path, options, print) {
       const isConcat = pp && pp.type === "ConcatStatement";
       return group(
         concat([
-          /*n.escaped ? "{{{" : */ "{{",
+          n.escaped === false ? "{{{" : "{{",
           printPathParams(path, print),
           isConcat ? "" : softline,
-          /*.escaped ? "}}}" :*/ "}}"
+          n.escaped === false ? "}}}" : "}}"
         ])
       );
     }
@@ -193,7 +194,37 @@ function print(path, options, print) {
       return concat([n.key, "=", path.call(print, "value")]);
     }
     case "TextNode": {
-      return n.chars.replace(/^\s+/, "").replace(/\s+$/, "");
+      let leadingSpace = "";
+      let trailingSpace = "";
+
+      // preserve a space inside of an attribute node where whitespace present, when next to mustache statement.
+      const inAttrNode = path.stack.indexOf("attributes") >= 0;
+
+      if (inAttrNode) {
+        const parentNode = path.getParentNode(0);
+        const isConcat = parentNode.type === "ConcatStatement";
+        if (isConcat) {
+          const parts = parentNode.parts;
+          const partIndex = parts.indexOf(n);
+          if (partIndex > 0) {
+            const partType = parts[partIndex - 1].type;
+            const isMustache = partType === "MustacheStatement";
+            if (isMustache) {
+              leadingSpace = " ";
+            }
+          }
+          if (partIndex < parts.length - 1) {
+            const partType = parts[partIndex + 1].type;
+            const isMustache = partType === "MustacheStatement";
+            if (isMustache) {
+              trailingSpace = " ";
+            }
+          }
+        }
+      }
+      return n.chars
+        .replace(/^\s+/, leadingSpace)
+        .replace(/\s+$/, trailingSpace);
     }
     case "MustacheCommentStatement": {
       const dashes = n.value.indexOf("}}") > -1 ? "--" : "";
@@ -279,6 +310,8 @@ function printCloseBlock(path, print) {
 }
 
 function clean(ast, newObj) {
+  delete newObj.loc;
+
   // (Glimmer/HTML) ignore TextNode whitespace
   if (ast.type === "TextNode") {
     if (ast.chars.replace(/\s+/, "") === "") {

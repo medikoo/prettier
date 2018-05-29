@@ -1,10 +1,10 @@
 "use strict";
 
-const jsOptions = require("../language-js/options");
+const commonOptions = require("../common/common-options");
 
 const CATEGORY_MARKDOWN = "Markdown";
 
-// format based on https://github.com/prettier/prettier/blob/master/src/common/support.js
+// format based on https://github.com/prettier/prettier/blob/master/src/main/core-options.js
 module.exports = {
   proseWrap: {
     since: "1.8.2",
@@ -35,5 +35,5 @@ module.exports = {
       { value: true, deprecated: "1.9.0", redirect: "always" }
     ]
   },
-  singleQuote: jsOptions.singleQuote
+  singleQuote: commonOptions.singleQuote
 };

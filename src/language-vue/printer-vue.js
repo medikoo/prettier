@@ -1,9 +1,7 @@
 "use strict";
 
 const embed = require("./embed");
-const docBuilders = require("../doc").builders;
-const concat = docBuilders.concat;
-const hardline = docBuilders.hardline;
+const { concat, hardline } = require("../doc").builders;
 
 function genericPrint(path, options, print) {
   const n = path.getValue();
@@ -31,6 +29,8 @@ function genericPrint(path, options, print) {
 }
 
 const clean = (ast, newObj) => {
+  delete newObj.start;
+  delete newObj.end;
   delete newObj.contentStart;
   delete newObj.contentEnd;
 };

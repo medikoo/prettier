@@ -585,7 +585,7 @@ const x =
   longVariable;
 const x =
   longVariable +
-  longVariable * longVariable * longVariable / longVariable +
+  (longVariable * longVariable * longVariable) / longVariable +
   longVariable;
 
 const x =

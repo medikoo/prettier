@@ -1,10 +1,7 @@
 "use strict";
 
 const util = require("../common/util");
-const docBuilders = require("./doc-builders");
-const concat = docBuilders.concat;
-const fill = docBuilders.fill;
-const cursor = docBuilders.cursor;
+const { concat, fill, cursor } = require("./doc-builders");
 
 const customizations = require("../_customizations/doc-printer");
 
@@ -481,6 +478,7 @@ function printDocToString(doc, options) {
                   // Trim whitespace at the end of line
                   while (
                     out.length > 0 &&
+                    typeof out[out.length - 1] === "string" &&
                     out[out.length - 1].match(/^[^\S\n]*$/)
                   ) {
                     out.pop();
@@ -488,6 +486,7 @@ function printDocToString(doc, options) {
 
                   if (
                     out.length &&
+                    typeof out[out.length - 1] === "string" &&
                     (options.parser !== "markdown" ||
                       // preserve markdown's `break` node (two trailing spaces)
                       !/\S {2}$/.test(out[out.length - 1]))
@@ -512,12 +511,20 @@ function printDocToString(doc, options) {
 
   const cursorPlaceholderIndex = out.indexOf(cursor.placeholder);
   if (cursorPlaceholderIndex !== -1) {
+    const otherCursorPlaceholderIndex = out.indexOf(
+      cursor.placeholder,
+      cursorPlaceholderIndex + 1
+    );
     const beforeCursor = out.slice(0, cursorPlaceholderIndex).join("");
-    const afterCursor = out.slice(cursorPlaceholderIndex + 1).join("");
+    const aroundCursor = out
+      .slice(cursorPlaceholderIndex + 1, otherCursorPlaceholderIndex)
+      .join("");
+    const afterCursor = out.slice(otherCursorPlaceholderIndex + 1).join("");
 
     return {
-      formatted: beforeCursor + afterCursor,
-      cursor: beforeCursor.length
+      formatted: beforeCursor + aroundCursor + afterCursor,
+      cursorNodeStart: beforeCursor.length,
+      cursorNodeText: aroundCursor
     };
   }
 

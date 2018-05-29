@@ -1,11 +1,10 @@
 "use strict";
 
 const path = require("path");
-const getSupportInfo = require("../common/support").getSupportInfo;
+const UndefinedParserError = require("../common/errors").UndefinedParserError;
+const getSupportInfo = require("../main/support").getSupportInfo;
 const normalizer = require("./options-normalizer");
-const loadPlugins = require("../common/load-plugins");
 const resolveParser = require("./parser").resolveParser;
-const getPlugin = require("./get-plugin");
 
 const hiddenDefaults = {
   astFormat: "estree",
@@ -20,12 +19,8 @@ function normalize(options, opts) {
 
   const rawOptions = Object.assign({}, options);
 
-  const plugins = loadPlugins(rawOptions.plugins);
-  rawOptions.plugins = plugins;
-
   const supportOptions = getSupportInfo(null, {
-    plugins,
-    pluginsLoaded: true,
+    plugins: options.plugins,
     showUnreleased: true,
     showDeprecated: true
   }).options;
@@ -35,30 +30,27 @@ function normalize(options, opts) {
     Object.assign({}, hiddenDefaults)
   );
 
-  if (opts.inferParser !== false) {
-    if (
-      rawOptions.filepath &&
-      (!rawOptions.parser || rawOptions.parser === defaults.parser)
-    ) {
-      const inferredParser = inferParser(
-        rawOptions.filepath,
-        rawOptions.plugins
+  if (!rawOptions.parser) {
+    if (!rawOptions.filepath) {
+      throw new UndefinedParserError(
+        "No parser and no file path given, couldn't infer a parser."
       );
-      if (inferredParser) {
-        rawOptions.parser = inferredParser;
-      }
+    }
+
+    rawOptions.parser = inferParser(rawOptions.filepath, rawOptions.plugins);
+    if (!rawOptions.parser) {
+      throw new UndefinedParserError(
+        `No parser could be inferred for file: ${rawOptions.filepath}`
+      );
     }
   }
 
   const parser = resolveParser(
-    !rawOptions.parser
-      ? rawOptions
-      : // handle deprecated parsers
-        normalizer.normalizeApiOptions(
-          rawOptions,
-          [supportOptions.find(x => x.name === "parser")],
-          { passThrough: true, logger: false }
-        )
+    normalizer.normalizeApiOptions(
+      rawOptions,
+      [supportOptions.find(x => x.name === "parser")],
+      { passThrough: true, logger: false }
+    )
   );
   rawOptions.astFormat = parser.astFormat;
   rawOptions.locEnd = parser.locEnd;
@@ -99,17 +91,32 @@ function normalize(options, opts) {
   );
 }
 
+function getPlugin(options) {
+  const astFormat = options.astFormat;
+
+  if (!astFormat) {
+    throw new Error("getPlugin() requires astFormat to be set");
+  }
+  const printerPlugin = options.plugins.find(
+    plugin => plugin.printers && plugin.printers[astFormat]
+  );
+  if (!printerPlugin) {
+    throw new Error(`Couldn't find plugin for AST format "${astFormat}"`);
+  }
+
+  return printerPlugin;
+}
+
 function inferParser(filepath, plugins) {
   const extension = path.extname(filepath);
   const filename = path.basename(filepath).toLowerCase();
 
   const language = getSupportInfo(null, {
-    plugins,
-    pluginsLoaded: true
+    plugins
   }).languages.find(
     language =>
       language.since !== null &&
-      (language.extensions.indexOf(extension) > -1 ||
+      ((language.extensions && language.extensions.indexOf(extension) > -1) ||
         (language.filenames &&
           language.filenames.find(name => name.toLowerCase() === filename)))
   );
@@ -117,4 +124,4 @@ function inferParser(filepath, plugins) {
   return language && language.parsers[0];
 }
 
-module.exports = { normalize, hiddenDefaults };
+module.exports = { normalize, hiddenDefaults, inferParser };

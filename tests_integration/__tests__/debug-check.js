@@ -11,7 +11,7 @@ describe("doesn't crash when --debug-check is passed", () => {
 });
 
 describe("checks stdin with --debug-check", () => {
-  runPrettier("cli/with-shebang", ["--debug-check"], {
+  runPrettier("cli/with-shebang", ["--debug-check", "--parser", "babylon"], {
     input: "0"
   }).test({
     stdout: "(stdin)\n",
@@ -21,7 +21,12 @@ describe("checks stdin with --debug-check", () => {
 });
 
 describe("show diff for 2+ error files with --debug-check", () => {
-  runPrettier("cli/debug-check", ["*.js", "--debug-check"]).test({
+  runPrettier("cli/debug-check", [
+    "*.debug-check",
+    "--debug-check",
+    "--plugin",
+    "./plugin-for-testing-debug-check"
+  ]).test({
     status: "non-zero"
   });
 });

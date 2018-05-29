@@ -3,8 +3,11 @@
 !/tests/**/jsfmt.spec.js
 !/**/.eslintrc.js
 /test.js
+/scripts/build/shims
+/coverage/
 /dist/
 **/node_modules/**
 /website/build/
+/website/static/playground.js
 /website/static/lib/
 /tests_integration/cli/

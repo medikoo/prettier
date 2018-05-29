@@ -22,6 +22,18 @@ const UserComponent = function({
 };
 
 const { a, b, c, d: { e } } = someObject;
+
+try {
+  // code
+} catch ({ data: { message }}) {
+  // code
+}
+
+try {
+  // code
+} catch ({ data: { message: { errors }}}) {
+  // code
+}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const [one, two = null, three = null] = arr;
 a = ([s = 1]) => 1;
@@ -42,5 +54,21 @@ const UserComponent = function ({
 }) { return; };
 
 const { a, b, c, d: { e } } = someObject;
+
+try {
+  // code
+} catch ({ data: { message } }) {
+  // code
+}
+
+try {
+  // code
+} catch ({
+  data: {
+    message: { errors }
+  }
+}) {
+  // code
+}
 
 `;
