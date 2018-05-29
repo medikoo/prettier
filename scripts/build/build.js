@@ -200,7 +200,7 @@ async function createPackageJson() {
   delete pkg.devDependencies;
   pkg.scripts = {
     prepublishOnly:
-      'node -e "assert.equal(require(".").version, require("..").version)"'
+      "node -e \"assert.equal(require('.').version, require('..').version)\""
   };
   pkg.name = "prettier-elastic";
   pkg.prettierVersion = pkg.version;
@@ -218,6 +218,8 @@ async function run() {
   }
 
   await createPackageJson();
+
+  await util.copyFile("./README.md", "./dist/README.md");
 }
 
 run();
