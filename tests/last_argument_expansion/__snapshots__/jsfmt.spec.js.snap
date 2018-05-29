@@ -369,7 +369,9 @@ const formatData = pipe(
     nodeId: ref.nodeId.toString(),
     ...attributeFromDataValue(ref.attributeId, data)
   })),
-  groupBy(prop("nodeId")), map(mergeAll), values
+  groupBy(prop("nodeId")),
+  map(mergeAll),
+  values
 );
 
 export const setProp = y => ({

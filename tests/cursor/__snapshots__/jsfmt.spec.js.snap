@@ -7,9 +7,7 @@ function ehllooo () {
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // hi l<|>ol
-function ehllooo() {
-  const hi = "hi";
-}
+function ehllooo() { const hi = "hi"; }
 
 `;
 
@@ -52,18 +50,14 @@ const y = 5;
 exports[`cursor-0.js 1`] = `
 (function() {return        <|> 15})()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-(function() {
-  return <|>15;
-})();
+(function () { return <|>15; })();
 
 `;
 
 exports[`cursor-1.js 1`] = `
 (function(){return        <|>15})()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-(function() {
-  return <|>15;
-})();
+(function () { return <|>15; })();
 
 `;
 
