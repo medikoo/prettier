@@ -2,15 +2,11 @@
 
 "use strict";
 
-const fs = require("fs");
 const path = require("path");
 const shell = require("shelljs");
 
-const rootDir = path.join(__dirname, "..", "..");
-const staticDir = path.join(rootDir, "website/static");
+const rootDir = path.join(__dirname, "..");
 const docs = path.join(rootDir, "website/static/lib");
-
-const stripLanguageDirectory = parserPath => parserPath.replace(/.*\//, "");
 
 function pipe(string) {
   return new shell.ShellString(string);
@@ -23,11 +19,10 @@ shell.mkdir("-p", docs);
 
 if (isPullRequest) {
   // --- Build prettier for PR ---
-  const pkg = require("../../package.json");
+  const pkg = require("../package.json");
   pkg.version = `999.999.999-pr.${process.env.REVIEW_ID}`;
   pipe(JSON.stringify(pkg, null, 2)).to("package.json");
   shell.exec("node scripts/build/build.js");
-  shell.exec(`cp ${staticDir}/new-worker.js ${staticDir}/worker.js`);
 }
 shell.exec(`cp ${prettierPath}/standalone.js ${docs}/`);
 shell.exec(`cp ${prettierPath}/parser-*.js ${docs}/`);
