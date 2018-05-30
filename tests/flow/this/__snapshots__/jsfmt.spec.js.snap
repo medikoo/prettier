@@ -99,17 +99,13 @@ var f1_4 = f1(); // error, (global object).x
 
 /* arrow functions bind this at point of definition */
 /* top level arrow functions bind this to global object */
-var a1 = () => {
-  return this.x;
-};
+var a1 = () => { return this.x; };
 
 var ax = a1(); // error, (this:mixed).x
 
 /* nested arrows bind enclosing this (which may itself rebind) */
 function f2(): number {
-  var a2 = () => {
-    return this.x;
-  };
+  var a2 = () => { return this.x; };
   return a2();
 }
 
@@ -156,9 +152,7 @@ class F extends E {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class C {
   foo() {
-    return () => {
-      return this.bar();
-    }; // OK, since this: C
+    return () => { return this.bar(); }; // OK, since this: C
   }
   bar() { return this; } // return type is C
 }

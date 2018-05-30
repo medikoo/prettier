@@ -13,9 +13,7 @@ const foo = (x:string):void => (
   )
 );
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const bar = (...varargs: any[]) => {
-  console.log(varargs);
-};
+const bar = (...varargs: any[]) => { console.log(varargs); };
 
 const foo = (x: string): void => bar(x, () => {}, () => {});
 

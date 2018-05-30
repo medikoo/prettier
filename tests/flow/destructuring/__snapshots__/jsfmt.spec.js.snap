@@ -478,9 +478,7 @@ const bar = (i: number) => {
   return [i];
 };
 
-foo = (i: number) => {
-  return bar(i);
-};
+foo = (i: number) => { return bar(i); };
 
 // Also make sure that the following doesn't loop
 

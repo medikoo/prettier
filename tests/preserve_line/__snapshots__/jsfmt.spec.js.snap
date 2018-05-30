@@ -230,9 +230,7 @@ comments(
 );
 
 differentArgTypes(
-  () => {
-    return true;
-  },
+  () => { return true; },
 
   isTrue ? doSomething() : 12
 );
@@ -278,9 +276,7 @@ foo.apply(
 bar.on(
   "readable",
 
-  () => {
-    doStuff();
-  }
+  () => { doStuff(); }
 );
 
 foo(
@@ -320,9 +316,7 @@ doThing(
 );
 
 func(
-  () => {
-    thing();
-  },
+  () => { thing(); },
 
   { yes: true, no: 5 }
 );

@@ -306,14 +306,10 @@ Something
   .getters();
 
 // Warm-up first
-measure().then(() => {
-  SomethingLong();
-});
+measure().then(() => { SomethingLong(); });
 
 measure() // Warm-up first
-  .then(() => {
-    SomethingLong();
-  });
+  .then(() => { SomethingLong(); });
 
 const configModel = this.baseConfigurationService
   .getCache()

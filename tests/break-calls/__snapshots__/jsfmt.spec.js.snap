@@ -37,13 +37,7 @@ const mapChargeItems = fp.flow(
 
 expect(new LongLongLongLongLongRange([0, 0], [0, 0])).toEqualAtomLongLongLongLongRange(new LongLongLongRange([0, 0], [0, 0]));
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-h(
-  f(
-    g(() => {
-      a;
-    })
-  )
-);
+h(f(g(() => { a; })));
 
 deepCopyAndAsyncMapLeavesA(
   { source: sourceValue, destination: destination[sourceKey] },
@@ -94,9 +88,7 @@ runtimeAgent.getProperties(
   false, // ownProperties
   false, // accessorPropertiesOnly
   false, // generatePreview
-  (error, properties, internalProperties) => {
-    return 1;
-  }
+  (error, properties, internalProperties) => { return 1; }
 );
 
 `;

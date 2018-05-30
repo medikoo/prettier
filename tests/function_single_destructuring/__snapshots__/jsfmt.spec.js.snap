@@ -51,9 +51,7 @@ function excludeFirstFiveResults([
 
 const excludeFirstFiveResults = ([
   first, second, third, fourth, fifth, ...rest
-]) => {
-  return rest;
-};
+]) => { return rest; };
 
 class A {
   excludeFirstFiveResults([
@@ -64,9 +62,7 @@ class A {
 promise.then(
   ([
     firstResult, secondResult, thirdResult, fourthResult, fifthResult, ...rest
-  ]) => {
-    return rest;
-  }
+  ]) => { return rest; }
 );
 
 `;
@@ -245,9 +241,7 @@ const StatelessFunctionalComponent = ({
   searchFilters: number,
   title: number,
   items: number
-}) => {
-  return <div />;
-};
+}) => { return <div />; };
 
 class C {
   StatelessFunctionalComponent({

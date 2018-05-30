@@ -307,9 +307,7 @@ let tests = [
   },
 
   function () {
-    window.onmessage = (event: MessageEvent) => {
-      (event.target: window);
-    };
+    window.onmessage = (event: MessageEvent) => { (event.target: window); };
   }
 ];
 
