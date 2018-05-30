@@ -2,7 +2,7 @@
 
 const isNakedLineBreaking = require("./is-naked-line-breaking");
 
-const allowedStatements = new Set(["EmptyStatement"]);
+const allowedStatements = new Set(["EmptyStatement", "ExpressionStatement"]);
 module.exports = function(path, printStatementSequence, options, print) {
   const pathValue = path.getValue();
   const type = pathValue && pathValue[0] && pathValue[0].type;
