@@ -649,11 +649,8 @@ function test1(gen: Generator<void, string, void>) {
 // However, a generator can "refuse" the return by catching an exception and
 // yielding or returning internally.
 function* refuse_return() {
-  try {
-    yield 1;
-  } finally {
-    return 0;
-  }
+  try { yield 1; }
+  finally { return 0; }
 }
 var refuse_return_gen = refuse_return();
 var refuse_return_result = refuse_return_gen.return("string");
@@ -691,11 +688,8 @@ if (yield_return_value !== undefined) {
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function* catch_return() {
-  try {
-    yield 0;
-  } catch (e) {
-    return e;
-  }
+  try { yield 0; }
+  catch (e) { return e; }
 }
 
 var catch_return_value = catch_return().throw("").value;

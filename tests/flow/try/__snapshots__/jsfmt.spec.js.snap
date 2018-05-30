@@ -412,20 +412,15 @@ function corge(): string {
  */
 
 function foo(x: ?number): string {
-  try {
-  } catch (e) {
-    return "bar";
-  }
+  try {}
+  catch (e) { return "bar"; }
   console.log();
   return "foo";
 }
 
 function bar(): string {
-  try {
-    return "foo";
-  } catch (e) {
-    return "bar";
-  }
+  try { return "foo"; }
+  catch (e) { return "bar"; }
 }
 
 function baz(): string {
@@ -446,9 +441,8 @@ function qux(): string {
 }
 
 function quux(): string {
-  try {
-    return qux();
-  } catch (e) {}
+  try { return qux(); }
+  catch (e) {}
   return "bar";
 }
 
