@@ -2,6 +2,7 @@
 
 const chalk = require("chalk");
 const dedent = require("dedent");
+const execa = require("execa");
 const fs = require("fs");
 const prsMergedSince = require("prs-merged-since");
 const semver = require("semver");
@@ -97,4 +98,5 @@ module.exports = async function({ version, previousVersion }) {
   }
 
   await waitForEnter();
+  await execa("yarn", ["lint-docs", "--fix"]);
 };

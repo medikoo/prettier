@@ -58,7 +58,7 @@ function attachComments(text, ast, opts) {
     comments.attach(astComments, ast, text, opts);
   }
   ast.tokens = [];
-  opts.originalText = text.trimRight();
+  opts.originalText = opts.parser === "yaml" ? text : text.trimRight();
   return astComments;
 }
 
@@ -259,7 +259,7 @@ function format(text, opts) {
 module.exports = {
   formatWithCursor(text, opts) {
     opts = normalizeOptions(opts);
-    return format(text, normalizeOptions(opts));
+    return format(text, opts);
   },
 
   parse(text, opts, massage) {

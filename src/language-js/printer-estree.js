@@ -19,7 +19,9 @@ const {
   hasNodeIgnoreComment,
   getPenultimate,
   startsWithNoLookaheadToken,
-  getIndentSize
+  getIndentSize,
+  matchAncestorTypes,
+  isWithinParentArrayProperty
 } = require("../common/util");
 const {
   isNextLineEmpty,
@@ -97,34 +99,18 @@ function genericPrint(path, options, printPath, args) {
     // responsible for printing node.decorators.
     !getParentExportDeclaration(path)
   ) {
-    let separator = hardline;
+    const separator =
+      node.decorators.length === 1 &&
+      isWithinParentArrayProperty(path, "params")
+        ? line
+        : hardline;
+
     path.each(decoratorPath => {
       let decorator = decoratorPath.getValue();
       if (decorator.expression) {
         decorator = decorator.expression;
       } else {
         decorator = decorator.callee;
-      }
-
-      if (
-        node.decorators.length === 1 &&
-        node.type !== "ClassDeclaration" &&
-        node.type !== "MethodDefinition" &&
-        node.type !== "ClassMethod" &&
-        (decorator.type === "Identifier" ||
-          decorator.type === "MemberExpression" ||
-          decorator.type === "OptionalMemberExpression" ||
-          ((decorator.type === "CallExpression" ||
-            decorator.type === "OptionalCallExpression") &&
-            (decorator.arguments.length === 0 ||
-              (decorator.arguments.length === 1 &&
-                (isStringLiteral(decorator.arguments[0]) ||
-                  decorator.arguments[0].type === "Identifier" ||
-                  decorator.arguments[0].type === "MemberExpression" ||
-                  decorator.arguments[0].type ===
-                    "OptionalMemberExpression")))))
-      ) {
-        separator = line;
       }
 
       decorators.push(printPath(decoratorPath), separator);
@@ -629,8 +615,6 @@ function printPathNoParens(path, options, print, args) {
     case "SpreadElement":
     case "SpreadElementPattern":
     case "RestProperty":
-    case "ExperimentalRestProperty":
-    case "ExperimentalSpreadProperty":
     case "SpreadProperty":
     case "SpreadPropertyPattern":
     case "RestElement":
@@ -1219,7 +1203,6 @@ function printPathNoParens(path, options, print, args) {
         lastElem &&
         (lastElem.type === "RestProperty" ||
           lastElem.type === "RestElement" ||
-          lastElem.type === "ExperimentalRestProperty" ||
           hasNodeIgnoreComment(lastElem))
       );
 
@@ -1426,6 +1409,8 @@ function printPathNoParens(path, options, print, args) {
       return printRegex(n);
     case "NumericLiteral": // Babel 6 Literal split
       return printNumber(n.extra.raw);
+    case "BigIntLiteral":
+      return concat([printNumber(n.extra.rawValue), "n"]);
     case "BooleanLiteral": // Babel 6 Literal split
     case "StringLiteral": // Babel 6 Literal split
     case "Literal": {
@@ -2203,6 +2188,7 @@ function printPathNoParens(path, options, print, args) {
       } else {
         parts.push(printPropertyKey(path, options, print));
       }
+      parts.push(printOptionalToken(path));
       parts.push(printTypeAnnotation(path, options, print));
       if (n.value) {
         parts.push(
@@ -2617,6 +2603,10 @@ function printPathNoParens(path, options, print, args) {
 
       return group(concat(parts));
     }
+    case "TSRestType":
+      return concat(["...", path.call(print, "typeAnnotation")]);
+    case "TSOptionalType":
+      return concat([path.call(print, "typeAnnotation"), "?"]);
     case "FunctionTypeParam":
       return concat([
         path.call(print, "name"),
@@ -2963,6 +2953,8 @@ function printPathNoParens(path, options, print, args) {
       return "string";
     case "TSUndefinedKeyword":
       return "undefined";
+    case "TSUnknownKeyword":
+      return "unknown";
     case "TSVoidKeyword":
       return "void";
     case "TSAsExpression":
@@ -3550,6 +3542,8 @@ function shouldGroupFirstArg(args) {
     (firstArg.type === "FunctionExpression" ||
       (firstArg.type === "ArrowFunctionExpression" &&
         firstArg.body.type === "BlockStatement")) &&
+    secondArg.type !== "FunctionExpression" &&
+    secondArg.type !== "ArrowFunctionExpression" &&
     !couldGroupArg(secondArg)
   );
 }
@@ -3567,11 +3561,27 @@ const functionCompositionFunctionNames = new Set([
   "connect" // Redux
 ]);
 
+function isThisExpression(node) {
+  switch (node.type) {
+    case "OptionalMemberExpression":
+    case "MemberExpression": {
+      return isThisExpression(node.object);
+    }
+    case "ThisExpression":
+    case "Super": {
+      return true;
+    }
+  }
+}
+
 function isFunctionCompositionFunction(node) {
   switch (node.type) {
     case "OptionalMemberExpression":
     case "MemberExpression": {
-      return isFunctionCompositionFunction(node.property);
+      return (
+        !isThisExpression(node.object) &&
+        isFunctionCompositionFunction(node.property)
+      );
     }
     case "Identifier": {
       return functionCompositionFunctionNames.has(node.name);
@@ -4882,6 +4892,30 @@ function isJSXWhitespaceExpression(node) {
   );
 }
 
+function separatorNoWhitespace(isFacebookTranslationTag, child) {
+  if (isFacebookTranslationTag) {
+    return "";
+  }
+
+  if (child.length === 1) {
+    return softline;
+  }
+
+  return hardline;
+}
+
+function separatorWithWhitespace(isFacebookTranslationTag, child) {
+  if (isFacebookTranslationTag) {
+    return hardline;
+  }
+
+  if (child.length === 1) {
+    return softline;
+  }
+
+  return hardline;
+}
+
 // JSX Children are strange, mostly for two reasons:
 // 1. JSX reads newlines into string values, instead of skipping them like JS
 // 2. up to one whitespace between elements within a line is significant,
@@ -4894,7 +4928,13 @@ function isJSXWhitespaceExpression(node) {
 // This requires that we give it an array of alternating
 // content and whitespace elements.
 // To ensure this we add dummy `""` content elements as needed.
-function printJSXChildren(path, options, print, jsxWhitespace) {
+function printJSXChildren(
+  path,
+  options,
+  print,
+  jsxWhitespace,
+  isFacebookTranslationTag
+) {
   const n = path.getValue();
   const children = [];
 
@@ -4913,7 +4953,9 @@ function printJSXChildren(path, options, print, jsxWhitespace) {
           children.push("");
           words.shift();
           if (/\n/.test(words[0])) {
-            children.push(hardline);
+            children.push(
+              separatorWithWhitespace(isFacebookTranslationTag, words[1])
+            );
           } else {
             children.push(jsxWhitespace);
           }
@@ -4942,21 +4984,19 @@ function printJSXChildren(path, options, print, jsxWhitespace) {
 
         if (endWhitespace !== undefined) {
           if (/\n/.test(endWhitespace)) {
-            children.push(hardline);
+            children.push(
+              separatorWithWhitespace(
+                isFacebookTranslationTag,
+                getLast(children)
+              )
+            );
           } else {
             children.push(jsxWhitespace);
           }
         } else {
-          // Ideally this would be a `hardline` to allow a break between
-          // tags and text.
-          // Unfortunately Facebook have a custom translation pipeline
-          // (https://github.com/prettier/prettier/issues/1581#issuecomment-300975032)
-          // that uses the JSX syntax, but does not follow the React whitespace
-          // rules.
-          // Ensuring that we never have a break between tags and text in JSX
-          // will allow Facebook to adopt Prettier without too much of an
-          // adverse effect on formatting algorithm.
-          children.push("");
+          children.push(
+            separatorNoWhitespace(isFacebookTranslationTag, getLast(children))
+          );
         }
       } else if (/\n/.test(text)) {
         // Keep (up to one) blank line between tags/expressions/text.
@@ -4975,12 +5015,14 @@ function printJSXChildren(path, options, print, jsxWhitespace) {
 
       const next = n.children[i + 1];
       const directlyFollowedByMeaningfulText =
-        next && isMeaningfulJSXText(next) && !/^[ \n\r\t]/.test(rawText(next));
+        next && isMeaningfulJSXText(next);
       if (directlyFollowedByMeaningfulText) {
-        // Potentially this could be a hardline as well.
-        // See the comment above about the Facebook translation pipeline as
-        // to why this is an empty string.
-        children.push("");
+        const firstWord = rawText(next)
+          .trim()
+          .split(matchJsxWhitespaceRegex)[0];
+        children.push(
+          separatorNoWhitespace(isFacebookTranslationTag, firstWord)
+        );
       } else {
         children.push(hardline);
       }
@@ -5067,7 +5109,18 @@ function printJSXElement(path, options, print) {
   const rawJsxWhitespace = options.singleQuote ? "{' '}" : '{" "}';
   const jsxWhitespace = ifBreak(concat([rawJsxWhitespace, softline]), " ");
 
-  const children = printJSXChildren(path, options, print, jsxWhitespace);
+  const isFacebookTranslationTag =
+    n.openingElement &&
+    n.openingElement.name &&
+    n.openingElement.name.name === "fbt";
+
+  const children = printJSXChildren(
+    path,
+    options,
+    print,
+    jsxWhitespace,
+    isFacebookTranslationTag
+  );
 
   const containsText =
     n.children.filter(child => isMeaningfulJSXText(child)).length > 0;
@@ -5207,13 +5260,20 @@ function maybeWrapJSXElementInParens(path, elem) {
     return elem;
   }
 
+  const shouldBreak = matchAncestorTypes(path, [
+    "ArrowFunctionExpression",
+    "CallExpression",
+    "JSXExpressionContainer"
+  ]);
+
   return group(
     concat([
       ifBreak("("),
       indent(concat([softline, elem])),
       softline,
       ifBreak(")")
-    ])
+    ]),
+    { shouldBreak }
   );
 }
 
@@ -5354,7 +5414,10 @@ function printAssignmentRight(leftNode, rightNode, printedRight, options) {
     ((leftNode.type === "Identifier" ||
       isStringLiteral(leftNode) ||
       leftNode.type === "MemberExpression") &&
-      (isStringLiteral(rightNode) || isMemberExpressionChain(rightNode)));
+      (isStringLiteral(rightNode) || isMemberExpressionChain(rightNode)) &&
+      // do not put values on a separate line from the key in json
+      options.parser !== "json" &&
+      options.parser !== "json5");
 
   if (canBreak) {
     return indent(concat([line, printedRight]));

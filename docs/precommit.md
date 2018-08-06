@@ -12,15 +12,17 @@ You can use Prettier with a pre-commit tool. This can re-format your files that 
 Install it along with [husky](https://github.com/typicode/husky):
 
 ```bash
-yarn add lint-staged husky --dev
+yarn add lint-staged husky@next --dev
 ```
 
 and add this config to your `package.json`:
 
 ```json
 {
-  "scripts": {
-    "precommit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
@@ -39,15 +41,17 @@ See https://github.com/okonet/lint-staged#configuration for more details about h
 Install it along with [husky](https://github.com/typicode/husky):
 
 ```bash
-yarn add pretty-quick husky --dev
+yarn add pretty-quick husky@next --dev
 ```
 
 and add this config to your `package.json`:
 
 ```json
 {
-  "scripts": {
-    "precommit": "pretty-quick --staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
 ```
@@ -62,7 +66,7 @@ Copy the following config into your `.pre-commit-config.yaml` file:
 
 ```yaml
     -   repo: https://github.com/prettier/prettier
-        sha: ''  # Use the sha or tag you want to point at
+        rev: ''  # Use the sha or tag you want to point at
         hooks:
         -   id: prettier
 ```
@@ -76,15 +80,17 @@ Find more info from [here](https://pre-commit.com).
 Install it along with [husky](https://github.com/typicode/husky):
 
 ```bash
-yarn add precise-commits husky --dev
+yarn add precise-commits husky@next --dev
 ```
 
 and add this config to your `package.json`:
 
 ```json
 {
-  "scripts": {
-    "precommit": "precise-commits"
+  "husky": {
+    "hooks": {
+      "pre-commit": "precise-commits"
+    }
   }
 }
 ```

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ExportCJSDefault_Class.js 1`] = `
+exports[`ExportCJSDefault_Class.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -27,7 +27,7 @@ module.exports = ClassFoo3;
 
 `;
 
-exports[`ExportCJSDefault_Number.js 1`] = `
+exports[`ExportCJSDefault_Number.js - flow-verify 1`] = `
 /* @flow */
 
 module.exports = 42;
@@ -38,7 +38,7 @@ module.exports = 42;
 
 `;
 
-exports[`ExportCJSNamed_Class.js 1`] = `
+exports[`ExportCJSNamed_Class.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -57,7 +57,7 @@ exports.ClassFoo4 = ClassFoo4;
 
 `;
 
-exports[`ExportCJSNamed_Number.js 1`] = `
+exports[`ExportCJSNamed_Number.js - flow-verify 1`] = `
 /* @flow */
 
 exports.num = 42;
@@ -68,7 +68,7 @@ exports.num = 42;
 
 `;
 
-exports[`ExportDefault_Class.js 1`] = `
+exports[`ExportDefault_Class.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -91,7 +91,7 @@ export default ClassFoo1;
 
 `;
 
-exports[`ExportDefault_Number.js 1`] = `
+exports[`ExportDefault_Number.js - flow-verify 1`] = `
 /* @flow */
 
 export default 42;
@@ -102,7 +102,7 @@ export default 42;
 
 `;
 
-exports[`ExportNamed_Alias.js 1`] = `
+exports[`ExportNamed_Alias.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -127,7 +127,7 @@ export function givesAFoo3Obj(): AliasFoo3 {
 
 `;
 
-exports[`ExportNamed_Class.js 1`] = `
+exports[`ExportNamed_Class.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -150,7 +150,7 @@ export { ClassFoo2 };
 
 `;
 
-exports[`ExportNamed_Multi.js 1`] = `
+exports[`ExportNamed_Multi.js - flow-verify 1`] = `
 // @flow
 
 export var num = 42;
@@ -163,7 +163,7 @@ export var str = "asdf";
 
 `;
 
-exports[`ExportNamed_Number.js 1`] = `
+exports[`ExportNamed_Number.js - flow-verify 1`] = `
 /* @flow */
 
 export var num = 42;
@@ -174,7 +174,7 @@ export var num = 42;
 
 `;
 
-exports[`import_typeof.js 1`] = `
+exports[`import_typeof.js - flow-verify 1`] = `
 /**
  * @flow
  */

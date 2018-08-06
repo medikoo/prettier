@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`class.js 1`] = `
+exports[`class.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -121,7 +121,7 @@ foo.propOverriddenWithSetter = 123; // Error number ~> string
 
 `;
 
-exports[`declare_class.js 1`] = `
+exports[`declare_class.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -220,7 +220,7 @@ foo.propOverriddenWithSetter = 123; // Error number ~> string
 
 `;
 
-exports[`object.js 1`] = `
+exports[`object.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -349,7 +349,7 @@ var testExampleOrOrderOfGetterAndSetterReordered: number =
 
 `;
 
-exports[`object_type.js 1`] = `
+exports[`object_type.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -461,7 +461,7 @@ function test(obj: T) {
 
 `;
 
-exports[`react.js 1`] = `
+exports[`react.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -502,7 +502,7 @@ const Example = React.createClass({
 
 `;
 
-exports[`variance.js 1`] = `
+exports[`variance.js - flow-verify 1`] = `
 /* @flow */
 
 class A {}

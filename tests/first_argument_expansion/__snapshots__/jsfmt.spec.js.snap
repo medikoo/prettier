@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test.js 1`] = `
+exports[`test.js - babylon-verify 1`] = `
 setTimeout(function() {
   thing();
 }, 500);
@@ -88,6 +88,10 @@ setTimeout(
 setTimeout(/* blip */ function() {
   thing();
 }, 500);
+
+func((args) => {
+  execute(args);
+}, result => result && console.log("success"))
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 setTimeout(function () { thing(); }, 500);
 
@@ -150,5 +154,12 @@ setTimeout(
 );
 
 setTimeout(/* blip */ function () { thing(); }, 500);
+
+func(
+  args => {
+    execute(args);
+  },
+  result => result && console.log("success")
+);
 
 `;

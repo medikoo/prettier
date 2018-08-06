@@ -6,6 +6,9 @@ const escapeStringRegexp = require("escape-string-regexp");
 const getCjkRegex = require("cjk-regex");
 const getUnicodeRegex = require("unicode-regex");
 
+// eslint-disable-next-line no-control-regex
+const notAsciiRegex = /[^\x20-\x7F]/;
+
 const cjkPattern = getCjkRegex().source;
 
 // http://spec.commonmark.org/0.25/#ascii-punctuation-character
@@ -713,6 +716,11 @@ function getStringWidth(text) {
     return 0;
   }
 
+  // shortcut to avoid needless string `RegExp`s, replacements, and allocations within `string-width`
+  if (!notAsciiRegex.test(text)) {
+    return text.length;
+  }
+
   // emojis are considered 2-char width for consistency
   // see https://github.com/sindresorhus/string-width/issues/11
   // for the reason why not implemented in `string-width`
@@ -731,6 +739,20 @@ function hasNodeIgnoreComment(node) {
     node.comments.length > 0 &&
     node.comments.some(comment => comment.value.trim() === "prettier-ignore")
   );
+}
+
+function matchAncestorTypes(path, types, index) {
+  index = index || 0;
+  types = types.slice();
+  while (types.length) {
+    const parent = path.getParentNode(index);
+    const type = types.shift();
+    if (!parent || parent.type !== type) {
+      return false;
+    }
+    index++;
+  }
+  return true;
 }
 
 function addCommentHelper(node, comment) {
@@ -762,6 +784,22 @@ function addTrailingComment(node, comment) {
   comment.leading = false;
   comment.trailing = true;
   addCommentHelper(node, comment);
+}
+
+function isWithinParentArrayProperty(path, propertyName) {
+  const node = path.getValue();
+  const parent = path.getParentNode();
+
+  if (parent == null) {
+    return false;
+  }
+
+  if (!Array.isArray(parent[propertyName])) {
+    return false;
+  }
+
+  const key = path.getName();
+  return parent[propertyName][key] === node;
 }
 
 module.exports = {
@@ -798,7 +836,9 @@ module.exports = {
   hasIgnoreComment,
   hasNodeIgnoreComment,
   makeString,
+  matchAncestorTypes,
   addLeadingComment,
   addDanglingComment,
-  addTrailingComment
+  addTrailingComment,
+  isWithinParentArrayProperty
 };

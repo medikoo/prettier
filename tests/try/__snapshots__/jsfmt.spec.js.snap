@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`empty.js 1`] = `
+exports[`empty.js - flow-verify 1`] = `
 try {
 } catch (e) {
 }
@@ -20,7 +20,7 @@ catch (e) {}
 
 `;
 
-exports[`try.js 1`] = `
+exports[`try.js - flow-verify 1`] = `
 try
 /* missing comment */
 {;}

@@ -1,6 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`attr-comments.js 1`] = `
+exports[`array-iter.js - flow-verify 1`] = `
+const UsersList = ({ users }) => (
+  <section>
+    <h2>Users list</h2>
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  </section>
+)
+
+const TodoList = ({ todos }) => (
+  <div className="TodoList">
+    <ul>{_.map(todos, (todo, i) => <TodoItem key={i} {...todo} />)}</ul>
+  </div>
+);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const UsersList = ({ users }) => (
+  <section>
+    <h2>Users list</h2>
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  </section>
+);
+
+const TodoList = ({ todos }) => (
+  <div className="TodoList">
+    <ul>
+      {_.map(todos, (todo, i) => (
+        <TodoItem key={i} {...todo} />
+      ))}
+    </ul>
+  </div>
+);
+
+`;
+
+exports[`attr-comments.js - flow-verify 1`] = `
 <Component
   propFn={
     // comment
@@ -62,7 +103,7 @@ exports[`attr-comments.js 1`] = `
 
 `;
 
-exports[`conditional-expression.js 1`] = `
+exports[`conditional-expression.js - flow-verify 1`] = `
 // There are two ways to print ConditionalExpressions: "normal mode" and
 // "JSX mode". This is normal mode (when breaking):
 //
@@ -341,7 +382,7 @@ cable ? (
 
 `;
 
-exports[`expression.js 1`] = `
+exports[`expression.js - flow-verify 1`] = `
 <View
   style={
     {
@@ -588,7 +629,7 @@ exports[`expression.js 1`] = `
 
 `;
 
-exports[`flow_fix_me.js 1`] = `
+exports[`flow_fix_me.js - flow-verify 1`] = `
 const aDiv = (
   /* $FlowFixMe */
   <div className="foo">
@@ -603,7 +644,7 @@ const aDiv = (
 
 `;
 
-exports[`html_escape.js 1`] = `
+exports[`html_escape.js - flow-verify 1`] = `
 export default () => <a href="https://foo.bar?q1=foo&q2=bar" />;
 
 () => <img src="https://bar.foo?param1=1&param2=2" />;
@@ -614,7 +655,7 @@ export default () => <a href="https://foo.bar?q1=foo&q2=bar" />;
 
 `;
 
-exports[`hug.js 1`] = `
+exports[`hug.js - flow-verify 1`] = `
 <div>
   {__DEV__
     ? this.renderDevApp()
@@ -687,7 +728,7 @@ exports[`hug.js 1`] = `
 
 `;
 
-exports[`logical-expression.js 1`] = `
+exports[`logical-expression.js - flow-verify 1`] = `
 <div>
   {a || "b"}
 </div>;
@@ -757,7 +798,7 @@ exports[`logical-expression.js 1`] = `
 
 `;
 
-exports[`object-property.js 1`] = `
+exports[`object-property.js - flow-verify 1`] = `
 const tabs = [
   {
     title: "General Info",
@@ -788,7 +829,7 @@ const tabs = [
 
 `;
 
-exports[`open-break.js 1`] = `
+exports[`open-break.js - flow-verify 1`] = `
 <td
 onClick={() => {
   a
@@ -811,7 +852,7 @@ onClick={() => {
 
 `;
 
-exports[`parens.js 1`] = `
+exports[`parens.js - flow-verify 1`] = `
 a = [
   <path
     key='0'
@@ -840,7 +881,7 @@ a = [
 
 `;
 
-exports[`quotes.js 1`] = `
+exports[`quotes.js - flow-verify 1`] = `
 <div id="&quot;'<>&amp;quot;" />;
 <div id='"&#39;<>&amp;quot;' />;
 <div id={'\\'"&quot;<>&amp;quot;'} />;
@@ -851,7 +892,7 @@ exports[`quotes.js 1`] = `
 
 `;
 
-exports[`return-statement.js 1`] = `
+exports[`return-statement.js - flow-verify 1`] = `
 const NonBreakingArrowExpression = () => <div />;
 
 const BreakingArrowExpression = () => <div>
@@ -950,7 +991,7 @@ class BreakingClass extends React.component {
 
 `;
 
-exports[`spacing.js 1`] = `
+exports[`spacing.js - flow-verify 1`] = `
 const Labels = {
   label1: (
     <fbt>

@@ -31,7 +31,24 @@ module.exports = {
     // If this is removed, see also scripts/build/build.js.
     "graceful-fs": "<rootDir>/tests_config/fs.js",
 
-    "prettier/local": "<rootDir>/tests_config/require_prettier.js"
+    "prettier/local": "<rootDir>/tests_config/require_prettier.js",
+    "prettier/standalone": "<rootDir>/tests_config/require_standalone.js"
   },
-  transform: {}
+  testEnvironment: "node",
+  transform: {},
+  watchPlugins: [
+    "jest-watch-typeahead/filename",
+    "jest-watch-typeahead/testname"
+  ],
+  reporters: process.env.REPORT_SUMMARIES
+    ? [
+        "default",
+        [
+          "jest-junit",
+          {
+            output: "./test-results/jest/junit.xml"
+          }
+        ]
+      ]
+    : undefined
 };

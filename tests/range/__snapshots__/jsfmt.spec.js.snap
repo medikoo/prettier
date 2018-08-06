@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`class-declaration.js 1`] = `
+exports[`class-declaration.js - flow-verify 1`] = `
 
 
 class    a {
@@ -17,7 +17,7 @@ class a {
 let    x
 `;
 
-exports[`different-levels.js 1`] = `
+exports[`different-levels.js - flow-verify 1`] = `
 call(1,2,3)
 call(1,2,3)
 function f() {
@@ -30,14 +30,14 @@ function f() { call(1, 2, 3); }
 
 `;
 
-exports[`function-declaration.js 1`] = `
+exports[`function-declaration.js - flow-verify 1`] = `
 function ugly ( {a=1,     b     =   2     }      ) {}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function ugly({ a = 1, b = 2 }) {}
 
 `;
 
-exports[`ignore-indentation.js 1`] = `
+exports[`ignore-indentation.js - flow-verify 1`] = `
 function ugly ( {a=1,     b     =   2     }      ) {
   function ugly ( {a=1,     b     =   2     }      ) {
     function ugly ( {a=1,     b     =   2     }      ) {
@@ -58,7 +58,7 @@ function ugly ( {a=1,     b     =   2     }      ) {
 
 `;
 
-exports[`module-export1.js 1`] = `
+exports[`module-export1.js - flow-verify 1`] = `
 import  def , {named}  from    'x'
 
 export *  from   'd'
@@ -81,7 +81,7 @@ export   default    42
 
 `;
 
-exports[`module-export2.js 1`] = `
+exports[`module-export2.js - flow-verify 1`] = `
 import  def , {named}  from    'x'
 
 export *  from   'd'
@@ -103,7 +103,7 @@ export   default    42
 
 `;
 
-exports[`module-export3.js 1`] = `
+exports[`module-export3.js - flow-verify 1`] = `
 import  def , {named}  from    'x'
 
 export *  from   'd'
@@ -126,7 +126,7 @@ export default 42;
 
 `;
 
-exports[`module-import.js 1`] = `
+exports[`module-import.js - flow-verify 1`] = `
 import  def , {named}  from    'x'
 
 export *  from   'd'
@@ -149,7 +149,7 @@ export   default    42
 
 `;
 
-exports[`multiple-statements.js 1`] = `
+exports[`multiple-statements.js - flow-verify 1`] = `
 call(
   1, 2,3
 );
@@ -180,7 +180,7 @@ call(
 
 `;
 
-exports[`multiple-statements2.js 1`] = `
+exports[`multiple-statements2.js - flow-verify 1`] = `
 call(
   1, 2,3
 );
@@ -211,7 +211,7 @@ call(
 
 `;
 
-exports[`nested.js 1`] = `
+exports[`nested.js - flow-verify 1`] = `
 try {
   if (condition) {
     body
@@ -227,7 +227,7 @@ try {
 
 `;
 
-exports[`nested2.js 1`] = `
+exports[`nested2.js - flow-verify 1`] = `
 try {
   if (condition) {
     body
@@ -244,7 +244,7 @@ catch (err) {}
 
 `;
 
-exports[`nested3.js 1`] = `
+exports[`nested3.js - flow-verify 1`] = `
 try {
 1;if (condition) {
     body
@@ -261,14 +261,14 @@ catch (err) {}
 
 `;
 
-exports[`object-expression.js 1`] = `
+exports[`object-expression.js - flow-verify 1`] = `
 const y = {a:1, b:2}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const y = { a: 1, b: 2 };
 
 `;
 
-exports[`object-expression2.js 1`] = `
+exports[`object-expression2.js - flow-verify 1`] = `
 
 const y =       [
     {
@@ -285,7 +285,7 @@ const y = [{ a: 1 }, { a: 1, b: 2 }];
 
 `;
 
-exports[`range.js 1`] = `
+exports[`range.js - flow-verify 1`] = `
 function ugly ( {a=1,     b     =   2     }      ) {
   function ugly ( {a=1,     b     =   2     }      ) {
     function ugly ( {a=1,     b     =   2     }      ) {
@@ -306,7 +306,7 @@ function ugly ( {a=1,     b     =   2     }      ) {
 
 `;
 
-exports[`range-end.js 1`] = `
+exports[`range-end.js - flow-verify 1`] = `
 // Unchanged
 call(
   1, 2,3
@@ -325,7 +325,7 @@ call(
 call(1, 2, 3);
 `;
 
-exports[`range-start.js 1`] = `
+exports[`range-start.js - flow-verify 1`] = `
 call(
   1, 2,3
 );
@@ -346,7 +346,7 @@ call(
 
 `;
 
-exports[`try-catch.js 1`] = `
+exports[`try-catch.js - flow-verify 1`] = `
 try {}
 catch (err) {}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -355,7 +355,7 @@ catch (err) {}
 
 `;
 
-exports[`whitespace.js 1`] = `
+exports[`whitespace.js - flow-verify 1`] = `
  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  

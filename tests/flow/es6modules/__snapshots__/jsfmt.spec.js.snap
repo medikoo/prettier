@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`B.js 1`] = `
+exports[`B.js - flow-verify 1`] = `
 /* @flow */
 
 exports.numberValue = 42;
@@ -11,14 +11,14 @@ exports.numberValue = 42;
 
 `;
 
-exports[`C.js 1`] = `
+exports[`C.js - flow-verify 1`] = `
 /* @flow */
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /* @flow */
 
 `;
 
-exports[`CommonJS_Clobbering_Class.js 1`] = `
+exports[`CommonJS_Clobbering_Class.js - flow-verify 1`] = `
 /**
  * @providesModule CommonJS_Clobbering_Class
  * @flow
@@ -65,7 +65,7 @@ module.exports = Test;
 
 `;
 
-exports[`CommonJS_Clobbering_Frozen.js 1`] = `
+exports[`CommonJS_Clobbering_Frozen.js - flow-verify 1`] = `
 /**
  * @providesModule CommonJS_Clobbering_Frozen
  * @flow
@@ -84,7 +84,7 @@ module.exports = Object.freeze({ numberValue1: 1 });
 
 `;
 
-exports[`CommonJS_Clobbering_Lit.js 1`] = `
+exports[`CommonJS_Clobbering_Lit.js - flow-verify 1`] = `
 /**
  * @providesModule CommonJS_Clobbering_Lit
  * @flow
@@ -113,7 +113,7 @@ module.exports = {
 
 `;
 
-exports[`CommonJS_Named.js 1`] = `
+exports[`CommonJS_Named.js - flow-verify 1`] = `
 /**
  * @providesModule CommonJS_Named
  * @flow
@@ -138,7 +138,7 @@ exports.numberValue5 = 5;
 
 `;
 
-exports[`ES6_Default_AnonClass1.js 1`] = `
+exports[`ES6_Default_AnonClass1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Default_AnonClass1
  * @flow
@@ -157,7 +157,7 @@ export default class {
 
 `;
 
-exports[`ES6_Default_AnonClass2.js 1`] = `
+exports[`ES6_Default_AnonClass2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Default_AnonClass2
  * @flow
@@ -176,7 +176,7 @@ export default class {
 
 `;
 
-exports[`ES6_Default_AnonFunction1.js 1`] = `
+exports[`ES6_Default_AnonFunction1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Default_AnonFunction1
  * @flow
@@ -193,7 +193,7 @@ export default function (): number { return 42; }
 
 `;
 
-exports[`ES6_Default_AnonFunction2.js 1`] = `
+exports[`ES6_Default_AnonFunction2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Default_AnonFunction2
  * @flow
@@ -210,7 +210,7 @@ export default function (): number { return 42; }
 
 `;
 
-exports[`ES6_Default_NamedClass1.js 1`] = `
+exports[`ES6_Default_NamedClass1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Default_NamedClass1
  * @flow
@@ -239,7 +239,7 @@ new Foo();
 
 `;
 
-exports[`ES6_Default_NamedClass2.js 1`] = `
+exports[`ES6_Default_NamedClass2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Default_NamedClass2
  * @flow
@@ -258,7 +258,7 @@ export default class Foo {
 
 `;
 
-exports[`ES6_Default_NamedFunction1.js 1`] = `
+exports[`ES6_Default_NamedFunction1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Default_NamedFunction1
  * @flow
@@ -275,7 +275,7 @@ export default function foo(): number { return 42; }
 
 `;
 
-exports[`ES6_Default_NamedFunction2.js 1`] = `
+exports[`ES6_Default_NamedFunction2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Default_NamedFunction2
  * @flow
@@ -292,7 +292,7 @@ export default function foo(): number { return 42; }
 
 `;
 
-exports[`ES6_DefaultAndNamed.js 1`] = `
+exports[`ES6_DefaultAndNamed.js - flow-verify 1`] = `
 /* @flow */
 
 export default 42;
@@ -305,7 +305,7 @@ export var str = "asdf";
 
 `;
 
-exports[`ES6_ExportAllFrom_Intermediary1.js 1`] = `
+exports[`ES6_ExportAllFrom_Intermediary1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_ExportAllFrom_Intermediary1
  * @flow
@@ -322,7 +322,7 @@ export * from "ES6_ExportAllFrom_Source1";
 
 `;
 
-exports[`ES6_ExportAllFrom_Intermediary2.js 1`] = `
+exports[`ES6_ExportAllFrom_Intermediary2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_ExportAllFrom_Intermediary2
  * @flow
@@ -339,7 +339,7 @@ export * from "ES6_ExportAllFrom_Source2";
 
 `;
 
-exports[`ES6_ExportAllFrom_Source1.js 1`] = `
+exports[`ES6_ExportAllFrom_Source1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_ExportAllFrom_Source1
  * @flow
@@ -356,7 +356,7 @@ export var numberValue1 = 1;
 
 `;
 
-exports[`ES6_ExportAllFrom_Source2.js 1`] = `
+exports[`ES6_ExportAllFrom_Source2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_ExportAllFrom_Source2
  * @flow
@@ -373,7 +373,7 @@ export var numberValue2 = 1;
 
 `;
 
-exports[`ES6_ExportAllFromMulti.js 1`] = `
+exports[`ES6_ExportAllFromMulti.js - flow-verify 1`] = `
 // @flow
 
 export * from "./ES6_ExportAllFrom_Source1";
@@ -386,7 +386,7 @@ export * from "./ES6_ExportAllFrom_Source2";
 
 `;
 
-exports[`ES6_ExportFrom_Intermediary1.js 1`] = `
+exports[`ES6_ExportFrom_Intermediary1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_ExportFrom_Intermediary1
  * @flow
@@ -409,7 +409,7 @@ export {
 
 `;
 
-exports[`ES6_ExportFrom_Intermediary2.js 1`] = `
+exports[`ES6_ExportFrom_Intermediary2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_ExportFrom_Intermediary2
  * @flow
@@ -432,7 +432,7 @@ export {
 
 `;
 
-exports[`ES6_ExportFrom_Source1.js 1`] = `
+exports[`ES6_ExportFrom_Source1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_ExportFrom_Source1
  * @flow
@@ -449,7 +449,7 @@ export var numberValue1 = 1, numberValue2 = 2;
 
 `;
 
-exports[`ES6_ExportFrom_Source2.js 1`] = `
+exports[`ES6_ExportFrom_Source2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_ExportFrom_Source2
  * @flow
@@ -466,7 +466,7 @@ export var numberValue1 = 1, numberValue2 = 2;
 
 `;
 
-exports[`ES6_Named1.js 1`] = `
+exports[`ES6_Named1.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Named1
  * @flow
@@ -517,7 +517,7 @@ export var [destructuredArrNumber] = [1];
 
 `;
 
-exports[`ES6_Named2.js 1`] = `
+exports[`ES6_Named2.js - flow-verify 1`] = `
 /**
  * @providesModule ES6_Named2
  * @flow
@@ -564,7 +564,7 @@ export var [destructuredArrNumber2] = [1];
 
 `;
 
-exports[`ExportType.js 1`] = `
+exports[`ExportType.js - flow-verify 1`] = `
 // @flow
 
 export type typeAlias = number;
@@ -575,7 +575,7 @@ export type typeAlias = number;
 
 `;
 
-exports[`ProvidesModuleA.js 1`] = `
+exports[`ProvidesModuleA.js - flow-verify 1`] = `
 /**
  * @providesModule A
  * @flow
@@ -600,7 +600,7 @@ exports.stringValue = "str";
 
 `;
 
-exports[`ProvidesModuleCJSDefault.js 1`] = `
+exports[`ProvidesModuleCJSDefault.js - flow-verify 1`] = `
 /**
  * @providesModule CJSDefault
  * @flow
@@ -619,7 +619,7 @@ module.exports = { numberValue: 42 };
 
 `;
 
-exports[`ProvidesModuleD.js 1`] = `
+exports[`ProvidesModuleD.js - flow-verify 1`] = `
 /**
  * @providesModule D
  * @flow
@@ -632,7 +632,7 @@ exports[`ProvidesModuleD.js 1`] = `
 
 `;
 
-exports[`ProvidesModuleES6Default.js 1`] = `
+exports[`ProvidesModuleES6Default.js - flow-verify 1`] = `
 /**
  * @providesModule ES6Default
  * @flow
@@ -657,14 +657,14 @@ export default {
 
 `;
 
-exports[`SideEffects.js 1`] = `
+exports[`SideEffects.js - flow-verify 1`] = `
 /* @flow */
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /* @flow */
 
 `;
 
-exports[`es6modules.js 1`] = `
+exports[`es6modules.js - flow-verify 1`] = `
 /* @flow */
 
 // ===================== //
@@ -1262,7 +1262,7 @@ import { typeAlias } from "./ExportType"; // Error: Cannot vanilla-import a type
 
 `;
 
-exports[`test_imports_are_frozen.js 1`] = `
+exports[`test_imports_are_frozen.js - flow-verify 1`] = `
 /* @flow */
 
 //

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`module-with-pragma.js 1`] = `
+exports[`module-with-pragma.js - flow-verify 1`] = `
 /**
  * @flow
  * @format
@@ -25,7 +25,7 @@ function foo(bar) { return bar + 3 + 4; }
 
 `;
 
-exports[`module-without-pragma.js 1`] = `
+exports[`module-without-pragma.js - flow-verify 1`] = `
 /**
  * @flow
  */
@@ -56,7 +56,7 @@ function      foo(bar)
 
 `;
 
-exports[`range-with-pragma.js 1`] = `
+exports[`range-with-pragma.js - flow-verify 1`] = `
 /**
  * @prettier
  */
@@ -69,7 +69,7 @@ var test = true;
 
 `;
 
-exports[`range-without-pragma.js 1`] = `
+exports[`range-without-pragma.js - flow-verify 1`] = `
 var test = true
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var test = true

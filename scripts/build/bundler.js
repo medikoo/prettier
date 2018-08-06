@@ -1,9 +1,11 @@
 "use strict";
 
+const execa = require("execa");
 const path = require("path");
 const { rollup } = require("rollup");
 const webpack = require("webpack");
 const resolve = require("rollup-plugin-node-resolve");
+const alias = require("rollup-plugin-alias");
 const commonjs = require("rollup-plugin-commonjs");
 const nodeGlobals = require("rollup-plugin-node-globals");
 const json = require("rollup-plugin-json");
@@ -35,7 +37,7 @@ const EXTERNALS = [
 function getBabelConfig(bundle) {
   const config = {
     babelrc: false,
-    plugins: [],
+    plugins: bundle.babelPlugins || [],
     compact: bundle.type === "plugin" ? false : "auto"
   };
   if (bundle.type === "core") {
@@ -92,7 +94,7 @@ function getRollupConfig(bundle) {
   };
 
   const replaceStrings = {
-    "proces.env.NODE_ENV": JSON.stringify("production")
+    "process.env.NODE_ENV": JSON.stringify("production")
   };
   if (bundle.target === "universal") {
     // We can't reference `process` in UMD bundles and this is
@@ -107,6 +109,7 @@ function getRollupConfig(bundle) {
     replace(replaceStrings),
     executable(),
     json(),
+    bundle.alias && alias(bundle.alias),
     bundle.target === "universal" &&
       nativeShims(path.resolve(__dirname, "shims")),
     resolve({
@@ -142,22 +145,35 @@ function getRollupOutputOptions(bundle) {
 }
 
 function getWebpackConfig(bundle) {
-  if (bundle.target === "node") {
-    throw new Error("Unsupported webpack bundle for node");
+  if (bundle.type !== "plugin" || bundle.target !== "universal") {
+    throw new Error("Must use rollup for this bundle");
   }
 
   const root = path.resolve(__dirname, "..", "..");
   return {
     entry: path.resolve(root, bundle.input),
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          use: {
+            loader: "babel-loader",
+            options: getBabelConfig(bundle)
+          }
+        }
+      ]
+    },
     output: {
       path: path.resolve(root, "dist"),
       filename: bundle.output,
-      library:
-        bundle.type === "plugin"
-          ? ["prettierPlugins", bundle.name]
-          : bundle.name,
+      library: ["prettierPlugins", bundle.name],
       libraryTarget: "umd"
-    }
+    },
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.env.NODE_ENV": JSON.stringify("production")
+      })
+    ]
   };
 }
 
@@ -173,11 +189,29 @@ function runWebpack(config) {
   });
 }
 
-module.exports = async function createBundle(bundle) {
+module.exports = async function createBundle(bundle, cache) {
+  const useCache = await cache.checkBundle(
+    bundle.output,
+    getRollupConfig(bundle)
+  );
+  if (useCache) {
+    try {
+      await execa("cp", [
+        path.join(cache.cacheDir, "files", bundle.output),
+        "dist"
+      ]);
+      return { cached: true };
+    } catch (err) {
+      // Proceed to build
+    }
+  }
+
   if (bundle.bundler === "webpack") {
     await runWebpack(getWebpackConfig(bundle));
   } else {
     const result = await rollup(getRollupConfig(bundle));
     await result.write(getRollupOutputOptions(bundle));
   }
+
+  return { bundled: true };
 };

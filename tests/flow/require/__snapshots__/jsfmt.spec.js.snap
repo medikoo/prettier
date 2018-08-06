@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`B.js 1`] = `
+exports[`B.js - flow-verify 1`] = `
 /* @flow */
 
 exports.numberValue = 42;
@@ -11,14 +11,14 @@ exports.numberValue = 42;
 
 `;
 
-exports[`C.js 1`] = `
+exports[`C.js - flow-verify 1`] = `
 /* @flow */
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /* @flow */
 
 `;
 
-exports[`E.js 1`] = `
+exports[`E.js - flow-verify 1`] = `
 /* @flow */
 
 // Local \`exports\` var is just a ref to module.exports, so mutating the original
@@ -41,7 +41,7 @@ exports = { stringValue: "" };
 
 `;
 
-exports[`ProvidesModuleA.js 1`] = `
+exports[`ProvidesModuleA.js - flow-verify 1`] = `
 /**
  * @providesModule A
  * @flow
@@ -58,7 +58,7 @@ exports.numberValue = 42;
 
 `;
 
-exports[`ProvidesModuleD.js 1`] = `
+exports[`ProvidesModuleD.js - flow-verify 1`] = `
 /**
  * @providesModule D
  * @flow
@@ -71,7 +71,7 @@ exports[`ProvidesModuleD.js 1`] = `
 
 `;
 
-exports[`not_builtin_require.js 1`] = `
+exports[`not_builtin_require.js - flow-verify 1`] = `
 // @flow
 
 function require(x: string) {}
@@ -84,7 +84,7 @@ require("not a module name");
 
 `;
 
-exports[`not_builtin_require2.js 1`] = `
+exports[`not_builtin_require2.js - flow-verify 1`] = `
 // @flow
 
 type require = number;
@@ -97,7 +97,7 @@ var a: require = 42;
 
 `;
 
-exports[`require.js 1`] = `
+exports[`require.js - flow-verify 1`] = `
 /* @flow */
 
 function takesANumber(num: number): void {}

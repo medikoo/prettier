@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`real-world-case.md 1`] = `
+exports[`real-world-case.md - markdown-verify 1`] = `
 # Prettier
 
 [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/jlongster/prettier)
@@ -1386,10 +1386,10 @@ how you can configure lint-staged.
 Copy the following config into your \`.pre-commit-config.yaml\` file:
 
 \`\`\`yaml
-    -   repo: https://github.com/prettier/prettier
-        sha: ''  # Use the sha or tag you want to point at
-        hooks:
-        -   id: prettier
+- repo: https://github.com/prettier/prettier
+  sha: "" # Use the sha or tag you want to point at
+  hooks:
+    - id: prettier
 \`\`\`
 
 Find more info from [here](https://pre-commit.com).
@@ -1785,9 +1785,9 @@ YAML:
 \`\`\`yaml
 semi: false
 overrides:
-- files: "*.test.js"
-  options:
-    semi: true
+  - files: "*.test.js"
+    options:
+      semi: true
 \`\`\`
 
 \`files\` is required for each override, and may be a string or array of strings.
@@ -1948,7 +1948,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 `;
 
-exports[`real-world-case.md 2`] = `
+exports[`real-world-case.md - markdown-verify 2`] = `
 # Prettier
 
 [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/jlongster/prettier)
@@ -3334,10 +3334,10 @@ how you can configure lint-staged.
 Copy the following config into your \`.pre-commit-config.yaml\` file:
 
 \`\`\`yaml
-    -   repo: https://github.com/prettier/prettier
-        sha: ''  # Use the sha or tag you want to point at
-        hooks:
-        -   id: prettier
+- repo: https://github.com/prettier/prettier
+  sha: '' # Use the sha or tag you want to point at
+  hooks:
+    - id: prettier
 \`\`\`
 
 Find more info from [here](https://pre-commit.com).
@@ -3733,9 +3733,9 @@ YAML:
 \`\`\`yaml
 semi: false
 overrides:
-- files: "*.test.js"
-  options:
-    semi: true
+  - files: '*.test.js'
+    options:
+      semi: true
 \`\`\`
 
 \`files\` is required for each override, and may be a string or array of strings.
@@ -3896,7 +3896,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 `;
 
-exports[`test-case.md 1`] = `
+exports[`test-case.md - markdown-verify 1`] = `
 [View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
 
 This is a paragraph.
@@ -4161,8 +4161,8 @@ This is a paragraph.
 
 > ## This is a header.
 >
-> 1.  This is the first list item.
-> 2.  This is the second list item.
+> 1. This is the first list item.
+> 2. This is the second list item.
 >
 > Here's some example code:
 >
@@ -4202,14 +4202,14 @@ This is a paragraph.
 - Blue
 \`\`\`
 
-1.  Buy flour and salt
-1.  Mix together with water
-1.  Bake
+1. Buy flour and salt
+1. Mix together with water
+1. Bake
 
 \`\`\`markdown
-1.  Buy flour and salt
-1.  Mix together with water
-1.  Bake
+1. Buy flour and salt
+1. Mix together with water
+1. Bake
 \`\`\`
 
 Paragraph:
@@ -4284,7 +4284,7 @@ This paragraph has some \`code\` in it.
 
 `;
 
-exports[`test-case.md 2`] = `
+exports[`test-case.md - markdown-verify 2`] = `
 [View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
 
 This is a paragraph.
@@ -4549,8 +4549,8 @@ This is a paragraph.
 
 > ## This is a header.
 >
-> 1.  This is the first list item.
-> 2.  This is the second list item.
+> 1. This is the first list item.
+> 2. This is the second list item.
 >
 > Here's some example code:
 >
@@ -4590,14 +4590,14 @@ This is a paragraph.
 - Blue
 \`\`\`
 
-1.  Buy flour and salt
-1.  Mix together with water
-1.  Bake
+1. Buy flour and salt
+1. Mix together with water
+1. Bake
 
 \`\`\`markdown
-1.  Buy flour and salt
-1.  Mix together with water
-1.  Bake
+1. Buy flour and salt
+1. Mix together with water
+1. Bake
 \`\`\`
 
 Paragraph:

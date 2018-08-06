@@ -2,9 +2,13 @@
 
 const fs = require("fs");
 const extname = require("path").extname;
-const prettier = require("prettier/local");
 
 const AST_COMPARE = process.env["AST_COMPARE"];
+const TEST_STANDALONE = process.env["TEST_STANDALONE"];
+
+const prettier = !TEST_STANDALONE
+  ? require("prettier/local")
+  : require("prettier/standalone");
 
 function run_spec(dirname, parsers, options) {
   /* instabul ignore if */
@@ -13,6 +17,15 @@ function run_spec(dirname, parsers, options) {
   }
 
   fs.readdirSync(dirname).forEach(filename => {
+    // We need to have a skipped test with the same name of the snapshots,
+    // so Jest doesn't mark them as obsolete.
+    if (TEST_STANDALONE && parsers.some(skipStandalone)) {
+      parsers.forEach(parser =>
+        test.skip(`${filename} - ${parser}-verify`, () => {})
+      );
+      return;
+    }
+
     const path = dirname + "/" + filename;
     if (
       extname(filename) !== ".snap" &&
@@ -49,7 +62,7 @@ function run_spec(dirname, parsers, options) {
       test(`${filename} - ${mergedOptions.parser}-verify`, () => {
         expect(
           raw(source + "~".repeat(mergedOptions.printWidth) + "\n" + output)
-        ).toMatchSnapshot(filename);
+        ).toMatchSnapshot();
       });
 
       parsers.slice(1).forEach(parser => {
@@ -61,22 +74,19 @@ function run_spec(dirname, parsers, options) {
       });
 
       if (AST_COMPARE) {
-        const compareOptions = Object.assign({}, mergedOptions);
-        delete compareOptions.cursorOffset;
-        const astMassaged = parse(input, compareOptions);
-        let ppastMassaged;
-        let pperr = null;
-        try {
-          ppastMassaged = parse(
-            prettyprint(input, path, compareOptions),
-            compareOptions
-          );
-        } catch (e) {
-          pperr = e.stack;
-        }
+        test(`${path} parse`, () => {
+          const compareOptions = Object.assign({}, mergedOptions);
+          delete compareOptions.cursorOffset;
+          const astMassaged = parse(input, compareOptions);
+          let ppastMassaged = undefined;
 
-        test(path + " parse", () => {
-          expect(pperr).toBe(null);
+          expect(() => {
+            ppastMassaged = parse(
+              prettyprint(input, path, compareOptions),
+              compareOptions
+            );
+          }).not.toThrow();
+
           expect(ppastMassaged).toBeDefined();
           if (!astMassaged.errors || astMassaged.errors.length === 0) {
             expect(astMassaged).toEqual(ppastMassaged);
@@ -114,6 +124,10 @@ function prettyprint(src, filename, options) {
 
 function read(filename) {
   return fs.readFileSync(filename, "utf8");
+}
+
+function skipStandalone(parser) {
+  return new Set(["parse5", "glimmer"]).has(parser);
 }
 
 /**
