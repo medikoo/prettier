@@ -9,18 +9,18 @@ const util = require("./util");
 // Errors in promises should be fatal.
 const loggedErrors = new Set();
 process.on("unhandledRejection", err => {
-  if (loggedErrors.has(err)) {
-    // No need to print it twice.
-    process.exit(1);
+  // No need to print it twice.
+  if (!loggedErrors.has(err)) {
+    console.error(err);
   }
-  throw err;
+  process.exit(1);
 });
 
 const OK = chalk.reset.inverse.bold.green(" DONE ");
 const FAIL = chalk.reset.inverse.bold.red(" FAIL ");
 
 function fitTerminal(input) {
-  const columns = process.stdout.columns || 80;
+  const columns = Math.min(process.stdout.columns, 80);
   const WIDTH = columns - stringWidth(OK) + 1;
   if (input.length < WIDTH) {
     input += Array(WIDTH - input.length).join(chalk.dim("."));
@@ -58,6 +58,7 @@ async function preparePackage() {
     prepublishOnly:
       "node -e \"assert.equal(require('.').version, require('..').version)\""
   };
+  pkg.files = ["*.js"];
   pkg.name = "prettier-elastic";
   pkg.prettierVersion = pkg.version;
   pkg.description = "Prettier (code formatter) with elastic vars formatting";
