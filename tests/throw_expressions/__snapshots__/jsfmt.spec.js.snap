@@ -21,9 +21,7 @@ class Product {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function save(filename = throw new TypeError("Argument required")) {}
 
-lint(ast, {
-  with: () => throw new Error("avoid using 'with' statements.")
-});
+lint(ast, { with: () => throw new Error("avoid using 'with' statements.") });
 
 function getEncoder(encoding) {
   const encoder =
@@ -37,12 +35,8 @@ function getEncoder(encoding) {
 }
 
 class Product {
-  get id() {
-    return this._id;
-  }
-  set id(value) {
-    this._id = value || throw new Error("Invalid value");
-  }
+  get id() { return this._id; }
+  set id(value) { this._id = value || throw new Error("Invalid value"); }
 }
 
 `;

@@ -589,26 +589,12 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"codemirrorMimeType\\": \\"application/json\\",
       \\"codemirrorMode\\": \\"javascript\\",
       \\"extensions\\": [
-        \\".json\\",
-        \\".avsc\\",
-        \\".geojson\\",
-        \\".gltf\\",
-        \\".JSON-tmLanguage\\",
-        \\".jsonl\\",
-        \\".tfstate\\",
-        \\".tfstate.backup\\",
-        \\".topojson\\",
-        \\".webapp\\",
-        \\".webmanifest\\"
+        \\".json\\", \\".avsc\\", \\".geojson\\", \\".gltf\\", \\".JSON-tmLanguage\\", \\".jsonl\\",
+        \\".tfstate\\", \\".tfstate.backup\\", \\".topojson\\", \\".webapp\\", \\".webmanifest\\"
       ],
       \\"filenames\\": [
-        \\".arcconfig\\",
-        \\".htmlhintrc\\",
-        \\".tern-config\\",
-        \\".tern-project\\",
-        \\"composer.lock\\",
-        \\"mcmod.info\\",
-        \\".prettierrc\\"
+        \\".arcconfig\\", \\".htmlhintrc\\", \\".tern-config\\", \\".tern-project\\",
+        \\"composer.lock\\", \\"mcmod.info\\", \\".prettierrc\\"
       ],
       \\"group\\": \\"JavaScript\\",
       \\"linguistLanguageId\\": 174,
@@ -626,28 +612,15 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"codemirrorMimeType\\": \\"text/javascript\\",
       \\"codemirrorMode\\": \\"javascript\\",
       \\"extensions\\": [
-        \\".sublime-build\\",
-        \\".sublime-commands\\",
-        \\".sublime-completions\\",
-        \\".sublime-keymap\\",
-        \\".sublime-macro\\",
-        \\".sublime-menu\\",
-        \\".sublime-mousemap\\",
-        \\".sublime-project\\",
-        \\".sublime-settings\\",
-        \\".sublime-theme\\",
-        \\".sublime-workspace\\",
-        \\".sublime_metrics\\",
+        \\".sublime-build\\", \\".sublime-commands\\", \\".sublime-completions\\",
+        \\".sublime-keymap\\", \\".sublime-macro\\", \\".sublime-menu\\",
+        \\".sublime-mousemap\\", \\".sublime-project\\", \\".sublime-settings\\",
+        \\".sublime-theme\\", \\".sublime-workspace\\", \\".sublime_metrics\\",
         \\".sublime_session\\"
       ],
       \\"filenames\\": [
-        \\".babelrc\\",
-        \\".eslintrc.json\\",
-        \\".jscsrc\\",
-        \\".jshintrc\\",
-        \\".jslintrc\\",
-        \\"tsconfig.json\\",
-        \\".eslintrc\\"
+        \\".babelrc\\", \\".eslintrc.json\\", \\".jscsrc\\", \\".jshintrc\\", \\".jslintrc\\",
+        \\"tsconfig.json\\", \\".eslintrc\\"
       ],
       \\"group\\": \\"JSON\\",
       \\"linguistLanguageId\\": 423,
@@ -773,15 +746,8 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"codemirrorMimeType\\": \\"text/x-yaml\\",
       \\"codemirrorMode\\": \\"yaml\\",
       \\"extensions\\": [
-        \\".yml\\",
-        \\".mir\\",
-        \\".reek\\",
-        \\".rviz\\",
-        \\".sublime-syntax\\",
-        \\".syntax\\",
-        \\".yaml\\",
-        \\".yaml-tmlanguage\\",
-        \\".yml.mysql\\"
+        \\".yml\\", \\".mir\\", \\".reek\\", \\".rviz\\", \\".sublime-syntax\\", \\".syntax\\", \\".yaml\\",
+        \\".yaml-tmlanguage\\", \\".yml.mysql\\"
       ],
       \\"filenames\\": [\\".clang-format\\", \\".clang-tidy\\", \\".gemrc\\", \\"glide.lock\\"],
       \\"linguistLanguageId\\": 407,
