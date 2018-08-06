@@ -598,9 +598,7 @@ this.layoutPartsToHide = this.utils.hashset(
     .filter(Boolean)
 );
 
-var jqxhr = $.ajax("example.php")
-  .done(doneFn)
-  .fail(failFn);
+var jqxhr = $.ajax("example.php").done(doneFn).fail(failFn);
 
 `;
 
