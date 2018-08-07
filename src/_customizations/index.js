@@ -25,11 +25,6 @@ module.exports = {
     type: "if-break",
     breakContents: `${" ".repeat("const".length - 1)}, `,
     flatContents: ""
-  },
-  paddingBreakInstruction: {
-    type: "if-break",
-    breakContents: "",
-    flatContents: " "
   }
 };
 

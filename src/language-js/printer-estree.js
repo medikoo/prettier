@@ -468,6 +468,7 @@ function printPathNoParens(path, options, print, args) {
       // Avoid indenting sub-expressions in some cases where the first sub-expression is already
       // indented accordingly. We should indent sub-expressions where the first case isn't indented.
       const shouldNotIndent =
+        parent.type === "TemplateLiteral" ||
         parent.type === "ReturnStatement" ||
         (parent.type === "JSXExpressionContainer" &&
           parentParent.type === "JSXAttribute") ||
@@ -2369,29 +2370,11 @@ function printPathNoParens(path, options, print, args) {
 
           let printed = expressions[i];
 
-          if (
-            (n.expressions[i].comments && n.expressions[i].comments.length) ||
-            n.expressions[i].type === "MemberExpression" ||
-            n.expressions[i].type === "OptionalMemberExpression" ||
-            n.expressions[i].type === "ConditionalExpression"
-          ) {
-            printed = concat([indent(concat([softline, printed])), softline]);
-          }
+          printed = concat([indent(concat([line, printed])), line]);
 
           const aligned = addAlignmentToDoc(printed, indentSize, tabWidth);
 
-          parts.push(
-            group(
-              concat([
-                "${",
-                customizations.paddingBreakInstruction,
-                aligned,
-                lineSuffixBoundary,
-                customizations.paddingBreakInstruction,
-                "}"
-              ])
-            )
-          );
+          parts.push(group(concat(["${", aligned, lineSuffixBoundary, "}"])));
         }
       }, "quasis");
 
