@@ -1172,13 +1172,38 @@ function printPathNoParens(path, options, print, args) {
       // printing them.
       const propsAndLoc = [];
       fields.forEach(field => {
+        let anyStringKey = false;
+        if (field === "properties") {
+          path.each(childPath => {
+            if (anyStringKey) {
+              return;
+            }
+            const node = childPath.getValue();
+            if (
+              node.type !== "ObjectTypeProperty" &&
+              node.type !== "ObjectProperty"
+            ) {
+              return;
+            }
+            if (node.key.type !== "StringLiteral") {
+              return;
+            }
+            anyStringKey = !isIdentifierName(node.key.value);
+          }, field);
+        }
         path.each(childPath => {
           const node = childPath.getValue();
+          if (anyStringKey) {
+            node._keepAsStringLiteral = true;
+          }
           propsAndLoc.push({
             node: node,
             printed: print(childPath),
             loc: options.locStart(node)
           });
+          if (anyStringKey) {
+            delete node._keepAsStringLiteral;
+          }
         }, field);
       });
 
@@ -3402,6 +3427,7 @@ function printPropertyKey(path, options, print) {
   }
 
   if (
+    !node._keepAsStringLiteral &&
     isStringLiteral(key) &&
     isIdentifierName(key.value) &&
     !node.computed &&
