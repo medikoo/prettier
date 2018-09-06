@@ -1,6 +1,6 @@
 {
   "name": "prettier",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "description": "Prettier is an opinionated code formatter",
   "bin": {
     "prettier": "./bin/prettier.js"
@@ -82,11 +82,12 @@
     "eslint-plugin-react": "7.7.0",
     "execa": "0.10.0",
     "fs2": "^0.2.7",
+    "has-ansi": "3.0.0",
     "jest": "23.3.0",
     "jest-junit": "5.0.0",
     "jest-watch-typeahead": "0.1.0",
     "mkdirp": "0.5.1",
-    "prettier": "1.14.0",
+    "prettier": "1.14.1",
     "prettylint": "1.0.0",
     "rimraf": "2.6.2",
     "rollup": "0.47.6",
