@@ -41,8 +41,6 @@ var f: () => void;
 
 declare class X { static deserialize(): mixed; static deserialize: () => mixed }
 
-interface I {
-  static(): number;
-}
+interface I { static(): number }
 
 `;

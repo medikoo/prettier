@@ -126,9 +126,7 @@ beforeEach(fakeAsync(() => {
   // code
 }));
 
-afterAll(fakeAsync(() => {
-  console.log("Hello");
-}));
+afterAll(fakeAsync(() => { console.log("Hello"); }));
 
 it("should create the app", fakeAsync(() => {
   //code
@@ -177,9 +175,7 @@ beforeEach(fakeAsync(() => {
   // code
 }));
 
-afterAll(fakeAsync(() => {
-  console.log("Hello");
-}));
+afterAll(fakeAsync(() => { console.log("Hello"); }));
 
 it("should create the app", fakeAsync(() => {
   //code

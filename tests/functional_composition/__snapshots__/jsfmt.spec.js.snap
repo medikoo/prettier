@@ -89,7 +89,12 @@ someObj.someMethod(
 );
 
 class A extends B {
-  compose() { super.compose(sortBy(x => x), flatten); }
+  compose() {
+    super.compose(
+      sortBy(x => x),
+      flatten
+    );
+  }
 }
 
 this.subscriptions.add(
