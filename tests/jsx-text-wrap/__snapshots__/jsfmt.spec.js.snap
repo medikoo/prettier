@@ -496,8 +496,9 @@ x = (
 
 x = (
   <div>
-    before {stuff} after {stuff} after {stuff} after {stuff} after {stuff} after{" "}
-    {stuff} {stuff} {stuff} after {stuff} after
+    before {stuff} after {stuff} after {stuff} after {stuff} after {
+      stuff
+    } after {stuff} {stuff} {stuff} after {stuff} after
   </div>
 );
 
@@ -835,7 +836,9 @@ jsx_whitespace_after_tag = (
 
 x = (
   <div>
-    ENDS IN <div>text text text text text text text text text text text</div>{" "}
+    ENDS IN <div>
+      text text text text text text text text text text text
+    </div>{" "}
     HRS
   </div>
 );

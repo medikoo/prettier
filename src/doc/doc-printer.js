@@ -279,8 +279,6 @@ function printDocToString(doc, options) {
             // fallthrough
 
             case MODE_BREAK: {
-              shouldRemeasure = false;
-
               const next = [ind, MODE_FLAT, doc.contents];
               const rem = width - pos;
 
