@@ -433,7 +433,9 @@ function printTrailingComment(commentPath, print, options) {
   } else if (isBlock || isParentSuperClass) {
     // Trailing block comments never need a newline
     return concat([
-      typeof contents === "string" && contents.startsWith("/*, ") ? "" : " ",
+      typeof contents === "string" && contents.search(/^\/\*[,[]/) === 0
+        ? ""
+        : " ",
       contents
     ]);
   }
