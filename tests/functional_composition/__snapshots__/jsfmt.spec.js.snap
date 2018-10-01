@@ -329,7 +329,7 @@ var getStateCode = R.pipeK(
   )
 );
 
-getStateCode('{"user":{"address":{"state":"ny"}}}');
+getStateCode("{\\"user\\":{\\"address\\":{\\"state\\":\\"ny\\"}}}");
 //=> Just('NY')
 getStateCode("[Invalid JSON]");
 //=> Nothing()

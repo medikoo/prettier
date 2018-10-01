@@ -153,14 +153,14 @@ exports[`strings.js - flow-verify 1`] = `
 ("");
 ("");
 // Single double quote.
-('"');
-('"');
+("\\"");
+("\\"");
 // Single single quote.
 ("'");
 ("'");
 // Unnecessary escapes.
 ("'");
-('"');
+("\\"");
 ("a");
 ("a");
 ("hola");
@@ -194,8 +194,8 @@ exports[`strings.js - flow-verify 1`] = `
 ("\\"'");
 ("\\"'");
 // More double quotes than single quotes.
-('"\\'"');
-('"\\'"');
+("\\"'\\"");
+("\\"'\\"");
 // More single quotes than double quotes.
 ("\\"''");
 ("\\"''");
@@ -207,13 +207,13 @@ exports[`strings.js - flow-verify 1`] = `
 ("\\\\");
 // Backslases.
 ("\\"\\\\\\"\\\\\\\\\\" ''\\\\'\\\\'\\\\\\\\'");
-('\\'\\\\\\'\\\\\\\\\\' ""\\\\"\\\\"\\\\\\\\"');
+("'\\\\'\\\\\\\\' \\"\\"\\\\\\"\\\\\\"\\\\\\\\\\"");
 // Somewhat more real-word example.
 ("He's sayin': \\"How's it goin'?\\" Don't ask me why.");
 ("He's sayin': \\"How's it goin'?\\" Don't ask me why.");
 // Somewhat more real-word example 2.
-('var backslash = "\\\\", doubleQuote = \\'"\\';');
-('var backslash = "\\\\", doubleQuote = \\'"\\';');
+("var backslash = \\"\\\\\\", doubleQuote = '\\"';");
+("var backslash = \\"\\\\\\", doubleQuote = '\\"';");
 
 `;
 
@@ -347,10 +347,10 @@ exports[`strings.js - flow-verify 2`] = `
 ('"');
 ('"');
 // Single single quote.
-("'");
-("'");
+('\\'');
+('\\'');
 // Unnecessary escapes.
-("'");
+('\\'');
 ('"');
 ('a');
 ('a');
@@ -388,8 +388,8 @@ exports[`strings.js - flow-verify 2`] = `
 ('"\\'"');
 ('"\\'"');
 // More single quotes than double quotes.
-("\\"''");
-("\\"''");
+('"\\'\\'');
+('"\\'\\'');
 // Two of each.
 ('""\\'\\'');
 ('""\\'\\'');
@@ -397,11 +397,11 @@ exports[`strings.js - flow-verify 2`] = `
 ('\\\\');
 ('\\\\');
 // Backslases.
-("\\"\\\\\\"\\\\\\\\\\" ''\\\\'\\\\'\\\\\\\\'");
+('"\\\\"\\\\\\\\" \\'\\'\\\\\\'\\\\\\'\\\\\\\\\\'');
 ('\\'\\\\\\'\\\\\\\\\\' ""\\\\"\\\\"\\\\\\\\"');
 // Somewhat more real-word example.
-("He's sayin': \\"How's it goin'?\\" Don't ask me why.");
-("He's sayin': \\"How's it goin'?\\" Don't ask me why.");
+('He\\'s sayin\\': "How\\'s it goin\\'?" Don\\'t ask me why.');
+('He\\'s sayin\\': "How\\'s it goin\\'?" Don\\'t ask me why.');
 // Somewhat more real-word example 2.
 ('var backslash = "\\\\", doubleQuote = \\'"\\';');
 ('var backslash = "\\\\", doubleQuote = \\'"\\';');

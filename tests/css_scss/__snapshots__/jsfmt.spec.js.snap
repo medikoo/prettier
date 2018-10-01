@@ -1920,7 +1920,7 @@ a {
   content: "#{my-fn( "foo" , "bar" )}";
   content: "#{my-fn(  "foo"  ,  "bar"  )}";
 
-  content: '#{my-fn("foo")}';
+  content: "#{my-fn(\\"foo\\")}";
   content: "#{my-fn("foo")}";
   content: "#{my-fn('foo')}";
   content: "#{my-fn("foo")}";
