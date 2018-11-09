@@ -686,7 +686,9 @@ wrapper.find('SomewhatLongNodeName').prop('longPropFunctionName')('argument', 's
 if (testConfig.ENABLE_ONLINE_TESTS === "true") {
   describe("POST /users/me/pet", function () {
     it("saves pet", function () {
-      function assert(pet) {
+      function assert(
+        pet
+      ) {
         expect(pet)
           .to.have.property("OwnerAddress")
           .that.deep.equals({

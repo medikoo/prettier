@@ -165,9 +165,10 @@ console.log(
 );
 
 descirbe("something", () => {
-  test(\`{pass: false} expect(\${ small }).toBeGreaterThanOrEqual(\${
-    big
-  })\`, () => {});
+  test(
+    \`{pass: false} expect(\${ small }).toBeGreaterThanOrEqual(\${ big })\`,
+    () => {}
+  );
 });
 
 throw new Error(

@@ -1068,10 +1068,7 @@ function printPathNoParens(path, options, print, args) {
             n.arguments[0],
             options.originalText,
             options
-          )) ||
-        // Keep test declarations on a single line
-        // e.g. `it('long name', () => {`
-        (!isNew && isTestCall(n, path.getParentNode()))
+          ))
       ) {
         return concat([
           isNew ? "new " : "",
