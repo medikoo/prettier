@@ -140,17 +140,8 @@ function helloWorld() {
   useEffect(() => {
     // do something
   }, [
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value
+    props.value, props.value, props.value, props.value, props.value,
+    props.value, props.value, props.value, props.value, props.value, props.value
   ]);
 }
 
@@ -161,17 +152,8 @@ function helloWorldWithReact() {
   React.useEffect(() => {
     // do something
   }, [
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value
+    props.value, props.value, props.value, props.value, props.value,
+    props.value, props.value, props.value, props.value, props.value, props.value
   ]);
 }
 

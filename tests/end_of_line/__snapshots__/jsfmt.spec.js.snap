@@ -12,9 +12,7 @@ function f() {<LF>
 }<LF>
 
 =====================================output=====================================
-function f() {<CR>
-  console.log("testing line endings");<CR>
-}<CR>
+function f() { console.log("testing line endings"); }<CR>
 
 ================================================================================
 `;
@@ -31,9 +29,7 @@ function f() {<LF>
 }<LF>
 
 =====================================output=====================================
-function f() {<CRLF>
-  console.log("testing line endings");<CRLF>
-}<CRLF>
+function f() { console.log("testing line endings"); }<CRLF>
 
 ================================================================================
 `;
@@ -50,9 +46,7 @@ function f() {<LF>
 }<LF>
 
 =====================================output=====================================
-function f() {<LF>
-  console.log("testing line endings");<LF>
-}<LF>
+function f() { console.log("testing line endings"); }<LF>
 
 ================================================================================
 `;
