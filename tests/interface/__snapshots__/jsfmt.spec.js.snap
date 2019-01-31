@@ -131,9 +131,7 @@ interface ExtendsMany
     Interface5,
     Interface6,
     Interface7
-  > {
-  x: string;
-}
+  > { x: string }
 
 interface ExtendsManyWithGenerics
   extends InterfaceOne,
@@ -163,9 +161,7 @@ declare module X {
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 declare module X {
-  declare interface Y {
-    x: number;
-  }
+  declare interface Y { x: number }
 }
 
 `;

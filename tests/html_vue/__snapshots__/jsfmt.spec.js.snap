@@ -69,16 +69,8 @@ exports[`attributes.vue - vue-verify 1`] = `
   :key="
     index // hello
   "
-  @click="
-    () => {
-      console.log(test);
-    }
-  "
-  @click="
-    () => {
-      console.log(test);
-    }
-  "
+  @click="() => { console.log(test); }"
+  @click="() => { console.log(test); }"
 ></div>
 
 `;
@@ -152,16 +144,8 @@ exports[`attributes.vue - vue-verify 2`] = `
   :key="
     index // hello
   "
-  @click="
-    () => {
-      console.log(test);
-    }
-  "
-  @click="
-    () => {
-      console.log(test);
-    }
-  "
+  @click="() => { console.log(test); }"
+  @click="() => { console.log(test); }"
 ></div>
 
 `;

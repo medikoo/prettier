@@ -11,9 +11,7 @@ module.exports = {}
 /* @flow */
 
 export type talias4 = number;
-export interface IFoo {
-  prop: number;
-}
+export interface IFoo { prop: number }
 
 module.exports = {};
 
@@ -119,9 +117,7 @@ export { standaloneType2 }; // Error: Missing \`type\` keyword
 
 export type { talias1, talias2 as talias3, IFoo2 } from "./types_only2";
 
-export interface IFoo {
-  prop: number;
-}
+export interface IFoo { prop: number }
 
 `;
 
@@ -136,8 +132,6 @@ export interface IFoo2 { prop: string };
 
 export type talias1 = number;
 export type talias2 = number;
-export interface IFoo2 {
-  prop: string;
-}
+export interface IFoo2 { prop: string }
 
 `;

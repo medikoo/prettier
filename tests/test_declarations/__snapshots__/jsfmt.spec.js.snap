@@ -194,8 +194,13 @@ it(
   })
 );
 
-it("does something really long and complicated so I have to write a very long name for the test", fakeAsync(() =>
-  new SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS()));
+it(
+  "does something really long and complicated so I have to write a very long name for the test",
+  fakeAsync(
+    () =>
+      new SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS()
+  )
+);
 
 /*
  * isTestCall(parent) should only be called when parent exists
@@ -256,8 +261,13 @@ it(
   })
 );
 
-it("does something really long and complicated so I have to write a very long name for the test", fakeAsync(() =>
-  new SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS()));
+it(
+  "does something really long and complicated so I have to write a very long name for the test",
+  fakeAsync(
+    () =>
+      new SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS()
+  )
+);
 
 /*
  * isTestCall(parent) should only be called when parent exists
@@ -904,13 +914,14 @@ it(
 
 it("does something quick", () => { console.log("hello!"); }, 1000000000);
 
-it("succeeds if the test finishes in time", () =>
-  new Promise(resolve => setTimeout(resolve, 10)));
+it(
+  "succeeds if the test finishes in time",
+  () => new Promise(resolve => setTimeout(resolve, 10))
+);
 
 it(
   "succeeds if the test finishes in time",
-  () => new Promise(resolve => setTimeout(resolve, 10)),
-  250
+  () => new Promise(resolve => setTimeout(resolve, 10)), 250
 );
 
 `;
@@ -1227,13 +1238,14 @@ it(
 
 it("does something quick", () => { console.log("hello!"); }, 1000000000);
 
-it("succeeds if the test finishes in time", () =>
-  new Promise((resolve) => setTimeout(resolve, 10)));
+it(
+  "succeeds if the test finishes in time",
+  () => new Promise((resolve) => setTimeout(resolve, 10))
+);
 
 it(
   "succeeds if the test finishes in time",
-  () => new Promise((resolve) => setTimeout(resolve, 10)),
-  250
+  () => new Promise((resolve) => setTimeout(resolve, 10)), 250
 );
 
 `;
