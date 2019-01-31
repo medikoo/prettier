@@ -126,9 +126,7 @@ interface AudioBufferList {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class<T> implements Map<T> {}
 
-interface AudioBufferList {
-  mBuffers: interop.Reference<any /*AudioBuffer*/>;
-}
+interface AudioBufferList { mBuffers: interop.Reference<any /*AudioBuffer*/> }
 
 `;
 
@@ -149,9 +147,7 @@ class X {
   optionalMethod?() {}
 }
 
-interface Iterable<T> {
-  export [Symbol.iterator](): Iterator<T>;
-}
+interface Iterable<T> { export [Symbol.iterator](): Iterator<T> }
 
 export class Check {
   private static property = "test";

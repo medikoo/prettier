@@ -18,9 +18,7 @@ var i: I;
 bar(i);~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //@target: ES6
 class C {}
-interface I {
-  [Symbol.iterator]?: { x };
-}
+interface I { [Symbol.iterator]?: { x } }
 
 declare function foo(i: I): I;
 declare function foo(a: any): any;

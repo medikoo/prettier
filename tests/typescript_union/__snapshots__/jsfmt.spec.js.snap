@@ -34,12 +34,8 @@ type window = Window & {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: Function;
 };
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-interface RelayProps {
-  articles: a | null;
-}
-interface RelayProps {
-  articles: Array<{ __id: string } | null> | null | void;
-}
+interface RelayProps { articles: a | null }
+interface RelayProps { articles: Array<{ __id: string } | null> | null | void }
 
 type UploadState<E, EM, D> =
   // The upload hasnt begun yet
@@ -132,10 +128,7 @@ var y: string | number;
 
 class Foo<T extends string | number> {}
 
-interface Interface {
-  i: (X | Y) & Z;
-  j: Partial<X | Y>;
-}
+interface Interface { i: (X | Y) & Z; j: Partial<X | Y> }
 
 type State = { sharedProperty: any } & (
   | { discriminant: "FOO"; foo: any }

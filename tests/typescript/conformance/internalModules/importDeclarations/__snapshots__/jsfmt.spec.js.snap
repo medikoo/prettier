@@ -118,9 +118,7 @@ namespace A {
     constructor(public x: number, public y: number) {}
   }
   export namespace B {
-    export interface Id {
-      name: string;
-    }
+    export interface Id { name: string }
   }
 }
 
@@ -158,10 +156,7 @@ namespace K {
 
   export namespace L {
     export var y = 12;
-    export interface Point {
-      x: number;
-      y: number;
-    }
+    export interface Point { x: number; y: number }
   }
 }
 
@@ -247,10 +242,7 @@ class clodule {
 }
 
 namespace clodule {
-  export interface Point {
-    x: number;
-    y: number;
-  }
+  export interface Point { x: number; y: number }
   var Point: Point = { x: 0, y: 0 };
 }
 
@@ -263,10 +255,7 @@ var p: { x: number; y: number };
 function fundule() { return { x: 0, y: 0 }; }
 
 namespace fundule {
-  export interface Point {
-    x: number;
-    y: number;
-  }
+  export interface Point { x: number; y: number }
   var Point: Point = { x: 0, y: 0 };
 }
 
@@ -321,9 +310,7 @@ enum E {
 
 import e = E;
 
-interface I {
-  id: number;
-}
+interface I { id: number }
 
 import i = I;
 
@@ -367,10 +354,7 @@ module Z {
 
 namespace A {
   export var Point = { x: 0, y: 0 };
-  export interface Point {
-    x: number;
-    y: number;
-  }
+  export interface Point { x: number; y: number }
 }
 
 namespace B {
@@ -380,10 +364,7 @@ namespace B {
 
 namespace X {
   export namespace Y {
-    export interface Point {
-      x: number;
-      y: number;
-    }
+    export interface Point { x: number; y: number }
   }
 
   export class Y {

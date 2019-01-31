@@ -215,10 +215,7 @@ exports[`typescript.html - html-verify 1`] = `
     ) { this.fullName = firstName + " " + middleInitial + " " + lastName; }
   }
 
-  interface Person {
-    firstName: string;
-    lastName: string;
-  }
+  interface Person { firstName: string; lastName: string }
 
   function greeter(person: Person) {
     return "Hello, " + person.firstName + " " + person.lastName;
@@ -238,10 +235,7 @@ exports[`typescript.html - html-verify 1`] = `
     ) { this.fullName = firstName + " " + middleInitial + " " + lastName; }
   }
 
-  interface Person {
-    firstName: string;
-    lastName: string;
-  }
+  interface Person { firstName: string; lastName: string }
 
   function greeter(person: Person) {
     return "Hello, " + person.firstName + " " + person.lastName;

@@ -22,9 +22,7 @@ interface Q extends P { // Check assignability here. Any is assignable to {}
     p: any;
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-interface P {
-  p: {};
-}
+interface P { p: {} }
 
 interface Q extends P {
   // Check assignability here. Any is assignable to {}
@@ -170,12 +168,8 @@ interface IObservable<T> {
 // Needed
 interface ISubject<T> extends IObservable<T> {}
 
-interface Foo {
-  x;
-}
-interface Bar {
-  y;
-}
+interface Foo { x }
+interface Bar { y }
 
 var values: IObservable<Foo>;
 var values2: ISubject<Bar>;
@@ -200,9 +194,7 @@ interface i2 {
     foo: (/**param help*/b: number) => string;
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-interface i2 {
-  foo: (/**param help*/ b: number) => string;
-}
+interface i2 { foo: (/**param help*/ b: number) => string }
 
 `;
 
@@ -342,9 +334,7 @@ interface Foo {
     bar: number = 5;
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-interface Foo {
-  bar: number = 5;
-}
+interface Foo { bar: number = 5 }
 
 `;
 
@@ -451,9 +441,7 @@ class C {
     [x = 0]: string
 }~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // These used to be indexers, now they are computed properties
-interface I {
-  [x = ""]: string;
-}
+interface I { [x = ""]: string }
 
 class C {
   [x = 0]: string;
@@ -487,10 +475,7 @@ type Meta<T, A> = {
   [P in keyof T]: { value: T[P]; also: A; readonly children: Meta<T[P], A> }
 };
 
-interface Input {
-  x: string;
-  y: number;
-}
+interface Input { x: string; y: number }
 
 declare const output: Meta<Input, boolean>;
 
@@ -502,9 +487,7 @@ exports[`modifiersOnInterfaceIndexSignature1.ts - typescript-verify 1`] = `
 interface I {
   public [a: string]: number;
 }~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-interface I {
-  public [a: string]: number;
-}
+interface I { public [a: string]: number }
 
 `;
 
