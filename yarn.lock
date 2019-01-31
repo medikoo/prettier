@@ -1743,9 +1743,9 @@ default-require-extensions@^2.0.0:
   dependencies:
     strip-bom "^3.0.0"
 
-deferred@~0.7.6:
-  version "0.7.9"
-  resolved "https://registry.yarnpkg.com/deferred/-/deferred-0.7.9.tgz#fb62ae0aa0dba05ca91fed201c2f501367a360a2"
+deferred@^0.7.10:
+  version "0.7.10"
+  resolved "https://registry.yarnpkg.com/deferred/-/deferred-0.7.10.tgz#c87efaddb3132e3432e8f448315d827889cc80c4"
   dependencies:
     d "1"
     es5-ext "~0.10.37"
@@ -1945,7 +1945,7 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
 
-es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
+es5-ext@^0.10.14:
   version "0.10.45"
   resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.45.tgz#0bfdf7b473da5919d5adf3bd25ceb754fccc3653"
   dependencies:
@@ -1953,7 +1953,15 @@ es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
     es6-symbol "~3.1.1"
     next-tick "1"
 
-es5-ext@^0.10.30, es5-ext@~0.10.2, es5-ext@~0.10.37:
+es5-ext@^0.10.35, es5-ext@^0.10.45, es5-ext@^0.10.46, es5-ext@^0.10.47, es5-ext@^0.10.9, es5-ext@~0.10.14, es5-ext@~0.10.46:
+  version "0.10.47"
+  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.47.tgz#d24232e1380daad5449a817be19bde9729024a11"
+  dependencies:
+    es6-iterator "~2.0.3"
+    es6-symbol "~3.1.1"
+    next-tick "1"
+
+es5-ext@~0.10.2, es5-ext@~0.10.37:
   version "0.10.37"
   resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.37.tgz#0ee741d148b80069ba27d020393756af257defc3"
   dependencies:
@@ -2520,16 +2528,16 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-fs2@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/fs2/-/fs2-0.2.7.tgz#c681d2db68c66790dff8d30ae79189b395786fd9"
+fs2@^0.3:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/fs2/-/fs2-0.3.0.tgz#0e1e76c3d52df3182819a58ea241f123f131fdcf"
   dependencies:
     d "1"
-    deferred "~0.7.6"
-    es5-ext "~0.10.14"
-    event-emitter "~0.3.5"
-    memoizee "~0.4.5"
-    minimatch "^3.0.4"
+    deferred "^0.7.10"
+    es5-ext "^0.10.46"
+    event-emitter "^0.3.5"
+    ignore "^5.0.4"
+    memoizee "^0.4.14"
 
 fsevents@^1.1.1, fsevents@^1.1.2:
   version "1.2.4"
@@ -2859,6 +2867,10 @@ ignore-walk@^3.0.1:
 ignore@3.3.7, ignore@^3.3.3, ignore@^3.3.5:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.7.tgz#612289bfb3c220e186a58118618d5be8c1bab021"
+
+ignore@^5.0.4:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.0.5.tgz#c663c548d6ce186fb33616a8ccb5d46e56bdbbf9"
 
 import-local@^1.0.0:
   version "1.0.0"
@@ -4013,18 +4025,18 @@ mem@1.1.0, mem@^1.1.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-memoizee@~0.4.5:
-  version "0.4.11"
-  resolved "https://registry.yarnpkg.com/memoizee/-/memoizee-0.4.11.tgz#bde9817663c9e40fdb2a4ea1c367296087ae8c8f"
+memoizee@^0.4.14:
+  version "0.4.14"
+  resolved "https://registry.yarnpkg.com/memoizee/-/memoizee-0.4.14.tgz#07a00f204699f9a95c2d9e77218271c7cd610d57"
   dependencies:
     d "1"
-    es5-ext "^0.10.30"
+    es5-ext "^0.10.45"
     es6-weak-map "^2.0.2"
     event-emitter "^0.3.5"
     is-promise "^2.1"
     lru-queue "0.1"
     next-tick "1"
-    timers-ext "^0.1.2"
+    timers-ext "^0.1.5"
 
 memory-fs@^0.4.0, memory-fs@~0.4.1:
   version "0.4.1"
@@ -5743,7 +5755,14 @@ timers-browserify@^2.0.2:
   dependencies:
     setimmediate "^1.0.4"
 
-timers-ext@^0.1.2, timers-ext@~0.1.2:
+timers-ext@^0.1.5:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/timers-ext/-/timers-ext-0.1.7.tgz#6f57ad8578e07a3fb9f91d9387d65647555e25c6"
+  dependencies:
+    es5-ext "~0.10.46"
+    next-tick "1"
+
+timers-ext@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/timers-ext/-/timers-ext-0.1.2.tgz#61cc47a76c1abd3195f14527f978d58ae94c5204"
   dependencies:
