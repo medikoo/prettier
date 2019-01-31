@@ -2528,7 +2528,7 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-fs2@^0.3:
+fs2@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/fs2/-/fs2-0.3.0.tgz#0e1e76c3d52df3182819a58ea241f123f131fdcf"
   dependencies:
