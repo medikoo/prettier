@@ -51,11 +51,7 @@ html\`\`
 import { LitElement, html } from "@polymer/lit-element";
 
 class MyElement extends LitElement {
-  static get properties() {
-    return {
-      mood: { type: String }
-    };
-  }
+  static get properties() { return { mood: { type: String } }; }
 
   constructor() {
     super();

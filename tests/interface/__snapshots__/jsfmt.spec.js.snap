@@ -83,14 +83,10 @@ export class Environment2 extends GenericEnvironment<
 }
 
 // Declare Interface Break
-declare interface ExtendsOne extends ASingleInterface {
-  x: string;
-}
+declare interface ExtendsOne extends ASingleInterface { x: string }
 
 declare interface ExtendsLarge
-  extends ASingleInterfaceWithAReallyReallyReallyReallyLongName {
-  x: string;
-}
+  extends ASingleInterfaceWithAReallyReallyReallyReallyLongName { x: string }
 
 declare interface ExtendsMany
   extends Interface1,
@@ -99,19 +95,13 @@ declare interface ExtendsMany
     Interface4,
     Interface5,
     Interface6,
-    Interface7 {
-  x: string;
-}
+    Interface7 { x: string }
 
 // Interface declaration break
-interface ExtendsOne extends ASingleInterface {
-  x: string;
-}
+interface ExtendsOne extends ASingleInterface { x: string }
 
 interface ExtendsLarge
-  extends ASingleInterfaceWithAReallyReallyReallyReallyLongName {
-  x: string;
-}
+  extends ASingleInterfaceWithAReallyReallyReallyReallyLongName { x: string }
 
 interface ExtendsMany
   extends Interface1,
@@ -120,14 +110,10 @@ interface ExtendsMany
     Interface4,
     Interface5,
     Interface6,
-    Interface7 {
-  s: string;
-}
+    Interface7 { s: string }
 
 // Generic Types
-interface ExtendsOne extends ASingleInterface<string> {
-  x: string;
-}
+interface ExtendsOne extends ASingleInterface<string> { x: string }
 
 interface ExtendsLarge
   extends ASingleInterfaceWithAReallyReallyReallyReallyLongName<string> {
@@ -143,9 +129,7 @@ interface ExtendsMany
       Interface5,
       Interface6,
       Interface7
-    > {
-  x: string;
-}
+    > { x: string }
 
 interface ExtendsManyWithGenerics
   extends InterfaceOne,
@@ -159,9 +143,7 @@ interface ExtendsManyWithGenerics
       Interface6,
       Interface7
     >,
-    InterfaceThree {
-  x: string;
-}
+    InterfaceThree { x: string }
 
 `;
 

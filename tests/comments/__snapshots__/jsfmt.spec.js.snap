@@ -1960,11 +1960,13 @@ finally { // Comment 8
 try {
   // Comment 2
   // Comment 3
-} catch (e) {
+}
+catch (e) {
   // Comment 4
   // Comment 5
   // Comment 6
-} finally {
+}
+finally {
   // Comment 7
   // Comment 8
   // Comment 9
@@ -2099,8 +2101,8 @@ let // Comment
   foo = "val";
 
 let // Comment
-  foo = "val",
-  bar = "val";
+  foo = "val"
+  , bar = "val";
 
 `;
 

@@ -374,9 +374,7 @@ exports[`attr-comments.js - flow-verify 2`] = `
 <Component
   propFn={
     // comment
-    function(arg) {
-      fn(arg);
-    }
+    function (arg) { fn(arg); }
   }
   propArrowFn={
     // comment
@@ -384,10 +382,7 @@ exports[`attr-comments.js - flow-verify 2`] = `
   }
   propArrowWithBreak={
     // comment
-    arg =>
-      fn({
-        makeItBreak
-      })
+    arg => fn({ makeItBreak })
   }
   propArray={
     // comment
@@ -441,9 +436,7 @@ exports[`attr-comments.js - flow-verify 3`] = `
 <Component
   propFn={
     // comment
-    function(arg) {
-      fn(arg);
-    }
+    function (arg) { fn(arg); }
   }
   propArrowFn={
     // comment
@@ -451,10 +444,7 @@ exports[`attr-comments.js - flow-verify 3`] = `
   }
   propArrowWithBreak={
     // comment
-    arg =>
-      fn({
-        makeItBreak
-      })
+    arg => fn({ makeItBreak })
   }
   propArray={
     // comment
@@ -508,9 +498,7 @@ exports[`attr-comments.js - flow-verify 4`] = `
 <Component
   propFn={
     // comment
-    function(arg) {
-      fn(arg);
-    }
+    function (arg) { fn(arg); }
   }
   propArrowFn={
     // comment
@@ -518,10 +506,7 @@ exports[`attr-comments.js - flow-verify 4`] = `
   }
   propArrowWithBreak={
     // comment
-    arg =>
-      fn({
-        makeItBreak
-      })
+    arg => fn({ makeItBreak })
   }
   propArray={
     // comment
@@ -1825,7 +1810,7 @@ exports[`expression.js - flow-verify 1`] = `
 </Something>;
 
 <Something>
-  {function() {
+  {function () {
     return (
       <SomethingElse>
         <span />
@@ -1859,9 +1844,7 @@ exports[`expression.js - flow-verify 1`] = `
 <BookingIntroPanel
   logClick={data =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 />;
@@ -1869,9 +1852,7 @@ exports[`expression.js - flow-verify 1`] = `
 <BookingIntroPanel
   logClick={data => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 />;
@@ -1881,9 +1862,7 @@ exports[`expression.js - flow-verify 1`] = `
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -1894,9 +1873,7 @@ exports[`expression.js - flow-verify 1`] = `
 <BookingIntroPanel>
   {data =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 </BookingIntroPanel>;
@@ -1904,9 +1881,7 @@ exports[`expression.js - flow-verify 1`] = `
 <BookingIntroPanel>
   {data => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 </BookingIntroPanel>;
@@ -1916,19 +1891,15 @@ exports[`expression.js - flow-verify 1`] = `
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 
 <SuspendyTree>
   <div style={{ height: 200, overflow: "scroll" }}>
-    {Array(20)
-      .fill()
-      .map((_, i) => (
-        <h2 key={i}>{i + 1}</h2>
-      ))}
+    {Array(20).fill().map((_, i) => (
+      <h2 key={i}>{i + 1}</h2>
+    ))}
   </div>
 </SuspendyTree>;
 
@@ -2104,7 +2075,7 @@ exports[`expression.js - flow-verify 2`] = `
 </Something>;
 
 <Something>
-  {function() {
+  {function () {
     return (
       <SomethingElse>
         <span />
@@ -2138,9 +2109,7 @@ exports[`expression.js - flow-verify 2`] = `
 <BookingIntroPanel
   logClick={data =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 />;
@@ -2148,9 +2117,7 @@ exports[`expression.js - flow-verify 2`] = `
 <BookingIntroPanel
   logClick={data => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 />;
@@ -2160,9 +2127,7 @@ exports[`expression.js - flow-verify 2`] = `
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -2173,9 +2138,7 @@ exports[`expression.js - flow-verify 2`] = `
 <BookingIntroPanel>
   {data =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 </BookingIntroPanel>;
@@ -2183,9 +2146,7 @@ exports[`expression.js - flow-verify 2`] = `
 <BookingIntroPanel>
   {data => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 </BookingIntroPanel>;
@@ -2195,19 +2156,15 @@ exports[`expression.js - flow-verify 2`] = `
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 
 <SuspendyTree>
   <div style={{ height: 200, overflow: "scroll" }}>
-    {Array(20)
-      .fill()
-      .map((_, i) => (
-        <h2 key={i}>{i + 1}</h2>
-      ))}
+    {Array(20).fill().map((_, i) => (
+      <h2 key={i}>{i + 1}</h2>
+    ))}
   </div>
 </SuspendyTree>;
 
@@ -2383,7 +2340,7 @@ exports[`expression.js - flow-verify 3`] = `
 </Something>;
 
 <Something>
-  {function() {
+  {function () {
     return (
       <SomethingElse>
         <span />
@@ -2417,9 +2374,7 @@ exports[`expression.js - flow-verify 3`] = `
 <BookingIntroPanel
   logClick={data =>
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     )
   }
 />;
@@ -2427,9 +2382,7 @@ exports[`expression.js - flow-verify 3`] = `
 <BookingIntroPanel
   logClick={data => {
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     );
   }}
 />;
@@ -2439,9 +2392,7 @@ exports[`expression.js - flow-verify 3`] = `
     key: 'possible_key_1' | 'possible_key_2' | 'possible_key_3',
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -2452,9 +2403,7 @@ exports[`expression.js - flow-verify 3`] = `
 <BookingIntroPanel>
   {data =>
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     )
   }
 </BookingIntroPanel>;
@@ -2462,9 +2411,7 @@ exports[`expression.js - flow-verify 3`] = `
 <BookingIntroPanel>
   {data => {
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     );
   }}
 </BookingIntroPanel>;
@@ -2474,19 +2421,15 @@ exports[`expression.js - flow-verify 3`] = `
     key: 'possible_key_1' | 'possible_key_2' | 'possible_key_3',
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 
 <SuspendyTree>
   <div style={{ height: 200, overflow: 'scroll' }}>
-    {Array(20)
-      .fill()
-      .map((_, i) => (
-        <h2 key={i}>{i + 1}</h2>
-      ))}
+    {Array(20).fill().map((_, i) => (
+      <h2 key={i}>{i + 1}</h2>
+    ))}
   </div>
 </SuspendyTree>;
 
@@ -2662,7 +2605,7 @@ exports[`expression.js - flow-verify 4`] = `
 </Something>;
 
 <Something>
-  {function() {
+  {function () {
     return (
       <SomethingElse>
         <span />
@@ -2696,9 +2639,7 @@ exports[`expression.js - flow-verify 4`] = `
 <BookingIntroPanel
   logClick={data =>
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     )
   }
 />;
@@ -2706,9 +2647,7 @@ exports[`expression.js - flow-verify 4`] = `
 <BookingIntroPanel
   logClick={data => {
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     );
   }}
 />;
@@ -2718,9 +2657,7 @@ exports[`expression.js - flow-verify 4`] = `
     key: 'possible_key_1' | 'possible_key_2' | 'possible_key_3',
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -2731,9 +2668,7 @@ exports[`expression.js - flow-verify 4`] = `
 <BookingIntroPanel>
   {data =>
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     )
   }
 </BookingIntroPanel>;
@@ -2741,9 +2676,7 @@ exports[`expression.js - flow-verify 4`] = `
 <BookingIntroPanel>
   {data => {
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     );
   }}
 </BookingIntroPanel>;
@@ -2753,19 +2686,15 @@ exports[`expression.js - flow-verify 4`] = `
     key: 'possible_key_1' | 'possible_key_2' | 'possible_key_3',
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value)
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 
 <SuspendyTree>
   <div style={{ height: 200, overflow: 'scroll' }}>
-    {Array(20)
-      .fill()
-      .map((_, i) => (
-        <h2 key={i}>{i + 1}</h2>
-      ))}
+    {Array(20).fill().map((_, i) => (
+      <h2 key={i}>{i + 1}</h2>
+    ))}
   </div>
 </SuspendyTree>;
 
@@ -2916,7 +2845,7 @@ exports[`hug.js - flow-verify 1`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -2931,7 +2860,7 @@ exports[`hug.js - flow-verify 1`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -2989,7 +2918,7 @@ exports[`hug.js - flow-verify 2`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -3004,7 +2933,7 @@ exports[`hug.js - flow-verify 2`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -3062,7 +2991,7 @@ exports[`hug.js - flow-verify 3`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === '/'}
           getComponent={routeES6Modules[route.value]}
@@ -3077,7 +3006,7 @@ exports[`hug.js - flow-verify 3`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === '/'}
           getComponent={routeES6Modules[route.value]}
@@ -3135,7 +3064,7 @@ exports[`hug.js - flow-verify 4`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === '/'}
           getComponent={routeES6Modules[route.value]}
@@ -3150,7 +3079,7 @@ exports[`hug.js - flow-verify 4`] = `
     <div>
       {routes.map(route => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === '/'}
           getComponent={routeES6Modules[route.value]}
@@ -3580,20 +3509,12 @@ onClick={() => {
 
 <Foo>{\`    a    very    long    text    that    does    not    break    \`}</Foo>;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   {showSort}
 </td>;
 
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   <showSort attr="long long long long long long long long long long long" />
 </td>;
@@ -3615,20 +3536,12 @@ onClick={() => {
 
 <Foo>{\`    a    very    long    text    that    does    not    break    \`}</Foo>;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   {showSort}
 </td>;
 
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   <showSort attr='long long long long long long long long long long long' />
 </td>;
@@ -3650,20 +3563,12 @@ onClick={() => {
 
 <Foo>{\`    a    very    long    text    that    does    not    break    \`}</Foo>;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   {showSort}
 </td>;
 
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   <showSort attr="long long long long long long long long long long long" />
 </td>;
@@ -3685,20 +3590,12 @@ onClick={() => {
 
 <Foo>{\`    a    very    long    text    that    does    not    break    \`}</Foo>;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   {showSort}
 </td>;
 
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   <showSort attr='long long long long long long long long long long long' />
 </td>;
@@ -3868,24 +3765,24 @@ exports[`quotes.js - flow-verify 1`] = `
 </p>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <div id="&quot;'<>&amp;quot;" />;
-<div id='"&#39;<>&amp;quot;' />;
+<div id="&quot;&#39;<>&amp;quot;" />;
 <div id={"'\\"&quot;<>&amp;quot;"} />;
 <div id="123" />;
-<div id='&#39;"' />;
+<div id="&#39;&quot;" />;
 <div id={"'\\"\\\\'"} />;
 <div
   single="foo"
   single2={"foo"}
   double="bar"
   double2={"bar"}
-  singleDouble='"'
-  singleDouble2={'"'}
+  singleDouble="&quot;"
+  singleDouble2={"\\""}
   doubleSingle="'"
   doubleSingle2={"'"}
   singleEscaped={"'"}
   singleEscaped2="'"
-  doubleEscaped={'"'}
-  doubleEscaped2='"'
+  doubleEscaped={"\\""}
+  doubleEscaped2="&quot;"
   singleBothEscaped={"'\\""}
   singleBothEscaped2="'&quot;"
   singleBoth="' &quot;"
@@ -3960,21 +3857,21 @@ exports[`quotes.js - flow-verify 2`] = `
   double='bar'
   double2={"bar"}
   singleDouble='"'
-  singleDouble2={'"'}
-  doubleSingle="'"
+  singleDouble2={"\\""}
+  doubleSingle='&apos;'
   doubleSingle2={"'"}
   singleEscaped={"'"}
-  singleEscaped2="'"
-  doubleEscaped={'"'}
+  singleEscaped2='&apos;'
+  doubleEscaped={"\\""}
   doubleEscaped2='"'
   singleBothEscaped={"'\\""}
   singleBothEscaped2='&apos;"'
   singleBoth='&apos; "'
   singleBoth2={"' \\""}
-  singleBoth3="' ' &quot;"
+  singleBoth3='&apos; &apos; "'
   doubleBoth='" &apos;'
   doubleBoth2={"\\" '"}
-  doubleBoth3="&quot; ' '"
+  doubleBoth3='" &apos; &apos;'
 />;
 
 <p>
@@ -4030,24 +3927,24 @@ exports[`quotes.js - flow-verify 3`] = `
 </p>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <div id="&quot;'<>&amp;quot;" />;
-<div id='"&#39;<>&amp;quot;' />;
+<div id="&quot;&#39;<>&amp;quot;" />;
 <div id={'\\'"&quot;<>&amp;quot;'} />;
 <div id="123" />;
-<div id='&#39;"' />;
-<div id={"'\\"\\\\'"} />;
+<div id="&#39;&quot;" />;
+<div id={'\\'"\\\\\\''} />;
 <div
   single="foo"
   single2={'foo'}
   double="bar"
   double2={'bar'}
-  singleDouble='"'
+  singleDouble="&quot;"
   singleDouble2={'"'}
   doubleSingle="'"
-  doubleSingle2={"'"}
-  singleEscaped={"'"}
+  doubleSingle2={'\\''}
+  singleEscaped={'\\''}
   singleEscaped2="'"
   doubleEscaped={'"'}
-  doubleEscaped2='"'
+  doubleEscaped2="&quot;"
   singleBothEscaped={'\\'"'}
   singleBothEscaped2="'&quot;"
   singleBoth="' &quot;"
@@ -4115,7 +4012,7 @@ exports[`quotes.js - flow-verify 4`] = `
 <div id={'\\'"&quot;<>&amp;quot;'} />;
 <div id='123' />;
 <div id='&#39;"' />;
-<div id={"'\\"\\\\'"} />;
+<div id={'\\'"\\\\\\''} />;
 <div
   single='foo'
   single2={'foo'}
@@ -4123,20 +4020,20 @@ exports[`quotes.js - flow-verify 4`] = `
   double2={'bar'}
   singleDouble='"'
   singleDouble2={'"'}
-  doubleSingle="'"
-  doubleSingle2={"'"}
-  singleEscaped={"'"}
-  singleEscaped2="'"
+  doubleSingle='&apos;'
+  doubleSingle2={'\\''}
+  singleEscaped={'\\''}
+  singleEscaped2='&apos;'
   doubleEscaped={'"'}
   doubleEscaped2='"'
   singleBothEscaped={'\\'"'}
   singleBothEscaped2='&apos;"'
   singleBoth='&apos; "'
   singleBoth2={'\\' "'}
-  singleBoth3="' ' &quot;"
+  singleBoth3='&apos; &apos; "'
   doubleBoth='" &apos;'
   doubleBoth2={'" \\''}
-  doubleBoth3="&quot; ' '"
+  doubleBoth3='" &apos; &apos;'
 />;
 
 <p>
@@ -4210,9 +4107,7 @@ const BreakingArrowExpression = () => (
   </div>
 );
 
-const NonBreakingArrowExpressionWBody = () => {
-  return <div />;
-};
+const NonBreakingArrowExpressionWBody = () => { return <div />; };
 
 const BreakingArrowExpressionWBody = () => {
   return (
@@ -4222,11 +4117,9 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function() {
-  return <div />;
-};
+const NonBreakingFunction = function () { return <div />; };
 
-const BreakingFunction = function() {
+const BreakingFunction = function () {
   return (
     <div>
       <div>bla bla bla</div>
@@ -4235,9 +4128,7 @@ const BreakingFunction = function() {
 };
 
 class NonBreakingClass extends React.component {
-  render() {
-    return <div />;
-  }
+  render() { return <div />; }
 }
 
 class BreakingClass extends React.component {
@@ -4315,9 +4206,7 @@ const BreakingArrowExpression = () => (
   </div>
 );
 
-const NonBreakingArrowExpressionWBody = () => {
-  return <div />;
-};
+const NonBreakingArrowExpressionWBody = () => { return <div />; };
 
 const BreakingArrowExpressionWBody = () => {
   return (
@@ -4327,11 +4216,9 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function() {
-  return <div />;
-};
+const NonBreakingFunction = function () { return <div />; };
 
-const BreakingFunction = function() {
+const BreakingFunction = function () {
   return (
     <div>
       <div>bla bla bla</div>
@@ -4340,9 +4227,7 @@ const BreakingFunction = function() {
 };
 
 class NonBreakingClass extends React.component {
-  render() {
-    return <div />;
-  }
+  render() { return <div />; }
 }
 
 class BreakingClass extends React.component {
@@ -4420,9 +4305,7 @@ const BreakingArrowExpression = () => (
   </div>
 );
 
-const NonBreakingArrowExpressionWBody = () => {
-  return <div />;
-};
+const NonBreakingArrowExpressionWBody = () => { return <div />; };
 
 const BreakingArrowExpressionWBody = () => {
   return (
@@ -4432,11 +4315,9 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function() {
-  return <div />;
-};
+const NonBreakingFunction = function () { return <div />; };
 
-const BreakingFunction = function() {
+const BreakingFunction = function () {
   return (
     <div>
       <div>bla bla bla</div>
@@ -4445,9 +4326,7 @@ const BreakingFunction = function() {
 };
 
 class NonBreakingClass extends React.component {
-  render() {
-    return <div />;
-  }
+  render() { return <div />; }
 }
 
 class BreakingClass extends React.component {

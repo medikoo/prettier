@@ -42,23 +42,18 @@ beforeEach(
   })
 );
 
-beforeEach(done =>
-  foo()
-    .bar()
-    .bar()
-);
+beforeEach(done => foo().bar().bar());
 
 afterAll(async(() => { console.log("Hello"); }));
 
-afterAll(done =>
-  foo()
-    .bar()
-    .bar()
-);
+afterAll(done => foo().bar().bar());
 
-it("should create the app", async(() => {
-  //code
-}));
+it(
+  "should create the app",
+  async(() => {
+    //code
+  })
+);
 
 it(
   "does something really long and complicated so I have to write a very long name for the test",
@@ -120,23 +115,18 @@ beforeEach(
   })
 );
 
-beforeEach((done) =>
-  foo()
-    .bar()
-    .bar()
-);
+beforeEach((done) => foo().bar().bar());
 
 afterAll(async(() => { console.log("Hello"); }));
 
-afterAll((done) =>
-  foo()
-    .bar()
-    .bar()
-);
+afterAll((done) => foo().bar().bar());
 
-it("should create the app", async(() => {
-  //code
-}));
+it(
+  "should create the app",
+  async(() => {
+    //code
+  })
+);
 
 it(
   "does something really long and complicated so I have to write a very long name for the test",
@@ -882,16 +872,16 @@ xskip(
 
 // timeout
 
-it(\`handles
+it(
+  \`handles
   some
     newlines
-  does something really long and complicated so I have to write a very long name for the test\`, () => {
-  console.log("hello!");
-}, 2500);
+  does something really long and complicated so I have to write a very long name for the test\`,
+  () => { console.log("hello!"); },
+  2500
+);
 
-it("does something quick", () => {
-  console.log("hello!");
-}, 1000000000);
+it("does something quick", () => { console.log("hello!"); }, 1000000000);
 
 `;
 
@@ -1185,15 +1175,15 @@ xskip(
 
 // timeout
 
-it(\`handles
+it(
+  \`handles
   some
     newlines
-  does something really long and complicated so I have to write a very long name for the test\`, () => {
-  console.log("hello!");
-}, 2500);
+  does something really long and complicated so I have to write a very long name for the test\`,
+  () => { console.log("hello!"); },
+  2500
+);
 
-it("does something quick", () => {
-  console.log("hello!");
-}, 1000000000);
+it("does something quick", () => { console.log("hello!"); }, 1000000000);
 
 `;

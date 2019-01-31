@@ -53,9 +53,7 @@ exports[`js.html - html-verify 1`] = `
 <script type="module">
   import lib from "./lib.js";
 
-  function myFunction() {
-    return "foo";
-  }
+  function myFunction() { return "foo"; }
 </script>
 
 `;
@@ -214,9 +212,7 @@ exports[`typescript.html - html-verify 1`] = `
       public firstName: string,
       public middleInitial: string,
       public lastName: string
-    ) {
-      this.fullName = firstName + " " + middleInitial + " " + lastName;
-    }
+    ) { this.fullName = firstName + " " + middleInitial + " " + lastName; }
   }
 
   interface Person {
@@ -239,9 +235,7 @@ exports[`typescript.html - html-verify 1`] = `
       public firstName: string,
       public middleInitial: string,
       public lastName: string
-    ) {
-      this.fullName = firstName + " " + middleInitial + " " + lastName;
-    }
+    ) { this.fullName = firstName + " " + middleInitial + " " + lastName; }
   }
 
   interface Person {

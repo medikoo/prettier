@@ -135,44 +135,25 @@ func(() => { thing(); }, undefined);
 
 func(() => { thing(); }, /regex.*?/);
 
+func(() => { thing(); }, 1 ? 2 : 3);
+
+func(function () { return thing(); }, 1 ? 2 : 3);
+
 func(
-  () => {
-    thing();
-  },
-  1 ? 2 : 3
+  () => { thing(); }, something() ? someOtherThing() : somethingElse(true, 0)
 );
 
 func(
-  function() {
-    return thing();
-  },
-  1 ? 2 : 3
-);
-
-func(
-  () => {
-    thing();
-  },
-  something() ? someOtherThing() : somethingElse(true, 0)
-);
-
-func(
-  () => {
-    thing();
-  },
+  () => { thing(); },
   something(longArgumentName, anotherLongArgumentName)
     ? someOtherThing()
     : somethingElse(true, 0)
 );
 
 func(
-  () => {
-    thing();
-  },
+  () => { thing(); },
   something(
-    longArgumentName,
-    anotherLongArgumentName,
-    anotherLongArgumentName,
+    longArgumentName, anotherLongArgumentName, anotherLongArgumentName,
     anotherLongArgumentName
   )
     ? someOtherThing()

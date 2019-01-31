@@ -849,13 +849,7 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"codemirrorMode\\": \\"htmlmixed\\",
       \\"color\\": \\"#e34c26\\",
       \\"extensions\\": [
-        \\".html\\",
-        \\".htm\\",
-        \\".html.hl\\",
-        \\".inc\\",
-        \\".st\\",
-        \\".xht\\",
-        \\".xhtml\\"
+        \\".html\\", \\".htm\\", \\".html.hl\\", \\".inc\\", \\".st\\", \\".xht\\", \\".xhtml\\"
       ],
       \\"linguistLanguageId\\": 146,
       \\"name\\": \\"HTML\\",

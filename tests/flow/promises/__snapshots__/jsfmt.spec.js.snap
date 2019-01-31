@@ -495,10 +495,12 @@ Promise.reject(Promise.resolve(0)).then(function (num) {
 //////////////////////////////////
 
 // resolvedPromise.then():T -> then(T)
-Promise.resolve(0).then(function (num) { return "asdf"; }).then(function (str) {
-  var a: string = str;
-  var b: number = str; // Error: string ~> number
-});
+Promise.resolve(0)
+  .then(function (num) { return "asdf"; })
+  .then(function (str) {
+    var a: string = str;
+    var b: number = str; // Error: string ~> number
+  });
 
 // resolvedPromise.then():Promise<T> -> then(T)
 Promise.resolve(0)
@@ -517,22 +519,26 @@ Promise.resolve(0)
   });
 
 // TODO: resolvedPromise.then(<throw(T)>) -> catch(T)
-Promise.resolve(0).then(function (num) { throw "str"; }).catch(function (str) {
-  var a: string = str;
+Promise.resolve(0)
+  .then(function (num) { throw "str"; })
+  .catch(function (str) {
+    var a: string = str;
 
-  // TODO
-  var b: number = str; // Error: string ~> number
-});
+    // TODO
+    var b: number = str; // Error: string ~> number
+  });
 
 ///////////////////////////////////
 // == Promise.prototype.catch == //
 ///////////////////////////////////
 
 // rejectedPromise.catch():U -> then(U)
-Promise.reject(0).catch(function (num) { return "asdf"; }).then(function (str) {
-  var a: string = str;
-  var b: number = str; // Error: string ~> number
-});
+Promise.reject(0)
+  .catch(function (num) { return "asdf"; })
+  .then(function (str) {
+    var a: string = str;
+    var b: number = str; // Error: string ~> number
+  });
 
 // rejectedPromise.catch():Promise<U> -> then(U)
 Promise.reject(0)
@@ -551,10 +557,12 @@ Promise.reject(0)
   });
 
 // resolvedPromise<T> -> catch() -> then():?T
-Promise.resolve(0).catch(function (err) {}).then(function (num) {
-  var a: ?number = num;
-  var b: string = num; // Error: string ~> number
-});
+Promise.resolve(0)
+  .catch(function (err) {})
+  .then(function (num) {
+    var a: ?number = num;
+    var b: string = num; // Error: string ~> number
+  });
 
 `;
 

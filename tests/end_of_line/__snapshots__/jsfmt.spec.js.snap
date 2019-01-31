@@ -5,9 +5,7 @@ function f() {
   console.log("testing line endings");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f() {
-  console.log("testing line endings");
-}
+function f() { console.log("testing line endings"); }
 
 `;
 
@@ -16,7 +14,7 @@ function f() {
   console.log("testing line endings");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f() {/*CR*/  console.log("testing line endings");/*CR*/}/*CR*/
+function f() { console.log("testing line endings"); }/*CR*/
 `;
 
 exports[`usingCrlf.js - babylon-verify 3`] = `
@@ -24,9 +22,7 @@ function f() {
   console.log("testing line endings");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f() {/*CR*/
-  console.log("testing line endings");/*CR*/
-}/*CR*/
+function f() { console.log("testing line endings"); }/*CR*/
 
 `;
 
@@ -35,9 +31,7 @@ function f() {
   console.log("testing line endings");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f() {
-  console.log("testing line endings");
-}
+function f() { console.log("testing line endings"); }
 
 `;
 
@@ -46,9 +40,7 @@ function f() {
   console.log("testing line endings");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f() {
-  console.log("testing line endings");
-}
+function f() { console.log("testing line endings"); }
 
 `;
 
@@ -57,7 +49,7 @@ function f() {
   console.log("testing line endings");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f() {/*CR*/  console.log("testing line endings");/*CR*/}/*CR*/
+function f() { console.log("testing line endings"); }/*CR*/
 `;
 
 exports[`usingLf.js - babylon-verify 3`] = `
@@ -65,9 +57,7 @@ function f() {
   console.log("testing line endings");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f() {/*CR*/
-  console.log("testing line endings");/*CR*/
-}/*CR*/
+function f() { console.log("testing line endings"); }/*CR*/
 
 `;
 
@@ -76,8 +66,6 @@ function f() {
   console.log("testing line endings");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function f() {
-  console.log("testing line endings");
-}
+function f() { console.log("testing line endings"); }
 
 `;

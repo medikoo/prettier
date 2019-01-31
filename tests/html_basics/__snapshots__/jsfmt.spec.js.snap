@@ -342,7 +342,7 @@ exports[`html5-boilerplate.html - html-verify 1`] = `
     <script>
       window.jQuery ||
         document.write(
-          '<script src="js/vendor/jquery-3.3.1.min.js"><\\/script>'
+          "<script src=\\"js/vendor/jquery-3.3.1.min.js\\"><\\/script>"
         );
     </script>
     <script src="js/plugins.js"></script>
@@ -350,9 +350,7 @@ exports[`html5-boilerplate.html - html-verify 1`] = `
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     <script>
-      window.ga = function() {
-        ga.q.push(arguments);
-      };
+      window.ga = function () { ga.q.push(arguments); };
       ga.q = [];
       ga.l = +new Date();
       ga("create", "UA-XXXXX-Y", "auto");

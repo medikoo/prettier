@@ -57,19 +57,10 @@ import {
 
 ---
 
-export const meta = {
-  authors: [fred, sue],
-  layout: Layout
-};
+export const meta = { authors: [fred, sue], layout: Layout };
 
 export default () => (
-  <Doc
-    components={{
-      h1: ui.Heading,
-      p: ui.Text,
-      code: ui.Code
-    }}
-  />
+  <Doc components={{ h1: ui.Heading, p: ui.Text, code: ui.Code }} />
 );
 
 ---
@@ -136,19 +127,10 @@ import {
 
 ---
 
-export const meta = {
-  authors: [fred, sue],
-  layout: Layout
-}
+export const meta = { authors: [fred, sue], layout: Layout }
 
 export default () => (
-  <Doc
-    components={{
-      h1: ui.Heading,
-      p: ui.Text,
-      code: ui.Code
-    }}
-  />
+  <Doc components={{ h1: ui.Heading, p: ui.Text, code: ui.Code }} />
 )
 
 ---
@@ -245,7 +227,7 @@ import { Baz } from "./Fixture";
 import { Buz } from "./Fixture";
 
 export const foo = {
-  hi: \`Fudge \${Baz.displayName || "Baz"}\`,
+  hi: \`Fudge \${ Baz.displayName || "Baz" }\`,
   authors: ["fred", "sally"]
 };
 
@@ -328,7 +310,7 @@ import { Baz } from "./Fixture"
 import { Buz } from "./Fixture"
 
 export const foo = {
-  hi: \`Fudge \${Baz.displayName || "Baz"}\`,
+  hi: \`Fudge \${ Baz.displayName || "Baz" }\`,
   authors: ["fred", "sally"]
 }
 

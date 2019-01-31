@@ -224,7 +224,8 @@ class Class3 {
     @d1 private x: number,
     @d2(foo) private y: number,
     @d3("foo") private z: number,
-    @d4({ x: string }) private a: string
+    @d4({ x: string })
+    private a: string
   ) {}
 }
 

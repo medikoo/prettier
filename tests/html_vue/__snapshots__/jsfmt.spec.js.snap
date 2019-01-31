@@ -40,9 +40,7 @@ exports[`attributes.vue - vue-verify 1`] = `
   v-for="n in 10"
   v-for="{ a } in [0].map(() => ({ a: 1 }))"
   v-for="({ a }, [c]) in [0].map(() => 1)"
-  v-for="n in items.map(x => {
-    return x;
-  })"
+  v-for="n in items.map(x => { return x; })"
   @click="/* hello */"
   @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */; /* 5 */"
   @click="$emit('click');"
@@ -55,18 +53,12 @@ exports[`attributes.vue - vue-verify 1`] = `
     }
   "
   slot-scope="{
-    destructuring: {
-      a: { b }
-    }
+    destructuring: { a: { b } }
   }"
   :class="{
     longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true
   }"
-  :class="
-    (() => {
-      return 'hello';
-    })()
-  "
+  :class="(() => { return 'hello'; })()"
   :key="index /* hello */"
   :key="
     index // hello
@@ -115,9 +107,7 @@ exports[`attributes.vue - vue-verify 2`] = `
   v-for="n in 10"
   v-for="{ a } in [0].map(() => ({ a: 1 }))"
   v-for="({ a }, [c]) in [0].map(() => 1)"
-  v-for="n in items.map(x => {
-    return x;
-  })"
+  v-for="n in items.map(x => { return x; })"
   @click="/* hello */"
   @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */; /* 5 */"
   @click="$emit('click');"
@@ -130,18 +120,12 @@ exports[`attributes.vue - vue-verify 2`] = `
     }
   "
   slot-scope="{
-    destructuring: {
-      a: { b },
-    },
+    destructuring: { a: { b } },
   }"
   :class="{
     longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true,
   }"
-  :class="
-    (() => {
-      return 'hello';
-    })()
-  "
+  :class="(() => { return 'hello'; })()"
   :key="index /* hello */"
   :key="
     index // hello
@@ -233,9 +217,7 @@ const Store = gl.issueBoards.BoardsStore;
 
 export default {
   name: "BoardsIssueCard",
-  components: {
-    "issue-card-inner": gl.issueBoards.IssueCardInner
-  },
+  components: { "issue-card-inner": gl.issueBoards.IssueCardInner },
   props: {
     list: Object,
     issue: Object,
@@ -244,12 +226,7 @@ export default {
     index: Number,
     rootPath: String
   },
-  data() {
-    return {
-      showDetail: false,
-      detailIssue: Store.detail
-    };
-  },
+  data() { return { showDetail: false, detailIssue: Store.detail }; },
   computed: {
     issueDetailVisible() {
       return (
@@ -258,12 +235,8 @@ export default {
     }
   },
   methods: {
-    mouseDown() {
-      this.showDetail = true;
-    },
-    mouseMove() {
-      this.showDetail = false;
-    },
+    mouseDown() { this.showDetail = true; },
+    mouseMove() { this.showDetail = false; },
     showIssue(e) {
       if (e.target.classList.contains("js-no-trigger")) return;
 
@@ -391,9 +364,7 @@ const Store = gl.issueBoards.BoardsStore;
 
 export default {
   name: "BoardsIssueCard",
-  components: {
-    "issue-card-inner": gl.issueBoards.IssueCardInner,
-  },
+  components: { "issue-card-inner": gl.issueBoards.IssueCardInner },
   props: {
     list: Object,
     issue: Object,
@@ -402,12 +373,7 @@ export default {
     index: Number,
     rootPath: String,
   },
-  data() {
-    return {
-      showDetail: false,
-      detailIssue: Store.detail,
-    };
-  },
+  data() { return { showDetail: false, detailIssue: Store.detail }; },
   computed: {
     issueDetailVisible() {
       return (
@@ -416,12 +382,8 @@ export default {
     },
   },
   methods: {
-    mouseDown() {
-      this.showDetail = true;
-    },
-    mouseMove() {
-      this.showDetail = false;
-    },
+    mouseDown() { this.showDetail = true; },
+    mouseMove() { this.showDetail = false; },
     showIssue(e) {
       if (e.target.classList.contains("js-no-trigger")) return;
 

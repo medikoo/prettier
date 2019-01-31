@@ -147,8 +147,7 @@ fn(
 );
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 fn(
-  bifornCringerMoshedPerplexSawder,
-  askTrovenaBeenaDependsRowans,
+  bifornCringerMoshedPerplexSawder, askTrovenaBeenaDependsRowans,
   glimseGlyphsHazardNoopsTieTie === averredBathersBoxroomBuggyNurl &&
     anodyneCondosMalateOverateRetinol
     ? annularCooeedSplicesWalksWayWay
@@ -168,8 +167,7 @@ fn(
 );
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 fn(
-    bifornCringerMoshedPerplexSawder,
-    askTrovenaBeenaDependsRowans,
+    bifornCringerMoshedPerplexSawder, askTrovenaBeenaDependsRowans,
     glimseGlyphsHazardNoopsTieTie === averredBathersBoxroomBuggyNurl &&
         anodyneCondosMalateOverateRetinol
         ? annularCooeedSplicesWalksWayWay
@@ -189,8 +187,7 @@ fn(
 );
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 fn(
-	bifornCringerMoshedPerplexSawder,
-	askTrovenaBeenaDependsRowans,
+	bifornCringerMoshedPerplexSawder, askTrovenaBeenaDependsRowans,
 	glimseGlyphsHazardNoopsTieTie === averredBathersBoxroomBuggyNurl &&
 		anodyneCondosMalateOverateRetinol
 		? annularCooeedSplicesWalksWayWay
@@ -210,8 +207,7 @@ fn(
 );
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 fn(
-	bifornCringerMoshedPerplexSawder,
-	askTrovenaBeenaDependsRowans,
+	bifornCringerMoshedPerplexSawder, askTrovenaBeenaDependsRowans,
 	glimseGlyphsHazardNoopsTieTie === averredBathersBoxroomBuggyNurl &&
 		anodyneCondosMalateOverateRetinol
 		? annularCooeedSplicesWalksWayWay
@@ -1427,13 +1423,7 @@ const foo = (
   </div>
 );
 
-a
-  ? literalline
-  : {
-      123: 12
-    }
-  ? line
-  : softline;
+a ? literalline : { 123: 12 } ? line : softline;
 
 `;
 
@@ -1623,13 +1613,7 @@ const foo = (
     </div>
 );
 
-a
-    ? literalline
-    : {
-          123: 12
-      }
-    ? line
-    : softline;
+a ? literalline : { 123: 12 } ? line : softline;
 
 `;
 
@@ -1819,13 +1803,7 @@ const foo = (
 	</div>
 );
 
-a
-	? literalline
-	: {
-			123: 12
-	  }
-	? line
-	: softline;
+a ? literalline : { 123: 12 } ? line : softline;
 
 `;
 
@@ -2015,13 +1993,7 @@ const foo = (
 	</div>
 );
 
-a
-	? literalline
-	: {
-			123: 12
-	  }
-	? line
-	: softline;
+a ? literalline : { 123: 12 } ? line : softline;
 
 `;
 

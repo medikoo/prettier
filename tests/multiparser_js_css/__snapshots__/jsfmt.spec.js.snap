@@ -228,14 +228,14 @@ styled.div\`
 
 styled.span\`
   foo
-  \${bar}
+  \${ bar }
   baz
 \`;
 
 styled.div\`
   foo
-  \${bar}
-  \${baz}
+  \${ bar }
+  \${ baz }
 \`;
 
 styled.span\`
@@ -248,8 +248,8 @@ styled.div\`
 \`;
 
 styled.span\`
-  \${foo} \${bar}
-  baz: \${foo}
+  \${ foo } \${ bar }
+  baz: \${ foo }
 \`;
 
 styled.span\`
