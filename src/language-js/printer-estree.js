@@ -1318,7 +1318,7 @@ function printPathNoParens(path, options, print, args) {
           parent.type === "DeclareInterface" ||
           parent.type === "DeclareClass") &&
         path.getName() === "body";
-      const shouldBreak = n.type === "TSInterfaceBody";
+      const shouldBreak = false;
 
       const separator = isFlowInterfaceLikeBody
         ? ";"
