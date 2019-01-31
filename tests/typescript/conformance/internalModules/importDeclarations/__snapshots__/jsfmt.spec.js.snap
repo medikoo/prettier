@@ -131,7 +131,7 @@ module A {
     constructor(public x: number, public y: number) {}
   }
   export module B {
-    export interface Id { name: string; }
+    export interface Id { name: string }
   }
 }
 

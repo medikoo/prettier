@@ -41,47 +41,7 @@ printWidth: 80
   @click="doSomething()"
   @click="doSomething;"
 ></div>
-
-=====================================output=====================================
-<div
-  v-for="item in items"
-  v-for="item of items"
-  v-for="(item, index) in items"
-  v-for="value in object"
-  v-for="(value, key) in object"
-  v-for="(value, key) of object"
-  v-for="(value, key, index) in object"
-  v-for="n in evenNumbers"
-  v-for="n in even(numbers)"
-  v-for="n in 10"
-  v-for="{ a } in [0].map(() => ({ a: 1 }))"
-  v-for="({ a }, [c]) in [0].map(() => 1)"
-  v-for="n in items.map(x => { return x; })"
-  @click="/* hello */"
-  @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */; /* 5 */"
-  @click="$emit('click');"
-  @click="$emit('click');"
-  @click="
-    $emit('click');
-    if (something) {
-      for (let i = j; i < 100; i++) {}
-    } else {
-    }
-  "
-  slot-scope="{
-    destructuring: { a: { b } }
-  }"
-  :class="{
-    longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true
-  }"
-  :class="(() => { return 'hello'; })()"
-  :key="index /* hello */"
-  :key="
-    index // hello
-  "
-  @click="() => { console.log(test); }"
-  @click="() => { console.log(test); }"
-></div>
+</template>
 
 =====================================output=====================================
 <template>
@@ -98,9 +58,7 @@ printWidth: 80
     v-for="n in 10"
     v-for="{ a } in [0].map(() => ({ a: 1 }))"
     v-for="({ a }, [c]) in [0].map(() => 1)"
-    v-for="n in items.map(x => {
-      return x;
-    })"
+    v-for="n in items.map(x => { return x; })"
     @click="/* hello */"
     @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */ /* 5 */"
     @click="$emit('click')"
@@ -113,33 +71,17 @@ printWidth: 80
       }
     "
     slot-scope="{ row }"
-    slot-scope="{
-      destructuring: {
-        a: { b }
-      }
-    }"
+    slot-scope="{ destructuring: { a: { b } } }"
     :class="{
       longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true
     }"
-    :class="
-      (() => {
-        return 'hello';
-      })()
-    "
+    :class="(() => { return 'hello'; })()"
     :key="index /* hello */"
     :key="
       index // hello
     "
-    @click="
-      () => {
-        console.log(test);
-      }
-    "
-    @click="
-      () => {
-        console.log(test);
-      }
-    "
+    @click="() => { console.log(test); }"
+    @click="() => { console.log(test); }"
     @click="doSomething()"
     @click="doSomething;"
   ></div>
@@ -207,9 +149,7 @@ trailingComma: "es5"
     v-for="n in 10"
     v-for="{ a } in [0].map(() => ({ a: 1 }))"
     v-for="({ a }, [c]) in [0].map(() => 1)"
-    v-for="n in items.map(x => {
-      return x;
-    })"
+    v-for="n in items.map(x => { return x; })"
     @click="/* hello */"
     @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */ /* 5 */"
     @click="$emit('click')"
@@ -222,33 +162,17 @@ trailingComma: "es5"
       }
     "
     slot-scope="{ row }"
-    slot-scope="{
-      destructuring: {
-        a: { b },
-      },
-    }"
+    slot-scope="{ destructuring: { a: { b } } }"
     :class="{
       longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true,
     }"
-    :class="
-      (() => {
-        return 'hello';
-      })()
-    "
+    :class="(() => { return 'hello'; })()"
     :key="index /* hello */"
     :key="
       index // hello
     "
-    @click="
-      () => {
-        console.log(test);
-      }
-    "
-    @click="
-      () => {
-        console.log(test);
-      }
-    "
+    @click="() => { console.log(test); }"
+    @click="() => { console.log(test); }"
     @click="doSomething()"
     @click="doSomething;"
   ></div>
@@ -266,43 +190,38 @@ semi: false
 =====================================input======================================
 <template>
 <div
-  v-for="item in items"
-  v-for="item of items"
-  v-for="(item, index) in items"
-  v-for="value in object"
-  v-for="(value, key) in object"
-  v-for="(value, key) of object"
-  v-for="(value, key, index) in object"
-  v-for="n in evenNumbers"
-  v-for="n in even(numbers)"
-  v-for="n in 10"
-  v-for="{ a } in [0].map(() => ({ a: 1 }))"
-  v-for="({ a }, [c]) in [0].map(() => 1)"
-  v-for="n in items.map(x => { return x; })"
-  @click="/* hello */"
-  @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */; /* 5 */"
-  @click="$emit('click');"
-  @click="$emit('click');"
+  v-for="  item  in  items "
+  v-for="  item  of  items "
+  v-for="(    item    , index)    in    items"
+  v-for="value    in     object"
+  v-for="(value,    key)    in    object"
+  v-for="(value,    key)    of    object"
+  v-for="(value  ,   key,   index)    in   object"
+  v-for="   n    in   evenNumbers"
+  v-for=" n in even   ( numbers) "
+  v-for=" n    in    10"
+  v-for=" { a }    in    [0].map(()=>({a:1}))   "
+  v-for=" ({ a }, [c  ])    in    [0].map(()=>1)   "
+  v-for=" n in items.map(x => { return x }) "
+  @click="  /* hello */   "
+  @click="   /* 1 */ $emit( /* 2 */ 'click' /* 3 */ ) /* 4 */ ; /* 5 */   "
+  @click="   $emit(   'click'   )   "
+  @click="   $emit(   'click'   )  ;"
+  @click="   $emit(   'click'   )  ;if(something){for(let i=j;i<100;i++){}}else{}"
+  slot-scope="{row}"
+  slot-scope="{destructuring:{a:{b}}}"
+  :class="{ longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true }"
+  :class="(() => { return 'hello' })()"
+  :key="index /* hello */ "
+  :key="index // hello "
+  @click="() => {console.log(test)}"
   @click="
-    $emit('click');
-    if (something) {
-      for (let i = j; i < 100; i++) {}
-    } else {
+    () => {
+      console.log(test);
     }
   "
-  slot-scope="{
-    destructuring: { a: { b } },
-  }"
-  :class="{
-    longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true,
-  }"
-  :class="(() => { return 'hello'; })()"
-  :key="index /* hello */"
-  :key="
-    index // hello
-  "
-  @click="() => { console.log(test); }"
-  @click="() => { console.log(test); }"
+  @click="doSomething()"
+  @click="doSomething;"
 ></div>
 </template>
 
@@ -321,9 +240,7 @@ semi: false
     v-for="n in 10"
     v-for="{ a } in [0].map(() => ({ a: 1 }))"
     v-for="({ a }, [c]) in [0].map(() => 1)"
-    v-for="n in items.map(x => {
-      return x
-    })"
+    v-for="n in items.map(x => { return x })"
     @click="/* hello */"
     @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */ /* 5 */"
     @click="$emit('click')"
@@ -336,33 +253,17 @@ semi: false
       }
     "
     slot-scope="{ row }"
-    slot-scope="{
-      destructuring: {
-        a: { b }
-      }
-    }"
+    slot-scope="{ destructuring: { a: { b } } }"
     :class="{
       longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true
     }"
-    :class="
-      (() => {
-        return 'hello'
-      })()
-    "
+    :class="(() => { return 'hello' })()"
     :key="index /* hello */"
     :key="
       index // hello
     "
-    @click="
-      () => {
-        console.log(test)
-      }
-    "
-    @click="
-      () => {
-        console.log(test)
-      }
-    "
+    @click="() => { console.log(test) }"
+    @click="() => { console.log(test) }"
     @click="doSomething()"
     @click="doSomething;"
   ></div>
@@ -770,9 +671,7 @@ const Store = gl.issueBoards.BoardsStore
 
 export default {
   name: "BoardsIssueCard",
-  components: {
-    "issue-card-inner": gl.issueBoards.IssueCardInner
-  },
+  components: { "issue-card-inner": gl.issueBoards.IssueCardInner },
   props: {
     list: Object,
     issue: Object,
@@ -781,12 +680,7 @@ export default {
     index: Number,
     rootPath: String
   },
-  data() {
-    return {
-      showDetail: false,
-      detailIssue: Store.detail
-    }
-  },
+  data() { return { showDetail: false, detailIssue: Store.detail } },
   computed: {
     issueDetailVisible() {
       return (
@@ -795,12 +689,8 @@ export default {
     }
   },
   methods: {
-    mouseDown() {
-      this.showDetail = true
-    },
-    mouseMove() {
-      this.showDetail = false
-    },
+    mouseDown() { this.showDetail = true },
+    mouseMove() { this.showDetail = false },
     showIssue(e) {
       if (e.target.classList.contains("js-no-trigger")) return
 
