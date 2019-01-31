@@ -172,7 +172,9 @@ declare export function getAFoo(): FooImpl;
  * @flow
  */
 
-declare export default class FooImpl { givesANum(): number }
+declare export default class FooImpl {
+  givesANum(): number;
+}
 
 // Regression test for https://github.com/facebook/flow/issues/511
 //
@@ -195,7 +197,9 @@ declare export default class Foo { givesANum(): number; };
  * @flow
  */
 
-declare export default class Foo { givesANum(): number }
+declare export default class Foo {
+  givesANum(): number;
+}
 
 `;
 
@@ -451,7 +455,9 @@ declare export { specifierNumber3 };
 declare export { groupedSpecifierNumber1, groupedSpecifierNumber2 };
 
 declare export function givesANumber(): number;
-declare export class NumberGenerator { givesANumber(): number }
+declare export class NumberGenerator {
+  givesANumber(): number;
+}
 
 declare export var varDeclNumber1: number;
 declare export var varDeclNumber2: number;
@@ -494,7 +500,9 @@ declare export { specifierNumber5 as specifierNumber5Renamed };
 declare export { groupedSpecifierNumber3, groupedSpecifierNumber4 };
 
 declare export function givesANumber2(): number;
-declare export class NumberGenerator2 { givesANumber(): number }
+declare export class NumberGenerator2 {
+  givesANumber(): number;
+}
 
 declare export var varDeclNumber3: number;
 declare export var varDeclNumber4: number;

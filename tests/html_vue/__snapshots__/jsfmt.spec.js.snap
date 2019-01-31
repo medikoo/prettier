@@ -25,6 +25,12 @@ exports[`attributes.vue - vue-verify 1`] = `
   :class="(() => { return 'hello' })()"
   :key="index /* hello */ "
   :key="index // hello "
+  @click="() => {console.log(test)}"
+  @click="
+    () => {
+      console.log(test);
+    }
+  "
 ></div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <div
@@ -63,6 +69,16 @@ exports[`attributes.vue - vue-verify 1`] = `
   :key="
     index // hello
   "
+  @click="
+    () => {
+      console.log(test);
+    }
+  "
+  @click="
+    () => {
+      console.log(test);
+    }
+  "
 ></div>
 
 `;
@@ -92,6 +108,12 @@ exports[`attributes.vue - vue-verify 2`] = `
   :class="(() => { return 'hello' })()"
   :key="index /* hello */ "
   :key="index // hello "
+  @click="() => {console.log(test)}"
+  @click="
+    () => {
+      console.log(test);
+    }
+  "
 ></div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <div
@@ -129,6 +151,16 @@ exports[`attributes.vue - vue-verify 2`] = `
   :key="index /* hello */"
   :key="
     index // hello
+  "
+  @click="
+    () => {
+      console.log(test);
+    }
+  "
+  @click="
+    () => {
+      console.log(test);
+    }
   "
 ></div>
 
@@ -795,15 +827,24 @@ exports[`pre-child.vue - vue-verify 1`] = `
     <code class="d-block">{{ code }}</code>
   </pre>
 </template>
+
+<template>
+<pre class='woot'>
+  {{ stuff }}
+  </pre>
+</template>
+
+<template>
+<pre class='woot'>
+  123{{ wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq }}123
+  123{{ wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq }}123
+    </pre>
+</template>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <!--
   copied from https://github.com/gitlabhq/gitlabhq/blob/master/app/assets/javascripts/ide/components/jobs/detail.vue
 -->
-<pre
-  ref="buildTrace"
-  class="build-trace mb-0 h-100"
-  @scroll="scrollBuildLog"
->
+<pre ref="buildTrace" class="build-trace mb-0 h-100" @scroll="scrollBuildLog">
   <code
     v-show="!detailJob.isLoading"
     class="bash"
@@ -827,6 +868,30 @@ exports[`pre-child.vue - vue-verify 1`] = `
   <pre class="code-block rounded">
     <code class="d-block">{{ code }}</code>
   </pre>
+</template>
+
+<template>
+  <pre class="woot">
+  {{ stuff }}
+  </pre>
+</template>
+
+<template>
+  <pre class="woot">
+  123{{
+      wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq
+    }}123
+  123{{
+      wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq
+    }}123
+    </pre
+  >
 </template>
 
 `;
@@ -860,15 +925,24 @@ exports[`pre-child.vue - vue-verify 2`] = `
     <code class="d-block">{{ code }}</code>
   </pre>
 </template>
+
+<template>
+<pre class='woot'>
+  {{ stuff }}
+  </pre>
+</template>
+
+<template>
+<pre class='woot'>
+  123{{ wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq }}123
+  123{{ wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq || wqeqwwqwqweqweqwewwq }}123
+    </pre>
+</template>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <!--
   copied from https://github.com/gitlabhq/gitlabhq/blob/master/app/assets/javascripts/ide/components/jobs/detail.vue
 -->
-<pre
-  ref="buildTrace"
-  class="build-trace mb-0 h-100"
-  @scroll="scrollBuildLog"
->
+<pre ref="buildTrace" class="build-trace mb-0 h-100" @scroll="scrollBuildLog">
   <code
     v-show="!detailJob.isLoading"
     class="bash"
@@ -892,6 +966,30 @@ exports[`pre-child.vue - vue-verify 2`] = `
   <pre class="code-block rounded">
     <code class="d-block">{{ code }}</code>
   </pre>
+</template>
+
+<template>
+  <pre class="woot">
+  {{ stuff }}
+  </pre>
+</template>
+
+<template>
+  <pre class="woot">
+  123{{
+      wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq
+    }}123
+  123{{
+      wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq ||
+        wqeqwwqwqweqweqwewwq
+    }}123
+    </pre
+  >
 </template>
 
 `;
@@ -922,6 +1020,13 @@ exports[`self_closing.vue - vue-verify 1`] = `
 <script>
 foo( )
 </script>
+
+<div class="container">
+  <HomeH />
+  <HomeA />
+  <HomeX />
+  <HomeY />
+</div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <template>
   <div />
@@ -930,6 +1035,13 @@ foo( )
 <script>
 foo();
 </script>
+
+<div class="container">
+  <HomeH />
+  <HomeA />
+  <HomeX />
+  <HomeY />
+</div>
 
 `;
 
@@ -941,6 +1053,13 @@ exports[`self_closing.vue - vue-verify 2`] = `
 <script>
 foo( )
 </script>
+
+<div class="container">
+  <HomeH />
+  <HomeA />
+  <HomeX />
+  <HomeY />
+</div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <template>
   <div />
@@ -949,6 +1068,13 @@ foo( )
 <script>
 foo();
 </script>
+
+<div class="container">
+  <HomeH />
+  <HomeA />
+  <HomeX />
+  <HomeY />
+</div>
 
 `;
 
@@ -1098,6 +1224,68 @@ exports[`template.vue - vue-verify 2`] = `
       </p>
     </div>
   </div>
+</template>
+
+`;
+
+exports[`template-lang.vue - vue-verify 1`] = `
+<template lang="pug">
+  .test
+    #foo
+  .bla
+</template>
+
+<template 
+
+
+   
+   lang='pug'>
+  .test
+    #foo
+  .bla
+</template>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template lang="pug">
+  .test
+    #foo
+  .bla
+</template>
+
+<template lang="pug">
+  .test
+    #foo
+  .bla
+</template>
+
+`;
+
+exports[`template-lang.vue - vue-verify 2`] = `
+<template lang="pug">
+  .test
+    #foo
+  .bla
+</template>
+
+<template 
+
+
+   
+   lang='pug'>
+  .test
+    #foo
+  .bla
+</template>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template lang="pug">
+  .test
+    #foo
+  .bla
+</template>
+
+<template lang="pug">
+  .test
+    #foo
+  .bla
 </template>
 
 `;

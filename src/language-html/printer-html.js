@@ -34,7 +34,9 @@ const {
   normalizeParts,
   preferHardlineAsLeadingSpaces,
   replaceDocNewlines,
-  replaceNewlines
+  replaceNewlines,
+  shouldNotPrintClosingTag,
+  shouldPreserveContent
 } = require("./utils");
 const preprocess = require("./preprocess");
 const assert = require("assert");
@@ -200,7 +202,11 @@ function genericPrint(path, options, print) {
                         : node.firstChild.type === "text" &&
                           node.firstChild.isWhitespaceSensitive &&
                           node.firstChild.isIndentationSensitive
-                        ? node.firstChild.value.indexOf("\n") === -1
+                        ? (node.children.length === 1 &&
+                            node.firstChild.type === "text" &&
+                            node.firstChild.value.indexOf("\n") === -1) ||
+                          node.firstChild.sourceSpan.start.line ===
+                            node.lastChild.sourceSpan.end.line
                           ? ""
                           : literalline
                         : node.firstChild.hasLeadingSpaces &&
@@ -438,24 +444,58 @@ function printChildren(path, options, print) {
   );
 
   function printChild(childPath) {
-    if (!hasPrettierIgnore(childPath)) {
-      return print(childPath);
-    }
     const child = childPath.getValue();
-    return concat([
-      printOpeningTagPrefix(child),
-      options.originalText.slice(
-        options.locStart(child) +
-          (child.prev && needsToBorrowNextOpeningTagStartMarker(child.prev)
-            ? printOpeningTagStartMarker(child).length
-            : 0),
-        options.locEnd(child) -
-          (child.next && needsToBorrowPrevClosingTagEndMarker(child.next)
-            ? printClosingTagEndMarker(child).length
-            : 0),
-        printClosingTagSuffix(child)
-      )
-    ]);
+
+    if (hasPrettierIgnore(child)) {
+      return concat(
+        [].concat(
+          printOpeningTagPrefix(child),
+          replaceNewlines(
+            options.originalText.slice(
+              options.locStart(child) +
+                (child.prev &&
+                needsToBorrowNextOpeningTagStartMarker(child.prev)
+                  ? printOpeningTagStartMarker(child).length
+                  : 0),
+              options.locEnd(child) -
+                (child.next && needsToBorrowPrevClosingTagEndMarker(child.next)
+                  ? printClosingTagEndMarker(child).length
+                  : 0)
+            ),
+            literalline
+          ),
+          printClosingTagSuffix(child)
+        )
+      );
+    }
+
+    if (shouldPreserveContent(child)) {
+      return concat(
+        [].concat(
+          printOpeningTagPrefix(child),
+          group(printOpeningTag(childPath, options, print)),
+          replaceNewlines(
+            options.originalText.slice(
+              child.startSourceSpan.end.offset -
+                (child.firstChild &&
+                needsToBorrowParentOpeningTagEndMarker(child.firstChild)
+                  ? printOpeningTagEndMarker(child).length
+                  : 0),
+              child.endSourceSpan.start.offset +
+                (child.lastChild &&
+                needsToBorrowParentClosingTagStartMarker(child.lastChild)
+                  ? printClosingTagStartMarker(child).length
+                  : 0)
+            ),
+            literalline
+          ),
+          printClosingTag(child),
+          printClosingTagSuffix(child)
+        )
+      );
+    }
+
+    return print(childPath);
   }
 
   function printBetweenLine(prevNode, nextNode) {
@@ -544,9 +584,14 @@ function printOpeningTag(path, options, print) {
                   return path.map(attrPath => {
                     const attr = attrPath.getValue();
                     return hasPrettierIgnoreAttribute(attr)
-                      ? options.originalText.slice(
-                          options.locStart(attr),
-                          options.locEnd(attr)
+                      ? concat(
+                          replaceNewlines(
+                            options.originalText.slice(
+                              options.locStart(attr),
+                              options.locEnd(attr)
+                            ),
+                            literalline
+                          )
                         )
                       : print(attrPath);
                   }, "attrs");
@@ -747,6 +792,9 @@ function printOpeningTagEndMarker(node) {
 
 function printClosingTagStartMarker(node) {
   assert(!node.isSelfClosing);
+  if (shouldNotPrintClosingTag(node)) {
+    return "";
+  }
   switch (node.type) {
     case "ieConditionalComment":
       return "<!";
@@ -756,6 +804,9 @@ function printClosingTagStartMarker(node) {
 }
 
 function printClosingTagEndMarker(node) {
+  if (shouldNotPrintClosingTag(node)) {
+    return "";
+  }
   switch (node.type) {
     case "comment":
       return "-->";
@@ -859,7 +910,9 @@ function printEmbeddedAttributeValue(node, originalTextToDoc, options) {
       const fnExpRE = /^([\w$_]+|\([^)]*?\))\s*=>|^function\s*\(/;
       const simplePathRE = /^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*|\['[^']*?']|\["[^"]*?"]|\[\d+]|\[[A-Za-z_$][\w$]*])*$/;
 
-      const value = getValue();
+      const value = getValue()
+        // https://github.com/vuejs/vue/blob/v2.5.17/src/compiler/helpers.js#L104
+        .trim();
       return printMaybeHug(
         simplePathRE.test(value) || fnExpRE.test(value)
           ? textToDoc(value, { parser: "__js_expression" })

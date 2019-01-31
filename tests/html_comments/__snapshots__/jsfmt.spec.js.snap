@@ -70,6 +70,35 @@ exports[`conditional.html - html-verify 1`] = `
 
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center  >                                        
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div>  </div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center  >
+</body>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <!DOCTYPE html>
 <html>
@@ -81,6 +110,35 @@ exports[`conditional.html - html-verify 1`] = `
     <!--[if IE 9]>This is IE 9<br /><![endif]-->
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center>
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div></div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center>
+</body>
 
 `;
 
@@ -97,6 +155,35 @@ exports[`conditional.html - html-verify 2`] = `
 
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center  >                                        
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div>  </div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center  >
+</body>
 ~
 <!DOCTYPE html>
 <html>
@@ -134,6 +221,44 @@ exports[`conditional.html - html-verify 2`] = `
   </body>
 </html>
 
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html
+  lang="zh-CN"
+>
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html
+  lang="zh-CN"
+>
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html
+  lang="zh-CN"
+>
+  <head></head>
+  <body></body>
+</html>
+
+<body
+  width="100%"
+  align="center"
+>
+  <center>
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div></div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center>
+</body>
+
 `;
 
 exports[`conditional.html - html-verify 3`] = `
@@ -149,6 +274,35 @@ exports[`conditional.html - html-verify 3`] = `
 
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center  >                                        
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div>  </div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center  >
+</body>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <!DOCTYPE html>
 <html>
@@ -160,6 +314,35 @@ exports[`conditional.html - html-verify 3`] = `
     <!--[if IE 9]>This is IE 9<br /><![endif]-->
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center>
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div></div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center>
+</body>
 
 `;
 
@@ -176,6 +359,35 @@ exports[`conditional.html - html-verify 4`] = `
 
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center  >                                        
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div>  </div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center  >
+</body>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <!DOCTYPE html>
 <html>
@@ -187,6 +399,35 @@ exports[`conditional.html - html-verify 4`] = `
     <!--[if IE 9]>This is IE 9<br /><![endif]-->
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center>
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div> </div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center>
+</body>
 
 `;
 
@@ -203,6 +444,35 @@ exports[`conditional.html - html-verify 5`] = `
 
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center  >                                        
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div>  </div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center  >
+</body>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <!DOCTYPE html>
 <html>
@@ -229,6 +499,35 @@ exports[`conditional.html - html-verify 5`] = `
     <![endif]-->
   </body>
 </html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="zh-CN"><div></div><![endif]-->
+<html lang="zh-CN">
+  <head></head>
+  <body></body>
+</html>
+
+<body width="100%" align="center">
+  <center>
+    <!--[if (gte mso 9)|(IE)]><table cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+    <div></div>
+    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+  </center>
+</body>
 
 `;
 

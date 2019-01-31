@@ -163,6 +163,8 @@ it("does something really long and complicated so I have to write a very long na
   // code
 }));
 
+it("does something really long and complicated so I have to write a very long name for the test", fakeAsync(() => new SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS));
+
 /*
 * isTestCall(parent) should only be called when parent exists
 * and parent.type is CallExpression. This test makes sure that
@@ -191,6 +193,9 @@ it(
     // code
   })
 );
+
+it("does something really long and complicated so I have to write a very long name for the test", fakeAsync(() =>
+  new SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS()));
 
 /*
  * isTestCall(parent) should only be called when parent exists
@@ -220,6 +225,8 @@ it("does something really long and complicated so I have to write a very long na
   // code
 }));
 
+it("does something really long and complicated so I have to write a very long name for the test", fakeAsync(() => new SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS));
+
 /*
 * isTestCall(parent) should only be called when parent exists
 * and parent.type is CallExpression. This test makes sure that
@@ -248,6 +255,9 @@ it(
     // code
   })
 );
+
+it("does something really long and complicated so I have to write a very long name for the test", fakeAsync(() =>
+  new SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS()));
 
 /*
  * isTestCall(parent) should only be called when parent exists
@@ -702,6 +712,17 @@ it(\`handles
 it("does something quick", () => {
   console.log("hello!")
 }, 1000000000)
+
+it(
+  'succeeds if the test finishes in time',
+  () => new Promise(resolve => setTimeout(resolve, 10))
+);
+
+it(
+  'succeeds if the test finishes in time',
+  () => new Promise(resolve => setTimeout(resolve, 10)),
+  250
+);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Shouldn't break
 
@@ -883,6 +904,15 @@ it(
 
 it("does something quick", () => { console.log("hello!"); }, 1000000000);
 
+it("succeeds if the test finishes in time", () =>
+  new Promise(resolve => setTimeout(resolve, 10)));
+
+it(
+  "succeeds if the test finishes in time",
+  () => new Promise(resolve => setTimeout(resolve, 10)),
+  250
+);
+
 `;
 
 exports[`test_declarations.js - flow-verify 2`] = `
@@ -1005,6 +1035,17 @@ it(\`handles
 it("does something quick", () => {
   console.log("hello!")
 }, 1000000000)
+
+it(
+  'succeeds if the test finishes in time',
+  () => new Promise(resolve => setTimeout(resolve, 10))
+);
+
+it(
+  'succeeds if the test finishes in time',
+  () => new Promise(resolve => setTimeout(resolve, 10)),
+  250
+);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Shouldn't break
 
@@ -1185,5 +1226,14 @@ it(
 );
 
 it("does something quick", () => { console.log("hello!"); }, 1000000000);
+
+it("succeeds if the test finishes in time", () =>
+  new Promise((resolve) => setTimeout(resolve, 10)));
+
+it(
+  "succeeds if the test finishes in time",
+  () => new Promise((resolve) => setTimeout(resolve, 10)),
+  250
+);
 
 `;

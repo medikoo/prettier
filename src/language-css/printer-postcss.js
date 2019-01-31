@@ -207,8 +207,11 @@ function genericPrint(path, options, print) {
           ? concat([
               isDetachedRulesetCallNode(node)
                 ? ""
-                : isTemplatePlaceholderNode(node)
-                ? node.raws.afterName
+                : isTemplatePlaceholderNode(node) &&
+                  /^\s*\n/.test(node.raws.afterName)
+                ? /^\s*\n\s*\n/.test(node.raws.afterName)
+                  ? concat([hardline, hardline])
+                  : hardline
                 : " ",
               path.call(print, "params")
             ])
@@ -647,7 +650,11 @@ function genericPrint(path, options, print) {
 
         // Formatting `grid` property
         if (isGridValue) {
-          if (iNode.source.start.line !== iNextNode.source.start.line) {
+          if (
+            iNode.source &&
+            iNextNode.source &&
+            iNode.source.start.line !== iNextNode.source.start.line
+          ) {
             parts.push(hardline);
 
             didBreak = true;

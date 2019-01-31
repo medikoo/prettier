@@ -103,6 +103,13 @@ function genericPrint(path, options, printPath, args) {
   const parentExportDecl = getParentExportDeclaration(path);
   const decorators = [];
   if (
+    node.type === "ClassMethod" ||
+    node.type === "ClassProperty" ||
+    node.type === "TSAbstractClassProperty" ||
+    node.type === "ClassPrivateProperty"
+  ) {
+    // their decorators are handled themselves
+  } else if (
     node.decorators &&
     node.decorators.length > 0 &&
     // If the parent node is an export declaration and the decorator
@@ -115,16 +122,9 @@ function genericPrint(path, options, printPath, args) {
     )
   ) {
     const shouldBreak =
+      node.type === "ClassExpression" ||
       node.type === "ClassDeclaration" ||
-      hasNewlineInRange(
-        options.originalText,
-        options.locStart(node.decorators[0]),
-        options.locEnd(getLast(node.decorators))
-      ) ||
-      hasNewline(
-        options.originalText,
-        options.locEnd(getLast(node.decorators))
-      );
+      hasNewlineBetweenOrAfterDecorators(node, options);
 
     const separator = shouldBreak ? hardline : line;
 
@@ -192,6 +192,27 @@ function genericPrint(path, options, printPath, args) {
     return group(concat(decorators.concat(parts)));
   }
   return concat(parts);
+}
+
+function hasNewlineBetweenOrAfterDecorators(node, options) {
+  return (
+    hasNewlineInRange(
+      options.originalText,
+      options.locStart(node.decorators[0]),
+      options.locEnd(getLast(node.decorators))
+    ) ||
+    hasNewline(options.originalText, options.locEnd(getLast(node.decorators)))
+  );
+}
+
+function printDecorators(path, options, print) {
+  const node = path.getValue();
+  return group(
+    concat([
+      join(line, path.map(print, "decorators")),
+      hasNewlineBetweenOrAfterDecorators(node, options) ? hardline : line
+    ])
+  );
 }
 
 function hasPrettierIgnore(path) {
@@ -1238,7 +1259,9 @@ function printPathNoParens(path, options, print, args) {
               concat([
                 softline,
                 "extends ",
-                indent(join(concat([",", line]), path.map(print, "heritage"))),
+                (n.heritage.length === 1 ? identity : indent)(
+                  join(concat([",", line]), path.map(print, "heritage"))
+                ),
                 " "
               ])
             )
@@ -1288,7 +1311,6 @@ function printPathNoParens(path, options, print, args) {
         .sort((a, b) => options.locStart(a) - options.locStart(b))[0];
 
       const parent = path.getParentNode(0);
-      const shouldBreak = n.type === "TSInterfaceBody";
       const isFlowInterfaceLikeBody =
         isTypeAnnotation &&
         parent &&
@@ -1296,6 +1318,7 @@ function printPathNoParens(path, options, print, args) {
           parent.type === "DeclareInterface" ||
           parent.type === "DeclareClass") &&
         path.getName() === "body";
+      const shouldBreak = n.type === "TSInterfaceBody";
 
       const separator = isFlowInterfaceLikeBody
         ? ";"
@@ -1461,6 +1484,9 @@ function printPathNoParens(path, options, print, args) {
 
       return concat(parts); // Babel 6
     case "ClassMethod":
+      if (n.decorators && n.decorators.length !== 0) {
+        parts.push(printDecorators(path, options, print));
+      }
       if (n.static) {
         parts.push("static ");
       }
@@ -2374,6 +2400,9 @@ function printPathNoParens(path, options, print, args) {
     case "ClassProperty":
     case "TSAbstractClassProperty":
     case "ClassPrivateProperty": {
+      if (n.decorators && n.decorators.length !== 0) {
+        parts.push(printDecorators(path, options, print));
+      }
       if (n.accessibility) {
         parts.push(n.accessibility + " ");
       }
@@ -2838,7 +2867,9 @@ function printPathNoParens(path, options, print, args) {
               concat([
                 line,
                 "extends ",
-                indent(join(concat([",", line]), path.map(print, "extends")))
+                (n.extends.length === 1 ? identity : indent)(
+                  join(concat([",", line]), path.map(print, "extends"))
+                )
               ])
             )
           )
@@ -3483,20 +3514,24 @@ function printPathNoParens(path, options, print, args) {
         }
         parts.push(printTypeScriptModifiers(path, options, print));
 
+        const textBetweenNodeAndItsId = options.originalText.slice(
+          options.locStart(n),
+          options.locStart(n.id)
+        );
+
         // Global declaration looks like this:
         // (declare)? global { ... }
         const isGlobalDeclaration =
           n.id.type === "Identifier" &&
           n.id.name === "global" &&
-          !/namespace|module/.test(
-            options.originalText.slice(
-              options.locStart(n),
-              options.locStart(n.id)
-            )
-          );
+          !/namespace|module/.test(textBetweenNodeAndItsId);
 
         if (!isGlobalDeclaration) {
-          parts.push(isExternalModule ? "module " : "namespace ");
+          parts.push(
+            isExternalModule || /\smodule\s/.test(textBetweenNodeAndItsId)
+              ? "module "
+              : "namespace "
+          );
         }
       }
 
@@ -3917,7 +3952,8 @@ const functionCompositionFunctionNames = new Set([
   "composeK", // Ramda
   "flow", // Lodash
   "flowRight", // Lodash
-  "connect" // Redux
+  "connect", // Redux
+  "createSelector" // Reselect
 ]);
 
 function isFunctionCompositionFunction(node) {
@@ -6368,8 +6404,10 @@ function isTestCall(n, parent) {
         return false;
       }
       return (
-        (isFunctionOrArrowExpression(n.arguments[1]) &&
-          n.arguments[1].params.length <= 1) ||
+        (n.arguments.length === 2
+          ? isFunctionOrArrowExpression(n.arguments[1])
+          : isFunctionOrArrowExpressionWithBody(n.arguments[1]) &&
+            n.arguments[1].params.length <= 1) ||
         isAngularTestWrapper(n.arguments[1])
       );
     }
@@ -6413,6 +6451,14 @@ function isFunctionOrArrowExpression(node) {
   );
 }
 
+function isFunctionOrArrowExpressionWithBody(node) {
+  return (
+    node.type === "FunctionExpression" ||
+    (node.type === "ArrowFunctionExpression" &&
+      node.body.type === "BlockStatement")
+  );
+}
+
 function isUnitTestSetUp(n) {
   const unitTestSetUpRe = /^(before|after)(Each|All)$/;
   return (
@@ -6423,7 +6469,7 @@ function isUnitTestSetUp(n) {
 }
 
 function isTheOnlyJSXElementInMarkdown(options, path) {
-  if (options.parentParser !== "markdown") {
+  if (options.parentParser !== "markdown" && options.parentParser !== "mdx") {
     return false;
   }
 
@@ -6545,6 +6591,10 @@ function printIndentableBlockComment(comment) {
 
 function rawText(node) {
   return node.extra ? node.extra.raw : node.raw;
+}
+
+function identity(x) {
+  return x;
 }
 
 module.exports = {
