@@ -71,7 +71,7 @@ x
 
 exports[`comments.js 3`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel"]
 printWidth: 80
 semi: false
                                                                                 | printWidth
@@ -116,7 +116,7 @@ declare class A {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare class B {
 //     one: boolean
 //     two: { three: string }
@@ -129,7 +129,7 @@ declare interface C {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare interface D {
 //     one: boolean
 //     two: { three: string }
@@ -142,7 +142,7 @@ interface E {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // interface F {
 //     one: boolean
 //     two: { three: string }
@@ -152,7 +152,7 @@ interface E {
 =====================================output=====================================
 declare class A { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare class B {
 //     one: boolean
 //     two: { three: string }
@@ -161,7 +161,7 @@ declare class A { one: boolean; two: { three: string } | number }
 
 declare interface C { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare interface D {
 //     one: boolean
 //     two: { three: string }
@@ -170,7 +170,7 @@ declare interface C { one: boolean; two: { three: string } | number }
 
 interface E { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // interface F {
 //     one: boolean
 //     two: { three: string }
@@ -193,7 +193,7 @@ declare class A {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare class B {
 //     one: boolean
 //     two: { three: string }
@@ -206,7 +206,7 @@ declare interface C {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare interface D {
 //     one: boolean
 //     two: { three: string }
@@ -219,7 +219,7 @@ interface E {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // interface F {
 //     one: boolean
 //     two: { three: string }
@@ -229,7 +229,7 @@ interface E {
 =====================================output=====================================
 declare class A { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare class B {
 //     one: boolean
 //     two: { three: string }
@@ -238,7 +238,7 @@ declare class A { one: boolean; two: { three: string } | number }
 
 declare interface C { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare interface D {
 //     one: boolean
 //     two: { three: string }
@@ -247,7 +247,7 @@ declare interface C { one: boolean; two: { three: string } | number }
 
 interface E { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // interface F {
 //     one: boolean
 //     two: { three: string }
@@ -259,7 +259,7 @@ interface E { one: boolean; two: { three: string } | number }
 
 exports[`flow-interfaces.js 3`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel"]
 printWidth: 80
 semi: false
                                                                                 | printWidth
@@ -270,7 +270,7 @@ declare class A {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare class B {
 //     one: boolean
 //     two: { three: string }
@@ -283,7 +283,7 @@ declare interface C {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare interface D {
 //     one: boolean
 //     two: { three: string }
@@ -296,7 +296,7 @@ interface E {
     | number;
 }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // interface F {
 //     one: boolean
 //     two: { three: string }
@@ -306,7 +306,7 @@ interface E {
 =====================================output=====================================
 declare class A { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare class B {
 //     one: boolean
 //     two: { three: string }
@@ -315,7 +315,7 @@ declare class A { one: boolean; two: { three: string } | number }
 
 declare interface C { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // declare interface D {
 //     one: boolean
 //     two: { three: string }
@@ -324,7 +324,7 @@ declare interface C { one: boolean; two: { three: string } | number }
 
 interface E { one: boolean; two: { three: string } | number }
 
-// NOTE: Flow and Babylon both fail to apply ASI here
+// NOTE: Flow and Babel both fail to apply ASI here
 // interface F {
 //     one: boolean
 //     two: { three: string }
@@ -393,7 +393,7 @@ var c = a.e
 
 exports[`issue2006.js 3`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel"]
 printWidth: 80
 semi: false
                                                                                 | printWidth
@@ -1123,7 +1123,7 @@ aReallyLongLine012345678901234567890123456789012345678901234567890123456789 *
 
 exports[`no-semi.js 3`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel"]
 printWidth: 80
 semi: false
                                                                                 | printWidth

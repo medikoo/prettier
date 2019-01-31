@@ -1,11 +1,6 @@
 "use strict";
 
 const {
-  builders: { concat },
-  utils: { mapDoc }
-} = require("../doc");
-
-const {
   CSS_DISPLAY_TAGS,
   CSS_DISPLAY_DEFAULT,
   CSS_WHITE_SPACE_TAGS,
@@ -263,20 +258,6 @@ function isDanglingSpaceSensitiveNode(node) {
   );
 }
 
-function replaceNewlines(text, replacement) {
-  return text
-    .split(/(\n)/g)
-    .map((data, index) => (index % 2 === 1 ? replacement : data));
-}
-
-function replaceDocNewlines(doc, replacement) {
-  return mapDoc(doc, currentDoc =>
-    typeof currentDoc === "string" && currentDoc.includes("\n")
-      ? concat(replaceNewlines(currentDoc, replacement))
-      : currentDoc
-  );
-}
-
 function forceNextEmptyLine(node) {
   return (
     isFrontMatterNode(node) ||
@@ -292,7 +273,12 @@ function forceBreakContent(node) {
     (node.type === "element" &&
       node.children.length !== 0 &&
       (["body", "template", "script", "style"].indexOf(node.name) !== -1 ||
-        node.children.some(child => hasNonTextChild(child))))
+        node.children.some(child => hasNonTextChild(child)))) ||
+    (node.firstChild &&
+      node.firstChild === node.lastChild &&
+      (hasLeadingLineBreak(node.firstChild) &&
+        (!node.lastChild.isTrailingSpaceSensitive ||
+          hasTrailingLineBreak(node.lastChild))))
   );
 }
 
@@ -310,7 +296,7 @@ function preferHardlineAsLeadingSpaces(node) {
   return (
     preferHardlineAsSurroundingSpaces(node) ||
     (node.prev && preferHardlineAsTrailingSpaces(node.prev)) ||
-    isCustomElementWithSurroundingLineBreak(node)
+    hasSurroundingLineBreak(node)
   );
 }
 
@@ -318,19 +304,7 @@ function preferHardlineAsTrailingSpaces(node) {
   return (
     preferHardlineAsSurroundingSpaces(node) ||
     (node.type === "element" && node.fullName === "br") ||
-    isCustomElementWithSurroundingLineBreak(node)
-  );
-}
-
-function isCustomElementWithSurroundingLineBreak(node) {
-  return isCustomElement(node) && hasSurroundingLineBreak(node);
-}
-
-function isCustomElement(node) {
-  return (
-    node.type === "element" &&
-    !node.namespace &&
-    (node.name.includes("-") || /[A-Z]/.test(node.name[0]))
+    hasSurroundingLineBreak(node)
   );
 }
 
@@ -387,7 +361,7 @@ function inferScriptParser(node) {
       node.attrMap.type === "text/babel" ||
       node.attrMap.type === "application/javascript"
     ) {
-      return "babylon";
+      return "babel";
     }
 
     if (
@@ -400,6 +374,10 @@ function inferScriptParser(node) {
 
     if (node.attrMap.type === "text/markdown") {
       return "markdown";
+    }
+
+    if (node.attrMap.type === "application/ld+json") {
+      return "json";
     }
   }
 
@@ -602,10 +580,25 @@ function shouldNotPrintClosingTag(node, options) {
   );
 }
 
+function countChars(text, char) {
+  let counter = 0;
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === char) {
+      counter++;
+    }
+  }
+  return counter;
+}
+
+function unescapeQuoteEntities(text) {
+  return text.replace(/&apos;/g, "'").replace(/&quot;/g, '"');
+}
+
 module.exports = {
   HTML_ELEMENT_ATTRIBUTES,
   HTML_TAGS,
   canHaveInterpolation,
+  countChars,
   countParents,
   dedentString,
   forceBreakChildren,
@@ -630,8 +623,7 @@ module.exports = {
   normalizeParts,
   preferHardlineAsLeadingSpaces,
   preferHardlineAsTrailingSpaces,
-  replaceDocNewlines,
-  replaceNewlines,
   shouldNotPrintClosingTag,
-  shouldPreserveContent
+  shouldPreserveContent,
+  unescapeQuoteEntities
 };

@@ -110,11 +110,7 @@ function genericPrint(path, options, print) {
     }
     case "css-comment": {
       if (node.raws.content) {
-        return (
-          node.raws.content
-            // there's a bug in the less parser that trailing `\r`s are included in inline comments
-            .replace(/^(\/\/[^]+)\r+$/, "$1")
-        );
+        return node.raws.content;
       }
       const text = options.originalText.slice(
         options.locStart(node),
@@ -515,6 +511,27 @@ function genericPrint(path, options, print) {
           continue;
         }
 
+        // Ignore escape `\`
+        if (
+          iNode.value &&
+          iNode.value.indexOf("\\") !== -1 &&
+          iNextNode &&
+          iNextNode.type !== "value-comment"
+        ) {
+          continue;
+        }
+
+        // Ignore escaped `/`
+        if (
+          iPrevNode &&
+          iPrevNode.value &&
+          iPrevNode.value.indexOf("\\") === iPrevNode.value.length - 1 &&
+          iNode.type === "value-operator" &&
+          iNode.value === "/"
+        ) {
+          continue;
+        }
+
         // Ignore `\` (i.e. `$variable: \@small;`)
         if (iNode.value === "\\") {
           continue;
@@ -608,19 +625,9 @@ function genericPrint(path, options, print) {
           continue;
         }
 
-        // Ignore inline comment, they already contain newline at end (i.e. `// Comment`)
         // Add `hardline` after inline comment (i.e. `// comment\n foo: bar;`)
-        const isInlineComment = isInlineValueCommentNode(iNode);
-
-        if (
-          (iPrevNode && isInlineValueCommentNode(iPrevNode)) ||
-          isInlineComment ||
-          isInlineValueCommentNode(iNextNode)
-        ) {
-          if (isInlineComment) {
-            parts.push(hardline);
-          }
-
+        if (isInlineValueCommentNode(iNode)) {
+          parts.push(hardline);
           continue;
         }
 

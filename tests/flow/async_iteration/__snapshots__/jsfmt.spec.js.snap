@@ -2,7 +2,7 @@
 
 exports[`delegate_yield.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -62,7 +62,7 @@ async function* delegate_return() {
 
 exports[`generator.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -124,7 +124,7 @@ async function f() {
 
 exports[`return.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -177,7 +177,7 @@ refuse_return().return("string").then(result => {
 
 exports[`throw.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================

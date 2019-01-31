@@ -2,7 +2,7 @@
 
 exports[`private_fields.js 1`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -37,6 +37,17 @@ class Point {
   equals(p) { return this.#x === p.#x && this.#y === p.#y }
 
   toString() { return \`Point<\${ this.#x },\${ this.#y }>\` }
+}
+
+class E {
+  async #a() {}
+  #b() {}
+  get #c() {}
+  set #c(bar) {}
+  *#d() {}
+  async *#e() {}
+  get #f() {}
+  set #f(taz) {}
 }
 
 =====================================output=====================================
@@ -79,12 +90,23 @@ class Point {
   toString() { return \`Point<\${ this.#x },\${ this.#y }>\`; }
 }
 
+class E {
+  async #a() {}
+  #b() {}
+  get #c() {}
+  set #c(bar) {}
+  *#d() {}
+  async *#e() {}
+  get #f() {}
+  set #f(taz) {}
+}
+
 ================================================================================
 `;
 
 exports[`private_fields.js 2`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel"]
 printWidth: 80
 semi: false
                                                                                 | printWidth
@@ -120,6 +142,17 @@ class Point {
   equals(p) { return this.#x === p.#x && this.#y === p.#y }
 
   toString() { return \`Point<\${ this.#x },\${ this.#y }>\` }
+}
+
+class E {
+  async #a() {}
+  #b() {}
+  get #c() {}
+  set #c(bar) {}
+  *#d() {}
+  async *#e() {}
+  get #f() {}
+  set #f(taz) {}
 }
 
 =====================================output=====================================
@@ -162,12 +195,23 @@ class Point {
   toString() { return \`Point<\${ this.#x },\${ this.#y }>\` }
 }
 
+class E {
+  async #a() {}
+  #b() {}
+  get #c() {}
+  set #c(bar) {}
+  *#d() {}
+  async *#e() {}
+  get #f() {}
+  set #f(taz) {}
+}
+
 ================================================================================
 `;
 
 exports[`with_comments.js 1`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -193,7 +237,7 @@ class A {
 
 exports[`with_comments.js 2`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel"]
 printWidth: 80
 semi: false
                                                                                 | printWidth

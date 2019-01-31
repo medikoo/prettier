@@ -2,7 +2,7 @@
 
 exports[`id.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -20,7 +20,7 @@ module.exports = id;
 
 exports[`subtype.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -42,7 +42,7 @@ function subtypeCheck(x: Interface): ObjectType { return x; }
 
 exports[`test.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -74,7 +74,7 @@ module.exports = id(methodCaller);
 
 exports[`test2.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -113,7 +113,7 @@ b.f(); // error, property \`p\` not found
 
 exports[`test3.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================

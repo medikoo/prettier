@@ -2,7 +2,7 @@
 
 exports[`functional_compose.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -115,9 +115,37 @@ this.subscriptions.add(
 ================================================================================
 `;
 
+exports[`gobject_connect.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "babel", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
+button.connect(
+  "clicked",
+  () => doSomething()
+);
+app.connect(
+  "activate",
+  async () => {
+    await data.load();
+    win.show_all();
+  }
+);
+
+=====================================output=====================================
+button.connect("clicked", () => doSomething());
+app.connect("activate", async () => {
+  await data.load();
+  win.show_all();
+});
+
+================================================================================
+`;
+
 exports[`lodash_flow.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -167,7 +195,7 @@ foo(6);
 
 exports[`lodash_flow_right.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -215,9 +243,32 @@ foo(6);
 ================================================================================
 `;
 
+exports[`mongo_connect.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "babel", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
+MongoClient.connect(
+  "mongodb://localhost:27017/posts",
+  (err, db) => {
+    assert.equal(null, err);
+    db.close();
+  }
+);
+
+=====================================output=====================================
+MongoClient.connect("mongodb://localhost:27017/posts", (err, db) => {
+  assert.equal(null, err);
+  db.close();
+});
+
+================================================================================
+`;
+
 exports[`ramda_compose.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -311,7 +362,7 @@ followersForUser("JOE").then(followers => console.log("Followers:", followers));
 
 exports[`ramda_pipe.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -379,7 +430,7 @@ var followersForUser = R.pipeP(
 
 exports[`redux_compose.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -416,7 +467,7 @@ const store = createStore(
 
 exports[`redux_connect.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -434,7 +485,7 @@ const ArtistInput = connect(
 
 exports[`reselect_createselector.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -470,7 +521,7 @@ const resolve = createSelector(
 
 exports[`rxjs_pipe.js 1`] = `
 ====================================options=====================================
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================

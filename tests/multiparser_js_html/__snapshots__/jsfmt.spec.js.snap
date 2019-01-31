@@ -2,7 +2,7 @@
 
 exports[`lit-html.js 1`] = `
 ====================================options=====================================
-parsers: ["babylon"]
+parsers: ["babel", "flow", "typescript"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
@@ -59,6 +59,15 @@ html\`  <\${Footer}  >footer      content<//     >  \`
 
 html\`  <div />  \`
 
+function HelloWorld() {
+  return html\`
+    <h3>Bar List</h3>
+    \${bars.map(bar => html\`
+       <p>\${bar}</p>
+    \`)}
+  \`;
+}
+
 =====================================output=====================================
 import { LitElement, html } from "@polymer/lit-element";
 
@@ -105,6 +114,17 @@ html\`
 html\`
   <div />
 \`;
+
+function HelloWorld() {
+  return html\`
+    <h3>Bar List</h3>
+    \${bars.map(
+      bar => html\`
+        <p>\${bar}</p>
+      \`
+    )}
+  \`;
+}
 
 ================================================================================
 `;

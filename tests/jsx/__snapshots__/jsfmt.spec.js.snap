@@ -3,7 +3,7 @@
 exports[`array-iter.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -81,7 +81,7 @@ const TodoList = ({ todos }) => (
 exports[`array-iter.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -159,7 +159,7 @@ const TodoList = ({ todos }) => (
 exports[`array-iter.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -237,7 +237,7 @@ const TodoList = ({ todos }) => (
 exports[`array-iter.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -315,7 +315,7 @@ const TodoList = ({ todos }) => (
 exports[`attr-comments.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -386,7 +386,7 @@ singleQuote: false
 exports[`attr-comments.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -457,7 +457,7 @@ singleQuote: false
 exports[`attr-comments.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -528,7 +528,7 @@ singleQuote: true
 exports[`attr-comments.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -599,7 +599,7 @@ singleQuote: true
 exports[`conditional-expression.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -887,7 +887,7 @@ cable ? (
 exports[`conditional-expression.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -1175,7 +1175,7 @@ cable ? (
 exports[`conditional-expression.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -1463,7 +1463,7 @@ cable ? (
 exports[`conditional-expression.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -1751,7 +1751,7 @@ cable ? (
 exports[`expression.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -2025,7 +2025,7 @@ singleQuote: false
 exports[`expression.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -2299,7 +2299,7 @@ singleQuote: false
 exports[`expression.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -2573,7 +2573,7 @@ singleQuote: true
 exports[`expression.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -2847,7 +2847,7 @@ singleQuote: true
 exports[`flow_fix_me.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -2871,7 +2871,7 @@ const aDiv = (
 exports[`flow_fix_me.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -2895,7 +2895,7 @@ const aDiv = (
 exports[`flow_fix_me.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -2919,7 +2919,7 @@ const aDiv = (
 exports[`flow_fix_me.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -2943,7 +2943,7 @@ const aDiv = (
 exports[`html_escape.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -2963,7 +2963,7 @@ export default () => <a href="https://foo.bar?q1=foo&q2=bar" />;
 exports[`html_escape.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -2983,7 +2983,7 @@ export default () => <a href='https://foo.bar?q1=foo&q2=bar' />;
 exports[`html_escape.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3003,7 +3003,7 @@ export default () => <a href="https://foo.bar?q1=foo&q2=bar" />;
 exports[`html_escape.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3023,7 +3023,7 @@ export default () => <a href='https://foo.bar?q1=foo&q2=bar' />;
 exports[`hug.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -3105,7 +3105,7 @@ singleQuote: false
 exports[`hug.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -3187,7 +3187,7 @@ singleQuote: false
 exports[`hug.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3269,7 +3269,7 @@ singleQuote: true
 exports[`hug.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3351,7 +3351,7 @@ singleQuote: true
 exports[`logical-expression.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -3429,7 +3429,7 @@ singleQuote: false
 exports[`logical-expression.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -3507,7 +3507,7 @@ singleQuote: false
 exports[`logical-expression.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3585,7 +3585,7 @@ singleQuote: true
 exports[`logical-expression.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3663,7 +3663,7 @@ singleQuote: true
 exports[`object-property.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -3703,7 +3703,7 @@ const tabs = [
 exports[`object-property.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -3743,7 +3743,7 @@ const tabs = [
 exports[`object-property.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3783,7 +3783,7 @@ const tabs = [
 exports[`object-property.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3823,7 +3823,7 @@ const tabs = [
 exports[`open-break.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -3859,7 +3859,7 @@ onClick={() => {
 exports[`open-break.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -3895,7 +3895,7 @@ onClick={() => {
 exports[`open-break.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3931,7 +3931,7 @@ onClick={() => {
 exports[`open-break.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -3967,7 +3967,7 @@ onClick={() => {
 exports[`parens.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -4005,7 +4005,7 @@ a = [
 exports[`parens.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -4043,7 +4043,7 @@ a = [
 exports[`parens.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -4081,7 +4081,7 @@ a = [
 exports[`parens.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -4119,7 +4119,7 @@ a = [
 exports[`quotes.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -4209,7 +4209,7 @@ singleQuote: false
 exports[`quotes.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -4299,7 +4299,7 @@ singleQuote: false
 exports[`quotes.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -4389,7 +4389,7 @@ singleQuote: true
 exports[`quotes.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -4479,7 +4479,7 @@ singleQuote: true
 exports[`return-statement.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -4587,7 +4587,7 @@ class BreakingClass extends React.component {
 exports[`return-statement.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -4695,7 +4695,7 @@ class BreakingClass extends React.component {
 exports[`return-statement.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -4803,7 +4803,7 @@ class BreakingClass extends React.component {
 exports[`return-statement.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -4911,7 +4911,7 @@ class BreakingClass extends React.component {
 exports[`spacing.js 1`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -4951,7 +4951,7 @@ const Labels = {
 exports[`spacing.js 2`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: false
                                                                                 | printWidth
@@ -4991,7 +4991,7 @@ const Labels = {
 exports[`spacing.js 3`] = `
 ====================================options=====================================
 jsxSingleQuote: false
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth
@@ -5031,7 +5031,7 @@ const Labels = {
 exports[`spacing.js 4`] = `
 ====================================options=====================================
 jsxSingleQuote: true
-parsers: ["flow", "babylon", "typescript"]
+parsers: ["flow", "babel", "typescript"]
 printWidth: 80
 singleQuote: true
                                                                                 | printWidth

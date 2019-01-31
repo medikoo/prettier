@@ -57,6 +57,16 @@ function needsParens(path, options) {
     return false;
   }
 
+  // to avoid unexpected `}}` in HTML interpolations
+  if (
+    options.__isInHtmlInterpolation &&
+    !options.bracketSpacing &&
+    endsWithRightBracket(node) &&
+    isFollowedByRightBracket(path)
+  ) {
+    return true;
+  }
+
   // Only statements don't need parentheses.
   if (isStatement(node)) {
     return false;
@@ -230,7 +240,7 @@ function needsParens(path, options) {
       }
     }
     // fallthrough
-    case "TSTypeAssertionExpression":
+    case "TSTypeAssertion":
     case "TSAsExpression":
     case "LogicalExpression":
       switch (parent.type) {
@@ -245,7 +255,7 @@ function needsParens(path, options) {
         case "ClassDeclaration":
         case "TSAbstractClassDeclaration":
           return name === "superClass" && parent.superClass === node;
-        case "TSTypeAssertionExpression":
+        case "TSTypeAssertion":
         case "TaggedTemplateExpression":
         case "UnaryExpression":
         case "SpreadElement":
@@ -264,19 +274,17 @@ function needsParens(path, options) {
         case "AssignmentExpression":
           return (
             parent.left === node &&
-            (node.type === "TSTypeAssertionExpression" ||
-              node.type === "TSAsExpression")
+            (node.type === "TSTypeAssertion" || node.type === "TSAsExpression")
           );
         case "Decorator":
           return (
             parent.expression === node &&
-            (node.type === "TSTypeAssertionExpression" ||
-              node.type === "TSAsExpression")
+            (node.type === "TSTypeAssertion" || node.type === "TSAsExpression")
           );
 
         case "BinaryExpression":
         case "LogicalExpression": {
-          if (!node.operator && node.type !== "TSTypeAssertionExpression") {
+          if (!node.operator && node.type !== "TSTypeAssertion") {
             return true;
           }
 
@@ -324,13 +332,11 @@ function needsParens(path, options) {
       if (
         (parent.type === "TSTypeParameter" ||
           parent.type === "TypeParameter" ||
-          parent.type === "VariableDeclarator" ||
+          parent.type === "TSTypeAliasDeclaration" ||
           parent.type === "TSTypeAnnotation" ||
-          parent.type === "GenericTypeAnnotation" ||
-          parent.type === "TSTypeReference") &&
-        (node.typeAnnotation.type === "TSTypeAnnotation" &&
-          node.typeAnnotation.typeAnnotation.type !== "TSFunctionType" &&
-          grandParent.type !== "TSTypeOperator" &&
+          parent.type === "TSParenthesizedType" ||
+          parent.type === "TSTypeParameterInstantiation") &&
+        (grandParent.type !== "TSTypeOperator" &&
           grandParent.type !== "TSOptionalType")
       ) {
         return false;
@@ -518,7 +524,7 @@ function needsParens(path, options) {
         case "ExportDefaultDeclaration":
         case "AwaitExpression":
         case "JSXSpreadAttribute":
-        case "TSTypeAssertionExpression":
+        case "TSTypeAssertion":
         case "TypeCastExpression":
         case "TSAsExpression":
         case "TSNonNullExpression":
@@ -569,7 +575,7 @@ function needsParens(path, options) {
         case "LogicalExpression":
         case "BinaryExpression":
         case "AwaitExpression":
-        case "TSTypeAssertionExpression":
+        case "TSTypeAssertion":
           return true;
 
         case "ConditionalExpression":
@@ -676,6 +682,7 @@ function isStatement(node) {
     node.type === "ThrowStatement" ||
     node.type === "TryStatement" ||
     node.type === "TSAbstractClassDeclaration" ||
+    node.type === "TSDeclareFunction" ||
     node.type === "TSEnumDeclaration" ||
     node.type === "TSImportEqualsDeclaration" ||
     node.type === "TSInterfaceDeclaration" ||
@@ -686,6 +693,57 @@ function isStatement(node) {
     node.type === "WhileStatement" ||
     node.type === "WithStatement"
   );
+}
+
+function endsWithRightBracket(node) {
+  switch (node.type) {
+    case "ObjectExpression":
+      return true;
+    default:
+      return false;
+  }
+}
+
+function isFollowedByRightBracket(path) {
+  const node = path.getValue();
+  const parent = path.getParentNode();
+  const name = path.getName();
+  switch (parent.type) {
+    case "NGPipeExpression":
+      if (
+        typeof name === "number" &&
+        parent.arguments[name] === node &&
+        parent.arguments.length - 1 === name
+      ) {
+        return path.callParent(isFollowedByRightBracket);
+      }
+      break;
+    case "ObjectProperty":
+      if (name === "value") {
+        const parentParent = path.getParentNode(1);
+        return (
+          parentParent.properties[parentParent.properties.length - 1] === parent
+        );
+      }
+      break;
+    case "BinaryExpression":
+    case "LogicalExpression":
+      if (name === "right") {
+        return path.callParent(isFollowedByRightBracket);
+      }
+      break;
+    case "ConditionalExpression":
+      if (name === "alternate") {
+        return path.callParent(isFollowedByRightBracket);
+      }
+      break;
+    case "UnaryExpression":
+      if (parent.prefix) {
+        return path.callParent(isFollowedByRightBracket);
+      }
+      break;
+  }
+  return false;
 }
 
 module.exports = needsParens;
