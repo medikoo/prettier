@@ -5,9 +5,21 @@ beforeEach(async(() => {
   // code
 }));
 
+beforeEach(done =>
+  foo()
+    .bar()
+    .bar(),
+);
+
 afterAll(async(() => {
   console.log('Hello');
 }));
+
+afterAll(done =>
+  foo()
+    .bar()
+    .bar(),
+);
 
 it('should create the app', async(() => {
   //code
@@ -30,14 +42,23 @@ beforeEach(
   })
 );
 
+beforeEach(done =>
+  foo()
+    .bar()
+    .bar()
+);
+
 afterAll(async(() => { console.log("Hello"); }));
 
-it(
-  "should create the app",
-  async(() => {
-    //code
-  })
+afterAll(done =>
+  foo()
+    .bar()
+    .bar()
 );
+
+it("should create the app", async(() => {
+  //code
+}));
 
 it(
   "does something really long and complicated so I have to write a very long name for the test",
@@ -47,10 +68,10 @@ it(
 );
 
 /*
-* isTestCall(parent) should only be called when parent exists
-* and parent.type is CallExpression. This test makes sure that
-* no errors are thrown when calling isTestCall(parent)
-*/
+ * isTestCall(parent) should only be called when parent exists
+ * and parent.type is CallExpression. This test makes sure that
+ * no errors are thrown when calling isTestCall(parent)
+ */
 function x() {
   async(() => {});
 }
@@ -62,9 +83,21 @@ beforeEach(async(() => {
   // code
 }));
 
+beforeEach(done =>
+  foo()
+    .bar()
+    .bar(),
+);
+
 afterAll(async(() => {
   console.log('Hello');
 }));
+
+afterAll(done =>
+  foo()
+    .bar()
+    .bar(),
+);
 
 it('should create the app', async(() => {
   //code
@@ -87,14 +120,23 @@ beforeEach(
   })
 );
 
+beforeEach((done) =>
+  foo()
+    .bar()
+    .bar()
+);
+
 afterAll(async(() => { console.log("Hello"); }));
 
-it(
-  "should create the app",
-  async(() => {
-    //code
-  })
+afterAll((done) =>
+  foo()
+    .bar()
+    .bar()
 );
+
+it("should create the app", async(() => {
+  //code
+}));
 
 it(
   "does something really long and complicated so I have to write a very long name for the test",
@@ -104,10 +146,10 @@ it(
 );
 
 /*
-* isTestCall(parent) should only be called when parent exists
-* and parent.type is CallExpression. This test makes sure that
-* no errors are thrown when calling isTestCall(parent)
-*/
+ * isTestCall(parent) should only be called when parent exists
+ * and parent.type is CallExpression. This test makes sure that
+ * no errors are thrown when calling isTestCall(parent)
+ */
 function x() {
   async(() => {});
 }
@@ -161,10 +203,10 @@ it(
 );
 
 /*
-* isTestCall(parent) should only be called when parent exists
-* and parent.type is CallExpression. This test makes sure that
-* no errors are thrown when calling isTestCall(parent)
-*/
+ * isTestCall(parent) should only be called when parent exists
+ * and parent.type is CallExpression. This test makes sure that
+ * no errors are thrown when calling isTestCall(parent)
+ */
 function x() {
   fakeAsync(() => {});
 }
@@ -218,10 +260,10 @@ it(
 );
 
 /*
-* isTestCall(parent) should only be called when parent exists
-* and parent.type is CallExpression. This test makes sure that
-* no errors are thrown when calling isTestCall(parent)
-*/
+ * isTestCall(parent) should only be called when parent exists
+ * and parent.type is CallExpression. This test makes sure that
+ * no errors are thrown when calling isTestCall(parent)
+ */
 function x() {
   fakeAsync(() => {});
 }
@@ -286,10 +328,10 @@ it(
 );
 
 /*
-* isTestCall(parent) should only be called when parent exists
-* and parent.type is CallExpression. This test makes sure that
-* no errors are thrown when calling isTestCall(parent)
-*/
+ * isTestCall(parent) should only be called when parent exists
+ * and parent.type is CallExpression. This test makes sure that
+ * no errors are thrown when calling isTestCall(parent)
+ */
 function x() {
   inject(() => {});
 }
@@ -354,10 +396,10 @@ it(
 );
 
 /*
-* isTestCall(parent) should only be called when parent exists
-* and parent.type is CallExpression. This test makes sure that
-* no errors are thrown when calling isTestCall(parent)
-*/
+ * isTestCall(parent) should only be called when parent exists
+ * and parent.type is CallExpression. This test makes sure that
+ * no errors are thrown when calling isTestCall(parent)
+ */
 function x() {
   inject(() => {});
 }
@@ -657,6 +699,19 @@ it.only.only("does something really long and complicated so I have to write a ve
 });
 
 xskip("does something really long and complicated so I have to write a very long name for the test", () => {});
+
+// timeout
+
+it(\`handles
+  some
+    newlines
+  does something really long and complicated so I have to write a very long name for the test\`, () => {
+  console.log("hello!");
+}, 2500)
+
+it("does something quick", () => {
+  console.log("hello!")
+}, 1000000000)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Shouldn't break
 
@@ -825,6 +880,19 @@ xskip(
   () => {}
 );
 
+// timeout
+
+it(\`handles
+  some
+    newlines
+  does something really long and complicated so I have to write a very long name for the test\`, () => {
+  console.log("hello!");
+}, 2500);
+
+it("does something quick", () => {
+  console.log("hello!");
+}, 1000000000);
+
 `;
 
 exports[`test_declarations.js - flow-verify 2`] = `
@@ -934,6 +1002,19 @@ it.only.only("does something really long and complicated so I have to write a ve
 });
 
 xskip("does something really long and complicated so I have to write a very long name for the test", () => {});
+
+// timeout
+
+it(\`handles
+  some
+    newlines
+  does something really long and complicated so I have to write a very long name for the test\`, () => {
+  console.log("hello!");
+}, 2500)
+
+it("does something quick", () => {
+  console.log("hello!")
+}, 1000000000)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Shouldn't break
 
@@ -1101,5 +1182,18 @@ xskip(
   "does something really long and complicated so I have to write a very long name for the test",
   () => {}
 );
+
+// timeout
+
+it(\`handles
+  some
+    newlines
+  does something really long and complicated so I have to write a very long name for the test\`, () => {
+  console.log("hello!");
+}, 2500);
+
+it("does something quick", () => {
+  console.log("hello!");
+}, 1000000000);
 
 `;

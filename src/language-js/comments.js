@@ -28,7 +28,20 @@ function handleOwnLineComment(comment, text, options, ast, isLastComment) {
       comment,
       options
     ) ||
-    handleTryStatementComments(enclosingNode, followingNode, comment) ||
+    handleWhileComments(
+      text,
+      precedingNode,
+      enclosingNode,
+      followingNode,
+      comment,
+      options
+    ) ||
+    handleTryStatementComments(
+      enclosingNode,
+      precedingNode,
+      followingNode,
+      comment
+    ) ||
     handleClassComments(enclosingNode, precedingNode, followingNode, comment) ||
     handleImportSpecifierComments(enclosingNode, comment) ||
     handleForComments(enclosingNode, precedingNode, comment) ||
@@ -88,6 +101,20 @@ function handleEndOfLineComment(comment, text, options, ast, isLastComment) {
       comment,
       options
     ) ||
+    handleWhileComments(
+      text,
+      precedingNode,
+      enclosingNode,
+      followingNode,
+      comment,
+      options
+    ) ||
+    handleTryStatementComments(
+      enclosingNode,
+      precedingNode,
+      followingNode,
+      comment
+    ) ||
     handleClassComments(enclosingNode, precedingNode, followingNode, comment) ||
     handleLabeledStatementComments(enclosingNode, comment) ||
     handleCallExpressionComments(precedingNode, enclosingNode, comment) ||
@@ -106,6 +133,14 @@ function handleRemainingComment(comment, text, options, ast, isLastComment) {
 
   if (
     handleIfStatementComments(
+      text,
+      precedingNode,
+      enclosingNode,
+      followingNode,
+      comment,
+      options
+    ) ||
+    handleWhileComments(
       text,
       precedingNode,
       enclosingNode,
@@ -235,11 +270,11 @@ function handleIfStatementComments(
   }
 
   // For comments positioned after the condition parenthesis in an if statement
-  // before the consequent with or without brackets on, such as
-  // if (a) /* comment */ {} or if (a) /* comment */ true,
-  // we look at the next character to see if it is a { or if the following node
+  // before the consequent without brackets on, such as
+  // if (a) /* comment */ true,
+  // we look at the next character to see if the following node
   // is the consequent for the if statement
-  if (nextCharacter === "{" || enclosingNode.consequent === followingNode) {
+  if (enclosingNode.consequent === followingNode) {
     addLeadingComment(followingNode, comment);
     return true;
   }
@@ -247,14 +282,64 @@ function handleIfStatementComments(
   return false;
 }
 
-// Same as IfStatement but for TryStatement
-function handleTryStatementComments(enclosingNode, followingNode, comment) {
+function handleWhileComments(
+  text,
+  precedingNode,
+  enclosingNode,
+  followingNode,
+  comment,
+  options
+) {
   if (
     !enclosingNode ||
-    enclosingNode.type !== "TryStatement" ||
+    enclosingNode.type !== "WhileStatement" ||
     !followingNode
   ) {
     return false;
+  }
+
+  // We unfortunately have no way using the AST or location of nodes to know
+  // if the comment is positioned before the condition parenthesis:
+  //   while (a /* comment */) {}
+  // The only workaround I found is to look at the next character to see if
+  // it is a ).
+  const nextCharacter = privateUtil.getNextNonSpaceNonCommentCharacter(
+    text,
+    comment,
+    options.locEnd
+  );
+  if (nextCharacter === ")") {
+    addTrailingComment(precedingNode, comment);
+    return true;
+  }
+
+  if (followingNode.type === "BlockStatement") {
+    addBlockStatementFirstComment(followingNode, comment);
+    return true;
+  }
+
+  return false;
+}
+
+// Same as IfStatement but for TryStatement
+function handleTryStatementComments(
+  enclosingNode,
+  precedingNode,
+  followingNode,
+  comment
+) {
+  if (
+    !enclosingNode ||
+    (enclosingNode.type !== "TryStatement" &&
+      enclosingNode.type !== "CatchClause") ||
+    !followingNode
+  ) {
+    return false;
+  }
+
+  if (enclosingNode.type === "CatchClause" && precedingNode) {
+    addTrailingComment(precedingNode, comment);
+    return true;
   }
 
   if (followingNode.type === "BlockStatement") {
@@ -479,7 +564,8 @@ function handleCommentInEmptyParens(text, enclosingNode, comment, options) {
       enclosingNode.type === "ClassMethod" ||
       enclosingNode.type === "ObjectMethod") &&
       enclosingNode.params.length === 0) ||
-      (enclosingNode.type === "CallExpression" &&
+      ((enclosingNode.type === "CallExpression" ||
+        enclosingNode.type === "NewExpression") &&
         enclosingNode.arguments.length === 0))
   ) {
     addDanglingComment(enclosingNode, comment);
@@ -537,6 +623,17 @@ function handleLastFunctionArgComments(
     addTrailingComment(precedingNode, comment);
     return true;
   }
+
+  if (
+    enclosingNode &&
+    enclosingNode.type === "FunctionDeclaration" &&
+    followingNode &&
+    followingNode.type === "BlockStatement"
+  ) {
+    addBlockStatementFirstComment(followingNode, comment);
+    return true;
+  }
+
   return false;
 }
 
@@ -659,6 +756,7 @@ function handleImportDeclarationComments(
 ) {
   if (
     precedingNode &&
+    precedingNode.type === "ImportSpecifier" &&
     enclosingNode &&
     enclosingNode.type === "ImportDeclaration" &&
     privateUtil.hasNewline(text, options.locEnd(comment))

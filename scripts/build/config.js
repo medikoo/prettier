@@ -1,6 +1,7 @@
 "use strict";
 
 const path = require("path");
+const PROJECT_ROOT = path.resolve(__dirname, "../..");
 
 /**
  * @typedef {Object} Bundle
@@ -39,6 +40,18 @@ const parsers = [
     target: "universal"
   },
   {
+    input: "src/language-js/parser-angular.js",
+    target: "universal",
+    alias: {
+      // Force using the CJS file, instead of ESM; i.e. get the file
+      // from `"main"` instead of `"module"` (rollup default) of package.json
+      "lines-and-columns": require.resolve("lines-and-columns"),
+      "@angular/compiler/src": path.resolve(
+        `${PROJECT_ROOT}/node_modules/@angular/compiler/esm2015/src`
+      )
+    }
+  },
+  {
     input: "src/language-css/parser-postcss.js",
     target: "universal",
     // postcss has dependency cycles that don't work with rollup
@@ -53,10 +66,6 @@ const parsers = [
     target: "universal"
   },
   {
-    input: "src/language-vue/parser-vue.js",
-    target: "universal"
-  },
-  {
     input: "src/language-handlebars/parser-glimmer.js",
     target: "universal",
     commonjs: {
@@ -68,8 +77,8 @@ const parsers = [
     }
   },
   {
-    input: "src/language-html/parser-parse5.js",
-    target: "node"
+    input: "src/language-html/parser-html.js",
+    target: "universal"
   },
   {
     input: "src/language-yaml/parser-yaml.js",

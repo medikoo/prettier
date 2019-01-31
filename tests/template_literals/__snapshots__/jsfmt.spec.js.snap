@@ -402,7 +402,7 @@ exports[`styled-jsx-with-expressions.js - flow-verify 1`] = `
     }
   }
   @font-face {
-    \${expr};
+    \${expr}
   }
 \`}</style>;
 

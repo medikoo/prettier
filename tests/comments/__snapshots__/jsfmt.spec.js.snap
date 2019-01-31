@@ -35,6 +35,153 @@ const foo = {
 
 `;
 
+exports[`binary-expressions.js - flow-verify 1`] = `
+function addition() {
+	0
+	// Comment
+	+ x
+}
+
+function multiplication() {
+	0
+	// Comment
+	* x
+}
+
+function division() {
+	0
+	// Comment
+	/ x
+}
+
+function substraction() {
+	0
+	// Comment
+	- x
+}
+
+function remainder() {
+	0
+	// Comment
+	% x
+}
+
+function exponentiation() {
+	0
+	// Comment
+	** x
+}
+
+function leftShift() {
+	0
+	// Comment
+	<< x
+}
+
+function rightShift() {
+	0
+	// Comment
+	>> x
+}
+
+function unsignedRightShift() {
+	0
+	// Comment
+	>>> x
+}
+
+function bitwiseAnd() {
+	0
+	// Comment
+	& x
+}
+
+function bitwiseOr() {
+	0
+	// Comment
+	| x
+}
+
+function bitwiseXor() {
+	0
+	// Comment
+	^ x
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function addition() {
+  0 +
+    // Comment
+    x;
+}
+
+function multiplication() {
+  0 *
+    // Comment
+    x;
+}
+
+function division() {
+  0 /
+    // Comment
+    x;
+}
+
+function substraction() {
+  0 -
+    // Comment
+    x;
+}
+
+function remainder() {
+  0 %
+    // Comment
+    x;
+}
+
+function exponentiation() {
+  0 **
+    // Comment
+    x;
+}
+
+function leftShift() {
+  0 <<
+    // Comment
+    x;
+}
+
+function rightShift() {
+  0 >>
+    // Comment
+    x;
+}
+
+function unsignedRightShift() {
+  0 >>>
+    // Comment
+    x;
+}
+
+function bitwiseAnd() {
+  0 &
+    // Comment
+    x;
+}
+
+function bitwiseOr() {
+  0 |
+    // Comment
+    x;
+}
+
+function bitwiseXor() {
+  0 ^
+    // Comment
+    x;
+}
+
+`;
+
 exports[`blank.js - flow-verify 1`] = `
 // This file only
 // has comments. This comment
@@ -189,6 +336,8 @@ var x = [/* dangling */];
 function x() {
   /* dangling */
 }
+new Thing(/* dangling */);
+Thing(/* dangling */);
 declare class Foo extends Qux<string> {/* dangling */}
 export /* dangling */{};
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -204,6 +353,8 @@ var x = [
 function x() {
   /* dangling */
 }
+new Thing(/* dangling */);
+Thing(/* dangling */);
 declare class Foo extends Qux<string> {
   /* dangling */
 }
@@ -394,6 +545,26 @@ class C {
 class C {
   f/* f */(/* args */) /* returns */ {}
 }
+
+function foo() 
+// this is a function
+{
+  return 42
+}
+
+function foo() // this is a function
+{
+  return 42
+}
+
+function foo() { // this is a function
+  return 42
+}
+
+function foo() {
+  // this is a function
+  return 42;
+}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function a(/* comment */) {} // comment
 function b() {} // comment
@@ -435,6 +606,26 @@ class C {
 }
 class C {
   f /* f */(/* args */) /* returns */ {}
+}
+
+function foo() {
+  // this is a function
+  return 42;
+}
+
+function foo() {
+  // this is a function
+  return 42;
+}
+
+function foo() {
+  // this is a function
+  return 42;
+}
+
+function foo() {
+  // this is a function
+  return 42;
 }
 
 `;
@@ -914,16 +1105,23 @@ onClick={() => {}}>
 
 <div>{/* comment */}</div>;
 
-<div>{/* comment
-*/}</div>;
+<div>
+  {/* comment
+   */}
+</div>;
 
-<div>{a /* comment
-*/}</div>;
+<div>
+  {
+    a
+    /* comment
+     */
+  }
+</div>;
 
 <div>
   {
     /* comment
-*/
+     */
     a
   }
 </div>;
@@ -1498,6 +1696,71 @@ function inlineComment() { return /* hi */ 42 || 42; }
 
 `;
 
+exports[`single-star-jsdoc.js - flow-verify 1`] = `
+/*
+ * Looking good!
+ */
+
+if(true) {
+    /*
+     * Oh no
+     */
+}
+
+  /** first line
+* second line
+   * third line */
+
+  /* first line
+* second line
+   * third line */
+
+  /*! first line
+*second line
+   *  third line */
+
+/*!
+* Extracted from vue codebase
+* https://github.com/vuejs/vue/blob/cfd73c2386623341fdbb3ac636c4baf84ea89c2c/src/compiler/parser/html-parser.js
+* HTML Parser By John Resig (ejohn.org)
+* Modified by Juriy "kangax" Zaytsev
+* Original code by Erik Arvidsson, Mozilla Public License
+* http://erik.eae.net/simplehtmlparser/simplehtmlparser.js
+*/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+ * Looking good!
+ */
+
+if (true) {
+  /*
+   * Oh no
+   */
+}
+
+/** first line
+ * second line
+ * third line */
+
+/* first line
+ * second line
+ * third line */
+
+/*! first line
+ *second line
+ *  third line */
+
+/*!
+ * Extracted from vue codebase
+ * https://github.com/vuejs/vue/blob/cfd73c2386623341fdbb3ac636c4baf84ea89c2c/src/compiler/parser/html-parser.js
+ * HTML Parser By John Resig (ejohn.org)
+ * Modified by Juriy "kangax" Zaytsev
+ * Original code by Erik Arvidsson, Mozilla Public License
+ * http://erik.eae.net/simplehtmlparser/simplehtmlparser.js
+ */
+
+`;
+
 exports[`switch.js - flow-verify 1`] = `
 switch (node && node.type) {
   case "Property":
@@ -1679,32 +1942,34 @@ const CONNECTION_STATUS = (exports.CONNECTION_STATUS = {
 `;
 
 exports[`try.js - flow-verify 1`] = `
-// comment 1
-try {
-  // comment 2
+// Comment 1
+try { // Comment 2
+  // Comment 3
 }
-// comment 3
-catch(e) {
-  // comment 4
+// Comment 4
+catch(e) { // Comment 5
+  // Comment 6
 }
-// comment 5
-finally // comment 6
-{
-  // comment 7
+// Comment 7
+finally { // Comment 8
+  // Comment 9
 }
+// Comment 10
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// comment 1
+// Comment 1
 try {
-  // comment 2
+  // Comment 2
+  // Comment 3
+} catch (e) {
+  // Comment 4
+  // Comment 5
+  // Comment 6
+} finally {
+  // Comment 7
+  // Comment 8
+  // Comment 9
 }
-catch (e) {
-  // comment 3
-  // comment 4
-} // comment 6
-finally {
-  // comment 5
-  // comment 7
-}
+// Comment 10
 
 `;
 
@@ -1764,6 +2029,13 @@ tag\`
 val
 val
 \`;
+
+let // Comment
+  foo = 'val';
+
+let // Comment
+  foo = 'val',
+  bar = 'val';
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let obj =
   // Comment
@@ -1822,5 +2094,60 @@ let obj =
 val
 val
 \`;
+
+let // Comment
+  foo = "val";
+
+let // Comment
+  foo = "val",
+  bar = "val";
+
+`;
+
+exports[`while.js - flow-verify 1`] = `
+while(
+    true
+    // Comment
+  ) {}
+
+while(true)// Comment
+{}
+
+while(true){}// Comment
+
+while(true)/*Comment*/{}
+
+while(
+  true // Comment
+  && true // Comment
+  ){}
+
+while(true) {} // comment
+
+while(true) /* comment */ ++x; 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+while (
+  true
+  // Comment
+) {}
+
+while (true) {
+  // Comment
+}
+
+while (true) {} // Comment
+
+while (true) {
+  /*Comment*/
+}
+
+while (
+  true && // Comment
+  true // Comment
+) {}
+
+while (true) {} // comment
+
+while (true) /* comment */ ++x;
 
 `;

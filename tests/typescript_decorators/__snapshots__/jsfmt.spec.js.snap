@@ -47,8 +47,7 @@ export class TabCompletionController {}
 
 @Component({ selector: "angular-component" })
 class AngularComponent {
-  @Input()
-  myInput: string;
+  @Input() myInput: string;
 }
 
 `;
@@ -216,14 +215,10 @@ class Class2 {
 }
 
 class Class3 {
-  @d1
-  fieldA;
-  @d2(foo)
-  fieldB;
-  @d3.bar
-  fieldC;
-  @d4.baz()
-  fieldD;
+  @d1 fieldA;
+  @d2(foo) fieldB;
+  @d3.bar fieldC;
+  @d4.baz() fieldD;
 
   constructor(
     @d1 private x: number,
@@ -237,8 +232,7 @@ class Class3 {
 class Foo {}
 
 class Bar {
-  @decorated
-  method() {}
+  @decorated method() {}
 }
 
 class MyContainerComponent {

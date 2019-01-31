@@ -7,7 +7,6 @@ const fs = require("fs");
 const globby = require("globby");
 const chalk = require("chalk");
 const readline = require("readline");
-const leven = require("leven");
 const stringify = require("json-stable-stringify");
 
 const minimist = require("./minimist");
@@ -642,40 +641,6 @@ function flattenArray(array) {
   return [].concat.apply([], array);
 }
 
-function getOptionWithLevenSuggestion(context, options, optionName) {
-  // support aliases
-  const optionNameContainers = flattenArray(
-    options.map((option, index) => [
-      { value: option.name, index },
-      option.alias ? { value: option.alias, index } : null
-    ])
-  ).filter(Boolean);
-
-  const optionNameContainer = optionNameContainers.find(
-    optionNameContainer => optionNameContainer.value === optionName
-  );
-
-  if (optionNameContainer !== undefined) {
-    return options[optionNameContainer.index];
-  }
-
-  const suggestedOptionNameContainer = optionNameContainers.find(
-    optionNameContainer => leven(optionNameContainer.value, optionName) < 3
-  );
-
-  if (suggestedOptionNameContainer !== undefined) {
-    const suggestedOptionName = suggestedOptionNameContainer.value;
-    context.logger.warn(
-      `Unknown option name "${optionName}", did you mean "${suggestedOptionName}"?`
-    );
-
-    return options[suggestedOptionNameContainer.index];
-  }
-
-  context.logger.warn(`Unknown option name "${optionName}"`);
-  return options.find(option => option.name === "help");
-}
-
 function createChoiceUsages(choices, margin, indentation) {
   const activeChoices = choices.filter(
     choice => !choice.deprecated && choice.since !== null
@@ -692,11 +657,9 @@ function createChoiceUsages(choices, margin, indentation) {
   );
 }
 
-function createDetailedUsage(context, optionName) {
-  const option = getOptionWithLevenSuggestion(
-    context,
-    getOptionsWithOpposites(context.detailedOptions),
-    optionName
+function createDetailedUsage(context, flag) {
+  const option = getOptionsWithOpposites(context.detailedOptions).find(
+    option => option.name === flag || option.alias === flag
   );
 
   const header = createOptionUsageHeader(option);
@@ -848,12 +811,16 @@ function normalizeDetailedOptionMap(detailedOptionMap) {
 
 function createMinimistOptions(detailedOptions) {
   return {
+    // we use vnopts' AliasSchema to handle aliases for better error messages
+    alias: {},
     boolean: detailedOptions
       .filter(option => option.type === "boolean")
-      .map(option => option.name),
+      .map(option => [option.name].concat(option.alias || []))
+      .reduce((a, b) => a.concat(b)),
     string: detailedOptions
       .filter(option => option.type !== "boolean")
-      .map(option => option.name),
+      .map(option => [option.name].concat(option.alias || []))
+      .reduce((a, b) => a.concat(b)),
     default: detailedOptions
       .filter(option => !option.deprecated)
       .filter(
@@ -866,13 +833,6 @@ function createMinimistOptions(detailedOptions) {
       .reduce(
         (current, option) =>
           Object.assign({ [option.name]: option.default }, current),
-        {}
-      ),
-    alias: detailedOptions
-      .filter(option => option.alias !== undefined)
-      .reduce(
-        (current, option) =>
-          Object.assign({ [option.name]: option.alias }, current),
         {}
       )
   };
