@@ -93,6 +93,7 @@ async function preparePackage() {
   await util.writeJson("dist/package.json", pkg);
 
   await util.copyFile("./README.md", "./dist/README.md");
+  await util.copyFile("./LICENSE", "./dist/LICENSE");
 }
 
 async function run(params) {
