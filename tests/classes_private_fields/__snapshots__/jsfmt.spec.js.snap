@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`private_fields.js - babylon-verify 1`] = `
+exports[`private_fields.js 1`] = `
+====================================options=====================================
+parsers: ["babylon"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 class A { #x; #y; }
 class B { #x = 0; #y = 1; }
 
@@ -33,7 +38,8 @@ class Point {
 
   toString() { return \`Point<\${ this.#x },\${ this.#y }>\` }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 class A {
   #x;
   #y;
@@ -73,9 +79,16 @@ class Point {
   toString() { return \`Point<\${ this.#x },\${ this.#y }>\`; }
 }
 
+================================================================================
 `;
 
-exports[`private_fields.js - babylon-verify 2`] = `
+exports[`private_fields.js 2`] = `
+====================================options=====================================
+parsers: ["babylon"]
+printWidth: 80
+semi: false
+                                                                                | printWidth
+=====================================input======================================
 class A { #x; #y; }
 class B { #x = 0; #y = 1; }
 
@@ -108,7 +121,8 @@ class Point {
 
   toString() { return \`Point<\${ this.#x },\${ this.#y }>\` }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 class A {
   #x
   #y
@@ -148,17 +162,15 @@ class Point {
   toString() { return \`Point<\${ this.#x },\${ this.#y }>\` }
 }
 
+================================================================================
 `;
 
-exports[`with_comments.js - babylon-verify 1`] = `
-class A {
-  #foobar =
-    // comment to break
-    1 +
-    // comment to break again
-    2;
-}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+exports[`with_comments.js 1`] = `
+====================================options=====================================
+parsers: ["babylon"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 class A {
   #foobar =
     // comment to break
@@ -167,9 +179,25 @@ class A {
     2;
 }
 
+=====================================output=====================================
+class A {
+  #foobar =
+    // comment to break
+    1 +
+    // comment to break again
+    2;
+}
+
+================================================================================
 `;
 
-exports[`with_comments.js - babylon-verify 2`] = `
+exports[`with_comments.js 2`] = `
+====================================options=====================================
+parsers: ["babylon"]
+printWidth: 80
+semi: false
+                                                                                | printWidth
+=====================================input======================================
 class A {
   #foobar =
     // comment to break
@@ -177,7 +205,8 @@ class A {
     // comment to break again
     2;
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 class A {
   #foobar =
     // comment to break
@@ -186,4 +215,5 @@ class A {
     2
 }
 
+================================================================================
 `;

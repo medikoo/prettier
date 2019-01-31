@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`angular_async.js - flow-verify 1`] = `
+exports[`angular_async.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 beforeEach(async(() => {
   // code
 }));
@@ -35,7 +40,8 @@ it("does something really long and complicated so I have to write a very long na
 * no errors are thrown when calling isTestCall(parent)
 */
 function x() { async(() => {}) }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 beforeEach(
   async(() => {
     // code
@@ -71,9 +77,16 @@ function x() {
   async(() => {});
 }
 
+================================================================================
 `;
 
-exports[`angular_async.js - flow-verify 2`] = `
+exports[`angular_async.js 2`] = `
+====================================options=====================================
+arrowParens: "always"
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 beforeEach(async(() => {
   // code
 }));
@@ -108,7 +121,8 @@ it("does something really long and complicated so I have to write a very long na
 * no errors are thrown when calling isTestCall(parent)
 */
 function x() { async(() => {}) }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 beforeEach(
   async(() => {
     // code
@@ -144,9 +158,15 @@ function x() {
   async(() => {});
 }
 
+================================================================================
 `;
 
-exports[`angular_fakeAsync.js - flow-verify 1`] = `
+exports[`angular_fakeAsync.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 beforeEach(fakeAsync(() => {
   // code
 }));
@@ -171,7 +191,8 @@ it("does something really long and complicated so I have to write a very long na
 * no errors are thrown when calling isTestCall(parent)
 */
 function x() { fakeAsync(() => {}) }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 beforeEach(
   fakeAsync(() => {
     // code
@@ -211,9 +232,16 @@ function x() {
   fakeAsync(() => {});
 }
 
+================================================================================
 `;
 
-exports[`angular_fakeAsync.js - flow-verify 2`] = `
+exports[`angular_fakeAsync.js 2`] = `
+====================================options=====================================
+arrowParens: "always"
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 beforeEach(fakeAsync(() => {
   // code
 }));
@@ -238,7 +266,8 @@ it("does something really long and complicated so I have to write a very long na
 * no errors are thrown when calling isTestCall(parent)
 */
 function x() { fakeAsync(() => {}) }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 beforeEach(
   fakeAsync(() => {
     // code
@@ -278,9 +307,15 @@ function x() {
   fakeAsync(() => {});
 }
 
+================================================================================
 `;
 
-exports[`angularjs_inject.js - flow-verify 1`] = `
+exports[`angularjs_inject.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 beforeEach(inject(($fooService, $barService) => {
   // code
 }));
@@ -307,7 +342,8 @@ it("does something really long and complicated so I have to write a very long na
 * no errors are thrown when calling isTestCall(parent)
 */
 function x() { inject(() => {}) }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 beforeEach(
   inject(($fooService, $barService) => {
     // code
@@ -346,9 +382,16 @@ function x() {
   inject(() => {});
 }
 
+================================================================================
 `;
 
-exports[`angularjs_inject.js - flow-verify 2`] = `
+exports[`angularjs_inject.js 2`] = `
+====================================options=====================================
+arrowParens: "always"
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 beforeEach(inject(($fooService, $barService) => {
   // code
 }));
@@ -375,7 +418,8 @@ it("does something really long and complicated so I have to write a very long na
 * no errors are thrown when calling isTestCall(parent)
 */
 function x() { inject(() => {}) }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 beforeEach(
   inject(($fooService, $barService) => {
     // code
@@ -414,9 +458,15 @@ function x() {
   inject(() => {});
 }
 
+================================================================================
 `;
 
-exports[`jest-each.js - flow-verify 1`] = `
+exports[`jest-each.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 describe.each\`
 a|b|expected
 \${11   } | \${  1  }|\${222}
@@ -460,7 +510,8 @@ describe.each\`a    | b    | expected
 \${11111111111} | \${a().b().c().d()} | \${2}
 \${1} | \${2} | \${3}
 \${2} | \${1} | \${3}\`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 describe.each\`
   a            | b        | expected
   \${11}        | \${1}     | \${222}
@@ -507,9 +558,16 @@ describe.each\`
   \${2}           | \${1}               | \${3}
 \`;
 
+================================================================================
 `;
 
-exports[`jest-each.js - flow-verify 2`] = `
+exports[`jest-each.js 2`] = `
+====================================options=====================================
+arrowParens: "always"
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 describe.each\`
 a|b|expected
 \${11   } | \${  1  }|\${222}
@@ -553,7 +611,8 @@ describe.each\`a    | b    | expected
 \${11111111111} | \${a().b().c().d()} | \${2}
 \${1} | \${2} | \${3}
 \${2} | \${1} | \${3}\`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 describe.each\`
   a            | b        | expected
   \${11}        | \${1}     | \${222}
@@ -600,9 +659,15 @@ describe.each\`
   \${2}           | \${1}               | \${3}
 \`;
 
+================================================================================
 `;
 
-exports[`test_declarations.js - flow-verify 1`] = `
+exports[`test_declarations.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // Shouldn't break
 
 it("does something really long and complicated so I have to write a very long name for the test", () => {
@@ -733,7 +798,8 @@ it(
   () => new Promise(resolve => setTimeout(resolve, 10)),
   250
 );
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // Shouldn't break
 
 it(
@@ -924,9 +990,16 @@ it(
   () => new Promise(resolve => setTimeout(resolve, 10)), 250
 );
 
+================================================================================
 `;
 
-exports[`test_declarations.js - flow-verify 2`] = `
+exports[`test_declarations.js 2`] = `
+====================================options=====================================
+arrowParens: "always"
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // Shouldn't break
 
 it("does something really long and complicated so I have to write a very long name for the test", () => {
@@ -1057,7 +1130,8 @@ it(
   () => new Promise(resolve => setTimeout(resolve, 10)),
   250
 );
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // Shouldn't break
 
 it(
@@ -1248,4 +1322,5 @@ it(
   () => new Promise((resolve) => setTimeout(resolve, 10)), 250
 );
 
+================================================================================
 `;

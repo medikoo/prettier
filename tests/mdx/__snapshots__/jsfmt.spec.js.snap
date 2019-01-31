@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`import-export.mdx - mdx-verify 1`] = `
+exports[`import-export.mdx 1`] = `
+====================================options=====================================
+parsers: ["mdx"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 import A from 'a'
 import {A,B,C}    from "hello-world"
 import {AAAAAAAAAAAAAAAAAAAAAAAA, BBBBBBBBBBBBBBBBBBBBBB, CCCCCCCCCCCCCCCCCCCCCCC}   from  'xyz';
@@ -34,7 +39,8 @@ export default () =>
 
 export const a = 1;
 export const b = 1;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 import A from "a";
 import { A, B, C } from "hello-world";
 import {
@@ -68,9 +74,16 @@ export default () => (
 export const a = 1;
 export const b = 1;
 
+================================================================================
 `;
 
-exports[`import-export.mdx - mdx-verify 2`] = `
+exports[`import-export.mdx 2`] = `
+====================================options=====================================
+parsers: ["mdx"]
+printWidth: 80
+semi: false
+                                                                                | printWidth
+=====================================input======================================
 import A from 'a'
 import {A,B,C}    from "hello-world"
 import {AAAAAAAAAAAAAAAAAAAAAAAA, BBBBBBBBBBBBBBBBBBBBBB, CCCCCCCCCCCCCCCCCCCCCCC}   from  'xyz';
@@ -104,7 +117,8 @@ export default () =>
 
 export const a = 1;
 export const b = 1;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 import A from "a"
 import { A, B, C } from "hello-world"
 import {
@@ -138,9 +152,15 @@ export default () => (
 export const a = 1
 export const b = 1
 
+================================================================================
 `;
 
-exports[`jsx.mdx - mdx-verify 1`] = `
+exports[`jsx.mdx 1`] = `
+====================================options=====================================
+parsers: ["mdx"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 <Heading hi='there'>Hello, world!
 </Heading>
 
@@ -149,7 +169,8 @@ exports[`jsx.mdx - mdx-verify 1`] = `
 <Hello>
     test   <World />   test
 </Hello>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 <Heading hi="there">Hello, world!</Heading>
 
 ---
@@ -158,9 +179,16 @@ exports[`jsx.mdx - mdx-verify 1`] = `
   test <World /> test
 </Hello>
 
+================================================================================
 `;
 
-exports[`jsx.mdx - mdx-verify 2`] = `
+exports[`jsx.mdx 2`] = `
+====================================options=====================================
+parsers: ["mdx"]
+printWidth: 80
+semi: false
+                                                                                | printWidth
+=====================================input======================================
 <Heading hi='there'>Hello, world!
 </Heading>
 
@@ -169,7 +197,8 @@ exports[`jsx.mdx - mdx-verify 2`] = `
 <Hello>
     test   <World />   test
 </Hello>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 <Heading hi="there">Hello, world!</Heading>
 
 ---
@@ -178,9 +207,15 @@ exports[`jsx.mdx - mdx-verify 2`] = `
   test <World /> test
 </Hello>
 
+================================================================================
 `;
 
-exports[`jsx-codeblock.mdx - mdx-verify 1`] = `
+exports[`jsx-codeblock.mdx 1`] = `
+====================================options=====================================
+parsers: ["mdx"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 \`\`\`jsx
 <div>foo</div>
 \`\`\`
@@ -189,7 +224,8 @@ exports[`jsx-codeblock.mdx - mdx-verify 1`] = `
 const a = 1;
 <div>foo</div>;
 \`\`\`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 \`\`\`jsx
 <div>foo</div>
 \`\`\`
@@ -199,9 +235,16 @@ const a = 1;
 <div>foo</div>;
 \`\`\`
 
+================================================================================
 `;
 
-exports[`jsx-codeblock.mdx - mdx-verify 2`] = `
+exports[`jsx-codeblock.mdx 2`] = `
+====================================options=====================================
+parsers: ["mdx"]
+printWidth: 80
+semi: false
+                                                                                | printWidth
+=====================================input======================================
 \`\`\`jsx
 <div>foo</div>
 \`\`\`
@@ -210,7 +253,8 @@ exports[`jsx-codeblock.mdx - mdx-verify 2`] = `
 const a = 1;
 <div>foo</div>;
 \`\`\`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 \`\`\`jsx
 <div>foo</div>
 \`\`\`
@@ -220,9 +264,15 @@ const a = 1
 ;<div>foo</div>
 \`\`\`
 
+================================================================================
 `;
 
-exports[`mixed.mdx - mdx-verify 1`] = `
+exports[`mixed.mdx 1`] = `
+====================================options=====================================
+parsers: ["mdx"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 import     {     Baz } from     './Fixture'
 import { Buz  }   from './Fixture'
 
@@ -264,7 +314,8 @@ npm i -g foo
 |   Col1  | Col2    |
 
 export   default     ({children   }) => < div>{    children}</div>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 import { Baz } from "./Fixture";
 import { Buz } from "./Fixture";
 
@@ -303,9 +354,16 @@ npm i -g foo
 
 export default ({ children }) => <div>{children}</div>;
 
+================================================================================
 `;
 
-exports[`mixed.mdx - mdx-verify 2`] = `
+exports[`mixed.mdx 2`] = `
+====================================options=====================================
+parsers: ["mdx"]
+printWidth: 80
+semi: false
+                                                                                | printWidth
+=====================================input======================================
 import     {     Baz } from     './Fixture'
 import { Buz  }   from './Fixture'
 
@@ -347,7 +405,8 @@ npm i -g foo
 |   Col1  | Col2    |
 
 export   default     ({children   }) => < div>{    children}</div>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 import { Baz } from "./Fixture"
 import { Buz } from "./Fixture"
 
@@ -386,4 +445,5 @@ npm i -g foo
 
 export default ({ children }) => <div>{children}</div>
 
+================================================================================
 `;

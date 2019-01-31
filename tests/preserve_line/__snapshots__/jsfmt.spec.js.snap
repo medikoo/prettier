@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`argument-list.js - flow-verify 1`] = `
+exports[`argument-list.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 longArgNamesWithComments(
 
   // Hello World
@@ -188,7 +193,8 @@ doSomething(
 
 
 );
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 longArgNamesWithComments(
   // Hello World
 
@@ -332,9 +338,15 @@ doSomething(
   { helloWorld, someImportantStuff }
 );
 
+================================================================================
 `;
 
-exports[`comments.js - flow-verify 1`] = `
+exports[`comments.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 function a() {
   const a = 5; // comment
 
@@ -363,7 +375,8 @@ function a() {
 
   return a;
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 function a() {
   const a = 5; // comment
 
@@ -393,9 +406,15 @@ function a() {
   return a;
 }
 
+================================================================================
 `;
 
-exports[`member-chain.js - flow-verify 1`] = `
+exports[`member-chain.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 fooBar.doSomething('Hello World').doAnotherThing('Foo', { foo: bar })
 
   // App configuration.
@@ -455,7 +474,8 @@ const sel = this.connections
 
   .concat(this.activities.concat(this.operators))
   .filter(x => x.selected);
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 fooBar
   .doSomething("Hello World")
   .doAnotherThing("Foo", { foo: bar })
@@ -516,4 +536,5 @@ const sel = this.connections
   .concat(this.activities.concat(this.operators))
   .filter(x => x.selected);
 
+================================================================================
 `;

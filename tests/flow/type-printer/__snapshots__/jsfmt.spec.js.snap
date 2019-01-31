@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`printBinaryExpression.js - flow-verify 1`] = `
+exports[`printBinaryExpression.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 'use babel';
 /* @flow */
 
@@ -21,7 +26,8 @@ function printBinaryExpression(
 }
 
 module.exports = printBinaryExpression;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 "use babel";
 /* @flow */
 
@@ -39,9 +45,15 @@ function printBinaryExpression(node: BinaryExpression) { console.log(node); }
 
 module.exports = printBinaryExpression;
 
+================================================================================
 `;
 
-exports[`types.js - flow-verify 1`] = `
+exports[`types.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * @flow
  */
@@ -5087,7 +5099,8 @@ export type JSXSpreadAttribute = {
   start: number;
   trailingComments: ?Array<Comment>;
 };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * @flow
  */
@@ -10341,4 +10354,5 @@ export type JSXSpreadAttribute = {
   trailingComments: ?Array<Comment>
 };
 
+================================================================================
 `;

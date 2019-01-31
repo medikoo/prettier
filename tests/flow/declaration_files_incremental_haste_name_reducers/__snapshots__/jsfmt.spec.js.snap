@@ -1,19 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A.js - flow-verify 1`] = `
+exports[`A.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 class AImplementation {}
 export function foo(): AImplementation { return new AImplementation(); }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 class AImplementation {}
 export function foo(): AImplementation { return new AImplementation(); }
 
+================================================================================
 `;
 
-exports[`index.js - flow-verify 1`] = `
+exports[`index.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var A = require('A');
@@ -21,7 +33,8 @@ var A = require('A');
 
 var test = require('test');
 (test.foo(): boolean); // Error: Either TestImplementation ~> boolean or TestDefinition ~> boolean
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var A = require("A");
@@ -30,4 +43,5 @@ var A = require("A");
 var test = require("test");
 (test.foo(): boolean); // Error: Either TestImplementation ~> boolean or TestDefinition ~> boolean
 
+================================================================================
 `;

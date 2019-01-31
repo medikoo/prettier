@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Condition.js - flow-verify 1`] = `
+exports[`Condition.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @providesModule Condition */
 
 function f(x:number) { }
@@ -58,7 +63,8 @@ function goofy2() {
 }
 
 module.exports = true;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @providesModule Condition */
 
 function f(x: number) {}
@@ -118,9 +124,15 @@ function goofy2() {
 
 module.exports = true;
 
+================================================================================
 `;
 
-exports[`FlowSA.js - flow-verify 1`] = `
+exports[`FlowSA.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 
 /* @providesModule FlowSA */
 
@@ -133,7 +145,8 @@ function FlowSA() {
 }
 
 module.exports = FlowSA;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @providesModule FlowSA */
 
 function check(x: string) {}
@@ -146,9 +159,15 @@ function FlowSA() {
 
 module.exports = FlowSA;
 
+================================================================================
 `;
 
-exports[`Sigma.js - flow-verify 1`] = `
+exports[`Sigma.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 
 /* @providesModule Sigma */
 
@@ -189,7 +208,8 @@ function baz(x:D) {
 }
 
 module.exports = "sigma";
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @providesModule Sigma */
 
 class A {
@@ -237,9 +257,15 @@ function baz(x: D) {
 
 module.exports = "sigma";
 
+================================================================================
 `;
 
-exports[`test.js - flow-verify 1`] = `
+exports[`test.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 class BaseClass {
   baseProp: string;
 }
@@ -254,7 +280,8 @@ function test(obj: BaseClass): string {
   }
   return obj.baseProp;
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 class BaseClass {
   baseProp: string;
 }
@@ -270,4 +297,5 @@ function test(obj: BaseClass): string {
   return obj.baseProp;
 }
 
+================================================================================
 `;

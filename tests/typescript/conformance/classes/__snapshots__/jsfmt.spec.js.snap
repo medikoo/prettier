@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`classExpression.ts - typescript-verify 1`] = `
+exports[`classExpression.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var x = class C {
 }
 
@@ -11,16 +16,23 @@ var y = {
 
 var z = class C4 {
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var x = class C {};
 
 var y = { foo: class C2 {} };
 
 var z = class C4 {};
 
+================================================================================
 `;
 
-exports[`mixinAccessModifiers.ts - typescript-verify 1`] = `
+exports[`mixinAccessModifiers.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @declaration: true
 
 type Constructable = new (...args: any[]) => object;
@@ -129,7 +141,8 @@ class C6 extends Mix(Public, Public2) {
 		C6.s
 	}
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @declaration: true
 
 type Constructable = new (...args: any[]) => object;
@@ -239,9 +252,15 @@ class C6 extends Mix(Public, Public2) {
   }
 }
 
+================================================================================
 `;
 
-exports[`mixinClassesAnnotated.ts - typescript-verify 1`] = `
+exports[`mixinClassesAnnotated.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @declaration: true
 
 type Constructor<T> = new(...args: any[]) => T;
@@ -302,7 +321,8 @@ class Thing3 extends Thing2 {
         this.print();
     }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @declaration: true
 
 type Constructor<T> = new (...args: any[]) => T;
@@ -361,9 +381,15 @@ class Thing3 extends Thing2 {
   test() { this.print(); }
 }
 
+================================================================================
 `;
 
-exports[`mixinClassesAnonymous.ts - typescript-verify 1`] = `
+exports[`mixinClassesAnonymous.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 type Constructor<T> = new(...args: any[]) => T;
 
 class Base {
@@ -428,7 +454,8 @@ const Timestamped = <CT extends Constructor<object>>(Base: CT) => {
         timestamp = new Date();
     };
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 type Constructor<T> = new (...args: any[]) => T;
 
 class Base {
@@ -489,9 +516,15 @@ const Timestamped = <CT extends Constructor<object>>(Base: CT) => {
   };
 };
 
+================================================================================
 `;
 
-exports[`mixinClassesMembers.ts - typescript-verify 1`] = `
+exports[`mixinClassesMembers.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @declaration: true
 
 declare class C1 {
@@ -591,7 +624,8 @@ class C3 extends Mixed3 {
     }
     f() { return super.f(); }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @declaration: true
 
 declare class C1 {
@@ -692,9 +726,15 @@ class C3 extends Mixed3 {
   f() { return super.f(); }
 }
 
+================================================================================
 `;
 
-exports[`nestedClassDeclaration.ts - typescript-verify 1`] = `
+exports[`nestedClassDeclaration.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // nested classes are not allowed
 
 class C {
@@ -705,7 +745,8 @@ function foo() {
     class C3 {
     }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // nested classes are not allowed
 
 class C {
@@ -714,4 +755,5 @@ class C {
 
 function foo() { class C3 {} }
 
+================================================================================
 `;

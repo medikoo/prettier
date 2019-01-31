@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`intersection.js - flow-verify 1`] = `
+exports[`intersection.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 function foo(x: $All<Error,{type:number}>): number {
     return x.type;
 }
@@ -8,14 +13,21 @@ function foo(x: $All<Error,{type:number}>): number {
 function bar(x: Error & {type:number}): number {
     return x.type;
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 function foo(x: $All<Error, { type: number }>): number { return x.type; }
 
 function bar(x: Error & { type: number }): number { return x.type; }
 
+================================================================================
 `;
 
-exports[`objassign.js - flow-verify 1`] = `
+exports[`objassign.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * Test intersection of objects flowing to spread assignment.
  *
@@ -27,7 +39,8 @@ exports[`objassign.js - flow-verify 1`] = `
 declare var x: ObjAssignT;
 
 let y: ObjAssignT = { ...x }; // should be fine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * Test intersection of objects flowing to spread assignment.
  *
@@ -40,9 +53,15 @@ declare var x: ObjAssignT;
 
 let y: ObjAssignT = { ...x }; // should be fine
 
+================================================================================
 `;
 
-exports[`pred.js - flow-verify 1`] = `
+exports[`pred.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * Test interaction of object intersections and predicates.
  * Definitions in lib/lib.js
@@ -67,7 +86,8 @@ function hasObjectMode_ok(options: DuplexStreamOptions): boolean {
     || options.readableObjectMode
     || options.writableObjectMode);
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * Test interaction of object intersections and predicates.
  * Definitions in lib/lib.js
@@ -98,9 +118,15 @@ function hasObjectMode_ok(options: DuplexStreamOptions): boolean {
   );
 }
 
+================================================================================
 `;
 
-exports[`test_fun.js - flow-verify 1`] = `
+exports[`test_fun.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * Tests for intersections of function types.
  *
@@ -132,7 +158,8 @@ var fun2 : FG = fun1;
 // simpler variation
 declare var f : ((_: number) => void) & ((_: string) => void);
 var g: (_: number | string) => void = f;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * Tests for intersections of function types.
  *
@@ -165,9 +192,15 @@ var fun2: FG = fun1;
 declare var f: ((_: number) => void) & ((_: string) => void);
 var g: (_: number | string) => void = f;
 
+================================================================================
 `;
 
-exports[`test_obj.js - flow-verify 1`] = `
+exports[`test_obj.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * Tests for intersections of object types
  *
@@ -197,7 +230,8 @@ var d: D = c; // ok
 // dict type mismatch
 type E = { [key: string]: string };
 var e: E = c; // error
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * Tests for intersections of object types
  *
@@ -228,4 +262,5 @@ var d: D = c; // ok
 type E = { [key: string]: string };
 var e: E = c; // error
 
+================================================================================
 `;

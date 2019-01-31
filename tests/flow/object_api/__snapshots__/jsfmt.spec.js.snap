@@ -1,23 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`a.js - flow-verify 1`] = `
+exports[`a.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
-module.exports = { a() {} };~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+module.exports = { a() {} };
+=====================================output=====================================
 /* @flow */
 
 module.exports = { a() {} };
 
+================================================================================
 `;
 
-exports[`b.js - flow-verify 1`] = `
+exports[`b.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var a = require('./a');
 var b = Object.assign({ bar() {}, ...{} }, a);
 b.a(); // works here
 module.exports = b;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var a = require("./a");
@@ -25,23 +38,36 @@ var b = Object.assign({ bar() {}, ...{} }, a);
 b.a(); // works here
 module.exports = b;
 
+================================================================================
 `;
 
-exports[`c.js - flow-verify 1`] = `
+exports[`c.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var c = require('./b');
 c.a();
-c.foo();~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c.foo();
+=====================================output=====================================
 /* @flow */
 
 var c = require("./b");
 c.a();
 c.foo();
 
+================================================================================
 `;
 
-exports[`object_assign.js - flow-verify 1`] = `
+exports[`object_assign.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var export_ = Object.assign({}, {
@@ -54,7 +80,8 @@ let anyObj: Object = {};
 Object.assign(anyObj, anyObj); // makes sure this terminates
 
 module.exports = export_;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var export_ = Object.assign({}, { foo: function (param) { return param; } });
@@ -66,9 +93,15 @@ Object.assign(anyObj, anyObj); // makes sure this terminates
 
 module.exports = export_;
 
+================================================================================
 `;
 
-exports[`object_create.js - flow-verify 1`] = `
+exports[`object_create.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 class C { foo: string; }
@@ -86,7 +119,8 @@ class C { foo: string; }
 type O = { foo: string; }
 declare var o: O;
 (o: C);
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 class C {
@@ -107,9 +141,15 @@ type O = { foo: string };
 declare var o: O;
 (o: C);
 
+================================================================================
 `;
 
-exports[`object_getprototypeof.js - flow-verify 1`] = `
+exports[`object_getprototypeof.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @flow
 
 class Foo {}
@@ -121,7 +161,8 @@ let tests = [
     (Object.getPrototypeOf(x): Foo);
   },
 ];
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @flow
 
 class Foo {}
@@ -134,9 +175,15 @@ let tests = [
   }
 ];
 
+================================================================================
 `;
 
-exports[`object_keys.js - flow-verify 1`] = `
+exports[`object_keys.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var sealed = {one: 'one', two: 'two'};
@@ -169,7 +216,8 @@ class Bar extends Foo {
 }
 // only own enumerable props
 (Object.keys(new Bar()): Array<'error'>); // error: bar_prop ~> error
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var sealed = { one: "one", two: "two" };
@@ -203,9 +251,15 @@ class Bar extends Foo {
 // only own enumerable props
 (Object.keys(new Bar()): Array<"error">); // error: bar_prop ~> error
 
+================================================================================
 `;
 
-exports[`object_missing.js - flow-verify 1`] = `
+exports[`object_missing.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @flow
 
 let tests = [
@@ -213,14 +267,21 @@ let tests = [
     Object.doesNotExist();
   },
 ];
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @flow
 
 let tests = [function () { Object.doesNotExist(); }];
 
+================================================================================
 `;
 
-exports[`object_prototype.js - flow-verify 1`] = `
+exports[`object_prototype.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 function takesABool(x: boolean) {}
@@ -385,7 +446,8 @@ takesAString(y.toLocaleString());
 
 var k : Object = a.constructor;
 (123).constructor;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 function takesABool(x: boolean) {}
@@ -546,4 +608,5 @@ takesAString(y.toLocaleString());
 var k: Object = a.constructor;
 (123).constructor;
 
+================================================================================
 `;

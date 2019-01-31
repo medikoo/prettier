@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`example.js - flow-verify 1`] = `
+exports[`example.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var lib = require('./library');
@@ -16,7 +21,8 @@ add(lib.iTakeAString(42), 7);
 
 // D123456
 lib.bar();
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var lib = require("./library");
@@ -31,9 +37,15 @@ add(lib.iTakeAString(42), 7);
 // D123456
 lib.bar();
 
+================================================================================
 `;
 
-exports[`imports.js - flow-verify 1`] = `
+exports[`imports.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @flow
 
 import thing from "./helpers/exports_default.js";
@@ -45,7 +57,8 @@ baz;
 
 import * as things from "./helpers/exports_named.js";
 things;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @flow
 
 import thing from "./helpers/exports_default.js";
@@ -58,9 +71,15 @@ baz;
 import * as things from "./helpers/exports_named.js";
 things;
 
+================================================================================
 `;
 
-exports[`library.js - flow-verify 1`] = `
+exports[`library.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 module.exports = {
@@ -74,7 +93,8 @@ module.exports = {
   },
 
 };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 module.exports = {
@@ -83,4 +103,5 @@ module.exports = {
   bar: function (): number { return 42; }
 };
 
+================================================================================
 `;

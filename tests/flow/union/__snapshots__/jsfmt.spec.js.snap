@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`blowup.js - flow-verify 1`] = `
+exports[`blowup.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @flow
 
 export type Select = {
@@ -44,7 +49,8 @@ export class DivOp extends BinaryExpression<ArithmeticExpression, ArithmeticExpr
 export class ModOp extends BinaryExpression<ArithmeticExpression, ArithmeticExpression, ArithmeticExpression, ArithmeticExpression> {
 
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @flow
 
 export type Select = { expression: ArithmeticExpression, alias: ?string };
@@ -98,24 +104,37 @@ export class ModOp extends BinaryExpression<
   ArithmeticExpression
 > {}
 
+================================================================================
 `;
 
-exports[`fields.js - flow-verify 1`] = `
+exports[`fields.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 class C {
     x: ?number|string;
     constructor() {
         this.x = null;
     }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 class C {
   x: ?number | string;
   constructor() { this.x = null; }
 }
 
+================================================================================
 `;
 
-exports[`fields2.js - flow-verify 1`] = `
+exports[`fields2.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 class C { }
 
 class D {
@@ -125,7 +144,8 @@ class D {
         return this.content;
     }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 class C {}
 
 class D {
@@ -136,9 +156,15 @@ class D {
   }
 }
 
+================================================================================
 `;
 
-exports[`issue-17.js - flow-verify 1`] = `
+exports[`issue-17.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 type T =
@@ -155,7 +181,8 @@ var l: Array<T> = [
     {type: "b", b: "giraffe"},
     {type: "b", b: "penguin"},
 ];
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 type T = { type: "a", a: number } | { type: "b", b: string };
@@ -166,9 +193,15 @@ var l: Array<T> = [
   { type: "b", b: "giraffe" }, { type: "b", b: "penguin" }
 ];
 
+================================================================================
 `;
 
-exports[`issue-198.js - flow-verify 1`] = `
+exports[`issue-198.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var p = new Promise(function(resolve, reject) {
     resolve(5);
 })
@@ -179,7 +212,8 @@ var p = new Promise(function(resolve, reject) {
         // This should fail because str is string, not number
         return str.toFixed();
     });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var p = new Promise(function (resolve, reject) { resolve(5); })
   .then(function (num) { return num.toFixed(); })
   .then(function (str) {
@@ -187,9 +221,15 @@ var p = new Promise(function (resolve, reject) { resolve(5); })
     return str.toFixed();
   });
 
+================================================================================
 `;
 
-exports[`issue-256.js - flow-verify 1`] = `
+exports[`issue-256.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 declare class Myclass {
     myfun(myarray: Array<Function | string>): any;
 }
@@ -197,38 +237,59 @@ declare var myclass: Myclass;
 
 myclass.myfun(["1", "2", "3", "4", "5", "6", function (ar) {}])
 myclass.myfun(["1", "2", "3", "4", "5", "6", "7", function (ar) {}])
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 declare class Myclass { myfun(myarray: Array<Function | string>): any }
 declare var myclass: Myclass;
 
 myclass.myfun(["1", "2", "3", "4", "5", "6", function (ar) {}]);
 myclass.myfun(["1", "2", "3", "4", "5", "6", "7", function (ar) {}]);
 
+================================================================================
 `;
 
-exports[`issue-323.js - flow-verify 1`] = `
+exports[`issue-323.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var Foo = require("./issue-323-lib");
 var foo = new Foo();
 var foostr: Foo | string = foo;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var Foo = require("./issue-323-lib");
 var foo = new Foo();
 var foostr: Foo | string = foo;
 
+================================================================================
 `;
 
-exports[`issue-323-lib.js - flow-verify 1`] = `
+exports[`issue-323-lib.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 class Foo {}
 module.exports = Foo;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 class Foo {}
 module.exports = Foo;
 
+================================================================================
 `;
 
-exports[`issue-324.js - flow-verify 1`] = `
+exports[`issue-324.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 class Foo{};
 class Bar{};
@@ -237,7 +298,8 @@ var foostr: Foo | string = new Foo();
 var barstr: Bar | string = new Bar();
 
 foostr = barstr;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 class Foo {}
 class Bar {}
@@ -247,9 +309,15 @@ var barstr: Bar | string = new Bar();
 
 foostr = barstr;
 
+================================================================================
 `;
 
-exports[`issue-325.js - flow-verify 1`] = `
+exports[`issue-325.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 class Tag {
     constructor() {
         var a1: Array<Tag|string> = [];
@@ -264,7 +332,8 @@ class Tag_ {
         var a2: Array<Node> = a1;
     }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 class Tag {
   constructor() {
     var a1: Array<Tag | string> = [];
@@ -280,22 +349,35 @@ class Tag_ {
   }
 }
 
+================================================================================
 `;
 
-exports[`issue-326.js - flow-verify 1`] = `
+exports[`issue-326.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var numberAndStringArr:Array<number|string> = [1,2];
 var stringArr:Array<string> = ['a','b'];
 
 var result = numberAndStringArr.concat(stringArr);  // no error
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var numberAndStringArr: Array<number | string> = [1, 2];
 var stringArr: Array<string> = ["a", "b"];
 
 var result = numberAndStringArr.concat(stringArr); // no error
 
+================================================================================
 `;
 
-exports[`issue-582.js - flow-verify 1`] = `
+exports[`issue-582.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /***
  * nested unions
  * @flow
@@ -310,7 +392,8 @@ type Baz = 'baz';
 type FooBarBaz = FooBar | Baz;
 
 var nested2: FooBarBaz = 'baz';
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /***
  * nested unions
  * @flow
@@ -326,9 +409,15 @@ type FooBarBaz = FooBar | Baz;
 
 var nested2: FooBarBaz = "baz";
 
+================================================================================
 `;
 
-exports[`issue-963.js - flow-verify 1`] = `
+exports[`issue-963.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /***
  * unions with embedded intersections
  * @flow
@@ -363,7 +452,8 @@ const u3 : union2 = {
     p1 : 1,
     p2 : 2
 };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /***
  * unions with embedded intersections
  * @flow
@@ -385,9 +475,15 @@ const u2: union = { p1: 1, p2: 2 };
 
 const u3: union2 = { p1: 1, p2: 2 };
 
+================================================================================
 `;
 
-exports[`test.js - flow-verify 1`] = `
+exports[`test.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var C = require('test-lib');
 
 // TODO: spurious error! (replacing C with number makes the error go away)
@@ -406,7 +502,8 @@ type Bar = () => (C | string); // workaround
 function f() { return ""; }
 function bar(x:Bar) { }
 bar(f);
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var C = require("test-lib");
 
 // TODO: spurious error! (replacing C with number makes the error go away)
@@ -426,22 +523,35 @@ function f() { return ""; }
 function bar(x: Bar) {}
 bar(f);
 
+================================================================================
 `;
 
-exports[`test-lib.js - flow-verify 1`] = `
+exports[`test-lib.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @providesModule test-lib */
 
 class C { }
 module.exports = C;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @providesModule test-lib */
 
 class C {}
 module.exports = C;
 
+================================================================================
 `;
 
-exports[`type-app.js - flow-verify 1`] = `
+exports[`type-app.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * @flow
  */
@@ -456,7 +566,8 @@ var a: LocalClass<number> | number = 123;
 // introduces this test fixes this such that the speculative algorithm is
 // correctly delayed upon encountering a non-concrete TypeAppT
 var b: Iterator<number> | number = 123;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * @flow
  */
@@ -472,9 +583,15 @@ var a: LocalClass<number> | number = 123;
 // correctly delayed upon encountering a non-concrete TypeAppT
 var b: Iterator<number> | number = 123;
 
+================================================================================
 `;
 
-exports[`union.js - flow-verify 1`] = `
+exports[`union.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 function bar(x: Document | string): void { }
 bar(0);
 
@@ -496,7 +613,8 @@ function corge(b) {
     var x = b ? "" : 0;
     new F().foo(x);
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 function bar(x: Document | string): void {}
 bar(0);
 
@@ -516,9 +634,15 @@ function corge(b) {
   new F().foo(x);
 }
 
+================================================================================
 `;
 
-exports[`yuge.js - flow-verify 1`] = `
+exports[`yuge.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * great big union used as type annotation will be flowed into itself.
  * List.mem check avoids pathology, as long as singletons aren't converted.
@@ -5550,7 +5674,8 @@ type ErrorCode =
 type Data = {
   error?: ErrorCode,
 };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * great big union used as type annotation will be flowed into itself.
  * List.mem check avoids pathology, as long as singletons aren't converted.
@@ -10579,4 +10704,5 @@ type ErrorCode =
 
 type Data = { error?: ErrorCode };
 
+================================================================================
 `;

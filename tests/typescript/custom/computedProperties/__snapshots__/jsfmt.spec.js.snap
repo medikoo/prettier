@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`string.ts - typescript-verify 1`] = `
+exports[`string.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 interface I {
     "string": "I";
 }
@@ -16,7 +21,8 @@ interface A {
 type B = {
     'string': "B";
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 interface I { string: "I" }
 
 type T = { string: "T" };
@@ -25,9 +31,15 @@ interface A { string: "A" }
 
 type B = { string: "B" };
 
+================================================================================
 `;
 
-exports[`symbol.ts - typescript-verify 1`] = `
+exports[`symbol.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 interface I {
     [Symbol.toStringTag]: "I";
 }
@@ -35,9 +47,11 @@ interface I {
 type T = {
     [Symbol.toStringTag]: "T";
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 interface I { [Symbol.toStringTag]: "I" }
 
 type T = { [Symbol.toStringTag]: "T" };
 
+================================================================================
 `;

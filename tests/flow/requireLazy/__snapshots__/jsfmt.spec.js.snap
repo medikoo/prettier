@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A.js - flow-verify 1`] = `
+exports[`A.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * @providesModule A
  * @flow
@@ -10,7 +15,8 @@ module.exports = {
   numberValueA: 1,
   stringValueA: "someString"
 };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * @providesModule A
  * @flow
@@ -18,9 +24,15 @@ module.exports = {
 
 module.exports = { numberValueA: 1, stringValueA: "someString" };
 
+================================================================================
 `;
 
-exports[`B.js - flow-verify 1`] = `
+exports[`B.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * @providesModule B
  * @flow
@@ -30,7 +42,8 @@ module.exports = {
   numberValueB: 1,
   stringValueB: "someString"
 };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * @providesModule B
  * @flow
@@ -38,9 +51,15 @@ module.exports = {
 
 module.exports = { numberValueB: 1, stringValueB: "someString" };
 
+================================================================================
 `;
 
-exports[`requireLazy.js - flow-verify 1`] = `
+exports[`requireLazy.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * @flow
  */
@@ -63,7 +82,8 @@ var notB: Object = B;
 requireLazy(); // Error: No args
 requireLazy([nope], function() {}); // Error: Non-stringliteral args
 requireLazy(['A']); // Error: No callback expression
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * @flow
  */
@@ -87,4 +107,5 @@ requireLazy(); // Error: No args
 requireLazy([nope], function () {}); // Error: Non-stringliteral args
 requireLazy(["A"]); // Error: No callback expression
 
+================================================================================
 `;

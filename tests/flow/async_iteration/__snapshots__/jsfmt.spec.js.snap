@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`delegate_yield.js - flow-verify 1`] = `
+exports[`delegate_yield.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "babylon"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 async function *delegate_next() {
   async function *inner() {
     var x: void = yield; // error: number ~> void
@@ -27,7 +32,8 @@ async function *delegate_return() {
   }
   var x: void = yield *inner(); // error: number ~> void
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 async function* delegate_next() {
   async function* inner() {
     var x: void = yield; // error: number ~> void
@@ -51,9 +57,15 @@ async function* delegate_return() {
   var x: void = yield* inner(); // error: number ~> void
 }
 
+================================================================================
 `;
 
-exports[`generator.js - flow-verify 1`] = `
+exports[`generator.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "babylon"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 declare interface File {
   readLine(): Promise<string>;
   close(): void;
@@ -79,7 +91,8 @@ async function f() {
     (line: void); // error: string ~> void
   }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 declare interface File {
   readLine(): Promise<string>;
   close(): void;
@@ -106,9 +119,15 @@ async function f() {
   }
 }
 
+================================================================================
 `;
 
-exports[`return.js - flow-verify 1`] = `
+exports[`return.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "babylon"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 declare var gen: AsyncGenerator<void,string,void>;
 
 // You can pass whatever you like to return, it doesn't need to be related to
@@ -131,7 +150,8 @@ refuse_return().return("string").then(result => {
     (result.value: string); // error: number | void ~> string
   }
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 declare var gen: AsyncGenerator<void, string, void>;
 
 // You can pass whatever you like to return, it doesn't need to be related to
@@ -152,9 +172,15 @@ refuse_return().return("string").then(result => {
   }
 });
 
+================================================================================
 `;
 
-exports[`throw.js - flow-verify 1`] = `
+exports[`throw.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "babylon"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 async function *catch_return() {
   try {
     yield 0;
@@ -187,7 +213,8 @@ async function *yield_return() {
     }
   });
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 async function* catch_return() {
   try { yield 0; }
   catch (e) { return e; }
@@ -218,4 +245,5 @@ async () => {
   });
 };
 
+================================================================================
 `;

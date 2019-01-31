@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`API.react.js - flow-verify 1`] = `
+exports[`API.react.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 
 var app = require('JSX');
 
@@ -9,7 +14,8 @@ app.setState({z:42}); // error, z:number but foo expects string in App.react
 
 function bar(x:number) { }
 bar(app.props.children); // No error, App doesn't specify propTypes so anything goes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var app = require("JSX");
 
 app.setProps({ y: 42 }); // error, y:number but foo expects string in App.react
@@ -18,9 +24,15 @@ app.setState({ z: 42 }); // error, z:number but foo expects string in App.react
 function bar(x: number) {}
 bar(app.props.children); // No error, App doesn't specify propTypes so anything goes
 
+================================================================================
 `;
 
-exports[`App.react.js - flow-verify 1`] = `
+exports[`App.react.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 
 /**
  * @providesModule App.react
@@ -64,7 +76,8 @@ var App = React.createClass({
 });
 
 module.exports = App;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * @providesModule App.react
  * @jsx React.DOM
@@ -106,9 +119,15 @@ var App = React.createClass({
 
 module.exports = App;
 
+================================================================================
 `;
 
-exports[`InitializedFields.js - flow-verify 1`] = `
+exports[`InitializedFields.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * @providesModule InitializedFields.react
  */
@@ -123,7 +142,8 @@ var App = React.createClass({
 });
 
 module.exports = App;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * @providesModule InitializedFields.react
  */
@@ -137,9 +157,15 @@ var App = React.createClass({ metrics: [1, 2, 3] });
 
 module.exports = App;
 
+================================================================================
 `;
 
-exports[`JSX.js - flow-verify 1`] = `
+exports[`JSX.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 
 /* @providesModule JSX */
 
@@ -152,7 +178,8 @@ var app =
   </App>;
 
 module.exports = app;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @providesModule JSX */
 
 var React = require("react");
@@ -167,9 +194,15 @@ var app = (
 
 module.exports = app;
 
+================================================================================
 `;
 
-exports[`checkPropTypes.js - flow-verify 1`] = `
+exports[`checkPropTypes.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 import { PropTypes, checkPropTypes } from "react";
@@ -184,7 +217,8 @@ checkPropTypes({ bar: PropTypes.string }, { foo: 'foo' }, 'value', 'TestComponen
 checkPropTypes({ foo: PropTypes.string }, { foo: 'foo' }, 'value', 'TestComponent', () => 123); // error: number ~> string
 checkPropTypes({ foo: PropTypes.string }, { foo: 'foo' }, 'value', 'TestComponent', () => null); // OK
 checkPropTypes({ foo: PropTypes.string }, { foo: 'foo' }, 'value', 'TestComponent', () => undefined); // OK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 import { PropTypes, checkPropTypes } from "react";
@@ -212,9 +246,15 @@ checkPropTypes(
   () => undefined
 ); // OK
 
+================================================================================
 `;
 
-exports[`propTypes.js - flow-verify 1`] = `
+exports[`propTypes.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('React');
 
 var C = React.createClass({
@@ -230,7 +270,8 @@ var D = React.createClass({
 });
 
 <D />; // errors: properties \`name\` and \`title\` not found
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("React");
 
 var C = React.createClass({
@@ -242,4 +283,5 @@ var D = React.createClass({
 
 <D />; // errors: properties \`name\` and \`title\` not found
 
+================================================================================
 `;

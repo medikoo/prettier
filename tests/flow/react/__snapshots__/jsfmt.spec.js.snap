@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ArityError.react.js - flow-verify 1`] = `
+exports[`ArityError.react.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * @providesModule ArityError.react
  */
@@ -12,7 +17,8 @@ var AudienceInsightsContainer = React.createClass({
 });
 
 module.exports = AudienceInsightsContainer;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * @providesModule ArityError.react
  */
@@ -25,9 +31,15 @@ var AudienceInsightsContainer = React.createClass({
 
 module.exports = AudienceInsightsContainer;
 
+================================================================================
 `;
 
-exports[`create_class.js - flow-verify 1`] = `
+exports[`create_class.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 import React from "react";
 
 const A = React.createClass({
@@ -202,7 +214,8 @@ const L = React.createClass({
 
 React.createClass({}); // error: spec must be [x] exact and [ ] sealed
 React.createClass(({}: {})); // error: spec must be [ ] exact and [x] sealed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 import React from "react";
 
 const A = React.createClass({
@@ -354,9 +367,15 @@ const L = React.createClass({
 React.createClass({}); // error: spec must be [x] exact and [ ] sealed
 React.createClass(({}: {})); // error: spec must be [ ] exact and [x] sealed
 
+================================================================================
 `;
 
-exports[`create_class_initial_state_sealed.js - flow-verify 1`] = `
+exports[`create_class_initial_state_sealed.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 import React from "react";
 
 // initial state = None
@@ -443,7 +462,8 @@ React.createClass({
     (this.state.baz: empty); // property \`baz\` not found
   }
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 import React from "react";
 
 // initial state = None
@@ -505,9 +525,15 @@ React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`create_class_statics_sealed.js - flow-verify 1`] = `
+exports[`create_class_statics_sealed.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 import React from "react";
 
 // statics = None
@@ -562,7 +588,8 @@ const F = React.createClass({
 (F.bar: empty); // number ~> empty
 (F.baz: empty); // number ~> empty (inflow below)
 F.baz = 0;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 import React from "react";
 
 // statics = None
@@ -608,9 +635,15 @@ const F = React.createClass({
 (F.baz: empty); // number ~> empty (inflow below)
 F.baz = 0;
 
+================================================================================
 `;
 
-exports[`createElement_string.js - flow-verify 1`] = `
+exports[`createElement_string.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @flow
 import React from 'react';
 
@@ -622,7 +655,8 @@ class Foo extends React.Component {
     return (<Cmp/>);
   }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @flow
 import React from "react";
 
@@ -635,9 +669,15 @@ class Foo extends React.Component {
   }
 }
 
+================================================================================
 `;
 
-exports[`createElementRequiredProp_string.js - flow-verify 1`] = `
+exports[`createElementRequiredProp_string.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @flow
 import React from 'react';
 
@@ -660,7 +700,8 @@ class Foo extends React.Component {
     return (<Cmp/>);
   }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @flow
 import React from "react";
 
@@ -676,9 +717,15 @@ class Foo extends React.Component {
   }
 }
 
+================================================================================
 `;
 
-exports[`import_react.js - flow-verify 1`] = `
+exports[`import_react.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 import react from "react";
@@ -686,7 +733,8 @@ import {Component} from "react";
 
 var a: Component<*,*,*> = new react.Component();
 var b: number = new react.Component(); // Error: ReactComponent ~> number
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 import react from "react";
@@ -695,9 +743,15 @@ import { Component } from "react";
 var a: Component<*, *, *> = new react.Component();
 var b: number = new react.Component(); // Error: ReactComponent ~> number
 
+================================================================================
 `;
 
-exports[`jsx_spread.js - flow-verify 1`] = `
+exports[`jsx_spread.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var React = require('react');
@@ -709,7 +763,8 @@ var Foo = React.createClass({
 
 var props = {bar: 42};
 var blah = <Foo {...props} />; // error bar, number given string expected
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var React = require("react");
@@ -720,9 +775,15 @@ var Foo = React.createClass({
 var props = { bar: 42 };
 var blah = <Foo {...props} />; // error bar, number given string expected
 
+================================================================================
 `;
 
-exports[`proptype_any.js - flow-verify 1`] = `
+exports[`proptype_any.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 const React = require("react");
 
 var AnyExample = React.createClass({
@@ -742,7 +803,8 @@ var AnyFunExample = React.createClass({
 
 (<AnyFunExample />); // OK
 (<AnyFunExample foo={(0: mixed)} />); // OK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 const React = require("react");
 
 var AnyExample = React.createClass({
@@ -763,9 +825,15 @@ var AnyFunExample = React.createClass({
 <AnyFunExample />; // OK
 <AnyFunExample foo={(0: mixed)} />; // OK
 
+================================================================================
 `;
 
-exports[`proptype_arrayOf.js - flow-verify 1`] = `
+exports[`proptype_arrayOf.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var React = require('react');
@@ -811,7 +879,8 @@ var InvalidExample = React.createClass({
     arr: React.PropTypes.arrayOf(0), // error: number not a prop type
   },
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var React = require("react");
@@ -854,9 +923,15 @@ var InvalidExample = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`proptype_custom_validator.js - flow-verify 1`] = `
+exports[`proptype_custom_validator.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 const React = require("react");
 
 // Custom validator must match \`ReactPropsCheckType\`
@@ -875,7 +950,8 @@ var Example = React.createClass({
 // Inferred prop type is optional \`any\`
 (<Example />);
 (<Example foo={(0: mixed)} />);
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 const React = require("react");
 
 // Custom validator must match \`ReactPropsCheckType\`
@@ -895,9 +971,15 @@ var Example = React.createClass({
 <Example />;
 <Example foo={(0: mixed)} />;
 
+================================================================================
 `;
 
-exports[`proptype_func.js - flow-verify 1`] = `
+exports[`proptype_func.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var React = require('react');
@@ -912,7 +994,8 @@ var ok_args = <Example func={(x) => {}} />;
 var ok_retval = <Example func={() => 1} />
 
 var fail_mistyped = <Example func={2} />
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var React = require("react");
@@ -926,9 +1009,15 @@ var ok_retval = <Example func={() => 1} />;
 
 var fail_mistyped = <Example func={2} />;
 
+================================================================================
 `;
 
-exports[`proptype_incompatible.js - flow-verify 1`] = `
+exports[`proptype_incompatible.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 const React = require("react");
 
 var Example = React.createClass({
@@ -939,7 +1028,8 @@ var Example = React.createClass({
 
 (<Example />); // OK: don't cascade errors
 (<Example foo={(0:mixed)} />); // OK: don't cascade errors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 const React = require("react");
 
 var Example = React.createClass({
@@ -951,9 +1041,15 @@ var Example = React.createClass({
 <Example />; // OK: don't cascade errors
 <Example foo={(0: mixed)} />; // OK: don't cascade errors
 
+================================================================================
 `;
 
-exports[`proptype_instanceOf.js - flow-verify 1`] = `
+exports[`proptype_instanceOf.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 class A {}
@@ -995,7 +1091,8 @@ var PolyDefaultExample = React.createClass({
     (this.props.x.x: empty); // OK, T instantiated to \`any\`
   }
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 class A {}
@@ -1036,9 +1133,15 @@ var PolyDefaultExample = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`proptype_missing.js - flow-verify 1`] = `
+exports[`proptype_missing.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 /* If you create a react component with createClass() but don't specify the
@@ -1070,7 +1173,8 @@ var Foo = React.createClass({
     return <div id={this.props.name} />;
   }
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 /* If you create a react component with createClass() but don't specify the
@@ -1105,9 +1209,15 @@ var Foo = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`proptype_object.js - flow-verify 1`] = `
+exports[`proptype_object.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var React = require('react');
@@ -1121,7 +1231,8 @@ var ok_empty = <Example object={{}} />;
 var ok_props = <Example object={{foo: "bar"}} />;
 
 var fail_mistyped = <Example object={2} />
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var React = require("react");
@@ -1134,9 +1245,15 @@ var ok_props = <Example object={{ foo: "bar" }} />;
 
 var fail_mistyped = <Example object={2} />;
 
+================================================================================
 `;
 
-exports[`proptype_objectOf.js - flow-verify 1`] = `
+exports[`proptype_objectOf.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var React = require('react');
@@ -1182,7 +1299,8 @@ var InvalidExample = React.createClass({
     obj: React.PropTypes.objectOf(0), // error: number not a prop type
   },
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var React = require("react");
@@ -1227,9 +1345,15 @@ var InvalidExample = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`proptype_oneOf.js - flow-verify 1`] = `
+exports[`proptype_oneOf.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var React = require('react');
@@ -1317,7 +1441,8 @@ var NonLiteralElemExample = React.createClass({
   },
 });
 (<NonLiteralElemExample p={0} />); // OK, result is unknown/any
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var React = require("react");
@@ -1396,9 +1521,15 @@ var NonLiteralElemExample = React.createClass({
 });
 <NonLiteralElemExample p={0} />; // OK, result is unknown/any
 
+================================================================================
 `;
 
-exports[`proptype_oneOfType.js - flow-verify 1`] = `
+exports[`proptype_oneOfType.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var React = require('react');
@@ -1502,7 +1633,8 @@ var InvalidElemExample = React.createClass({
 });
 
 (<InvalidElemExample p={0} />); // OK, don't cascade errors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var React = require("react");
@@ -1594,9 +1726,15 @@ var InvalidElemExample = React.createClass({
 
 <InvalidElemExample p={0} />; // OK, don't cascade errors
 
+================================================================================
 `;
 
-exports[`proptype_shape.js - flow-verify 1`] = `
+exports[`proptype_shape.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* Shape should be a sealed, inexact object just like a type annotation. The
  * below component's \`foo\` property should be equivalent to \`{ bar: string }\`,
  * which would forbid reads/writes on an unknown \`baz\` property.
@@ -1632,7 +1770,8 @@ React.createClass({
     (this.props.foo.bar: empty); // OK
   },
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* Shape should be a sealed, inexact object just like a type annotation. The
  * below component's \`foo\` property should be equivalent to \`{ bar: string }\`,
  * which would forbid reads/writes on an unknown \`baz\` property.
@@ -1662,9 +1801,15 @@ React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`proptypes_builtins.js - flow-verify 1`] = `
+exports[`proptypes_builtins.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 import React from "react";
 
 type NoFun = mixed => empty;
@@ -1692,7 +1837,8 @@ type NoFun = mixed => empty;
 // error: mixed ~> object type
 // error: ReactPropsChainableTypeChecker ~> empty
 (React.PropTypes.shape : NoFun);
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 import React from "react";
 
 type NoFun = mixed => empty;
@@ -1721,9 +1867,15 @@ type NoFun = mixed => empty;
 // error: ReactPropsChainableTypeChecker ~> empty
 (React.PropTypes.shape: NoFun);
 
+================================================================================
 `;
 
-exports[`proptypes_sealed.js - flow-verify 1`] = `
+exports[`proptypes_sealed.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* propTypes should be a sealed, inexact object just like a type annotation. The
  * below component's propTypes should be equivalent to \`{ bar: string }\`, which
  * would forbid reads/writes on an unknown \`baz\` property.
@@ -1748,7 +1900,8 @@ React.createClass({
     this.props.baz = 0;
   }
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* propTypes should be a sealed, inexact object just like a type annotation. The
  * below component's propTypes should be equivalent to \`{ bar: string }\`, which
  * would forbid reads/writes on an unknown \`baz\` property.
@@ -1768,4 +1921,5 @@ React.createClass({
   g() { this.props.baz = 0; }
 });
 
+================================================================================
 `;

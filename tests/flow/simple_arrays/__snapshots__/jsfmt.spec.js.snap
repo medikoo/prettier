@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`array.js - flow-verify 1`] = `
+exports[`array.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 var a = [];
 for (var i = 0; i < 10; ++i) {
@@ -21,7 +26,8 @@ bar(0);
 // uncalled internal functions will not find a type error, which is acceptable
 // behavior as such functions are dead code.
 function baz(i:number): string { return a[i]; }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 var a = [];
 for (var i = 0; i < 10; ++i) {
@@ -46,9 +52,15 @@ bar(0);
 // behavior as such functions are dead code.
 function baz(i: number): string { return a[i]; }
 
+================================================================================
 `;
 
-exports[`array2.js - flow-verify 1`] = `
+exports[`array2.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 var a = [];
 for (var i = 0; i < 10; ++i) {
@@ -57,7 +69,8 @@ for (var i = 0; i < 10; ++i) {
 }
 
 function foo(i: number): string { return a[i]; }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 var a = [];
 for (var i = 0; i < 10; ++i) {
@@ -70,4 +83,5 @@ for (var i = 0; i < 10; ++i) {
 
 function foo(i: number): string { return a[i]; }
 
+================================================================================
 `;

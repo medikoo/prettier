@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A.js - flow-verify 1`] = `
+exports[`A.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // You should be able to call objects with call properties
 function a(f: { (): string }, g: { (x: number): string } ): string {
   return f() + g(123);
@@ -31,7 +36,8 @@ function f(): number {
   var x = {};
   return x();
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // You should be able to call objects with call properties
 function a(f: { (): string }, g: { (x: number): string }): string {
   return f() + g(123);
@@ -55,9 +61,15 @@ function f(): number {
   return x();
 }
 
+================================================================================
 `;
 
-exports[`B.js - flow-verify 1`] = `
+exports[`B.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // You should be able to use a function as an object with a call property
 var a: { (x: number): string } = function (x: number): string { return "hi"; };
 
@@ -78,7 +90,8 @@ var g: { (x: string): void } = function(x: mixed) { } // param type
 // A function can be an object
 var y : {} = function (x: number): string { return "hi"; };
 var z : Object = function (x: number): string { return "hi"; };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // You should be able to use a function as an object with a call property
 var a: { (x: number): string } = function (x: number): string { return "hi"; };
 
@@ -100,9 +113,15 @@ var g: { (x: string): void } = function (x: mixed) {}; // param type
 var y: {} = function (x: number): string { return "hi"; };
 var z: Object = function (x: number): string { return "hi"; };
 
+================================================================================
 `;
 
-exports[`C.js - flow-verify 1`] = `
+exports[`C.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // You should be able to use an object as a function
 function a(x: { (z: number): string }): (z: number) => string {
   return x;
@@ -137,7 +156,8 @@ function f(x: { (z: number): string }): Function {
 function g(x: {}): Function {
   return x; // error
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // You should be able to use an object as a function
 function a(x: { (z: number): string }): (z: number) => string { return x; }
 
@@ -161,9 +181,15 @@ function g(x: {}): Function {
   return x; // error
 }
 
+================================================================================
 `;
 
-exports[`D.js - flow-verify 1`] = `
+exports[`D.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // Multiple call properties should also be supported
 function a(f: { (): string; (x: number): string }): string {
   return f() + f(123);
@@ -186,7 +212,8 @@ function d(x: { (): string; (x: number): string }): () => string {
 function e(x: { (): string; (x: number): string }): () => number {
   return x;
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // Multiple call properties should also be supported
 function a(f: { (): string, (x: number): string }): string {
   return f() + f(123);
@@ -208,9 +235,15 @@ function d(x: { (): string, (x: number): string }): () => string { return x; }
 // ...but you need at least one
 function e(x: { (): string, (x: number): string }): () => number { return x; }
 
+================================================================================
 `;
 
-exports[`E.js - flow-verify 1`] = `
+exports[`E.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // Expecting properties that don't exist should be an error
 var a : { someProp: number } = function () {};
 
@@ -221,7 +254,8 @@ var b : { apply: Function } = function () {};
 var f = function () {};
 f.myProp = 123;
 var c : { myProp: number } = f;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // Expecting properties that don't exist should be an error
 var a: { someProp: number } = function () {};
 
@@ -233,9 +267,15 @@ var f = function () {};
 f.myProp = 123;
 var c: { myProp: number } = f;
 
+================================================================================
 `;
 
-exports[`F.js - flow-verify 1`] = `
+exports[`F.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // You should be able to use an arrow function as an object with a call property
 
 var a: { (x: number): string } = (x) => x.toString()
@@ -257,7 +297,8 @@ var g: { (x: Date): void } = (x) => { x * 2 } // param type (date < number)
 // A function can be an object
 var y : {} = (x) => "hi"
 var z : Object = (x) => "hi"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // You should be able to use an arrow function as an object with a call property
 
 var a: { (x: number): string } = x => x.toString();
@@ -280,4 +321,5 @@ var g: { (x: Date): void } = x => { x * 2; }; // param type (date < number)
 var y: {} = x => "hi";
 var z: Object = x => "hi";
 
+================================================================================
 `;

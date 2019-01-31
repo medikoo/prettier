@@ -12,11 +12,13 @@ const {
 
 const PREPROCESS_PIPELINE = [
   removeIgnorableFirstLf,
+  mergeIeConditonalStartEndCommentIntoElementOpeningTag,
   mergeCdataIntoText,
   extractInterpolation,
   extractWhitespaces,
   addCssDisplay,
   addIsSelfClosing,
+  addHasHtmComponentClosingTag,
   addIsSpaceSensitive,
   mergeSimpleElementIntoText
 ];
@@ -47,6 +49,70 @@ function removeIgnorableFirstLf(ast /*, options */) {
                 node.children.slice(1)
               )
       });
+    }
+    return node;
+  });
+}
+
+function mergeIeConditonalStartEndCommentIntoElementOpeningTag(
+  ast /*, options */
+) {
+  /**
+   *     <!--[if ...]><!--><target><!--<![endif]-->
+   */
+  const isTarget = node =>
+    node.type === "element" &&
+    node.prev &&
+    node.prev.type === "ieConditionalStartComment" &&
+    node.prev.sourceSpan.end.offset === node.startSourceSpan.start.offset &&
+    node.firstChild &&
+    node.firstChild.type === "ieConditionalEndComment" &&
+    node.firstChild.sourceSpan.start.offset === node.startSourceSpan.end.offset;
+  return ast.map(node => {
+    if (node.children) {
+      const isTargetResults = node.children.map(isTarget);
+      if (isTargetResults.some(Boolean)) {
+        const newChildren = [];
+
+        for (let i = 0; i < node.children.length; i++) {
+          const child = node.children[i];
+
+          if (isTargetResults[i + 1]) {
+            // ieConditionalStartComment
+            continue;
+          }
+
+          if (isTargetResults[i]) {
+            const ieConditionalStartComment = child.prev;
+            const ieConditionalEndComment = child.firstChild;
+
+            const ParseSourceSpan = child.sourceSpan.constructor;
+            const startSourceSpan = new ParseSourceSpan(
+              ieConditionalStartComment.sourceSpan.start,
+              ieConditionalEndComment.sourceSpan.end
+            );
+            const sourceSpan = new ParseSourceSpan(
+              startSourceSpan.start,
+              child.sourceSpan.end
+            );
+
+            newChildren.push(
+              child.clone({
+                condition: ieConditionalStartComment.condition,
+                sourceSpan,
+                startSourceSpan,
+                children: child.children.slice(1)
+              })
+            );
+
+            continue;
+          }
+
+          newChildren.push(child);
+        }
+
+        return node.clone({ children: newChildren });
+      }
     }
     return node;
   });
@@ -262,20 +328,13 @@ function extractWhitespaces(ast /*, options*/) {
     const isIndentationSensitive = isIndentationSensitiveNode(node);
 
     return node.clone({
+      isWhitespaceSensitive,
+      isIndentationSensitive,
       children: node.children
         // extract whitespace nodes
         .reduce((newChildren, child) => {
-          if (child.type !== "text") {
+          if (child.type !== "text" || isWhitespaceSensitive) {
             return newChildren.concat(child);
-          }
-
-          if (isWhitespaceSensitive) {
-            return newChildren.concat(
-              Object.assign({}, child, {
-                isWhitespaceSensitive,
-                isIndentationSensitive
-              })
-            );
           }
 
           const localChildren = [];
@@ -340,6 +399,23 @@ function addIsSelfClosing(ast /*, options */) {
             // self-closing
             node.startSourceSpan === node.endSourceSpan))
     })
+  );
+}
+
+function addHasHtmComponentClosingTag(ast, options) {
+  return ast.map(node =>
+    node.type !== "element"
+      ? node
+      : Object.assign(node, {
+          hasHtmComponentClosingTag:
+            node.endSourceSpan &&
+            /^<\s*\/\s*\/\s*>$/.test(
+              options.originalText.slice(
+                node.endSourceSpan.start.offset,
+                node.endSourceSpan.end.offset
+              )
+            )
+        })
   );
 }
 

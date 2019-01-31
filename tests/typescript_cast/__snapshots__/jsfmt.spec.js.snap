@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generic-cast.ts - typescript-verify 1`] = `
+exports[`generic-cast.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // https://github.com/prettier/prettier/issues/4171
 function y() {
 
@@ -55,7 +60,8 @@ function x() {
 
   const insideFuncCall = myFunc(param1, <PermissionsChecker<any> | undefined>param2, param3)
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // https://github.com/prettier/prettier/issues/4171
 function y() {
   const fits = <Immutable.Map<string, any>>fits();
@@ -236,9 +242,15 @@ function x() {
   );
 }
 
+================================================================================
 `;
 
-exports[`hug-args.ts - typescript-verify 1`] = `
+exports[`hug-args.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 postMessage(
   <IActionMessage>{
     context: item.context,
@@ -261,7 +273,8 @@ postMessages(
     }
   ]
 );
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 postMessage(<IActionMessage>{ context: item.context, topic: item.topic });
 
 window.postMessage({
@@ -271,9 +284,15 @@ window.postMessage({
 
 postMessages(<IActionMessage[]>[{ context: item.context, topic: item.topic }]);
 
+================================================================================
 `;
 
-exports[`parenthesis.ts - typescript-verify 1`] = `
+exports[`parenthesis.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 <DocumentHighlightKind>(a ? b : c);
 <any>(() => {});
 
@@ -282,7 +301,8 @@ exports[`parenthesis.ts - typescript-verify 1`] = `
 true || <x>a;
 <x>a + <x>b;
 (<x>a) = 1;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 <DocumentHighlightKind>(a ? b : c);
 <any>(() => {});
 
@@ -292,4 +312,5 @@ true || <x>a;
 <x>a + <x>b;
 (<x>a) = 1;
 
+================================================================================
 `;

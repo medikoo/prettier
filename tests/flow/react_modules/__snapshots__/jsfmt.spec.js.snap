@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`createclass-callsite.js - flow-verify 1`] = `
+exports[`createclass-callsite.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 var React = require('react');
 var Hello = require('./createclass-module');
@@ -27,7 +32,8 @@ var Callsite = React.createClass({
 });
 
 module.exports = Callsite;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 var React = require("react");
 var Hello = require("./createclass-module");
@@ -51,9 +57,15 @@ var Callsite = React.createClass({
 
 module.exports = Callsite;
 
+================================================================================
 `;
 
-exports[`createclass-module.js - flow-verify 1`] = `
+exports[`createclass-module.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 var React = require('react');
 
@@ -68,7 +80,8 @@ var Hello = React.createClass({
 });
 
 module.exports = Hello;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 var React = require("react");
 
@@ -80,9 +93,15 @@ var Hello = React.createClass({
 
 module.exports = Hello;
 
+================================================================================
 `;
 
-exports[`es6class-proptypes-callsite.js - flow-verify 1`] = `
+exports[`es6class-proptypes-callsite.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 import React from 'react';
 import Hello from './es6class-proptypes-module';
@@ -109,7 +128,8 @@ class Callsite extends React.Component<void, {}, void> {
 }
 
 module.exports = Callsite;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 import React from "react";
 import Hello from "./es6class-proptypes-module";
@@ -133,9 +153,15 @@ class Callsite extends React.Component<void, {}, void> {
 
 module.exports = Callsite;
 
+================================================================================
 `;
 
-exports[`es6class-proptypes-module.js - flow-verify 1`] = `
+exports[`es6class-proptypes-module.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 import React from 'react';
 
@@ -151,7 +177,8 @@ class Hello extends React.Component<void, {name: string}, void> {
 }
 
 module.exports = Hello;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 import React from "react";
 
@@ -164,9 +191,15 @@ class Hello extends React.Component<void, { name: string }, void> {
 
 module.exports = Hello;
 
+================================================================================
 `;
 
-exports[`es6class-types-callsite.js - flow-verify 1`] = `
+exports[`es6class-types-callsite.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 import React from 'react';
 import Hello from './es6class-types-module';
@@ -193,7 +226,8 @@ class Callsite extends React.Component<void, Props, void> {
 }
 
 module.exports = Callsite;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 import React from "react";
 import Hello from "./es6class-types-module";
@@ -219,9 +253,15 @@ class Callsite extends React.Component<void, Props, void> {
 
 module.exports = Callsite;
 
+================================================================================
 `;
 
-exports[`es6class-types-module.js - flow-verify 1`] = `
+exports[`es6class-types-module.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 import React from 'react';
 
@@ -237,7 +277,8 @@ class Hello extends React.Component<{}, Props, void>{
 }
 
 module.exports = Hello;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 import React from "react";
 
@@ -252,4 +293,5 @@ class Hello extends React.Component<{}, Props, void> {
 
 module.exports = Hello;
 
+================================================================================
 `;

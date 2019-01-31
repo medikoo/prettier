@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FeedUFI.react.js - flow-verify 1`] = `
+exports[`FeedUFI.react.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
@@ -43,7 +48,8 @@ var FeedUFI = React.createClass({
 });
 
 module.exports = FeedUFI;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
@@ -75,20 +81,33 @@ var FeedUFI = React.createClass({
 
 module.exports = FeedUFI;
 
+================================================================================
 `;
 
-exports[`Mixin.js - flow-verify 1`] = `
+exports[`Mixin.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @providesModule Mixin */
 module.exports = {
     success: function() { }
 };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @providesModule Mixin */
 module.exports = { success: function () {} };
 
+================================================================================
 `;
 
-exports[`UFILikeCount.react.js - flow-verify 1`] = `
+exports[`UFILikeCount.react.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
@@ -112,7 +131,8 @@ var UFILikeCount = React.createClass({
 });
 
 module.exports = UFILikeCount;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
@@ -135,9 +155,15 @@ var UFILikeCount = React.createClass({
 
 module.exports = UFILikeCount;
 
+================================================================================
 `;
 
-exports[`bad_default_props.js - flow-verify 1`] = `
+exports[`bad_default_props.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('React');
 
 type T1 = { }
@@ -168,7 +194,8 @@ class C6 extends React.Component { // OK, recommended
   static defaultProps: T2;
   props: T3;
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("React");
 
 type T1 = {};
@@ -206,9 +233,15 @@ class C6 extends React.Component {
   props: T3;
 }
 
+================================================================================
 `;
 
-exports[`classes.js - flow-verify 1`] = `
+exports[`classes.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('React');
 
 type DefaultProps = { };
@@ -292,7 +325,8 @@ FooLegacy.defaultProps = 0;
 var foo_legacy: $jsx<number> = <FooLegacy/>;
 
 FooLegacy.bar();
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("React");
 
 type DefaultProps = {};
@@ -356,9 +390,15 @@ var foo_legacy: $jsx<number> = <FooLegacy />;
 
 FooLegacy.bar();
 
+================================================================================
 `;
 
-exports[`import-react.js - flow-verify 1`] = `
+exports[`import-react.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 // Testing local binding of React in all kinds of ways. The only reason this
@@ -378,7 +418,8 @@ class HelloMessage extends React.Component {
 
 <HelloMessage name={007} />; // number ~/~> string error
 <HelloMessage name="Bond" />; // ok
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 // Testing local binding of React in all kinds of ways. The only reason this
@@ -399,9 +440,15 @@ class HelloMessage extends React.Component {
 <HelloMessage name={007} />; // number ~/~> string error
 <HelloMessage name="Bond" />; // ok
 
+================================================================================
 `;
 
-exports[`new_react.js - flow-verify 1`] = `
+exports[`new_react.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('react');
 var Mixin = require('Mixin');
 var C = React.createClass({
@@ -434,7 +481,8 @@ var element = <C x = {0}/>;
 var element_ = <C/>;
 
 var x: number = C.displayName;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("react");
 var Mixin = require("Mixin");
 var C = React.createClass({
@@ -465,9 +513,15 @@ var element_ = <C />;
 
 var x: number = C.displayName;
 
+================================================================================
 `;
 
-exports[`propTypes.js - flow-verify 1`] = `
+exports[`propTypes.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('react');
 var PropTypes = React.PropTypes;
 
@@ -489,7 +543,8 @@ var props: Array<{label: string, value?: number}> = [
   {},
   {label:"",value:undefined},
 ]; // error (same as ^)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("react");
 var PropTypes = React.PropTypes;
 
@@ -510,9 +565,15 @@ var props: Array<{ label: string, value?: number }> = [
   {}, { label: "", value: undefined }
 ]; // error (same as ^)
 
+================================================================================
 `;
 
-exports[`props.js - flow-verify 1`] = `
+exports[`props.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('react');
 var TestProps = React.createClass({
 
@@ -540,7 +601,8 @@ var FooProps = React.createClass({
     propTypes: { w: React.PropTypes.string.isRequired }
 });
 (element: $jsx<FooProps>);
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("react");
 var TestProps = React.createClass({
   propTypes: { x: React.PropTypes.string, z: React.PropTypes.number },
@@ -563,9 +625,15 @@ var FooProps = React.createClass({
 });
 (element: $jsx<FooProps>);
 
+================================================================================
 `;
 
-exports[`props2.js - flow-verify 1`] = `
+exports[`props2.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('react');
 var C = React.createClass({
     propTypes: {
@@ -583,7 +651,8 @@ var D = React.createClass({
         return <C {...this.state} foo = {0} />;
     }
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("react");
 var C = React.createClass({
   propTypes: {
@@ -600,9 +669,15 @@ var D = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`props3.js - flow-verify 1`] = `
+exports[`props3.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('react');
 var TestProps = React.createClass({
     // Do something illegal inside of propTypes and make sure Flow notices
@@ -655,7 +730,8 @@ var TestProps = React.createClass({
       bad_two: React.PropTypes.string.inRequired,
     },
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("react");
 var TestProps = React.createClass({
   // Do something illegal inside of propTypes and make sure Flow notices
@@ -709,9 +785,15 @@ var TestProps = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`props4.js - flow-verify 1`] = `
+exports[`props4.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @flow
 
 import React from "React";
@@ -738,7 +820,8 @@ React.render(
   <Example foo="foo" />,
   document.body
 );
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @flow
 
 import React from "React";
@@ -759,9 +842,15 @@ class Example extends React.Component {
 
 React.render(<Example foo="foo" />, document.body);
 
+================================================================================
 `;
 
-exports[`props5.js - flow-verify 1`] = `
+exports[`props5.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('React');
 
 var C = React.createClass({
@@ -771,7 +860,8 @@ var C = React.createClass({
 });
 
 module.exports = C;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("React");
 
 var C = React.createClass({
@@ -780,9 +870,15 @@ var C = React.createClass({
 
 module.exports = C;
 
+================================================================================
 `;
 
-exports[`state.js - flow-verify 1`] = `
+exports[`state.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 /* @flow */
 
 var React = require('react');
@@ -806,7 +902,8 @@ var ReactClass = React.createClass({
         );
     }
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 /* @flow */
 
 var React = require("react");
@@ -823,9 +920,15 @@ var ReactClass = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`state2.js - flow-verify 1`] = `
+exports[`state2.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 // @flow
 
 var React = require('react');
@@ -843,7 +946,8 @@ var Comp = React.createClass({
 });
 
 module.exports = Comp;
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 // @flow
 
 var React = require("react");
@@ -860,9 +964,15 @@ var Comp = React.createClass({
 
 module.exports = Comp;
 
+================================================================================
 `;
 
-exports[`state3.js - flow-verify 1`] = `
+exports[`state3.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('react');
 var TestState = React.createClass({
 
@@ -881,7 +991,8 @@ var TestState = React.createClass({
     }
 
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("react");
 var TestState = React.createClass({
   getInitialState: function (): { x: string } { return { x: "" }; },
@@ -895,9 +1006,15 @@ var TestState = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`state4.js - flow-verify 1`] = `
+exports[`state4.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('React');
 
 var C = React.createClass({
@@ -911,7 +1028,8 @@ var C = React.createClass({
   }
 
 });
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("React");
 
 var C = React.createClass({
@@ -923,9 +1041,15 @@ var C = React.createClass({
   }
 });
 
+================================================================================
 `;
 
-exports[`state5.js - flow-verify 1`] = `
+exports[`state5.js 1`] = `
+====================================options=====================================
+parsers: ["flow"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
 var React = require('React');
 
 class C extends React.Component {
@@ -933,7 +1057,8 @@ class C extends React.Component {
     return this.state.x; // error: need to declare type of state
   }
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=====================================output=====================================
 var React = require("React");
 
 class C extends React.Component {
@@ -942,4 +1067,5 @@ class C extends React.Component {
   }
 }
 
+================================================================================
 `;
