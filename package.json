@@ -1,5 +1,5 @@
 {
-  "name": "prettier",
+  "name": "prettier-elastic",
   "version": "1.16.4",
   "description": "Prettier is an opinionated code formatter",
   "bin": {
