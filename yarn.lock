@@ -2023,13 +2023,22 @@ es5-ext@^0.10.14:
     es6-symbol "~3.1.1"
     next-tick "1"
 
-es5-ext@^0.10.35, es5-ext@^0.10.45, es5-ext@^0.10.46, es5-ext@^0.10.47, es5-ext@^0.10.9, es5-ext@~0.10.14, es5-ext@~0.10.46:
+es5-ext@^0.10.35, es5-ext@^0.10.45, es5-ext@^0.10.46, es5-ext@^0.10.9, es5-ext@~0.10.14, es5-ext@~0.10.46:
   version "0.10.47"
   resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.47.tgz#d24232e1380daad5449a817be19bde9729024a11"
   dependencies:
     es6-iterator "~2.0.3"
     es6-symbol "~3.1.1"
     next-tick "1"
+
+es5-ext@^0.10.48:
+  version "0.10.49"
+  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.49.tgz#059a239de862c94494fec28f8150c977028c6c5e"
+  integrity sha512-3NMEhi57E31qdzmYp2jwRArIUsj1HI/RxbQ4bgnSB+AIKIxsAmTiK83bYMifIcpWvEc3P1X30DhUKOqEtF/kvg==
+  dependencies:
+    es6-iterator "~2.0.3"
+    es6-symbol "~3.1.1"
+    next-tick "^1.0.0"
 
 es5-ext@~0.10.2, es5-ext@~0.10.37:
   version "0.10.37"
@@ -2600,9 +2609,10 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-fs2@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/fs2/-/fs2-0.3.0.tgz#0e1e76c3d52df3182819a58ea241f123f131fdcf"
+fs2@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/fs2/-/fs2-0.3.4.tgz#c2f02bf8ec53e5d1a2776a1b6023377a206441c3"
+  integrity sha512-d0SiZYGyBnWg9YY49dWO+y0Yd4YvFCUPLWDO7QYLrEqa+mcTIs3aJdLZlH67wE/30Nrx4cew4oc7pvwnNZAPKQ==
   dependencies:
     d "1"
     deferred "^0.7.10"
@@ -4229,7 +4239,7 @@ neo-async@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.1.tgz#acb909e327b1e87ec9ef15f41b8a269512ad41ee"
 
-next-tick@1:
+next-tick@1, next-tick@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
