@@ -2489,7 +2489,6 @@ function printPathNoParens(path, options, print, args) {
     }
     case "ClassDeclaration":
     case "ClassExpression":
-    case "TSAbstractClassDeclaration":
       if (isNodeStartingWithDeclare(n, options)) {
         parts.push("declare ");
       }
