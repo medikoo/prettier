@@ -28,20 +28,17 @@ Tip! Don't write this stuff manually.
 
 **Prettier 1.17.0**
 [Playground link](https://prettier.io/playground/#.....)
-
 ```sh
 # Options (if any):
 --single-quote
 ```
 
 **Input:**
-
 ```jsx
 // code snippet
 ```
 
 **Output:**
-
 ```jsx
 // code snippet
 ```

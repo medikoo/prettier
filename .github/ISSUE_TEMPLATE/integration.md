@@ -20,13 +20,12 @@ BEFORE SUBMITTING AN ISSUE:
 
 **Environments:**
 
--   Prettier Version: 1.17.0
--   Running Prettier via: <!-- CLI, Node.js API, Browser API, etc. -->
--   Runtime: <!-- Node.js v6, Chrome v67, etc. -->
--   Operating System: <!-- Windows, Linux, macOS, etc. -->
+- Prettier Version: 1.17.0
+- Running Prettier via: <!-- CLI, Node.js API, Browser API, etc. -->
+- Runtime: <!-- Node.js v6, Chrome v67, etc. -->
+- Operating System: <!-- Windows, Linux, macOS, etc. -->
 
 **Steps to reproduce:**
-
 <!-- shell script, js code, or a link to the minimal reproducible repository -->
 
 **Expected behavior:**

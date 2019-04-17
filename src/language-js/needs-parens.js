@@ -308,7 +308,6 @@ function needsParens(path, options) {
 
         case "ClassExpression":
         case "ClassDeclaration":
-        case "TSAbstractClassDeclaration":
           return name === "superClass" && parent.superClass === node;
         case "TSTypeAssertion":
         case "TaggedTemplateExpression":
@@ -754,7 +753,6 @@ function isStatement(node) {
     node.type === "SwitchStatement" ||
     node.type === "ThrowStatement" ||
     node.type === "TryStatement" ||
-    node.type === "TSAbstractClassDeclaration" ||
     node.type === "TSDeclareFunction" ||
     node.type === "TSEnumDeclaration" ||
     node.type === "TSImportEqualsDeclaration" ||
