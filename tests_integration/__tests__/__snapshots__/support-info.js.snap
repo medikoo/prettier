@@ -635,7 +635,7 @@ exports[`API getSupportInfo() with version 1.16.0 -> undefined 1`] = `
 +         \\"consistent\\",
 +         \\"preserve\\",
 +       ],
-+       \\"default\\": \\"as-needed\\",
++       \\"default\\": \\"consistent\\",
 +       \\"type\\": \\"choice\\",
 +     },
       \\"rangeEnd\\": Object {
@@ -1201,7 +1201,7 @@ exports[`CLI --support-info (stdout) 1`] = `
           \\"value\\": \\"preserve\\"
         }
       ],
-      \\"default\\": \\"as-needed\\",
+      \\"default\\": \\"consistent\\",
       \\"description\\": \\"Change when properties in objects are quoted.\\",
       \\"name\\": \\"quoteProps\\",
       \\"pluginDefaults\\": {},

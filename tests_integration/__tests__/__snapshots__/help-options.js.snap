@@ -434,7 +434,7 @@ Valid options:
   consistent   If at least one property in an object requires quotes, quote all properties.
   preserve     Respect the input use of quotes in object properties.
 
-Default: as-needed
+Default: consistent
 "
 `;
 

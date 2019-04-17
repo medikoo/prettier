@@ -81,7 +81,7 @@ Format options:
                            Defaults to preserve.
   --quote-props <as-needed|consistent|preserve>
                            Change when properties in objects are quoted.
-                           Defaults to as-needed.
+                           Defaults to consistent.
   --no-semi                Do not print semicolons, except at the beginning of lines which may need them.
   --single-quote           Use single quotes instead of double quotes.
                            Defaults to false.
@@ -234,7 +234,7 @@ Format options:
                            Defaults to preserve.
   --quote-props <as-needed|consistent|preserve>
                            Change when properties in objects are quoted.
-                           Defaults to as-needed.
+                           Defaults to consistent.
   --no-semi                Do not print semicolons, except at the beginning of lines which may need them.
   --single-quote           Use single quotes instead of double quotes.
                            Defaults to false.

@@ -203,7 +203,7 @@ class X {
 
 =====================================output=====================================
 class X {
-  private foo? = undefined;
+  private "foo"? = undefined;
   "a-prop"?: boolean;
 }
 
