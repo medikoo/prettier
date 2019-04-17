@@ -52,7 +52,7 @@ module.exports = {
     since: "1.17.0",
     category: CATEGORY_JAVASCRIPT,
     type: "choice",
-    default: "as-needed",
+    default: "consistent",
     description: "Change when properties in objects are quoted.",
     choices: [
       {
