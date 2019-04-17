@@ -339,6 +339,7 @@ let object = {
 
 // preserve parens only for type casts
 let assignment = /** @type {string} */ (getValue());
+let value = /** @type {string} */ (this.members[0]).functionCall();
 
 functionCall(1 + /** @type {string} */ (value), /** @type {!Foo} */ ({}));
 
@@ -388,6 +389,7 @@ let object = {
 
 // preserve parens only for type casts
 let assignment = /** @type {string} */ (getValue());
+let value = /** @type {string} */ (this.members[0]).functionCall();
 
 functionCall(1 + /** @type {string} */ (value), /** @type {!Foo} */ ({}));
 
@@ -525,6 +527,18 @@ import(/* Hello */ 'something' /* Hello */)
 
 import('something' /* Hello */ + 'else')
 
+import(
+  /* Hello */
+  'something'
+  /* Hello */
+)
+
+wrap(
+  import(/* Hello */
+    'something'
+  )
+)
+
 =====================================output=====================================
 import(/* Hello */ "something");
 
@@ -533,6 +547,19 @@ import("something" /* Hello */);
 import(/* Hello */ "something" /* Hello */);
 
 import("something" /* Hello */ + "else");
+
+import(
+  /* Hello */
+  "something"
+  /* Hello */
+);
+
+wrap(
+  import(
+    /* Hello */
+    "something"
+  )
+);
 
 ================================================================================
 `;

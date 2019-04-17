@@ -87,6 +87,7 @@ printWidth: 80
     [(target)]=" a | b : c "
     bind-target=" a | b : c "
     [target]=" a | b : c "
+    [target]=" a | pipe   "
     [target]=" 0 - 1 "
     [target]=" - 1 "
     [target]=" a ? 1 : 2 "
@@ -135,6 +136,7 @@ printWidth: 80
     (event)="  foo = $event  "
     (event)="  foo == $event  "
     *ngIf=" something?true:false    "
+    *ngIf=" a | pipe   "
     *ngFor="  let     hero     of     heroes"
     *ngFor="  let    hero     of[1,2,3,666666666666666666666666666666666666]; let i=index"
     *ngFor="     let hero     of     heroes;     trackBy    :    trackByHeroes     "
@@ -188,6 +190,7 @@ printWidth: 80
   [(target)]="a | b: c"
   bind-target="a | b: c"
   [target]="a | b: c"
+  [target]="a | pipe"
   [target]="0 - 1"
   [target]="-1"
   [target]="a ? 1 : 2"
@@ -234,6 +237,7 @@ printWidth: 80
   (event)="foo = $event"
   (event)="(foo == $event)"
   *ngIf="something ? true : false"
+  *ngIf="a | pipe"
   *ngFor="let hero of heroes"
   *ngFor="
     let hero of [1, 2, 3, 666666666666666666666666666666666666];
@@ -319,6 +323,7 @@ trailingComma: "es5"
     [(target)]=" a | b : c "
     bind-target=" a | b : c "
     [target]=" a | b : c "
+    [target]=" a | pipe   "
     [target]=" 0 - 1 "
     [target]=" - 1 "
     [target]=" a ? 1 : 2 "
@@ -367,6 +372,7 @@ trailingComma: "es5"
     (event)="  foo = $event  "
     (event)="  foo == $event  "
     *ngIf=" something?true:false    "
+    *ngIf=" a | pipe   "
     *ngFor="  let     hero     of     heroes"
     *ngFor="  let    hero     of[1,2,3,666666666666666666666666666666666666]; let i=index"
     *ngFor="     let hero     of     heroes;     trackBy    :    trackByHeroes     "
@@ -420,6 +426,7 @@ trailingComma: "es5"
   [(target)]="a | b: c"
   bind-target="a | b: c"
   [target]="a | b: c"
+  [target]="a | pipe"
   [target]="0 - 1"
   [target]="-1"
   [target]="a ? 1 : 2"
@@ -466,6 +473,7 @@ trailingComma: "es5"
   (event)="foo = $event"
   (event)="(foo == $event)"
   *ngIf="something ? true : false"
+  *ngIf="a | pipe"
   *ngFor="let hero of heroes"
   *ngFor="
     let hero of [1, 2, 3, 666666666666666666666666666666666666];
@@ -550,6 +558,7 @@ printWidth: 1
     [(target)]=" a | b : c "
     bind-target=" a | b : c "
     [target]=" a | b : c "
+    [target]=" a | pipe   "
     [target]=" 0 - 1 "
     [target]=" - 1 "
     [target]=" a ? 1 : 2 "
@@ -598,6 +607,7 @@ printWidth: 1
     (event)="  foo = $event  "
     (event)="  foo == $event  "
     *ngIf=" something?true:false    "
+    *ngIf=" a | pipe   "
     *ngFor="  let     hero     of     heroes"
     *ngFor="  let    hero     of[1,2,3,666666666666666666666666666666666666]; let i=index"
     *ngFor="     let hero     of     heroes;     trackBy    :    trackByHeroes     "
@@ -666,6 +676,10 @@ printWidth: 1
     a
       | b
         : c
+  "
+  [target]="
+    a
+      | pipe
   "
   [target]="
     0 -
@@ -823,6 +837,10 @@ printWidth: 1
     something
       ? true
       : false
+  "
+  *ngIf="
+    a
+      | pipe
   "
   *ngFor="
     let hero of heroes
@@ -1018,6 +1036,7 @@ printWidth: 80
     [(target)]=" a | b : c "
     bind-target=" a | b : c "
     [target]=" a | b : c "
+    [target]=" a | pipe   "
     [target]=" 0 - 1 "
     [target]=" - 1 "
     [target]=" a ? 1 : 2 "
@@ -1066,6 +1085,7 @@ printWidth: 80
     (event)="  foo = $event  "
     (event)="  foo == $event  "
     *ngIf=" something?true:false    "
+    *ngIf=" a | pipe   "
     *ngFor="  let     hero     of     heroes"
     *ngFor="  let    hero     of[1,2,3,666666666666666666666666666666666666]; let i=index"
     *ngFor="     let hero     of     heroes;     trackBy    :    trackByHeroes     "
@@ -1119,6 +1139,7 @@ printWidth: 80
   [(target)]="a | b: c"
   bind-target="a | b: c"
   [target]="a | b: c"
+  [target]="a | pipe"
   [target]="0 - 1"
   [target]="-1"
   [target]="a ? 1 : 2"
@@ -1165,6 +1186,7 @@ printWidth: 80
   (event)="foo = $event"
   (event)="(foo == $event)"
   *ngIf="something ? true : false"
+  *ngIf="a | pipe"
   *ngFor="let hero of heroes"
   *ngFor="
     let hero of [1, 2, 3, 666666666666666666666666666666666666];
@@ -1250,6 +1272,7 @@ printWidth: 80
     [(target)]=" a | b : c "
     bind-target=" a | b : c "
     [target]=" a | b : c "
+    [target]=" a | pipe   "
     [target]=" 0 - 1 "
     [target]=" - 1 "
     [target]=" a ? 1 : 2 "
@@ -1298,6 +1321,7 @@ printWidth: 80
     (event)="  foo = $event  "
     (event)="  foo == $event  "
     *ngIf=" something?true:false    "
+    *ngIf=" a | pipe   "
     *ngFor="  let     hero     of     heroes"
     *ngFor="  let    hero     of[1,2,3,666666666666666666666666666666666666]; let i=index"
     *ngFor="     let hero     of     heroes;     trackBy    :    trackByHeroes     "
@@ -1351,6 +1375,7 @@ printWidth: 80
   [(target)]="a | b: c"
   bind-target="a | b: c"
   [target]="a | b: c"
+  [target]="a | pipe"
   [target]="0 - 1"
   [target]="-1"
   [target]="a ? 1 : 2"
@@ -1397,6 +1422,7 @@ printWidth: 80
   (event)="foo = $event"
   (event)="(foo == $event)"
   *ngIf="something ? true : false"
+  *ngIf="a | pipe"
   *ngFor="let hero of heroes"
   *ngFor="
     let hero of [1, 2, 3, 666666666666666666666666666666666666];
@@ -2337,6 +2363,7 @@ printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
 <div>{{ a | b : c }}</div>
+<div>{{  a | pipe    }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ - 1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>
@@ -2405,6 +2432,7 @@ printWidth: 80
 
 =====================================output=====================================
 <div>{{ a | b: c }}</div>
+<div>{{ a | pipe }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ -1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>
@@ -2502,6 +2530,7 @@ trailingComma: "es5"
                                                                                 | printWidth
 =====================================input======================================
 <div>{{ a | b : c }}</div>
+<div>{{  a | pipe    }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ - 1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>
@@ -2570,6 +2599,7 @@ trailingComma: "es5"
 
 =====================================output=====================================
 <div>{{ a | b: c }}</div>
+<div>{{ a | pipe }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ -1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>
@@ -2666,6 +2696,7 @@ printWidth: 1
  | printWidth
 =====================================input======================================
 <div>{{ a | b : c }}</div>
+<div>{{  a | pipe    }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ - 1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>
@@ -2738,6 +2769,12 @@ printWidth: 1
     a
       | b
         : c
+  }}
+</div>
+<div>
+  {{
+    a
+      | pipe
   }}
 </div>
 <div>
@@ -3032,6 +3069,7 @@ printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
 <div>{{ a | b : c }}</div>
+<div>{{  a | pipe    }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ - 1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>
@@ -3100,6 +3138,7 @@ printWidth: 80
 
 =====================================output=====================================
 <div>{{ a | b: c }}</div>
+<div>{{ a | pipe }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ -1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>
@@ -3202,6 +3241,7 @@ printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
 <div>{{ a | b : c }}</div>
+<div>{{  a | pipe    }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ - 1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>
@@ -3270,6 +3310,7 @@ printWidth: 80
 
 =====================================output=====================================
 <div>{{ a | b: c }}</div>
+<div>{{ a | pipe }}</div>
 <div>{{ 0 - 1 }}</div>
 <div>{{ -1 }}</div>
 <div>{{ a ? 1 : 2 }}</div>

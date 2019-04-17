@@ -69,6 +69,20 @@ See the [strings rationale](rationale.md#strings) for more information.
 | ------- | ---------------- | --------------------- |
 | `false` | `--single-quote` | `singleQuote: <bool>` |
 
+## Quote Props
+
+Change when properties in objects are quoted.
+
+Valid options:
+
+- `"as-needed"` - Only add quotes around object properties where required.
+- `"consistent"` - If at least one property in an object requires quotes, quote all properties.
+- `"preserve"` - Respect the input use of quotes in object properties.
+
+| Default       | CLI Override                                                         | API Override                                                         |
+| ------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `"as-needed"` | <code>--quote-props <as-needed&#124;consistent&#124;preserve></code> | <code>quoteProps: "<as-needed&#124;consistent&#124;preserve>"</code> |
+
 ## JSX Quotes
 
 Use single quotes instead of double quotes in JSX.
@@ -196,6 +210,7 @@ Valid options:
 - `"html"` (via [angular-html-parser](https://github.com/ikatyang/angular-html-parser/tree/master/packages/angular-html-parser)) _First available in 1.15.0_
 - `"vue"` (same parser as `"html"`, but also formats vue-specific syntax) _First available in 1.10.0_
 - `"angular"` (same parser as `"html"`, but also formats angular-specific syntax via [angular-estree-parser](https://github.com/ikatyang/angular-estree-parser)) _First available in 1.15.0_
+- `"lwc"` (same parser as `"html"`, but also formats LWC-specific syntax for unquoted template attributes) _First available in 1.17.0_
 - `"yaml"` (via [yaml](https://github.com/eemeli/yaml) and [yaml-unist-parser](https://github.com/ikatyang/yaml-unist-parser)) _First available in 1.14.0_
 
 [Custom parsers](api.md#custom-parser-api) are also supported. _First available in v1.5.0_
@@ -305,7 +320,7 @@ It also converts mixed line endings within one file to what it finds at the end 
 
 When people collaborate on a project from different operating systems, it becomes easy to end up with mixed line endings in the central git repository.
 It is also possible for Windows users to accidentally change line endings in an already committed file from `LF` to `CRLF`.
-Doing so produces a large `git diff`, and if it get unnoticed during code review, all line-by-line history for the file (`git blame`) gets lost.
+Doing so produces a large `git diff`, and if it goes unnoticed during code review, all line-by-line history for the file (`git blame`) gets lost.
 
 If you want to make sure that your git repository only contains Linux-style line endings in files covered by Prettier:
 

@@ -332,7 +332,7 @@ exports[`show detailed usage with --help no-semi (write) 1`] = `Array []`;
 exports[`show detailed usage with --help parser (stderr) 1`] = `""`;
 
 exports[`show detailed usage with --help parser (stdout) 1`] = `
-"--parser <flow|babel|babel-flow|typescript|css|less|scss|json|json5|json-stringify|graphql|markdown|mdx|vue|yaml|html|angular>
+"--parser <flow|babel|babel-flow|typescript|css|less|scss|json|json5|json-stringify|graphql|markdown|mdx|vue|yaml|html|angular|lwc>
 
   Which parser to use.
 
@@ -355,6 +355,7 @@ Valid options:
   yaml             YAML
   html             HTML
   angular          Angular
+  lwc              Lightning Web Components
 "
 `;
 
@@ -419,6 +420,25 @@ Default: preserve
 `;
 
 exports[`show detailed usage with --help prose-wrap (write) 1`] = `Array []`;
+
+exports[`show detailed usage with --help quote-props (stderr) 1`] = `""`;
+
+exports[`show detailed usage with --help quote-props (stdout) 1`] = `
+"--quote-props <as-needed|consistent|preserve>
+
+  Change when properties in objects are quoted.
+
+Valid options:
+
+  as-needed    Only add quotes around object properties where required.
+  consistent   If at least one property in an object requires quotes, quote all properties.
+  preserve     Respect the input use of quotes in object properties.
+
+Default: as-needed
+"
+`;
+
+exports[`show detailed usage with --help quote-props (write) 1`] = `Array []`;
 
 exports[`show detailed usage with --help range-end (stderr) 1`] = `""`;
 

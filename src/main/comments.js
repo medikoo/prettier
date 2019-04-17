@@ -448,7 +448,10 @@ function printTrailingComment(commentPath, print, options) {
     ]);
   }
 
-  return concat([lineSuffix(" " + contents), !isBlock ? breakParent : ""]);
+  return concat([
+    lineSuffix(concat([" ", contents])),
+    !isBlock ? breakParent : ""
+  ]);
 }
 
 function printDanglingComments(path, options, sameIndent, filter) {
