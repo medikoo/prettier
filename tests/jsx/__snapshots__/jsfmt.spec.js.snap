@@ -3393,9 +3393,9 @@ singleQuote: false
 
 <div>{a && "b"}</div>;
 
-<div>{a || <span />}</div>;
+<div>{a || <span></span>}</div>;
 
-<div>{a && <span />}</div>;
+<div>{a && <span></span>}</div>;
 
 <div>
   {a && (
@@ -3417,7 +3417,7 @@ singleQuote: false
   {a && (
     <span>
       <div>
-        <div />
+        <div></div>
       </div>
     </span>
   )}
@@ -3471,9 +3471,9 @@ singleQuote: false
 
 <div>{a && "b"}</div>;
 
-<div>{a || <span />}</div>;
+<div>{a || <span></span>}</div>;
 
-<div>{a && <span />}</div>;
+<div>{a && <span></span>}</div>;
 
 <div>
   {a && (
@@ -3495,7 +3495,7 @@ singleQuote: false
   {a && (
     <span>
       <div>
-        <div />
+        <div></div>
       </div>
     </span>
   )}
@@ -3549,9 +3549,9 @@ singleQuote: true
 
 <div>{a && 'b'}</div>;
 
-<div>{a || <span />}</div>;
+<div>{a || <span></span>}</div>;
 
-<div>{a && <span />}</div>;
+<div>{a && <span></span>}</div>;
 
 <div>
   {a && (
@@ -3573,7 +3573,7 @@ singleQuote: true
   {a && (
     <span>
       <div>
-        <div />
+        <div></div>
       </div>
     </span>
   )}
@@ -3627,9 +3627,9 @@ singleQuote: true
 
 <div>{a && 'b'}</div>;
 
-<div>{a || <span />}</div>;
+<div>{a || <span></span>}</div>;
 
-<div>{a && <span />}</div>;
+<div>{a && <span></span>}</div>;
 
 <div>
   {a && (
@@ -3651,7 +3651,7 @@ singleQuote: true
   {a && (
     <span>
       <div>
-        <div />
+        <div></div>
       </div>
     </span>
   )}
@@ -4904,6 +4904,78 @@ class BreakingClass extends React.component {
     );
   }
 }
+
+================================================================================
+`;
+
+exports[`self-closing.js 1`] = `
+====================================options=====================================
+jsxSingleQuote: false
+parsers: ["flow", "babel", "typescript"]
+printWidth: 80
+singleQuote: false
+                                                                                | printWidth
+=====================================input======================================
+<Foo></Foo>;
+<Bar />;
+
+=====================================output=====================================
+<Foo></Foo>;
+<Bar />;
+
+================================================================================
+`;
+
+exports[`self-closing.js 2`] = `
+====================================options=====================================
+jsxSingleQuote: true
+parsers: ["flow", "babel", "typescript"]
+printWidth: 80
+singleQuote: false
+                                                                                | printWidth
+=====================================input======================================
+<Foo></Foo>;
+<Bar />;
+
+=====================================output=====================================
+<Foo></Foo>;
+<Bar />;
+
+================================================================================
+`;
+
+exports[`self-closing.js 3`] = `
+====================================options=====================================
+jsxSingleQuote: false
+parsers: ["flow", "babel", "typescript"]
+printWidth: 80
+singleQuote: true
+                                                                                | printWidth
+=====================================input======================================
+<Foo></Foo>;
+<Bar />;
+
+=====================================output=====================================
+<Foo></Foo>;
+<Bar />;
+
+================================================================================
+`;
+
+exports[`self-closing.js 4`] = `
+====================================options=====================================
+jsxSingleQuote: true
+parsers: ["flow", "babel", "typescript"]
+printWidth: 80
+singleQuote: true
+                                                                                | printWidth
+=====================================input======================================
+<Foo></Foo>;
+<Bar />;
+
+=====================================output=====================================
+<Foo></Foo>;
+<Bar />;
 
 ================================================================================
 `;

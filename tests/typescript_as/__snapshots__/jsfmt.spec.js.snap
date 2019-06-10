@@ -68,3 +68,17 @@ const state = JSON.stringify({ next: window.location.href, nonce } as State);
 
 ================================================================================
 `;
+
+exports[`export_default_as.ts 1`] = `
+====================================options=====================================
+parsers: ["typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
+export default (function log() {} as typeof console.log)
+
+=====================================output=====================================
+export default (function log() {} as typeof console.log);
+
+================================================================================
+`;
