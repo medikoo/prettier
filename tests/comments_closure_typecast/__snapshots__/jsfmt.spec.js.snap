@@ -76,8 +76,7 @@ const style =/**
 =====================================output=====================================
 // test to make sure comments are attached correctly
 let inlineComment = /* some comment */ someReallyLongFunctionCall(
-  withLots,
-  ofArguments
+  withLots, ofArguments
 );
 
 let object = {
@@ -111,9 +110,7 @@ test(/** @type {!Array} */ (arrOrString).length + 1);
 test(/** @type {!Array} */ (arrOrString).length + 1);
 
 const data = functionCall(
-  arg1,
-  arg2,
-  /** @type {{height: number, width: number}} */ (arg3)
+  arg1, arg2, /** @type {{height: number, width: number}} */ (arg3)
 );
 
 // Invalid type casts
@@ -140,9 +137,7 @@ const style = /**
  * @type {{
  *   width: number,
  * }}
- */ ({
-  width
-});
+ */ ({ width });
 
 ================================================================================
 `;

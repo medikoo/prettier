@@ -65,9 +65,7 @@ a?.b?.c.d?.e;
 (list || list2)?.length;
 (list || list2)?.[list || list2];
 
-async function HelloWorld() {
-  var x = (await foo.bar.blah)?.hi;
-}
+async function HelloWorld() { var x = (await foo.bar.blah)?.hi; }
 
 ================================================================================
 `;
