@@ -60,13 +60,13 @@ abstract class Foo {
 
 =====================================output=====================================
 abstract class Foo {
-  private abstract "a": 1;
-  private abstract "b": 2;
-  static abstract "c": 3;
+  private abstract a: 1;
+  private abstract b: 2;
+  static abstract c: 3;
 
-  private abstract "d" = 4;
-  private abstract "e" = 5;
-  static abstract "f" = 6;
+  private abstract d = 4;
+  private abstract e = 5;
+  static abstract f = 6;
 
   private abstract ["g"] = 4;
   private abstract ["h"] = 5;

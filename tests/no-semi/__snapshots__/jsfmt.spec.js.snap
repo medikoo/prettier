@@ -657,41 +657,41 @@ class C {
 if (true) (() => {})();
 
 class A {
-  "a" = 0;
+  a = 0;
   [b]() {}
 
-  "c" = 0;
-  *"d"() {}
+  c = 0;
+  *d() {}
 
-  "e" = 0;
+  e = 0;
   [f] = 0;
 
   // none of the semicolons above this comment can be omitted.
   // none of the semicolons below this comment are necessary.
 
-  "q"() {}
+  q() {}
   [h]() {}
 
-  "p"() {}
-  *"i"() {}
+  p() {}
+  *i() {}
 
-  "a" = 1;
+  a = 1;
   get ["y"]() {}
 
-  "a" = 1;
+  a = 1;
   static ["y"]() {}
 
-  "a" = 1;
+  a = 1;
   set ["z"](z) {}
 
-  "a" = 1;
+  a = 1;
   async ["a"]() {}
 
-  "a" = 1;
-  async *"g"() {}
+  a = 1;
+  async *g() {}
 
-  "a" = 0;
-  "b" = 1;
+  a = 0;
+  b = 1;
 }
 
 // being first/last shouldn't break things
@@ -1008,41 +1008,41 @@ class C {
 if (true) (() => {})()
 
 class A {
-  "a" = 0;
+  a = 0;
   [b]() {}
 
-  "c" = 0;
-  *"d"() {}
+  c = 0;
+  *d() {}
 
-  "e" = 0;
+  e = 0;
   [f] = 0
 
   // none of the semicolons above this comment can be omitted.
   // none of the semicolons below this comment are necessary.
 
-  "q"() {}
+  q() {}
   [h]() {}
 
-  "p"() {}
-  *"i"() {}
+  p() {}
+  *i() {}
 
-  "a" = 1
+  a = 1
   get ["y"]() {}
 
-  "a" = 1
+  a = 1
   static ["y"]() {}
 
-  "a" = 1
+  a = 1
   set ["z"](z) {}
 
-  "a" = 1
+  a = 1
   async ["a"]() {}
 
-  "a" = 1
-  async *"g"() {}
+  a = 1
+  async *g() {}
 
-  "a" = 0
-  "b" = 1
+  a = 0
+  b = 1
 }
 
 // being first/last shouldn't break things
@@ -1359,41 +1359,41 @@ class C {
 if (true) (() => {})()
 
 class A {
-  "a" = 0;
+  a = 0;
   [b]() {}
 
-  "c" = 0;
-  *"d"() {}
+  c = 0;
+  *d() {}
 
-  "e" = 0;
+  e = 0;
   [f] = 0
 
   // none of the semicolons above this comment can be omitted.
   // none of the semicolons below this comment are necessary.
 
-  "q"() {}
+  q() {}
   [h]() {}
 
-  "p"() {}
-  *"i"() {}
+  p() {}
+  *i() {}
 
-  "a" = 1
+  a = 1
   get ["y"]() {}
 
-  "a" = 1
+  a = 1
   static ["y"]() {}
 
-  "a" = 1
+  a = 1
   set ["z"](z) {}
 
-  "a" = 1
+  a = 1
   async ["a"]() {}
 
-  "a" = 1
-  async *"g"() {}
+  a = 1
+  async *g() {}
 
-  "a" = 0
-  "b" = 1
+  a = 0
+  b = 1
 }
 
 // being first/last shouldn't break things

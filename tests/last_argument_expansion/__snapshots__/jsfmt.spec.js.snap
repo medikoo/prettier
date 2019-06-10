@@ -218,7 +218,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 =====================================output=====================================
 var listener = DOM.listen(
-  introCard, "click", sigil,
+  introCard,
+  "click",
+  sigil,
   (event: JavelinEvent): void =>
     BanzaiLogger.log(config, {
       ...logData,
