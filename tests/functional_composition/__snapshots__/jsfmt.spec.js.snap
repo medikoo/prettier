@@ -321,10 +321,7 @@ var get = R.curry((propName, obj) => Maybe(obj[propName]));
 
 //  getStateCode :: Maybe String -> Maybe String
 var getStateCode = R.composeK(
-  R.compose(Maybe.of, R.toUpper),
-  get("state"),
-  get("address"),
-  get("user")
+  R.compose(Maybe.of, R.toUpper), get("state"), get("address"), get("user")
 );
 getStateCode({ user: { address: { state: "ny" } } }); //=> Maybe.Just("NY")
 getStateCode({}); //=> Maybe.Nothing()
@@ -343,8 +340,7 @@ followersForUser("JOE").then(followers => console.log("Followers:", followers));
 
 const mapStateToProps = state => ({
   users: R.compose(
-    R.filter(R.propEq("status", "active")),
-    R.values
+    R.filter(R.propEq("status", "active")), R.values
   )(state.users)
 });
 
@@ -391,10 +387,7 @@ f(3, 4); // -(3^4) + 1
 
 //  getStateCode :: Maybe String -> Maybe String
 var getStateCode = R.pipeK(
-  parseJson,
-  get("user"),
-  get("address"),
-  get("state"),
+  parseJson, get("user"), get("address"), get("state"),
   R.compose(Maybe.of, R.toUpper)
 );
 
@@ -436,8 +429,7 @@ import DevTools from "./containers/DevTools";
 import reducer from "../reducers";
 
 const store = createStore(
-  reducer,
-  compose(applyMiddleware(thunk), DevTools.instrument())
+  reducer, compose(applyMiddleware(thunk), DevTools.instrument())
 );
 
 ================================================================================
@@ -453,9 +445,7 @@ const ArtistInput = connect(mapStateToProps, mapDispatchToProps, mergeProps)(Com
 
 =====================================output=====================================
 const ArtistInput = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
+  mapStateToProps, mapDispatchToProps, mergeProps
 )(Component);
 
 ================================================================================

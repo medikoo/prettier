@@ -58,18 +58,6 @@ export default (class foobar {});
 
 exports[`export_default_function_declaration.js 1`] = `
 ====================================options=====================================
-export default function() {}
-
-=====================================output=====================================
-export default function () {}
-
-================================================================================
-`;
-
-exports[`export_default_function_declaration.js 2`] = `
-====================================options=====================================
-parsers: ["babel", "typescript"]
-=======
 parsers: ["babel", "flow", "typescript"]
 printWidth: 80
                                                                                 | printWidth
@@ -112,18 +100,6 @@ export default function f() {}
 
 exports[`export_default_function_expression.js 1`] = `
 ====================================options=====================================
-export default (function() {});
-
-=====================================output=====================================
-export default (function () {});
-
-================================================================================
-`;
-
-exports[`export_default_function_expression.js 2`] = `
-====================================options=====================================
-parsers: ["babel", "typescript"]
-=======
 parsers: ["babel", "flow", "typescript"]
 printWidth: 80
                                                                                 | printWidth

@@ -215,6 +215,7 @@ printWidth: 80
 // Single double quote.
 ("\\"");
 ("\\"");
+
 // Single single quote.
 ("'");
 ("'");
@@ -261,6 +262,7 @@ printWidth: 80
 // More double quotes than single quotes.
 ("\\"'\\"");
 ("\\"'\\"");
+
 // More single quotes than double quotes.
 ("\\"''");
 ("\\"''");
@@ -276,6 +278,7 @@ printWidth: 80
 // Backslases.
 ("\\"\\\\\\"\\\\\\\\\\" ''\\\\'\\\\'\\\\\\\\'");
 ("'\\\\'\\\\\\\\' \\"\\"\\\\\\"\\\\\\"\\\\\\\\\\"");
+
 // Somewhat more real-word example.
 ("He's sayin': \\"How's it goin'?\\" Don't ask me why.");
 ("He's sayin': \\"How's it goin'?\\" Don't ask me why.");
@@ -429,6 +432,7 @@ singleQuote: true
 // Single single quote.
 ('\\'');
 ('\\'');
+
 // Unnecessary escapes.
 ('\\'');
 ('"');
@@ -475,6 +479,7 @@ singleQuote: true
 // More single quotes than double quotes.
 ('"\\'\\'');
 ('"\\'\\'');
+
 // Two of each.
 ('""\\'\\'');
 ('""\\'\\'');
@@ -490,6 +495,7 @@ singleQuote: true
 // Somewhat more real-word example.
 ('He\\'s sayin\\': "How\\'s it goin\\'?" Don\\'t ask me why.');
 ('He\\'s sayin\\': "How\\'s it goin\\'?" Don\\'t ask me why.');
+
 // Somewhat more real-word example 2.
 ('var backslash = "\\\\", doubleQuote = \\'"\\';');
 ('var backslash = "\\\\", doubleQuote = \\'"\\';');

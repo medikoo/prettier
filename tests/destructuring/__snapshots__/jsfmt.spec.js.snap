@@ -87,16 +87,10 @@ catch ({ data: { message: { errors } } }) {
   // code
 }
 
-const obj = {
-  func(id, { blog: { title } }) {
-    return id + title;
-  }
-};
+const obj = { func(id, { blog: { title } }) { return id + title; } };
 
 class A {
-  func(id, { blog: { title } }) {
-    return id + title;
-  }
+  func(id, { blog: { title } }) { return id + title; }
 }
 
 ================================================================================
