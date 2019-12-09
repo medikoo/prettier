@@ -2415,13 +2415,8 @@ let // Comment
   foo1 = "val";
 
 let // Comment
-<<<<<<< HEAD
-  foo = "val"
+  foo2 = "val"
   , bar = "val";
-=======
-  foo2 = "val",
-  bar = "val";
->>>>>>> 1.19.0
 
 const foo3 = 123;
 // Nothing to see here.
