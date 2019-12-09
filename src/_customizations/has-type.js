@@ -5,7 +5,7 @@ const isArray = Array.isArray;
 
 const ignoredKeys = new Set(["directives", "guardedHandlers", "loc"]);
 
-module.exports = function (data, type) {
+module.exports = function(data, type) {
   const stack = [data];
 
   while (stack.length) {
@@ -34,4 +34,4 @@ module.exports = function (data, type) {
     });
   }
   return false;
-}
+};
