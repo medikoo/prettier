@@ -40,6 +40,18 @@ try {
   // code
 }
 
+const obj = {
+  func(id, { blog: { title } }) {
+    return id + title;
+  },
+};
+
+class A {
+  func(id, { blog: { title } }) {
+    return id + title;
+  }
+}
+
 =====================================output=====================================
 const [one, two = null, three = null] = arr;
 a = ([s = 1]) => 1;
@@ -73,6 +85,18 @@ try {
 }
 catch ({ data: { message: { errors } } }) {
   // code
+}
+
+const obj = {
+  func(id, { blog: { title } }) {
+    return id + title;
+  }
+};
+
+class A {
+  func(id, { blog: { title } }) {
+    return id + title;
+  }
 }
 
 ================================================================================

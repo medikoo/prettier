@@ -36,42 +36,7 @@ x;
 
 exports[`comments.js 2`] = `
 ====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-semi: false
-                                                                                | printWidth
-=====================================input======================================
-let error = new Error(response.statusText);
-// comment
-(error: any).response = response
-
-x;
-
-/* comment */ (error: any).response = response
-
-x;
-
-(error: any).response = response; /* comment */
-
-=====================================output=====================================
-let error = new Error(response.statusText)
-// comment
-;(error: any).response = response
-
-x
-
-/* comment */ ;(error: any).response = response
-
-x
-
-;(error: any).response = response /* comment */
-
-================================================================================
-`;
-
-exports[`comments.js 3`] = `
-====================================options=====================================
-parsers: ["babel"]
+parsers: ["babel", "flow"]
 printWidth: 80
 semi: false
                                                                                 | printWidth
@@ -182,11 +147,6 @@ interface E { one: boolean; two: { three: string } | number }
 
 exports[`flow-interfaces.js 2`] = `
 ====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-semi: false
-                                                                                | printWidth
-=====================================input======================================
 declare class A {
     one: boolean;
     two: { three: string }
@@ -260,6 +220,8 @@ interface E { one: boolean; two: { three: string } | number }
 exports[`flow-interfaces.js 3`] = `
 ====================================options=====================================
 parsers: ["babel"]
+=======
+parsers: ["babel", "flow"]
 printWidth: 80
 semi: false
                                                                                 | printWidth
@@ -364,36 +326,7 @@ var c = a.e;
 
 exports[`issue2006.js 2`] = `
 ====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-semi: false
-                                                                                | printWidth
-=====================================input======================================
-switch (n) {
-  case 11:
-    var c = a.e;
-    (i.a += Ga(c.e)), F(i, c.i, 0);
-}
-
-var c = a.e;
-(i.a += Ga(c.e)), F(i, c.i, 0);
-
-=====================================output=====================================
-switch (n) {
-  case 11:
-    var c = a.e
-    ;(i.a += Ga(c.e)), F(i, c.i, 0)
-}
-
-var c = a.e
-;(i.a += Ga(c.e)), F(i, c.i, 0)
-
-================================================================================
-`;
-
-exports[`issue2006.js 3`] = `
-====================================options=====================================
-parsers: ["babel"]
+parsers: ["babel", "flow"]
 printWidth: 80
 semi: false
                                                                                 | printWidth
@@ -457,19 +390,19 @@ class X {} [1, 2, 3].forEach(fn)
 //   x(){}
 // }
 
-class C {
+class C1 {
   get; // The semicolon *is* necessary
   x(){}
 }
-class C {
+class C2 {
   get = () => {}; // The semicolon is *not* necessary
   x(){}
 }
-class C {
+class C3 {
   set; // The semicolon *is* necessary
   x(){}
 }
-class C {
+class C4 {
   set = () => {}; // The semicolon is *not* necessary
   x(){}
 }
@@ -518,16 +451,16 @@ class A {
 }
 
 // being first/last shouldn't break things
-class G {
+class G1 {
   x = 1
 }
-class G {
+class G2 {
   x() {}
 }
-class G {
+class G3 {
   *x() {}
 }
-class G {
+class G4 {
   [x] = 1
 }
 
@@ -635,19 +568,19 @@ class X {}
 //   x(){}
 // }
 
-class C {
+class C1 {
   get; // The semicolon *is* necessary
   x() {}
 }
-class C {
+class C2 {
   get = () => {}; // The semicolon is *not* necessary
   x() {}
 }
-class C {
+class C3 {
   set; // The semicolon *is* necessary
   x() {}
 }
-class C {
+class C4 {
   set = () => {}; // The semicolon is *not* necessary
   x() {}
 }
@@ -695,16 +628,16 @@ class A {
 }
 
 // being first/last shouldn't break things
-class G {
+class G1 {
   x = 1;
 }
-class G {
+class G2 {
   x() {}
 }
-class G {
+class G3 {
   *x() {}
 }
-class G {
+class G4 {
   [x] = 1;
 }
 
@@ -772,11 +705,6 @@ aReallyLongLine012345678901234567890123456789012345678901234567890123456789 *
 
 exports[`no-semi.js 2`] = `
 ====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-semi: false
-                                                                                | printWidth
-=====================================input======================================
 
 // with preexisting semi
 
@@ -1124,6 +1052,8 @@ aReallyLongLine012345678901234567890123456789012345678901234567890123456789 *
 exports[`no-semi.js 3`] = `
 ====================================options=====================================
 parsers: ["babel"]
+=======
+parsers: ["babel", "flow"]
 printWidth: 80
 semi: false
                                                                                 | printWidth
@@ -1159,19 +1089,19 @@ class X {} [1, 2, 3].forEach(fn)
 //   x(){}
 // }
 
-class C {
+class C1 {
   get; // The semicolon *is* necessary
   x(){}
 }
-class C {
+class C2 {
   get = () => {}; // The semicolon is *not* necessary
   x(){}
 }
-class C {
+class C3 {
   set; // The semicolon *is* necessary
   x(){}
 }
-class C {
+class C4 {
   set = () => {}; // The semicolon is *not* necessary
   x(){}
 }
@@ -1220,16 +1150,16 @@ class A {
 }
 
 // being first/last shouldn't break things
-class G {
+class G1 {
   x = 1
 }
-class G {
+class G2 {
   x() {}
 }
-class G {
+class G3 {
   *x() {}
 }
-class G {
+class G4 {
   [x] = 1
 }
 
@@ -1337,19 +1267,19 @@ class X {}
 //   x(){}
 // }
 
-class C {
+class C1 {
   get; // The semicolon *is* necessary
   x() {}
 }
-class C {
+class C2 {
   get = () => {} // The semicolon is *not* necessary
   x() {}
 }
-class C {
+class C3 {
   set; // The semicolon *is* necessary
   x() {}
 }
-class C {
+class C4 {
   set = () => {} // The semicolon is *not* necessary
   x() {}
 }
@@ -1397,16 +1327,16 @@ class A {
 }
 
 // being first/last shouldn't break things
-class G {
+class G1 {
   x = 1
 }
-class G {
+class G2 {
   x() {}
 }
-class G {
+class G3 {
   *x() {}
 }
-class G {
+class G4 {
   [x] = 1
 }
 

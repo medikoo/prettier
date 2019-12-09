@@ -6,7 +6,7 @@ const { concat, fill, cursor } = require("./doc-builders");
 
 const customizations = require("../_customizations/doc-printer");
 
-/** @type {{[groupId: PropertyKey]: MODE}} */
+/** @type {Record<symbol, typeof MODE_BREAK | typeof MODE_FLAT>} */
 let groupModeMap;
 
 const MODE_BREAK = 1;
