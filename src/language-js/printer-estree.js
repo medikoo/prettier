@@ -4212,10 +4212,6 @@ function printArgumentsList(path, options, print) {
     );
   }
 
-  if (isFunctionCompositionArgs(args)) {
-    return allArgsBrokenOut();
-  }
-
   const shouldGroupFirst = shouldGroupFirstArg(args);
   const shouldGroupLast = shouldGroupLastArg(args);
   if (shouldGroupFirst || shouldGroupLast) {
