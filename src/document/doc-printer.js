@@ -271,7 +271,7 @@ function printDocToString(doc, options) {
             mode === MODE_BREAK &&
             !customizations.isLineBreaking(doc, mode, MODE_BREAK, MODE_FLAT)
           ) {
-            docParts = customizations.groupLines(
+            docParts = customizations.groupLines({
               ind,
               MODE_FLAT,
               width,
@@ -279,7 +279,7 @@ function printDocToString(doc, options) {
               doc,
               options,
               fits
-            );
+            });
           }
           for (let i = docParts.length - 1; i >= 0; i--) {
             cmds.push([ind, mode, docParts[i]]);

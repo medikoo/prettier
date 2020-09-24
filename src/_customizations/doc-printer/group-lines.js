@@ -10,7 +10,7 @@
 const mainGroupTypes = new Set(["concat", "group", "indent"]);
 const lineBreakTypes = new Set(["line", "if-break"]);
 
-module.exports = function(ind, MODE_FLAT, width, pos, doc, options, fits) {
+module.exports = function({ ind, MODE_FLAT, width, pos, doc, options, fits }) {
   const contents = { type: "concat" };
   const next = [ind, MODE_FLAT, contents];
   const rem = width - pos;
