@@ -10,7 +10,16 @@
 const mainGroupTypes = new Set(["concat", "group", "indent"]);
 const lineBreakTypes = new Set(["line", "if-break"]);
 
-module.exports = function({ ind, MODE_FLAT, width, pos, doc, options, fits }) {
+module.exports = function({
+  ind,
+  MODE_FLAT,
+  width,
+  pos,
+  doc,
+  options,
+  fits,
+  cmds
+}) {
   const contents = { type: "concat" };
   const next = [ind, MODE_FLAT, contents];
   const rem = width - pos;
@@ -45,7 +54,14 @@ module.exports = function({ ind, MODE_FLAT, width, pos, doc, options, fits }) {
         currentGroupStartIndex,
         currentItemEndIndex
       );
-      if (!fits(next, [], rem, options)) {
+      if (
+        !fits(
+          next,
+          currentItemEndIndex === doc.parts.length ? cmds : [],
+          rem,
+          options
+        )
+      ) {
         if (currentGroupLastItemEndIndex) {
           // There is at least two groups in set
           if (groupedGroupsLength > 1) {

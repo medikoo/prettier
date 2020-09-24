@@ -278,7 +278,8 @@ function printDocToString(doc, options) {
               pos,
               doc,
               options,
-              fits
+              fits,
+              cmds
             });
           }
           for (let i = docParts.length - 1; i >= 0; i--) {
