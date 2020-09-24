@@ -144,7 +144,7 @@ var Foo = {
       // no error
       return x;
     };
-  }
+  },
 };
 
 var Bar = {
@@ -156,7 +156,7 @@ var Bar = {
 
   c: Foo.c("bar"), // no annotation required
 
-  d: Foo.d("bar") // no annotation required
+  d: Foo.d("bar"), // no annotation required
 };
 
 (module.exports = Foo), Bar;

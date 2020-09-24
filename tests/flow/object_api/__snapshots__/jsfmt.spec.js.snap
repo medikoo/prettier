@@ -172,7 +172,7 @@ let tests = [
   function () {
     const x = new Bar();
     (Object.getPrototypeOf(x): Foo);
-  }
+  },
 ];
 
 ================================================================================
@@ -225,12 +225,12 @@ var sealed = { one: "one", two: "two" };
 (Object.keys(sealed): void); // error, Array<string>
 
 var unsealed = {};
-Object.keys(unsealed).forEach(k => {
+Object.keys(unsealed).forEach((k) => {
   (k: number); // error: string ~> number
 });
 
 var dict: { [k: number]: string } = {};
-Object.keys(dict).forEach(k => {
+Object.keys(dict).forEach((k) => {
   (k: number); // error: string ~> number
 });
 

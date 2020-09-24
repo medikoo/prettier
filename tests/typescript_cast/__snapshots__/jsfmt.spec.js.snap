@@ -139,7 +139,7 @@ function y() {
   );
 
   const testObjLiteral = <Immutable.Map<string, any>>{
-    property1: "myPropertyVal"
+    property1: "myPropertyVal",
   };
 
   const testObjLiteral2 = <
@@ -157,7 +157,7 @@ function y() {
   >{ property1: "myPropertyVal" };
 
   const testArrayLiteral = <Immutable.Map<string, any>>[
-    "first", "second", "third"
+    "first", "second", "third",
   ];
 
   const testArrayLiteral2 = <
@@ -222,7 +222,7 @@ function x() {
   ];
 
   const testObjLiteral = <PermissionsChecker<any> | undefined>{
-    prop1: "myPropVal"
+    prop1: "myPropVal",
   };
 
   const testObjLiteral2 = <
@@ -237,7 +237,7 @@ function x() {
   >{ prop1: "myPropVal" };
 
   const testArrayLiteral = <PermissionsChecker<any> | undefined>[
-    "first", "second", "third"
+    "first", "second", "third",
   ];
 
   const testArrayLiteral2 = <
@@ -293,7 +293,7 @@ postMessage(<IActionMessage>{ context: item.context, topic: item.topic });
 
 window.postMessage({
   context: item.context,
-  topic: item.topic
+  topic: item.topic,
 } as IActionMessage);
 
 postMessages(<IActionMessage[]>[{ context: item.context, topic: item.topic }]);

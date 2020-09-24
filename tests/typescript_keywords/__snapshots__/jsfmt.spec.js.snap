@@ -63,7 +63,7 @@ module Y3 {
 
 module Y4 {
   public enum Color {
-    Blue, Red
+    Blue, Red,
   }
 }
 
@@ -77,7 +77,7 @@ module YY3 {
 
 module YY4 {
   private enum Color {
-    Blue, Red
+    Blue, Red,
   }
 }
 
@@ -91,7 +91,7 @@ module YYY3 {
 
 module YYY4 {
   static enum Color {
-    Blue, Red
+    Blue, Red,
   }
 }
 

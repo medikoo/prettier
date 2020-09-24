@@ -485,9 +485,9 @@ a
                   ? { a: 0, b: [a ? [0, 1] : []] }
                   : [
                       [0, { a: 0 }, a ? 0 : 1],
-                      function () { return a ? { a: 0 } : [{ a: 0 }, {}]; }
-                    ]
-              ]
+                      function () { return a ? { a: 0 } : [{ a: 0 }, {}]; },
+                    ],
+              ],
             }
           : [
               a
@@ -498,7 +498,7 @@ a
                             ? { a: a({ a: 0 }) }
                             : [
                                 0, a(), a(a(), { a: 0 }, a ? a() : a({ a: 0 })),
-                                a() ? { a: a(), b: [] } : {}
+                                a() ? { a: a(), b: [] } : {},
                               ]
                         )
                       : a(
@@ -519,9 +519,9 @@ a
                               )
                         );
                   }
-                : function () {}
+                : function () {},
             ];
-      }
+      },
     }
   : a;
 
@@ -736,9 +736,9 @@ a
                                       [0, { a: 0 }, a ? 0 : 1],
                                       function () {
                                           return a ? { a: 0 } : [{ a: 0 }, {}];
-                                      }
-                                  ]
-                        ]
+                                      },
+                                  ],
+                        ],
                     }
                   : [
                         a
@@ -755,7 +755,7 @@ a
                                                       ),
                                                       a()
                                                           ? { a: a(), b: [] }
-                                                          : {}
+                                                          : {},
                                                   ]
                                         )
                                       : a(
@@ -768,7 +768,7 @@ a
                                                                 a
                                                                     ? { a: 0 }
                                                                     : {},
-                                                                { a: 0 }
+                                                                { a: 0 },
                                                             ]);
                                                   })(
                                                       a
@@ -785,9 +785,9 @@ a
                                                   )
                                         );
                               }
-                            : function () {}
+                            : function () {},
                     ];
-          }
+          },
       }
     : a;
 
@@ -1000,9 +1000,9 @@ a
 									? { a: 0, b: [a ? [0, 1] : []] }
 									: [
 											[0, { a: 0 }, a ? 0 : 1],
-											function () { return a ? { a: 0 } : [{ a: 0 }, {}]; }
-									  ]
-							]
+											function () { return a ? { a: 0 } : [{ a: 0 }, {}]; },
+									  ],
+							],
 					  }
 					: [
 							a
@@ -1013,7 +1013,7 @@ a
 														? { a: a({ a: 0 }) }
 														: [
 																0, a(), a(a(), { a: 0 }, a ? a() : a({ a: 0 })),
-																a() ? { a: a(), b: [] } : {}
+																a() ? { a: a(), b: [] } : {},
 														  ]
 											  )
 											: a(
@@ -1034,9 +1034,9 @@ a
 														  )
 											  );
 								  }
-								: function () {}
+								: function () {},
 					  ];
-			}
+			},
 	  }
 	: a;
 
@@ -1254,9 +1254,9 @@ a
 												return a
 													? { a: 0 }
 													: [{ a: 0 }, {}];
-											}
-									  ]
-							]
+											},
+									  ],
+							],
 					  }
 					: [
 							a
@@ -1273,15 +1273,15 @@ a
 																	a
 																		? a()
 																		: a({
-																				a: 0
+																				a: 0,
 																		  })
 																),
 																a()
 																	? {
 																			a: a(),
-																			b: []
+																			b: [],
 																	  }
-																	: {}
+																	: {},
 														  ]
 											  )
 											: a(
@@ -1292,18 +1292,18 @@ a
 																	? [
 																			{
 																				a: 0,
-																				b: a()
-																			}
+																				b: a(),
+																			},
 																	  ]
 																	: a([
 																			a
 																				? {
-																						a: 0
+																						a: 0,
 																				  }
 																				: {},
 																			{
-																				a: 0
-																			}
+																				a: 0,
+																			},
 																	  ]);
 														  })(
 																a
@@ -1324,9 +1324,9 @@ a
 														  )
 											  );
 								  }
-								: function () {}
+								: function () {},
 					  ];
-			}
+			},
 	  }
 	: a;
 
@@ -1438,8 +1438,8 @@ a
 =====================================output=====================================
 let icecream =
   what == "cone"
-    ? p => (!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`)
-    : p => \`here's your \${ p } \${ what }\`;
+    ? (p) => (!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`)
+    : (p) => \`here's your \${ p } \${ what }\`;
 
 const value = condition1
   ? value1
@@ -1636,8 +1636,9 @@ a
 =====================================output=====================================
 let icecream =
     what == "cone"
-        ? p => (!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`)
-        : p => \`here's your \${ p } \${ what }\`;
+        ? (p) =>
+              !!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`
+        : (p) => \`here's your \${ p } \${ what }\`;
 
 const value = condition1
     ? value1
@@ -1834,8 +1835,8 @@ a
 =====================================output=====================================
 let icecream =
 	what == "cone"
-		? p => (!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`)
-		: p => \`here's your \${ p } \${ what }\`;
+		? (p) => (!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`)
+		: (p) => \`here's your \${ p } \${ what }\`;
 
 const value = condition1
 	? value1
@@ -2033,8 +2034,9 @@ a
 =====================================output=====================================
 let icecream =
 	what == "cone"
-		? p => (!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`)
-		: p => \`here's your \${ p } \${ what }\`;
+		? (p) =>
+				!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`
+		: (p) => \`here's your \${ p } \${ what }\`;
 
 const value = condition1
 	? value1
@@ -2125,6 +2127,362 @@ a ? literalline : { 123: 12 } ? line : softline;
 ================================================================================
 `;
 
+exports[`nested-in-condition.js 1`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+                                                                                | printWidth
+=====================================input======================================
+$var = ($number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)
+? kochabCooieGameOnOboleUnweave
+: annularCooeedSplicesWalksWayWay)
+  ? anodyneCondosMalateOverateRetinol
+  : averredBathersBoxroomBuggyNurl;
+
+const value = (bifornCringerMoshedPerplexSawder
+? askTrovenaBeenaDependsRowans
+: glimseGlyphsHazardNoopsTieTie)
+  ? true
+    ? true
+    : false
+  : true
+  ? true
+  : false;
+
+(bifornCringerMoshedPerplexSawder ? (
+  askTrovenaBeenaDependsRowans
+) : (
+  glimseGlyphsHazardNoopsTieTie
+)) ? (
+  <Element>
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element>
+) : (
+  <Element2>
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element2>
+);
+
+=====================================output=====================================
+$var = (
+  $number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)
+    ? kochabCooieGameOnOboleUnweave
+    : annularCooeedSplicesWalksWayWay
+)
+  ? anodyneCondosMalateOverateRetinol
+  : averredBathersBoxroomBuggyNurl;
+
+const value = (
+  bifornCringerMoshedPerplexSawder
+    ? askTrovenaBeenaDependsRowans
+    : glimseGlyphsHazardNoopsTieTie
+)
+  ? true
+    ? true
+    : false
+  : true
+  ? true
+  : false;
+
+(
+  bifornCringerMoshedPerplexSawder
+    ? askTrovenaBeenaDependsRowans
+    : glimseGlyphsHazardNoopsTieTie
+) ? (
+  <Element>
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element>
+) : (
+  <Element2>
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element2>
+);
+
+================================================================================
+`;
+
+exports[`nested-in-condition.js 2`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+tabWidth: 4
+                                                                                | printWidth
+=====================================input======================================
+$var = ($number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)
+? kochabCooieGameOnOboleUnweave
+: annularCooeedSplicesWalksWayWay)
+  ? anodyneCondosMalateOverateRetinol
+  : averredBathersBoxroomBuggyNurl;
+
+const value = (bifornCringerMoshedPerplexSawder
+? askTrovenaBeenaDependsRowans
+: glimseGlyphsHazardNoopsTieTie)
+  ? true
+    ? true
+    : false
+  : true
+  ? true
+  : false;
+
+(bifornCringerMoshedPerplexSawder ? (
+  askTrovenaBeenaDependsRowans
+) : (
+  glimseGlyphsHazardNoopsTieTie
+)) ? (
+  <Element>
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element>
+) : (
+  <Element2>
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element2>
+);
+
+=====================================output=====================================
+$var = (
+    $number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)
+        ? kochabCooieGameOnOboleUnweave
+        : annularCooeedSplicesWalksWayWay
+)
+    ? anodyneCondosMalateOverateRetinol
+    : averredBathersBoxroomBuggyNurl;
+
+const value = (
+    bifornCringerMoshedPerplexSawder
+        ? askTrovenaBeenaDependsRowans
+        : glimseGlyphsHazardNoopsTieTie
+)
+    ? true
+        ? true
+        : false
+    : true
+    ? true
+    : false;
+
+(
+    bifornCringerMoshedPerplexSawder
+        ? askTrovenaBeenaDependsRowans
+        : glimseGlyphsHazardNoopsTieTie
+) ? (
+    <Element>
+        <Sub />
+        <Sub />
+        <Sub />
+        <Sub />
+        <Sub />
+        <Sub />
+    </Element>
+) : (
+    <Element2>
+        <Sub />
+        <Sub />
+        <Sub />
+    </Element2>
+);
+
+================================================================================
+`;
+
+exports[`nested-in-condition.js 3`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+useTabs: true
+                                                                                | printWidth
+=====================================input======================================
+$var = ($number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)
+? kochabCooieGameOnOboleUnweave
+: annularCooeedSplicesWalksWayWay)
+  ? anodyneCondosMalateOverateRetinol
+  : averredBathersBoxroomBuggyNurl;
+
+const value = (bifornCringerMoshedPerplexSawder
+? askTrovenaBeenaDependsRowans
+: glimseGlyphsHazardNoopsTieTie)
+  ? true
+    ? true
+    : false
+  : true
+  ? true
+  : false;
+
+(bifornCringerMoshedPerplexSawder ? (
+  askTrovenaBeenaDependsRowans
+) : (
+  glimseGlyphsHazardNoopsTieTie
+)) ? (
+  <Element>
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element>
+) : (
+  <Element2>
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element2>
+);
+
+=====================================output=====================================
+$var = (
+	$number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)
+		? kochabCooieGameOnOboleUnweave
+		: annularCooeedSplicesWalksWayWay
+)
+	? anodyneCondosMalateOverateRetinol
+	: averredBathersBoxroomBuggyNurl;
+
+const value = (
+	bifornCringerMoshedPerplexSawder
+		? askTrovenaBeenaDependsRowans
+		: glimseGlyphsHazardNoopsTieTie
+)
+	? true
+		? true
+		: false
+	: true
+	? true
+	: false;
+
+(
+	bifornCringerMoshedPerplexSawder
+		? askTrovenaBeenaDependsRowans
+		: glimseGlyphsHazardNoopsTieTie
+) ? (
+	<Element>
+		<Sub />
+		<Sub />
+		<Sub />
+		<Sub />
+		<Sub />
+		<Sub />
+	</Element>
+) : (
+	<Element2>
+		<Sub />
+		<Sub />
+		<Sub />
+	</Element2>
+);
+
+================================================================================
+`;
+
+exports[`nested-in-condition.js 4`] = `
+====================================options=====================================
+parsers: ["flow", "typescript"]
+printWidth: 80
+tabWidth: 4
+useTabs: true
+                                                                                | printWidth
+=====================================input======================================
+$var = ($number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)
+? kochabCooieGameOnOboleUnweave
+: annularCooeedSplicesWalksWayWay)
+  ? anodyneCondosMalateOverateRetinol
+  : averredBathersBoxroomBuggyNurl;
+
+const value = (bifornCringerMoshedPerplexSawder
+? askTrovenaBeenaDependsRowans
+: glimseGlyphsHazardNoopsTieTie)
+  ? true
+    ? true
+    : false
+  : true
+  ? true
+  : false;
+
+(bifornCringerMoshedPerplexSawder ? (
+  askTrovenaBeenaDependsRowans
+) : (
+  glimseGlyphsHazardNoopsTieTie
+)) ? (
+  <Element>
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element>
+) : (
+  <Element2>
+    <Sub />
+    <Sub />
+    <Sub />
+  </Element2>
+);
+
+=====================================output=====================================
+$var = (
+	$number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)
+		? kochabCooieGameOnOboleUnweave
+		: annularCooeedSplicesWalksWayWay
+)
+	? anodyneCondosMalateOverateRetinol
+	: averredBathersBoxroomBuggyNurl;
+
+const value = (
+	bifornCringerMoshedPerplexSawder
+		? askTrovenaBeenaDependsRowans
+		: glimseGlyphsHazardNoopsTieTie
+)
+	? true
+		? true
+		: false
+	: true
+	? true
+	: false;
+
+(
+	bifornCringerMoshedPerplexSawder
+		? askTrovenaBeenaDependsRowans
+		: glimseGlyphsHazardNoopsTieTie
+) ? (
+	<Element>
+		<Sub />
+		<Sub />
+		<Sub />
+		<Sub />
+		<Sub />
+		<Sub />
+	</Element>
+) : (
+	<Element2>
+		<Sub />
+		<Sub />
+		<Sub />
+	</Element2>
+);
+
+================================================================================
+`;
+
 exports[`parenthesis.js 1`] = `
 ====================================options=====================================
 parsers: ["flow", "typescript"]
@@ -2146,9 +2504,9 @@ debug
     : "hidden"
   : null;
 
-a => (a ? () => { a; } : () => { a; });
-a => (a ? a : a);
-a =>
+(a) => (a ? () => { a; } : () => { a; });
+(a) => (a ? a : a);
+(a) =>
   a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a;
 
 ================================================================================
@@ -2176,9 +2534,9 @@ debug
         : "hidden"
     : null;
 
-a => (a ? () => { a; } : () => { a; });
-a => (a ? a : a);
-a =>
+(a) => (a ? () => { a; } : () => { a; });
+(a) => (a ? a : a);
+(a) =>
     a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a;
 
 ================================================================================
@@ -2206,9 +2564,9 @@ debug
 		: "hidden"
 	: null;
 
-a => (a ? () => { a; } : () => { a; });
-a => (a ? a : a);
-a =>
+(a) => (a ? () => { a; } : () => { a; });
+(a) => (a ? a : a);
+(a) =>
 	a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a;
 
 ================================================================================
@@ -2237,9 +2595,9 @@ debug
 		: "hidden"
 	: null;
 
-a => (a ? () => { a; } : () => { a; });
-a => (a ? a : a);
-a =>
+(a) => (a ? () => { a; } : () => { a; });
+(a) => (a ? a : a);
+(a) =>
 	a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a;
 
 ================================================================================
@@ -2279,7 +2637,7 @@ const obj3 = conditionIsTruthy
       some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
       object: "with",
       lots: "of",
-      stuff
+      stuff,
     }
   : shortThing;
 
@@ -2289,7 +2647,7 @@ const obj4 = conditionIsTruthy
       some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
       object: "with",
       lots: "of",
-      stuff
+      stuff,
     };
 
 const obj5 = conditionIsTruthy
@@ -2298,7 +2656,7 @@ const obj5 = conditionIsTruthy
       some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
       object: "with",
       lots: "of",
-      stuff
+      stuff,
     };
 
 ================================================================================
@@ -2339,7 +2697,7 @@ const obj3 = conditionIsTruthy
           some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
           object: "with",
           lots: "of",
-          stuff
+          stuff,
       }
     : shortThing;
 
@@ -2349,7 +2707,7 @@ const obj4 = conditionIsTruthy
           some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
           object: "with",
           lots: "of",
-          stuff
+          stuff,
       };
 
 const obj5 = conditionIsTruthy
@@ -2358,7 +2716,7 @@ const obj5 = conditionIsTruthy
           some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
           object: "with",
           lots: "of",
-          stuff
+          stuff,
       };
 
 ================================================================================
@@ -2399,7 +2757,7 @@ const obj3 = conditionIsTruthy
 			some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
 			object: "with",
 			lots: "of",
-			stuff
+			stuff,
 	  }
 	: shortThing;
 
@@ -2409,7 +2767,7 @@ const obj4 = conditionIsTruthy
 			some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
 			object: "with",
 			lots: "of",
-			stuff
+			stuff,
 	  };
 
 const obj5 = conditionIsTruthy
@@ -2418,7 +2776,7 @@ const obj5 = conditionIsTruthy
 			some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
 			object: "with",
 			lots: "of",
-			stuff
+			stuff,
 	  };
 
 ================================================================================
@@ -2460,7 +2818,7 @@ const obj3 = conditionIsTruthy
 			some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
 			object: "with",
 			lots: "of",
-			stuff
+			stuff,
 	  }
 	: shortThing;
 
@@ -2470,7 +2828,7 @@ const obj4 = conditionIsTruthy
 			some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
 			object: "with",
 			lots: "of",
-			stuff
+			stuff,
 	  };
 
 const obj5 = conditionIsTruthy
@@ -2479,7 +2837,7 @@ const obj5 = conditionIsTruthy
 			some: "eeeeeeeeeeeeven looooooooooooooooooooooooooooooonger",
 			object: "with",
 			lots: "of",
-			stuff
+			stuff,
 	  };
 
 ================================================================================

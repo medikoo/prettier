@@ -62,9 +62,7 @@ export class HeroButtonComponent {
 =====================================output=====================================
 @Component({
   selector: "toh-hero-button",
-  template: \`
-    <button>{{ label }}</button>
-  \`
+  template: \`<button>{{ label }}</button>\`,
 })
 export class HeroButtonComponent {
   @Output() change = new EventEmitter<any>();
@@ -301,7 +299,7 @@ export class Board {
   @Column()
   description: string;
 
-  @OneToMany(type => Topic, topic => topic.board)
+  @OneToMany((type) => Topic, (topic) => topic.board)
   topics: Topic[];
 }
 

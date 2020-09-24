@@ -88,7 +88,7 @@ let tests = [
     Boolean(NaN);
     Boolean(undefined);
     Boolean("");
-  }
+  },
 ];
 
 ================================================================================
@@ -164,7 +164,7 @@ let tests = [
   function (x: Map<string, number>) {
     (x.get("foo"): boolean); // error, string | void
     x.get(123); // error, wrong key type
-  }
+  },
 ];
 
 ================================================================================
@@ -234,7 +234,7 @@ let tests = [
   function () {
     RegExp("foo", "z"); // error
     new RegExp("foo", "z"); // error
-  }
+  },
 ];
 
 ================================================================================

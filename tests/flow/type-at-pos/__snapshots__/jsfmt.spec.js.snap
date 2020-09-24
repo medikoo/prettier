@@ -40,7 +40,7 @@ let [x, y] = [1, 2];
 export const X = {
   returnsATuple: function (): [number, number] { return [1, 2]; },
 
-  test: function () { let [a, b] = this.returnsATuple(); }
+  test: function () { let [a, b] = this.returnsATuple(); },
 };
 
 ================================================================================
@@ -89,7 +89,7 @@ const b = { bar: function (): void {} };
 
 const c = { m<T>(x: T): T { return x; } };
 
-const d = { m: function<T> (x: T): T { return x; } };
+const d = { m: function <T>(x: T): T { return x; } };
 
 ================================================================================
 `;
@@ -202,7 +202,7 @@ let tests = [
   function () {
     let x = {};
     Object.defineProperty(x, "foo", { value: "" });
-  }
+  },
 ];
 
 ================================================================================

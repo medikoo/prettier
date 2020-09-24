@@ -184,7 +184,7 @@ namespace TypeScript.WebTsc {
       getCurrentDirectory() { return ""; },
       getMemoryUsage() { return 0; },
       exit(exitCode?: number): void { WScript.Quit(exitCode); },
-      useCaseSensitiveFileNames: false
+      useCaseSensitiveFileNames: false,
     };
   }
 

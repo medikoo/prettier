@@ -169,7 +169,7 @@ let tests = [
   function (x: { (a: string, b: string): void, bind(a: string): void }) {
     (x.bind("foo"): void); // ok
     (x.bind(123): void); // error, number !~> string
-  }
+  },
 ];
 
 ================================================================================
@@ -401,7 +401,7 @@ let tests = [
     // Non-(Function.prototype) properties on a \`Function\` type should be \`any\`
     (z.foo: number);
     (z.foo: string);
-  }
+  },
 ];
 
 // \`Function\` types can be bound (resulting in a \`Function\` type)
@@ -520,7 +520,7 @@ function roarray_rest_t<T: $ReadOnlyArray<mixed>>(...xs: T): void {}
 function iterable_rest_t<T: Iterable<mixed>>(...xs: T): void {}
 function empty_rest_t<T: empty>(...xs: T): void {}
 function bounds_on_bounds<T>() {
-  return function<U: T> (...xs: T): void {};
+  return function <U: T>(...xs: T): void {};
 }
 
 // These are bad bounds for the rest param

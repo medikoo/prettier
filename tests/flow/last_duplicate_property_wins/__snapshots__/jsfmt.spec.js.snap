@@ -81,7 +81,7 @@ const o = {
   bar(): number { return 0; },
   bar: "hello", // last wins
   qux: 42,
-  qux(): string { return "hello"; } // last wins
+  qux(): string { return "hello"; }, // last wins
 };
 
 // check

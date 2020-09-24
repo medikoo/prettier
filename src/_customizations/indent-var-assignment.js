@@ -1,6 +1,6 @@
 "use strict";
 
-const { indent } = require("../doc/doc-builders");
+const { indent } = require("../document/doc-builders");
 
 module.exports = items =>
   items.some(item => {

@@ -51,7 +51,7 @@ exports[`CLI overrides gets ignored when config exists with --config-precedence 
 "function js() { console.log(\\"js/file.js should have tab width 8 (1 if CLI)\\"); }
 \\"use strict\\";
 
-module.exports = { endOfLine: \\"lf\\", tabWidth: 8 };
+module.exports = { endOfLine: \\"auto\\", tabWidth: 8 };
 "
 `;
 
@@ -63,7 +63,7 @@ exports[`CLI overrides take lower precedence with --config-precedence file-overr
 "function js() { console.log(\\"js/file.js should have tab width 8 (1 if CLI)\\"); }
 \\"use strict\\";
 
-module.exports = { endOfLine: \\"lf\\", tabWidth: 8 };
+module.exports = { endOfLine: \\"auto\\", tabWidth: 8 };
 "
 `;
 
@@ -96,6 +96,9 @@ console.log(
   \\"should have no semi\\"
 )
 console.log(
+  \\"jest/__best-tests__/.file.js should have semi\\"
+);
+console.log(
   \\"jest/__best-tests__/file.js should have semi\\"
 );
 console.log(
@@ -113,8 +116,8 @@ function js() {
 
 module.exports = {
         endOfLine:
-                \\"lf\\",
-        tabWidth: 8
+                \\"auto\\",
+        tabWidth: 8,
 };
 function noConfigJs() {
   console.log(
@@ -188,6 +191,9 @@ console.log(
   \\"should have no semi\\"
 )
 console.log(
+  \\"jest/__best-tests__/.file.js should have semi\\"
+);
+console.log(
   \\"jest/__best-tests__/file.js should have semi\\"
 );
 console.log(
@@ -205,8 +211,8 @@ function js() {
 
 module.exports = {
         endOfLine:
-                \\"lf\\",
-        tabWidth: 8
+                \\"auto\\",
+        tabWidth: 8,
 };
 function noConfigJs() {
   console.log(

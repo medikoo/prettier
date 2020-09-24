@@ -126,7 +126,7 @@ var x = {
 var o = {
   [\`key\`]: () => {
     // Comment
-  }
+  },
 };
 
 var x = {
@@ -135,7 +135,7 @@ var x = {
       \${ foo },
       field,
     }
-  \`
+  \`,
 };
 
 ================================================================================
@@ -177,12 +177,12 @@ module.exports = Relay.createContainer(
           \${
             OptimalSolutionsSection.getFragment("node", {
               solution_type,
-              time_frame
+              time_frame,
             })
           }
         }
-      \`
-    }
+      \`,
+    },
   }
 );
 

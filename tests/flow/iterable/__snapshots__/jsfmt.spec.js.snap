@@ -167,7 +167,7 @@ function makeIterator(coin_flip: () => boolean): Iterator<string> {
       } else {
         return { done };
       }
-    }
+    },
   };
 }
 
@@ -182,7 +182,7 @@ function makeIterator(coin_flip: () => boolean): Iterator<string> {
       } else {
         return { done }; // Error void ~> string
       }
-    }
+    },
   };
 }
 

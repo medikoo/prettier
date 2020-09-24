@@ -339,7 +339,7 @@ var obj = {
   get exampleOfOrderOfGetterAndSetterReordered(): A { return new A(); },
 
   set [z](x: string) {},
-  get [z](): string { return string; }
+  get [z](): string { return string; },
 };
 
 // Test getting properties with getters
@@ -459,7 +459,7 @@ type T = {
   set exampleOfOrderOfGetterAndSetter(x: B): void,
 
   set exampleOfOrderOfGetterAndSetterReordered(x: B): void,
-  get exampleOfOrderOfGetterAndSetterReordered(): A
+  get exampleOfOrderOfGetterAndSetterReordered(): A,
 };
 
 function test(obj: T) {
@@ -525,8 +525,8 @@ const Example = React.createClass({
   propTypes: {
     get a() { return React.PropTypes.number.isRequired; },
     set b(x: number) { this.c = x; },
-    c: React.PropTypes.string
-  }
+    c: React.PropTypes.string,
+  },
 });
 
 <Example />; // error: property \`a\` not found

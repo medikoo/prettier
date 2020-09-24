@@ -41,7 +41,7 @@ type Functor<A> = { map<B>(f: (val: A) => B): Functor<B> };
 
 function identity<A>(val: A): Functor<A> {
   return {
-    map<B>(f: (_: typeof val) => B): Functor<B> { return identity(f(val)); }
+    map<B>(f: (_: typeof val) => B): Functor<B> { return identity(f(val)); },
   };
 }
 
@@ -69,7 +69,7 @@ function id(x: Task<any,any>): Task<any,any> { return x; }
 type Task<error, value> = {
   chain<tagged>(
     next: (input: value) => Task<error, tagged>
-  ): Task<error, tagged>
+  ): Task<error, tagged>,
 };
 
 function id(x: Task<any, any>): Task<any, any> { return x; }

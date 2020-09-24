@@ -70,14 +70,14 @@ const a1 = { someKey: (shortName, shortName) };
 
 const a2 = {
   someKey:
-    (longLongLongLongLongLongLongLongLongLongLongLongLongLongName, shortName)
+    (longLongLongLongLongLongLongLongLongLongLongLongLongLongName, shortName),
 };
 
 const a3 = {
   someKey:
     (longLongLongLongLongLongLongLongLongLongLongLongLongLongName,
     longLongLongLongLongLongLongLongLongLongLongLongLongLongName,
-    longLongLongLongLongLongLongLongLongLongLongLongLongLongName)
+    longLongLongLongLongLongLongLongLongLongLongLongLongLongName),
 };
 
 ================================================================================
@@ -124,7 +124,7 @@ group(
     indent(
       options.tabWidth, concat([line, join(concat([",", line]), printed)])
     ),
-    options.trailingComma ? "," : "", line, ")"
+    options.trailingComma ? "," : "", line, ")",
   ]),
   { shouldBreak: true }
 );
@@ -167,7 +167,7 @@ const k = {
   blablah:
     "aldkfkladfskladklsfkladklfkaldfadfkdaf" +
     "adlfasdklfkldsklfakldsfkladsfkadsfladsfa" +
-    "dflkadfkladsfklkadlfkladlfkadklfjadlfdfdaf"
+    "dflkadfkladsfklkadlfkladlfkadklfjadlfdfdaf",
 };
 
 somethingThatsAReallyLongPropName =
@@ -175,7 +175,7 @@ somethingThatsAReallyLongPropName =
 
 const o = {
   somethingThatsAReallyLongPropName:
-    this.props.cardType === AwesomizerCardEnum.SEEFIRST
+    this.props.cardType === AwesomizerCardEnum.SEEFIRST,
 };
 
 ================================================================================

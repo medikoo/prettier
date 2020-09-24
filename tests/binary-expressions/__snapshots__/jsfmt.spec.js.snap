@@ -23,7 +23,7 @@ function f() {
 =====================================output=====================================
 function f() {
   const appEntities = getAppEntities(loadObject).filter(
-    entity =>
+    (entity) =>
       entity &&
       entity.isInstallAvailable() &&
       !entity.isQueue() &&
@@ -33,7 +33,7 @@ function f() {
 
 function f() {
   const appEntities = getAppEntities(loadObject).map(
-    entity =>
+    (entity) =>
       entity &&
       entity.isInstallAvailable() &&
       !entity.isQueue() &&
@@ -457,7 +457,7 @@ prevState = prevState || {
   loadState: LOADED,
   opened: false,
   searchQuery: "",
-  selectedCatalog: null
+  selectedCatalog: null,
 };
 
 prevState = prevState ||
@@ -466,7 +466,7 @@ prevState = prevState ||
     loadState: LOADED,
     opened: false,
     searchQuery: "",
-    selectedCatalog: null
+    selectedCatalog: null,
   };
 
 prevState =
@@ -476,7 +476,7 @@ prevState =
     loadState: LOADED,
     opened: false,
     searchQuery: "",
-    selectedCatalog: null
+    selectedCatalog: null,
   });
 
 prevState = prevState ||
@@ -485,7 +485,7 @@ prevState = prevState ||
     loadState: LOADED,
     opened: false,
     searchQuery: "",
-    selectedCatalog: null
+    selectedCatalog: null,
   };
 
 this.steps = steps || [{ name: "mock-module", path: "/nux/mock-module" }];
@@ -494,7 +494,7 @@ this.steps =
   steps || (checkStep && [{ name: "mock-module", path: "/nux/mock-module" }]);
 
 this.steps = (steps && checkStep) || [
-  { name: "mock-module", path: "/nux/mock-module" }
+  { name: "mock-module", path: "/nux/mock-module" },
 ];
 
 const create = () => {
@@ -504,7 +504,7 @@ const create = () => {
     result.ok && {
       status: "ok",
       createdAt: result.createdAt,
-      updatedAt: result.updatedAt
+      updatedAt: result.updatedAt,
     }
   );
 };
@@ -515,7 +515,7 @@ const create = () => {
     (shouldReturn && result.ok && result) || {
       status: "ok",
       createdAt: result.createdAt,
-      updatedAt: result.updatedAt
+      updatedAt: result.updatedAt,
     }
   );
 };
@@ -523,7 +523,7 @@ const create = () => {
 const obj = {
   state: shouldHaveState && stateIsOK && { loadState: LOADED, opened: false },
   loadNext: (stateIsOK && hasNext) || { skipNext: true },
-  loaded: true
+  loaded: true,
 };
 
 ================================================================================
@@ -753,7 +753,7 @@ foooooooooooooooooooooooooooooooooooooooooooooooooooooooooo(
 const isPartOfPackageJSON =
   dependenciesArray.indexOf(dependencyWithOutRelativePath.split("/")[0]) !== -1;
 
-defaultContent.filter(defaultLocale => {
+defaultContent.filter((defaultLocale) => {
   // ...
 })[0] || null;
 

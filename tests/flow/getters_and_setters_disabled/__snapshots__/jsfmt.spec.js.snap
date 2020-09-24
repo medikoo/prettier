@@ -48,7 +48,7 @@ var f = {
   set b(x: number) { this.c = x; },
   c: 10,
   get ["d"]() { return "foo"; },
-  set ["d"](x: number) {}
+  set ["d"](x: number) {},
 };
 
 type T = { get a(): number, set b(x: number): void, c: 10 };

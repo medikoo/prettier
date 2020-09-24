@@ -52,29 +52,29 @@ this.subscriptions.add(
         )
 
 =====================================output=====================================
-compose(sortBy(x => x), flatten, map(x => [x, x * 2]));
+compose(sortBy((x) => x), flatten, map((x) => [x, x * 2]));
 
-somelib.compose(sortBy(x => x), flatten, map(x => [x, x * 2]));
+somelib.compose(sortBy((x) => x), flatten, map((x) => [x, x * 2]));
 
-composeFlipped(sortBy(x => x), flatten, map(x => [x, x * 2]));
+composeFlipped(sortBy((x) => x), flatten, map((x) => [x, x * 2]));
 
-somelib.composeFlipped(sortBy(x => x), flatten, map(x => [x, x * 2]));
+somelib.composeFlipped(sortBy((x) => x), flatten, map((x) => [x, x * 2]));
 
 // no regression (#4602)
 const hasValue = hasOwnProperty(a, b);
 
-this.compose(sortBy(x => x), flatten);
-this.a.b.c.compose(sortBy(x => x), flatten);
+this.compose(sortBy((x) => x), flatten);
+this.a.b.c.compose(sortBy((x) => x), flatten);
 someObj.someMethod(this.field.compose(a, b));
 
 class A extends B {
-  compose() { super.compose(sortBy(x => x), flatten); }
+  compose() { super.compose(sortBy((x) => x), flatten); }
 }
 
 this.subscriptions.add(
   this.componentUpdates
     .pipe(startWith(this.props), distinctUntilChanged(isEqual))
-    .subscribe(props => {})
+    .subscribe((props) => {})
 );
 
 ================================================================================
@@ -137,13 +137,13 @@ bar(6);
 =====================================output=====================================
 import { flow } from "lodash";
 
-const foo = flow(x => x + 1, x => x * 3, x => x - 6);
+const foo = flow((x) => x + 1, (x) => x * 3, (x) => x - 6);
 
 foo(6);
 
 import * as _ from "lodash";
 
-const bar = _.flow(x => x + 1, x => x * 3, x => x - 6);
+const bar = _.flow((x) => x + 1, (x) => x * 3, (x) => x - 6);
 
 bar(6);
 
@@ -179,13 +179,13 @@ bar(6);
 =====================================output=====================================
 import { flowRight } from "lodash";
 
-const foo = flowRight(x => x + 1, x => x * 3, x => x - 6);
+const foo = flowRight((x) => x + 1, (x) => x * 3, (x) => x - 6);
 
 foo(6);
 
 import * as _ from "lodash";
 
-const bar = _.flowRight(x => x + 1, x => x * 3, x => x - 6);
+const bar = _.flowRight((x) => x + 1, (x) => x * 3, (x) => x - 6);
 
 bar(6);
 
@@ -286,19 +286,21 @@ getStateCode({}); //=> Maybe.Nothing()
 var db = { users: { JOE: { name: "Joe", followers: ["STEVE", "SUZY"] } } };
 
 // We'll pretend to do a db lookup which returns a promise
-var lookupUser = userId => Promise.resolve(db.users[userId]);
-var lookupFollowers = user => Promise.resolve(user.followers);
+var lookupUser = (userId) => Promise.resolve(db.users[userId]);
+var lookupFollowers = (user) => Promise.resolve(user.followers);
 lookupUser("JOE").then(lookupFollowers);
 
 //  followersForUser :: String -> Promise [UserId]
 var followersForUser = R.composeP(lookupFollowers, lookupUser);
-followersForUser("JOE").then(followers => console.log("Followers:", followers));
+followersForUser("JOE").then((followers) =>
+  console.log("Followers:", followers)
+);
 // Followers: ["STEVE","SUZY"]
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   users: R.compose(
     R.filter(R.propEq("status", "active")), R.values
-  )(state.users)
+  )(state.users),
 });
 
 ================================================================================
@@ -431,11 +433,11 @@ const bar = createSelector(
 import { createSelector } from "reselect";
 
 const foo = createSelector(getIds, getObjects, (ids, objects) =>
-  ids.map(id => objects[id])
+  ids.map((id) => objects[id])
 );
 
 const bar = createSelector([getIds, getObjects], (ids, objects) =>
-  ids.map(id => objects[id])
+  ids.map((id) => objects[id])
 );
 
 ================================================================================
@@ -466,8 +468,10 @@ import { map, filter, scan } from "rxjs/operators";
 const source$ = range(0, 10);
 
 source$
-  .pipe(filter(x => x % 2 === 0), map(x => x + x), scan((acc, x) => acc + x, 0))
-  .subscribe(x => console.log(x));
+  .pipe(
+    filter((x) => x % 2 === 0), map((x) => x + x), scan((acc, x) => acc + x, 0)
+  )
+  .subscribe((x) => console.log(x));
 
 ================================================================================
 `;

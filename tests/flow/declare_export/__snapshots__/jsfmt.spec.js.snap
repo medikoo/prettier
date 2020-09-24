@@ -116,7 +116,7 @@ module.exports = {
   numberValue2: 2,
   numberValue3: 3,
   numberValue4: 4,
-  numberValue5: 5
+  numberValue5: 5,
 };
 
 ================================================================================
@@ -470,7 +470,7 @@ declare export {
 
 declare export {
   numberValue1,
-  numberValue2 as numberValue2_renamed
+  numberValue2 as numberValue2_renamed,
 } from "ES6_ExportFrom_Source1";
 
 ================================================================================
@@ -500,7 +500,7 @@ declare export {
 
 declare export {
   numberValue1,
-  numberValue2 as numberValue2_renamed2
+  numberValue2 as numberValue2_renamed2,
 } from "ES6_ExportFrom_Source2";
 
 ================================================================================
@@ -1345,7 +1345,7 @@ import { specifierNumber } from "ES6_Named1"; // Error: Did you mean \`specifier
 ///////////////////////////////////////////////////
 import {
   numberValue1 as numberValue8,
-  numberValue2 as numberValue9
+  numberValue2 as numberValue9,
 } from "./ES6_ExportAllFromMulti";
 
 var at1: number = numberValue8;
