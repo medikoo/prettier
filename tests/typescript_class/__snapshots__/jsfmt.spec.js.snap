@@ -32,7 +32,7 @@ class foo {
 
 class A {
   "constructor": typeof A;
-  static "Foo"() { return new A(); }
+  static Foo() { return new A(); }
 }
 
 ================================================================================
@@ -219,7 +219,7 @@ class A {
 
 =====================================output=====================================
 class X {
-  private "foo"? = undefined;
+  private foo? = undefined;
   "a-prop"?: boolean;
 }
 

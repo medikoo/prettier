@@ -105,6 +105,7 @@ global.run_spec = (dirname, parsers, options) => {
       cursorOffset
     };
     const mainOptions = {
+      quoteProps: "as-needed",
       ...baseOptions,
       ...(IS_PARSER_INFERENCE_TESTS
         ? { filepath: filename }
@@ -163,7 +164,7 @@ global.run_spec = (dirname, parsers, options) => {
     }
 
     for (const parser of parsersToVerify) {
-      const verifyOptions = { ...baseOptions, parser };
+      const verifyOptions = { quoteProps: "as-needed", ...baseOptions, parser };
 
       test(`${basename} - ${parser}-verify`, () => {
         if (
