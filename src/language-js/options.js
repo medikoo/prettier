@@ -12,7 +12,7 @@ module.exports = {
     type: "choice",
     default: [
       { since: "1.9.0", value: "avoid" },
-      { since: "2.0.0", value: "always" }
+      { since: "2.0.0", value: "avoid" }
     ],
     description: "Include parentheses around a sole arrow function parameter.",
     choices: [

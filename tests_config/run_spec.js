@@ -105,6 +105,7 @@ global.run_spec = (dirname, parsers, options) => {
       cursorOffset
     };
     const mainOptions = {
+      arrowParens: "always",
       quoteProps: "as-needed",
       trailingComma: "es5",
       ...baseOptions,
@@ -166,6 +167,7 @@ global.run_spec = (dirname, parsers, options) => {
 
     for (const parser of parsersToVerify) {
       const verifyOptions = {
+        arrowParens: "always",
         quoteProps: "as-needed",
         trailingComma: "es5",
         ...baseOptions,

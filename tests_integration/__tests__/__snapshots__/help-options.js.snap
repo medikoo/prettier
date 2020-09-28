@@ -12,7 +12,7 @@ Valid options:
   always   Always include parens. Example: \`(x) => x\`
   avoid    Omit parens when possible. Example: \`x => x\`
 
-Default: always
+Default: avoid
 "
 `;
 

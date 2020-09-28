@@ -70,6 +70,8 @@ function runPrettier(dir, args, options) {
   process.argv = [
     "path/to/node",
     "path/to/prettier/bin",
+    "--arrow-parens",
+    "always",
     "--quote-props",
     "as-needed",
     "--trailing-comma",
