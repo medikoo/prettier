@@ -1140,7 +1140,7 @@ function printPathNoParens(path, options, print, args) {
         }
         if (parent.type === "CatchClause") {
           result = parentParent.isInlineBlockOk;
-        } else if (parent.type == "TryStatement") {
+        } else if (parent.type === "TryStatement") {
           result = parent.isInlineBlockOk;
         } else if (
           parent.type !== "ArrowFunctionExpression" &&
