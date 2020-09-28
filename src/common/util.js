@@ -535,7 +535,7 @@ function getIndentSize(value, tabWidth) {
  * @param {Quote} preferredQuote
  * @returns {Quote}
  */
-function getPreferredQuote(raw, preferredQuote) {
+function getPreferredQuote(raw, preferredQuote, parser) {
   // `rawContent` is the string exactly like it appeared in the input source
   // code, without its enclosing quotes.
   const rawContent = raw.slice(1, -1);
@@ -560,7 +560,14 @@ function getPreferredQuote(raw, preferredQuote) {
     const numPreferredQuotes = (rawContent.match(preferred.regex) || []).length;
     const numAlternateQuotes = (rawContent.match(alternate.regex) || []).length;
 
-    result = preferred.quote;
+    if (parser === "scss") {
+      result =
+        numPreferredQuotes > numAlternateQuotes
+          ? alternate.quote
+          : preferred.quote;
+    } else {
+      result = preferred.quote;
+    }
   }
 
   return result;
@@ -582,7 +589,7 @@ function printString(raw, options, isDirectiveLiteral) {
       ? '"'
       : options.__isInHtmlAttribute
       ? "'"
-      : getPreferredQuote(raw, options.singleQuote ? "'" : '"');
+      : getPreferredQuote(raw, options.singleQuote ? "'" : '"', options.parser);
 
   // Directives are exact code unit sequences, which means that you can't
   // change the escape sequences they use.
