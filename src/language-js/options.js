@@ -80,7 +80,7 @@ module.exports = {
     default: [
       { since: "0.0.0", value: false },
       { since: "0.19.0", value: "none" },
-      { since: "2.0.0", value: "es5" }
+      { since: "2.0.0", value: "none" }
     ],
     description: "Print trailing commas wherever possible when multi-line.",
     choices: [

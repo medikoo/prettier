@@ -559,7 +559,7 @@ Valid options:
   none   No trailing commas.
   all    Trailing commas wherever possible (including function arguments).
 
-Default: es5
+Default: none
 "
 `;
 

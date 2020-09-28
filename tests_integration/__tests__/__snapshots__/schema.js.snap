@@ -337,7 +337,7 @@ in order for it to be formatted.",
           "type": "integer",
         },
         "trailingComma": Object {
-          "default": "es5",
+          "default": "none",
           "description": "Print trailing commas wherever possible when multi-line.",
           "oneOf": Array [
             Object {

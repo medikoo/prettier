@@ -106,6 +106,7 @@ global.run_spec = (dirname, parsers, options) => {
     };
     const mainOptions = {
       quoteProps: "as-needed",
+      trailingComma: "es5",
       ...baseOptions,
       ...(IS_PARSER_INFERENCE_TESTS
         ? { filepath: filename }
@@ -164,7 +165,12 @@ global.run_spec = (dirname, parsers, options) => {
     }
 
     for (const parser of parsersToVerify) {
-      const verifyOptions = { quoteProps: "as-needed", ...baseOptions, parser };
+      const verifyOptions = {
+        quoteProps: "as-needed",
+        trailingComma: "es5",
+        ...baseOptions,
+        parser
+      };
 
       test(`${basename} - ${parser}-verify`, () => {
         if (

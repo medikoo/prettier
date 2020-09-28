@@ -71,7 +71,9 @@ function runPrettier(dir, args, options) {
     "path/to/node",
     "path/to/prettier/bin",
     "--quote-props",
-    "as-needed"
+    "as-needed",
+    "--trailing-comma",
+    "es5"
   ].concat(args);
   process.env = { ...process.env, ...options.env };
 
