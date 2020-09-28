@@ -3,6 +3,7 @@
 module.exports = {
   applyElasticBreaks: require("./apply-elastic-breaks"),
   docPrinter: require("./doc-printer"),
+  hasLineComment: require("./has-line-comment"),
   hasType: require("./has-type"),
   identity: i => i,
   includesAssignment: require("./includes-assignment"),

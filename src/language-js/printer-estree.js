@@ -1156,6 +1156,9 @@ function printPathNoParens(path, options, print, args) {
         if (!result) {
           return false;
         }
+        if (customizations.hasLineComment(n.body)) {
+          return false;
+        }
         return !customizations.hasType(n.body, "BlockStatement");
       })();
       const lineMode = canBeInline ? line : hardline;

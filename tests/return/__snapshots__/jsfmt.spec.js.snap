@@ -109,7 +109,9 @@ fn(function f() {
 =====================================output=====================================
 function f() { return /* a */; }
 
-function f() { return; // a }
+function f() {
+  return; // a
+}
 
 function f() {
   return // a
