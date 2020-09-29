@@ -511,14 +511,7 @@ var getStateCode = R.composeK(
 getStateCode({ user: { address: { state: "ny" } } }); //=> Maybe.Just("NY")
 getStateCode({}); //=> Maybe.Nothing()
 
-var db = {
-  users: {
-    JOE: {
-      name: "Joe",
-      followers: ["STEVE", "SUZY"],
-    },
-  },
-};
+var db = { users: { JOE: { name: "Joe", followers: ["STEVE", "SUZY"] } } };
 
 // We'll pretend to do a db lookup which returns a promise
 var lookupUser = (userId) => Promise.resolve(db.users[userId]);
@@ -589,7 +582,7 @@ var getStateCode = R.pipeK(
   R.compose(Maybe.of, R.toUpper)
 );
 
-getStateCode('{"user":{"address":{"state":"ny"}}}');
+getStateCode("{\\"user\\":{\\"address\\":{\\"state\\":\\"ny\\"}}}");
 //=> Just('NY')
 getStateCode("[Invalid JSON]");
 //=> Nothing()

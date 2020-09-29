@@ -17,9 +17,7 @@ export {Foo};
 =====================================output=====================================
 // @flow
 
-declare class Foo {
-  bar?: () => string;
-}
+declare class Foo { bar?: () => string }
 
 export { Foo };
 
@@ -56,9 +54,7 @@ class C {
   C() {}
   foo() {}
   static bar() {}
-  qux() {
-    this.constructor.x;
-  }
+  qux() { this.constructor.x; }
 }
 C.x;
 new C().foo.x;

@@ -580,9 +580,9 @@ styled.div\`
 \`;
 
 styled.div\`
-  color: \${(props) => props.theme.colors.paragraph};
+  color: \${ (props) => props.theme.colors.paragraph };
   /* prettier-ignore */
-  \${(props) => (props.small ? "font-size: 0.8em;" : "")}
+  \${ (props) => (props.small ? "font-size: 0.8em;" : "") }
 \`;
 
 styled.div\`
@@ -623,14 +623,14 @@ styled.div\`
 
 styled.span\`
   foo
-  \${bar}
+  \${ bar }
   baz
 \`;
 
 styled.div\`
   foo
-  \${bar}
-  \${baz}
+  \${ bar }
+  \${ baz }
 \`;
 
 styled.span\`
@@ -697,13 +697,13 @@ const StyledComponent2 = styled.div\`
 \`;
 
 const Direction = styled.span\`
-  \${({ up }) => up && \`color: \${color.positive};\`}
-  \${({ down }) => down && \`color: \${color.negative};\`}
+  \${({ up }) => up && \`color: \${ color.positive };\`}
+  \${({ down }) => down && \`color: \${ color.negative };\`}
 \`;
 
 const Direction2 = styled.span\`
-  \${({ up }) => up && \`color: \${color.positive}\`};
-  \${({ down }) => down && \`color: \${color.negative}\`};
+  \${({ up }) => up && \`color: \${ color.positive }\`};
+  \${({ down }) => down && \`color: \${ color.negative }\`};
 \`;
 
 const mixin = css\`

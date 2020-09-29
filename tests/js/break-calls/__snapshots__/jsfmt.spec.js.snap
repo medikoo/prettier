@@ -51,13 +51,7 @@ expect(new LongLongLongLongLongRange([0, 0], [0, 0])).toEqualAtomLongLongLongLon
 
 
 =====================================output=====================================
-h(
-  f(
-    g(() => {
-      a;
-    })
-  )
-);
+h(f(g(() => { a; })));
 
 deepCopyAndAsyncMapLeavesA(
   { source: sourceValue, destination: destination[sourceKey] },
@@ -92,12 +86,9 @@ expect(
   new LongLongLongLongLongRange([0, 0], [0, 0])
 ).toEqualAtomLongLongLongLongRange(new LongLongLongRange([0, 0], [0, 0]));
 
-["red", "white", "blue", "black", "hotpink", "rebeccapurple"].reduce(
-  (allColors, color) => {
-    return allColors.concat(color);
-  },
-  []
-);
+[
+  "red", "white", "blue", "black", "hotpink", "rebeccapurple",
+].reduce((allColors, color) => { return allColors.concat(color); }, []);
 
 ================================================================================
 `;
@@ -124,9 +115,7 @@ runtimeAgent.getProperties(
   false, // ownProperties
   false, // accessorPropertiesOnly
   false, // generatePreview
-  (error, properties, internalProperties) => {
-    return 1;
-  }
+  (error, properties, internalProperties) => { return 1; }
 );
 
 ================================================================================
@@ -179,16 +168,8 @@ function helloWorld() {
   useEffect(() => {
     // do something
   }, [
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
+    props.value, props.value, props.value, props.value, props.value,
+    props.value, props.value, props.value, props.value, props.value,
     props.value,
   ]);
 }
@@ -200,25 +181,15 @@ function helloWorldWithReact() {
   React.useEffect(() => {
     // do something
   }, [
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
-    props.value,
+    props.value, props.value, props.value, props.value, props.value,
+    props.value, props.value, props.value, props.value, props.value,
     props.value,
   ]);
 }
 
 function MyComponent(props) {
   useEffect(
-    () => {
-      console.log("some code", props.foo);
-    },
+    () => { console.log("some code", props.foo); },
 
     // We need to disable the eslint warning here,
     // because of some complicated reason.

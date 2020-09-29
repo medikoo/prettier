@@ -477,28 +477,8 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;
 
 a
-    ? {
-          a: 0,
-      }
-    : {
-          a: {
-              a: 0,
-          }
-              ? {
-                    a: 0,
-                }
-              : {
-                    y: {
-                        a: 0,
-                    }
-                        ? {
-                              a: 0,
-                          }
-                        : {
-                              a: 0,
-                          },
-                },
-      };
+    ? { a: 0 }
+    : { a: { a: 0 } ? { a: 0 } : { y: { a: 0 } ? { a: 0 } : { a: 0 } } };
 
 a
     ? {
@@ -507,29 +487,11 @@ a
                   ? {
                         a: [
                             a
-                                ? {
-                                      a: 0,
-                                      b: [a ? [0, 1] : []],
-                                  }
+                                ? { a: 0, b: [a ? [0, 1] : []] }
                                 : [
-                                      [
-                                          0,
-                                          {
-                                              a: 0,
-                                          },
-                                          a ? 0 : 1,
-                                      ],
+                                      [0, { a: 0 }, a ? 0 : 1],
                                       function () {
-                                          return a
-                                              ? {
-                                                    a: 0,
-                                                }
-                                              : [
-                                                    {
-                                                        a: 0,
-                                                    },
-                                                    {},
-                                                ];
+                                          return a ? { a: 0 } : [{ a: 0 }, {}];
                                       },
                                   ],
                         ],
@@ -540,55 +502,30 @@ a
                                   a
                                       ? a(
                                             a
-                                                ? {
-                                                      a: a({
-                                                          a: 0,
-                                                      }),
-                                                  }
+                                                ? { a: a({ a: 0 }) }
                                                 : [
-                                                      0,
-                                                      a(),
+                                                      0, a(),
                                                       a(
                                                           a(),
-                                                          {
-                                                              a: 0,
-                                                          },
-                                                          a
-                                                              ? a()
-                                                              : a({
-                                                                    a: 0,
-                                                                })
+                                                          { a: 0 },
+                                                          a ? a() : a({ a: 0 })
                                                       ),
                                                       a()
-                                                          ? {
-                                                                a: a(),
-                                                                b: [],
-                                                            }
+                                                          ? { a: a(), b: [] }
                                                           : {},
                                                   ]
                                         )
                                       : a(
                                             a()
-                                                ? {
-                                                      a: 0,
-                                                  }
+                                                ? { a: 0 }
                                                 : (function (a) {
                                                       return a()
-                                                          ? [
-                                                                {
-                                                                    a: 0,
-                                                                    b: a(),
-                                                                },
-                                                            ]
+                                                          ? [{ a: 0, b: a() }]
                                                           : a([
                                                                 a
-                                                                    ? {
-                                                                          a: 0,
-                                                                      }
+                                                                    ? { a: 0 }
                                                                     : {},
-                                                                {
-                                                                    a: 0,
-                                                                },
+                                                                { a: 0 },
                                                             ]);
                                                   })(
                                                       a
@@ -808,28 +745,8 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;
 
 a
-	? {
-			a: 0,
-	  }
-	: {
-			a: {
-				a: 0,
-			}
-				? {
-						a: 0,
-				  }
-				: {
-						y: {
-							a: 0,
-						}
-							? {
-									a: 0,
-							  }
-							: {
-									a: 0,
-							  },
-				  },
-	  };
+	? { a: 0 }
+	: { a: { a: 0 } ? { a: 0 } : { y: { a: 0 } ? { a: 0 } : { a: 0 } } };
 
 a
 	? {
@@ -838,29 +755,13 @@ a
 					? {
 							a: [
 								a
-									? {
-											a: 0,
-											b: [a ? [0, 1] : []],
-									  }
+									? { a: 0, b: [a ? [0, 1] : []] }
 									: [
-											[
-												0,
-												{
-													a: 0,
-												},
-												a ? 0 : 1,
-											],
+											[0, { a: 0 }, a ? 0 : 1],
 											function () {
 												return a
-													? {
-															a: 0,
-													  }
-													: [
-															{
-																a: 0,
-															},
-															{},
-													  ];
+													? { a: 0 }
+													: [{ a: 0 }, {}];
 											},
 									  ],
 							],
@@ -871,19 +772,12 @@ a
 										a
 											? a(
 													a
-														? {
-																a: a({
-																	a: 0,
-																}),
-														  }
+														? { a: a({ a: 0 }) }
 														: [
-																0,
-																a(),
+																0, a(),
 																a(
 																	a(),
-																	{
-																		a: 0,
-																	},
+																	{ a: 0 },
 																	a
 																		? a()
 																		: a({
@@ -900,9 +794,7 @@ a
 											  )
 											: a(
 													a()
-														? {
-																a: 0,
-														  }
+														? { a: 0 }
 														: (function (a) {
 																return a()
 																	? [
@@ -1142,28 +1034,8 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;
 
 a
-	? {
-			a: 0,
-	  }
-	: {
-			a: {
-				a: 0,
-			}
-				? {
-						a: 0,
-				  }
-				: {
-						y: {
-							a: 0,
-						}
-							? {
-									a: 0,
-							  }
-							: {
-									a: 0,
-							  },
-				  },
-	  };
+	? { a: 0 }
+	: { a: { a: 0 } ? { a: 0 } : { y: { a: 0 } ? { a: 0 } : { a: 0 } } };
 
 a
 	? {
@@ -1172,30 +1044,10 @@ a
 					? {
 							a: [
 								a
-									? {
-											a: 0,
-											b: [a ? [0, 1] : []],
-									  }
+									? { a: 0, b: [a ? [0, 1] : []] }
 									: [
-											[
-												0,
-												{
-													a: 0,
-												},
-												a ? 0 : 1,
-											],
-											function () {
-												return a
-													? {
-															a: 0,
-													  }
-													: [
-															{
-																a: 0,
-															},
-															{},
-													  ];
-											},
+											[0, { a: 0 }, a ? 0 : 1],
+											function () { return a ? { a: 0 } : [{ a: 0 }, {}]; },
 									  ],
 							],
 					  }
@@ -1205,67 +1057,26 @@ a
 										a
 											? a(
 													a
-														? {
-																a: a({
-																	a: 0,
-																}),
-														  }
+														? { a: a({ a: 0 }) }
 														: [
-																0,
-																a(),
-																a(
-																	a(),
-																	{
-																		a: 0,
-																	},
-																	a
-																		? a()
-																		: a({
-																				a: 0,
-																		  })
-																),
-																a()
-																	? {
-																			a: a(),
-																			b: [],
-																	  }
-																	: {},
+																0, a(), a(a(), { a: 0 }, a ? a() : a({ a: 0 })),
+																a() ? { a: a(), b: [] } : {},
 														  ]
 											  )
 											: a(
 													a()
-														? {
-																a: 0,
-														  }
+														? { a: 0 }
 														: (function (a) {
 																return a()
-																	? [
-																			{
-																				a: 0,
-																				b: a(),
-																			},
-																	  ]
-																	: a([
-																			a
-																				? {
-																						a: 0,
-																				  }
-																				: {},
-																			{
-																				a: 0,
-																			},
-																	  ]);
+																	? [{ a: 0, b: a() }]
+																	: a([a ? { a: 0 } : {}, { a: 0 }]);
 														  })(
 																a
 																	? function (a) {
-																			return function () {
-																				return 0;
-																			};
+																			return function () { return 0; };
 																	  }
 																	: function (a) {
-																			return function () {
-																				return 1;
-																			};
+																			return function () { return 1; };
 																	  }
 														  )
 											  );
@@ -1471,28 +1282,8 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;
 
 a
-  ? {
-      a: 0,
-    }
-  : {
-      a: {
-        a: 0,
-      }
-        ? {
-            a: 0,
-          }
-        : {
-            y: {
-              a: 0,
-            }
-              ? {
-                  a: 0,
-                }
-              : {
-                  a: 0,
-                },
-          },
-    };
+  ? { a: 0 }
+  : { a: { a: 0 } ? { a: 0 } : { y: { a: 0 } ? { a: 0 } : { a: 0 } } };
 
 a
   ? {
@@ -1501,30 +1292,10 @@ a
           ? {
               a: [
                 a
-                  ? {
-                      a: 0,
-                      b: [a ? [0, 1] : []],
-                    }
+                  ? { a: 0, b: [a ? [0, 1] : []] }
                   : [
-                      [
-                        0,
-                        {
-                          a: 0,
-                        },
-                        a ? 0 : 1,
-                      ],
-                      function () {
-                        return a
-                          ? {
-                              a: 0,
-                            }
-                          : [
-                              {
-                                a: 0,
-                              },
-                              {},
-                            ];
-                      },
+                      [0, { a: 0 }, a ? 0 : 1],
+                      function () { return a ? { a: 0 } : [{ a: 0 }, {}]; },
                     ],
               ],
             }
@@ -1534,67 +1305,26 @@ a
                     a
                       ? a(
                           a
-                            ? {
-                                a: a({
-                                  a: 0,
-                                }),
-                              }
+                            ? { a: a({ a: 0 }) }
                             : [
-                                0,
-                                a(),
-                                a(
-                                  a(),
-                                  {
-                                    a: 0,
-                                  },
-                                  a
-                                    ? a()
-                                    : a({
-                                        a: 0,
-                                      })
-                                ),
-                                a()
-                                  ? {
-                                      a: a(),
-                                      b: [],
-                                    }
-                                  : {},
+                                0, a(), a(a(), { a: 0 }, a ? a() : a({ a: 0 })),
+                                a() ? { a: a(), b: [] } : {},
                               ]
                         )
                       : a(
                           a()
-                            ? {
-                                a: 0,
-                              }
+                            ? { a: 0 }
                             : (function (a) {
                                 return a()
-                                  ? [
-                                      {
-                                        a: 0,
-                                        b: a(),
-                                      },
-                                    ]
-                                  : a([
-                                      a
-                                        ? {
-                                            a: 0,
-                                          }
-                                        : {},
-                                      {
-                                        a: 0,
-                                      },
-                                    ]);
+                                  ? [{ a: 0, b: a() }]
+                                  : a([a ? { a: 0 } : {}, { a: 0 }]);
                               })(
                                 a
                                   ? function (a) {
-                                      return function () {
-                                        return 0;
-                                      };
+                                      return function () { return 0; };
                                     }
                                   : function (a) {
-                                      return function () {
-                                        return 1;
-                                      };
+                                      return function () { return 1; };
                                     }
                               )
                         );
@@ -1714,8 +1444,9 @@ a
 =====================================output=====================================
 let icecream =
     what == "cone"
-        ? (p) => (!!p ? \`here's your \${p} cone\` : \`just the empty cone for you\`)
-        : (p) => \`here's your \${p} \${what}\`;
+        ? (p) =>
+              !!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`
+        : (p) => \`here's your \${ p } \${ what }\`;
 
 const value = condition1
     ? value1
@@ -1801,13 +1532,7 @@ const foo = (
     </div>
 );
 
-a
-    ? literalline
-    : {
-          123: 12,
-      }
-    ? line
-    : softline;
+a ? literalline : { 123: 12 } ? line : softline;
 
 ================================================================================
 `;
@@ -1919,8 +1644,9 @@ a
 =====================================output=====================================
 let icecream =
 	what == "cone"
-		? (p) => (!!p ? \`here's your \${p} cone\` : \`just the empty cone for you\`)
-		: (p) => \`here's your \${p} \${what}\`;
+		? (p) =>
+				!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`
+		: (p) => \`here's your \${ p } \${ what }\`;
 
 const value = condition1
 	? value1
@@ -2006,13 +1732,7 @@ const foo = (
 	</div>
 );
 
-a
-	? literalline
-	: {
-			123: 12,
-	  }
-	? line
-	: softline;
+a ? literalline : { 123: 12 } ? line : softline;
 
 ================================================================================
 `;
@@ -2123,8 +1843,8 @@ a
 =====================================output=====================================
 let icecream =
 	what == "cone"
-		? (p) => (!!p ? \`here's your \${p} cone\` : \`just the empty cone for you\`)
-		: (p) => \`here's your \${p} \${what}\`;
+		? (p) => (!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`)
+		: (p) => \`here's your \${ p } \${ what }\`;
 
 const value = condition1
 	? value1
@@ -2210,13 +1930,7 @@ const foo = (
 	</div>
 );
 
-a
-	? literalline
-	: {
-			123: 12,
-	  }
-	? line
-	: softline;
+a ? literalline : { 123: 12 } ? line : softline;
 
 ================================================================================
 `;
@@ -2326,8 +2040,8 @@ a
 =====================================output=====================================
 let icecream =
   what == "cone"
-    ? (p) => (!!p ? \`here's your \${p} cone\` : \`just the empty cone for you\`)
-    : (p) => \`here's your \${p} \${what}\`;
+    ? (p) => (!!p ? \`here's your \${ p } cone\` : \`just the empty cone for you\`)
+    : (p) => \`here's your \${ p } \${ what }\`;
 
 const value = condition1
   ? value1
@@ -2413,13 +2127,7 @@ const foo = (
   </div>
 );
 
-a
-  ? literalline
-  : {
-      123: 12,
-    }
-  ? line
-  : softline;
+a ? literalline : { 123: 12 } ? line : softline;
 
 ================================================================================
 `;
@@ -2802,14 +2510,7 @@ debug
         : "hidden"
     : null;
 
-(a) =>
-    a
-        ? () => {
-              a;
-          }
-        : () => {
-              a;
-          };
+(a) => (a ? () => { a; } : () => { a; });
 (a) => (a ? a : a);
 (a) =>
     a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a;
@@ -2840,14 +2541,7 @@ debug
 		: "hidden"
 	: null;
 
-(a) =>
-	a
-		? () => {
-				a;
-		  }
-		: () => {
-				a;
-		  };
+(a) => (a ? () => { a; } : () => { a; });
 (a) => (a ? a : a);
 (a) =>
 	a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a;
@@ -2877,14 +2571,7 @@ debug
 		: "hidden"
 	: null;
 
-(a) =>
-	a
-		? () => {
-				a;
-		  }
-		: () => {
-				a;
-		  };
+(a) => (a ? () => { a; } : () => { a; });
 (a) => (a ? a : a);
 (a) =>
 	a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a;
@@ -2913,14 +2600,7 @@ debug
     : "hidden"
   : null;
 
-(a) =>
-  a
-    ? () => {
-        a;
-      }
-    : () => {
-        a;
-      };
+(a) => (a ? () => { a; } : () => { a; });
 (a) => (a ? a : a);
 (a) =>
   a ? aasdasdasdasdasdasdaaasdasdasdasdasdasdasdasdasdasdasdasdasdaaaaaa : a;

@@ -27,9 +27,7 @@ export default interface Foo {
 }
 
 =====================================output=====================================
-export default interface Foo {
-  readonly bar?: string;
-}
+export default interface Foo { readonly bar?: string }
 
 ================================================================================
 `;

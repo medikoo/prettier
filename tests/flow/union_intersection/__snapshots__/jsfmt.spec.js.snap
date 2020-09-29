@@ -122,28 +122,11 @@ type Comment =
     };
 
 type Props = {
-  onChange: (
-    | {
-        name: string,
-      }
-    | {
-        title: string,
-      }
-    | {
-        year: year,
-      }
-  ) => void,
+  onChange: ({ name: string } | { title: string } | { year: year }) => void,
 };
 
 declare class FormData {
-  append(
-    options?:
-      | string
-      | {
-          filepath?: string,
-          filename?: string,
-        }
-  ): void;
+  append(options?: string | { filepath?: string, filename?: string }): void;
 }
 
 ================================================================================

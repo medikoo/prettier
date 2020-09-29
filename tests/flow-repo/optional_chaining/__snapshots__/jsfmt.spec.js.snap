@@ -29,9 +29,7 @@ class Y {
 
 class X {
   #foo: number;
-  constructor() {
-    (this?.#foo: empty);
-  }
+  constructor() { (this?.#foo: empty); }
 }
 
 class Y {

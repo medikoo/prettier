@@ -105,9 +105,7 @@ class X2 {
   foo: string;
 }
 
-function x(b) {
-  return b ? new X1() : new X2();
-}
+function x(b) { return b ? new X1() : new X2(); }
 
 function consumer1(b) {
   var g = x(b);
@@ -128,9 +126,7 @@ class Y2 {
   bar: X2;
 }
 
-function y(b) {
-  return b ? new Y1() : new Y2();
-}
+function y(b) { return b ? new Y1() : new Y2(); }
 
 function consumer3(b) {
   var g = y(b);
@@ -151,9 +147,7 @@ class Z2 {
   baz: Y2;
 }
 
-function z(b) {
-  return b ? new Z1() : new Z2();
-}
+function z(b) { return b ? new Z1() : new Z2(); }
 
 function consumer5(b) {
   var g = z(b);

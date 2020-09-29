@@ -6,10 +6,6 @@ parsers: ["flow"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
-function foo(x: $All<Error, { type: number }>): number { return x.type; }
-
-function bar(x: Error & { type: number }): number { return x.type; }
-=======
 export type ReallyBigSocketServer = ReallyBigSocketServerInterface & ReallyBigSocketServerStatics;
 
 type Props = {
@@ -62,15 +58,7 @@ type DuplexStreamOptions = ReadableStreamOptions &
 export type ReallyBigSocketServer = ReallyBigSocketServerInterface &
   ReallyBigSocketServerStatics;
 
-type Props = {
-  propA: X,
-} & {
-  propB: X,
-} & {
-  propC: X,
-} & {
-  propD: X,
-};
+type Props = { propA: X } & { propB: X } & { propC: X } & { propD: X };
 
 type Props = {
   focusedChildren?: React.Children,
@@ -88,10 +76,7 @@ type DuplexStreamOptions = ReadableStreamOptions & {
 type DuplexStreamOptions = {
   allowHalfOpen?: boolean,
   readableObjectMode?: boolean,
-} & {
-  allowHalfOpen?: boolean,
-  readableObjectMode?: boolean,
-};
+} & { allowHalfOpen?: boolean, readableObjectMode?: boolean };
 
 type DuplexStreamOptions = ReadableStreamOptions &
   WritableStreamOptions & {
@@ -103,10 +88,7 @@ type DuplexStreamOptions = ReadableStreamOptions &
   WritableStreamOptions & {
     allowHalfOpen?: boolean,
     readableObjectMode?: boolean,
-  } & {
-    allowHalfOpen?: boolean,
-    readableObjectMode?: boolean,
-  };
+  } & { allowHalfOpen?: boolean, readableObjectMode?: boolean };
 
 ================================================================================
 `;

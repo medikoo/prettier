@@ -18,14 +18,10 @@ class X {
 }
 
 =====================================output=====================================
-async function* a() {
-  yield* b();
-}
+async function* a() { yield* b(); }
 
 class X {
-  async *b() {
-    yield* a();
-  }
+  async *b() { yield* a(); }
 }
 
 ================================================================================
@@ -43,10 +39,7 @@ printWidth: 80
 });
 
 =====================================output=====================================
-({
-  async get() {},
-  async set() {},
-});
+({ async get() {}, async set() {} });
 
 ================================================================================
 `;
@@ -75,18 +68,10 @@ async () => {
 }
 
 =====================================output=====================================
-async function f1() {
-  (await f()).length;
-}
-async function g() {
-  invariant((await driver.navigator.getUrl()).substr(-7));
-}
-function* f2() {
-  !(yield a);
-}
-async function f3() {
-  a = !(await f());
-}
+async function f1() { (await f()).length; }
+async function g() { invariant((await driver.navigator.getUrl()).substr(-7)); }
+function* f2() { !(yield a); }
+async function f3() { a = !(await f()); }
 async () => {
   new A(await x);
   obj[await x];
@@ -168,9 +153,7 @@ async function *f(){ await (yield x); }
 async function f2(){ await (() => {}); }
 
 =====================================output=====================================
-async function* f() {
-  await (yield x);
-}
+async function* f() { await (yield x); }
 
 async function f2() {
   await (() => {});

@@ -33,10 +33,7 @@ const enum Enum {
 
 =====================================output=====================================
 enum Direction {
-  Up = 1,
-  Down,
-  Left,
-  Right,
+  Up = 1, Down, Left, Right,
 }
 
 enum FileAccess {
@@ -52,8 +49,7 @@ enum FileAccess {
 enum Empty {}
 
 const enum Enum {
-  A = 1,
-  B = A * 2,
+  A = 1, B = A * 2,
 }
 
 ================================================================================

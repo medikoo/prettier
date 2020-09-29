@@ -71,9 +71,7 @@ class Middle extends Base {}
 class Child extends Middle {}
 
 class C<T: Middle> {
-  meth(a: T): T {
-    return a;
-  }
+  meth(a: T): T { return a; }
 }
 
 // T is implicitly (bounded by) Middle in constructor call if not provided.
@@ -164,22 +162,14 @@ var z:Foo<number> = Q.bar(foo,"");
 =====================================output=====================================
 class Foo<T> {
   x: T;
-  constructor(x: T) {
-    this.x = x;
-  }
+  constructor(x: T) { this.x = x; }
 }
 
-function bar<S>(foo: Foo<S>, y: S): Foo<S> {
-  return new Foo(y);
-}
+function bar<S>(foo: Foo<S>, y: S): Foo<S> { return new Foo(y); }
 
-var P = {
-  bar: bar,
-};
+var P = { bar: bar };
 
-declare var Q: {
-  bar<S>(foo: Foo<S>, y: S): Foo<S>,
-};
+declare var Q: { bar<S>(foo: Foo<S>, y: S): Foo<S> };
 
 var foo = new Foo(0);
 var x: string = foo.x;
@@ -209,32 +199,16 @@ class D extends C {
 
 =====================================output=====================================
 class C {
-  foo<X>(x: X): X {
-    return x;
-  }
-  foo_<X: number>(x: X): number {
-    return x;
-  }
-  bar<X>(x: X): X {
-    return x;
-  }
-  qux(x: number): number {
-    return x;
-  }
+  foo<X>(x: X): X { return x; }
+  foo_<X: number>(x: X): number { return x; }
+  bar<X>(x: X): X { return x; }
+  qux(x: number): number { return x; }
 }
 class D extends C {
-  foo(x: number): number {
-    return x;
-  } // error (specialization, see below)
-  foo_(x: number): number {
-    return x;
-  } // OK, but only because the overridden foo accepts no more than number and returns exactly number
-  bar<X>(x: X): X {
-    return x;
-  } // OK
-  qux<X>(x: X): X {
-    return x;
-  } // OK (generalization)
+  foo(x: number): number { return x; } // error (specialization, see below)
+  foo_(x: number): number { return x; } // OK, but only because the overridden foo accepts no more than number and returns exactly number
+  bar<X>(x: X): X { return x; } // OK
+  qux<X>(x: X): X { return x; } // OK (generalization)
 }
 
 ================================================================================

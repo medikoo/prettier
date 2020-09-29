@@ -18,7 +18,7 @@ this.firebase.object(\`/shops/\${shopLocation.shop}\`)
 
 =====================================output=====================================
 this.firebase
-  .object(\`/shops/\${shopLocation.shop}\`)
+  .object(\`/shops/\${ shopLocation.shop }\`)
   // keep distance info
   .first(
     (

@@ -199,9 +199,7 @@ class RefinementClashes {
 //@flow
 class A {
   #p: number;
-  constructor() {
-    this.#p = 3;
-  }
+  constructor() { this.#p = 3; }
 }
 
 class C {
@@ -219,9 +217,7 @@ class C {
 class D {
   #p: number; // Note that C also has a #p with number, and #p is in
   // lexical scope
-  constructor() {
-    this.#p = 3;
-  }
+  constructor() { this.#p = 3; }
   test(other: C) {
     other.#p; // Error: other does not have access to private variables in here.
   }
@@ -314,36 +310,24 @@ class Annotations {
   static #sr;
   static #ss: string = 0; // Error, number ~> string
   static #st: string = "yay!";
-  test1(): number {
-    return this.#p;
-  }
+  test1(): number { return this.#p; }
   test2(): number {
     return this.#t; // Error, string ~> number
   }
-  test3(): number {
-    return Annotations.#sp;
-  }
+  test3(): number { return Annotations.#sp; }
   test4(): number {
     return Annotations.#st; // Error, string ~> number
   }
-  test5(): number {
-    return this.#r;
-  }
+  test5(): number { return this.#r; }
   test6(): string {
     return this.#r; // Error, number ~> string
   }
-  test5And6Helper() {
-    this.#r = 3;
-  }
-  test7(): number {
-    return Annotations.#sr;
-  }
+  test5And6Helper() { this.#r = 3; }
+  test7(): number { return Annotations.#sr; }
   test8(): string {
     return Annotations.#sr; // Error, number ~> string
   }
-  test7And9Helper() {
-    Annotations.#sr = 3;
-  }
+  test7And9Helper() { Annotations.#sr = 3; }
 }
 
 class RefinementClashes {

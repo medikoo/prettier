@@ -40,12 +40,8 @@ class PropVariance<+Out,-In> {
 
 =====================================output=====================================
 class Variance<+Out, -In> {
-  foo(x: Out): Out {
-    return x;
-  }
-  bar(y: In): In {
-    return y;
-  }
+  foo(x: Out): Out { return x; }
+  bar(y: In): In { return y; }
 }
 
 class A {}

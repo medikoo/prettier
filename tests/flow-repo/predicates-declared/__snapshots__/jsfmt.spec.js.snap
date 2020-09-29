@@ -57,9 +57,7 @@ if (m.bind(this)(x)) { }
 //    (including \`havoc\`) should be retained.
 
 class C {
-  m() {
-    return true;
-  }
+  m() { return true; }
   a: 1;
 
   n() {
@@ -236,9 +234,7 @@ if ((x = r(s) || 1)) {
 
 declare var dollars: mixed;
 
-function foo(x: mixed) {
-  return 1;
-}
+function foo(x: mixed) { return 1; }
 foo(dollars) || 0;
 
 Number(dollars) || 0;
@@ -283,14 +279,9 @@ function f(_this: { m: ?Meeting }): string {
 // Sanity check:
 // - preserving \`havoc\` semantics
 
-type Meeting = {
-  organizer: ?Invitee,
-  es: Array<Invitee>,
-};
+type Meeting = { organizer: ?Invitee, es: Array<Invitee> };
 
-type Invitee = {
-  fbid: number,
-};
+type Invitee = { fbid: number };
 
 function f(_this: { m: ?Meeting }): string {
   if (!_this.m) {

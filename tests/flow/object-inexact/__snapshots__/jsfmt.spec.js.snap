@@ -437,15 +437,9 @@ type X = {
 
 =====================================output=====================================
 //@flow
-type T = {
-  a: number,
-  ...
-};
+type T = { a: number, ... };
 
-type I = {
-  [string]: number,
-  ...
-};
+type I = { [string]: number, ... };
 
 type U = {
   a: number,
@@ -485,9 +479,7 @@ function test(x: {
   b: number,
   c: { a: number, ... },
   ...
-}) {
-  return x;
-}
+}) { return x; }
 function test(x: {
   foo: number,
   bar: number,
@@ -508,9 +500,7 @@ function test(x: {
     ...
   },
   ...
-}) {
-  return x;
-}
+}) { return x; }
 
 type W = { ... };
 type X = { ... };
@@ -550,15 +540,9 @@ type X = {
 
 =====================================output=====================================
 //@flow
-type T = {
-  a: number,
-  ...
-};
+type T = { a: number, ... };
 
-type I = {
-  [string]: number,
-  ...
-};
+type I = { [string]: number, ... };
 
 type U = {
   a: number,
@@ -598,9 +582,7 @@ function test(x: {
   b: number,
   c: { a: number, ... },
   ...
-}) {
-  return x;
-}
+}) { return x; }
 function test(x: {
   foo: number,
   bar: number,
@@ -621,9 +603,7 @@ function test(x: {
     ...
   },
   ...
-}) {
-  return x;
-}
+}) { return x; }
 
 type W = { ... };
 type X = { ... };
@@ -663,15 +643,9 @@ type X = {
 
 =====================================output=====================================
 //@flow
-type T = {
-  a: number,
-  ...
-};
+type T = { a: number, ... };
 
-type I = {
-  [string]: number,
-  ...
-};
+type I = { [string]: number, ... };
 
 type U = {
   a: number,
@@ -711,9 +685,7 @@ function test(x: {
   b: number,
   c: { a: number, ... },
   ...
-}) {
-  return x;
-}
+}) { return x; }
 function test(x: {
   foo: number,
   bar: number,
@@ -734,9 +706,7 @@ function test(x: {
     ...
   },
   ...
-}) {
-  return x;
-}
+}) { return x; }
 
 type W = { ... };
 type X = { ... };

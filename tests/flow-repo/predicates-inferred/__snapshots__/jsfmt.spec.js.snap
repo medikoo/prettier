@@ -91,9 +91,7 @@ function foo(x: string | Array<string>): string {
 // @flow
 
 // Feature: multi params
-function multi_param(w, x, y, z): %checks {
-  return typeof z === "string";
-}
+function multi_param(w, x, y, z): %checks { return typeof z === "string"; }
 
 function foo(x: string | Array<string>): string {
   if (multi_param("1", "2", x, "3")) {
@@ -185,9 +183,7 @@ declare var y: mixed;
 
 // Sanity check: this should fail, because the preficate function
 // checks \`y\` instead of \`x\`.
-function err(x): %checks {
-  return typeof y === "string";
-}
+function err(x): %checks { return typeof y === "string"; }
 
 function foo(x: string | Array<string>): string {
   if (err(x)) {
@@ -283,17 +279,11 @@ declare function from_two_strings(x: string, y: string): void;
 =====================================output=====================================
 // @flow
 
-function is_string(y): %checks {
-  return typeof y === "string";
-}
+function is_string(y): %checks { return typeof y === "string"; }
 
-function is_bool(y): %checks {
-  return typeof y === "boolean";
-}
+function is_bool(y): %checks { return typeof y === "boolean"; }
 
-function is_number(y): %checks {
-  return typeof y === "number";
-}
+function is_number(y): %checks { return typeof y === "number"; }
 
 // Feature check:
 function foo(x: string | Array<string>): string {
@@ -318,9 +308,7 @@ function bar(z: { f: string | Array<string> }): string {
   }
 }
 
-function is_number_or_bool(y): %checks {
-  return is_number(y) || is_bool(y);
-}
+function is_number_or_bool(y): %checks { return is_number(y) || is_bool(y); }
 
 function baz(z: string | number): number {
   if (is_number_or_bool(z)) {
@@ -331,9 +319,7 @@ function baz(z: string | number): number {
 }
 
 // Feature: multi params
-function multi_param(w, x, y, z): %checks {
-  return typeof z === "string";
-}
+function multi_param(w, x, y, z): %checks { return typeof z === "string"; }
 
 function foo(x: string | Array<string>): string {
   if (multi_param("1", "2", "3", x)) {
@@ -349,9 +335,7 @@ function foo(a, b) {
   }
 }
 
-function two_strings(x, y): %checks {
-  return is_string(x) && is_string(y);
-}
+function two_strings(x, y): %checks { return is_string(x) && is_string(y); }
 
 declare function from_two_strings(x: string, y: string): void;
 
@@ -405,9 +389,7 @@ function foo(x: string | Array<string>): string {
   }
 }
 
-function is_string(x): %checks {
-  return typeof x === "string";
-}
+function is_string(x): %checks { return typeof x === "string"; }
 
 ================================================================================
 `;

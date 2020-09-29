@@ -178,9 +178,7 @@ class X {
 function f5(
   a: number
   // some comment here
-): number {
-  return a + 1
-}
+): number { return a + 1 }
 
 var x = {
   getSectionMode(
@@ -294,9 +292,7 @@ class X {
 function f5(
   a: number
   // some comment here
-): number {
-  return a + 1;
-}
+): number { return a + 1; }
 
 var x = {
   getSectionMode(

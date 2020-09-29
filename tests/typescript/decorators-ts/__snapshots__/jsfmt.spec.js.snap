@@ -35,14 +35,10 @@ class Point {
   }
 
   @configurable(false)
-  get x() {
-    return this._x;
-  }
+  get x() { return this._x; }
 
   @configurable(false)
-  get y() {
-    return this._y;
-  }
+  get y() { return this._y; }
 }
 
 ================================================================================
@@ -97,12 +93,8 @@ class Greeter {
 @sealed
 class Greeter {
   greeting: string;
-  constructor(message: string) {
-    this.greeting = message;
-  }
-  greet() {
-    return "Hello, " + this.greeting;
-  }
+  constructor(message: string) { this.greeting = message; }
+  greet() { return "Hello, " + this.greeting; }
 }
 
 ================================================================================
@@ -129,14 +121,10 @@ class Greeter {
 =====================================output=====================================
 class Greeter {
   greeting: string;
-  constructor(message: string) {
-    this.greeting = message;
-  }
+  constructor(message: string) { this.greeting = message; }
 
   @enumerable(false)
-  greet() {
-    return "Hello, " + this.greeting;
-  }
+  greet() { return "Hello, " + this.greeting; }
 }
 
 ================================================================================
@@ -159,12 +147,8 @@ class X {
 
 =====================================output=====================================
 class X {
-  @deco x() {
-    return this.count * 2;
-  }
-  @deco get x() {
-    return this.count * 2;
-  }
+  @deco x() { return this.count * 2; }
+  @deco get x() { return this.count * 2; }
 }
 
 ================================================================================
@@ -220,9 +204,7 @@ class Greeter {
 class Greeter {
   greeting: string;
 
-  constructor(message: string) {
-    this.greeting = message;
-  }
+  constructor(message: string) { this.greeting = message; }
 
   @validate
   greet(@required name: string) {
@@ -260,9 +242,7 @@ class Greeter {
 class Greeter {
   @format("Hello, %s") greeting: string;
 
-  constructor(message: string) {
-    this.greeting = message;
-  }
+  constructor(message: string) { this.greeting = message; }
   greet() {
     let formatString = getFormat(this, "greeting");
     return formatString.replace("%s", this.greeting);

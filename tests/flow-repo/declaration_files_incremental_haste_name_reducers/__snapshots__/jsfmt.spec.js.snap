@@ -15,9 +15,7 @@ export function foo(): AImplementation { return new AImplementation(); }
 /* @flow */
 
 class AImplementation {}
-export function foo(): AImplementation {
-  return new AImplementation();
-}
+export function foo(): AImplementation { return new AImplementation(); }
 
 ================================================================================
 `;

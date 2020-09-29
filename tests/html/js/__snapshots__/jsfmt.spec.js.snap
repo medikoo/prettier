@@ -66,9 +66,7 @@ printWidth: 80
 <script type="module">
   import lib from "./lib.js";
 
-  function myFunction() {
-    return "foo";
-  }
+  function myFunction() { return "foo"; }
 </script>
 
 ================================================================================
@@ -298,15 +296,10 @@ printWidth: 80
       public firstName: string,
       public middleInitial: string,
       public lastName: string
-    ) {
-      this.fullName = firstName + " " + middleInitial + " " + lastName;
-    }
+    ) { this.fullName = firstName + " " + middleInitial + " " + lastName; }
   }
 
-  interface Person {
-    firstName: string;
-    lastName: string;
-  }
+  interface Person { firstName: string; lastName: string }
 
   function greeter(person: Person) {
     return "Hello, " + person.firstName + " " + person.lastName;
@@ -323,15 +316,10 @@ printWidth: 80
       public firstName: string,
       public middleInitial: string,
       public lastName: string
-    ) {
-      this.fullName = firstName + " " + middleInitial + " " + lastName;
-    }
+    ) { this.fullName = firstName + " " + middleInitial + " " + lastName; }
   }
 
-  interface Person {
-    firstName: string;
-    lastName: string;
-  }
+  interface Person { firstName: string; lastName: string }
 
   function greeter(person: Person) {
     return "Hello, " + person.firstName + " " + person.lastName;

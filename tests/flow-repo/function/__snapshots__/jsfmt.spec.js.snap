@@ -74,9 +74,7 @@ test.apply("", ["", ""]); // error: string ~> number (2nd arg)
 test.apply("", [0, 0]); // error: number ~> string (1st arg)
 
 // resolve args array from tvar
-function f(args) {
-  test.apply("", args);
-}
+function f(args) { test.apply("", args); }
 f(["", 0]); // OK
 f(["", ""]); // error: string ~> number (2nd arg)
 f([0, 0]); // error: number ~> string (1st arg)
@@ -97,9 +95,7 @@ test.apply("", "not array"); // error: expect array of args
 (test.bind.apply(test, [0, 123]): (b: number) => number);
 
 // args are optional
-function test2(): number {
-  return 0;
-}
+function test2(): number { return 0; }
 (test2.apply(): number);
 (test2.apply(""): number);
 
@@ -248,9 +244,7 @@ test.call("", "", ""); // error: string ~> number (2nd arg)
 test.call("", 0, 0); // error: number ~> string (1st arg)
 
 // resolve args array from tvar
-function f(args) {
-  test.call("", args[0], args[1]);
-}
+function f(args) { test.call("", args[0], args[1]); }
 f(["", 0]); // OK
 f(["", ""]); // error: string ~> number (2nd arg)
 f([0, 0]); // error: number ~> string (1st arg)
@@ -262,9 +256,7 @@ f([0, 0]); // error: number ~> string (1st arg)
 (test.apply.call(test, 0, [0, "foo"]): number);
 
 // args are optional
-function test2(): number {
-  return 0;
-}
+function test2(): number { return 0; }
 (test2.call(): number);
 (test2.call(""): number);
 
@@ -360,9 +352,7 @@ var e = (d.bind(1): Function)();
 // can only be called with 3 arguments.
 var a: Function = (a, b, c) => 123;
 
-var b: Function = function (a: number, b: number): number {
-  return a + b;
-};
+var b: Function = function (a: number, b: number): number { return a + b; };
 
 class C {}
 
@@ -553,9 +543,7 @@ function rest_intersection(...xs: { x: number } & [1, 2]): number {
   return xs[0] + xs.x;
 }
 
-function empty_rest<T: Array<mixed>>(...xs: T): T {
-  return xs;
-}
+function empty_rest<T: Array<mixed>>(...xs: T): T { return xs; }
 (empty_rest(): empty); // Error Array ~> empty
 
 function return_rest_param<Args: Array<mixed>>(

@@ -107,11 +107,7 @@ const g = (x) => x |> (y) => (y + 1 |> (z) => z * y);
 
 const _g = (x) => x |> ((y) => (y + 1 |> (z) => z * y));
 
-const __g = (x) =>
-  x
-  |> ((y) => {
-    return y + 1 |> (z) => z * y;
-  });
+const __g = (x) => x |> ((y) => { return y + 1 |> (z) => z * y; });
 
 const f = x + ((f) => f |> f);
 const f = x |> (f) => f |> f;
@@ -282,7 +278,7 @@ a |> await # |> # * 3;
 
 foo
   |> await #
-  |> # || throw new Error(\`foo \${bar1}\`)
+  |> # || throw new Error(\`foo \${ bar1 }\`)
   |> bar2(#, ", ")
   |> bar3
   |> # + "!"

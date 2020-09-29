@@ -13,9 +13,7 @@ export function foo(): Implementation { return new Implementation; }
 =====================================output=====================================
 /* @providesModule A */
 class Implementation {}
-export function foo(): Implementation {
-  return new Implementation();
-}
+export function foo(): Implementation { return new Implementation(); }
 
 ================================================================================
 `;

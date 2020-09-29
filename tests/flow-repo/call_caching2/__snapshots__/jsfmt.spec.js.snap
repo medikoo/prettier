@@ -15,9 +15,7 @@ function Foo(items: ?Iterable<number>) {
 =====================================output=====================================
 // @flow
 
-function Foo(items: ?Iterable<number>) {
-  Iterable(items || []).size;
-}
+function Foo(items: ?Iterable<number>) { Iterable(items || []).size; }
 
 ================================================================================
 `;

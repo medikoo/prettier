@@ -356,9 +356,7 @@ singleQuote: false
 <Component
   propFn={
     // comment
-    function (arg) {
-      fn(arg);
-    }
+    function (arg) { fn(arg); }
   }
   propArrowFn={
     // comment
@@ -366,10 +364,7 @@ singleQuote: false
   }
   propArrowWithBreak={
     // comment
-    (arg) =>
-      fn({
-        makeItBreak,
-      })
+    (arg) => fn({ makeItBreak })
   }
   propArray={
     // comment
@@ -432,9 +427,7 @@ singleQuote: false
 <Component
   propFn={
     // comment
-    function (arg) {
-      fn(arg);
-    }
+    function (arg) { fn(arg); }
   }
   propArrowFn={
     // comment
@@ -442,10 +435,7 @@ singleQuote: false
   }
   propArrowWithBreak={
     // comment
-    (arg) =>
-      fn({
-        makeItBreak,
-      })
+    (arg) => fn({ makeItBreak })
   }
   propArray={
     // comment
@@ -508,9 +498,7 @@ singleQuote: true
 <Component
   propFn={
     // comment
-    function (arg) {
-      fn(arg);
-    }
+    function (arg) { fn(arg); }
   }
   propArrowFn={
     // comment
@@ -518,10 +506,7 @@ singleQuote: true
   }
   propArrowWithBreak={
     // comment
-    (arg) =>
-      fn({
-        makeItBreak,
-      })
+    (arg) => fn({ makeItBreak })
   }
   propArray={
     // comment
@@ -584,9 +569,7 @@ singleQuote: true
 <Component
   propFn={
     // comment
-    function (arg) {
-      fn(arg);
-    }
+    function (arg) { fn(arg); }
   }
   propArrowFn={
     // comment
@@ -594,10 +577,7 @@ singleQuote: true
   }
   propArrowWithBreak={
     // comment
-    (arg) =>
-      fn({
-        makeItBreak,
-      })
+    (arg) => fn({ makeItBreak })
   }
   propArray={
     // comment
@@ -2046,9 +2026,7 @@ singleQuote: false
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value),
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -2081,9 +2059,7 @@ singleQuote: false
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value),
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 
@@ -2334,9 +2310,7 @@ singleQuote: false
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value),
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -2369,9 +2343,7 @@ singleQuote: false
     key: "possible_key_1" | "possible_key_2" | "possible_key_3",
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value),
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 
@@ -2622,9 +2594,7 @@ singleQuote: true
     key: 'possible_key_1' | 'possible_key_2' | 'possible_key_3',
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value),
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -2657,9 +2627,7 @@ singleQuote: true
     key: 'possible_key_1' | 'possible_key_2' | 'possible_key_3',
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value),
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 
@@ -2910,9 +2878,7 @@ singleQuote: true
     key: 'possible_key_1' | 'possible_key_2' | 'possible_key_3',
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value),
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 />;
 
@@ -2945,9 +2911,7 @@ singleQuote: true
     key: 'possible_key_1' | 'possible_key_2' | 'possible_key_3',
     value: string | Immutable.List<string>
   ) => {
-    this.setState({
-      updatedTask: this.state.updatedTask.set(key, value),
-    });
+    this.setState({ updatedTask: this.state.updatedTask.set(key, value) });
   }}
 </Component>;
 
@@ -3189,7 +3153,7 @@ singleQuote: false
     <div>
       {routes.map((route) => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -3204,7 +3168,7 @@ singleQuote: false
     <div>
       {routes.map((route) => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -3271,7 +3235,7 @@ singleQuote: false
     <div>
       {routes.map((route) => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -3286,7 +3250,7 @@ singleQuote: false
     <div>
       {routes.map((route) => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === "/"}
           getComponent={routeES6Modules[route.value]}
@@ -3353,7 +3317,7 @@ singleQuote: true
     <div>
       {routes.map((route) => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === '/'}
           getComponent={routeES6Modules[route.value]}
@@ -3368,7 +3332,7 @@ singleQuote: true
     <div>
       {routes.map((route) => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === '/'}
           getComponent={routeES6Modules[route.value]}
@@ -3435,7 +3399,7 @@ singleQuote: true
     <div>
       {routes.map((route) => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === '/'}
           getComponent={routeES6Modules[route.value]}
@@ -3450,7 +3414,7 @@ singleQuote: true
     <div>
       {routes.map((route) => (
         <MatchAsync
-          key={\`\${route.to}-async\`}
+          key={\`\${ route.to }-async\`}
           pattern={route.to}
           exactly={route.to === '/'}
           getComponent={routeES6Modules[route.value]}
@@ -3961,20 +3925,12 @@ onClick={() => {
 <Foo>{\`    a    very    long    text    that    does    not    break    \`}</Foo>;
 
 =====================================output=====================================
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   {showSort}
 </td>;
 
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   <showSort attr="long long long long long long long long long long long" />
 </td>;
@@ -4005,20 +3961,12 @@ onClick={() => {
 <Foo>{\`    a    very    long    text    that    does    not    break    \`}</Foo>;
 
 =====================================output=====================================
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   {showSort}
 </td>;
 
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   <showSort attr='long long long long long long long long long long long' />
 </td>;
@@ -4049,20 +3997,12 @@ onClick={() => {
 <Foo>{\`    a    very    long    text    that    does    not    break    \`}</Foo>;
 
 =====================================output=====================================
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   {showSort}
 </td>;
 
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   <showSort attr="long long long long long long long long long long long" />
 </td>;
@@ -4093,20 +4033,12 @@ onClick={() => {
 <Foo>{\`    a    very    long    text    that    does    not    break    \`}</Foo>;
 
 =====================================output=====================================
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   {showSort}
 </td>;
 
-<td
-  onClick={() => {
-    a;
-  }}
->
+<td onClick={() => { a; }}>
   {header}
   <showSort attr='long long long long long long long long long long long' />
 </td>;
@@ -4377,24 +4309,24 @@ singleQuote: false
 
 =====================================output=====================================
 <div id="&quot;'<>&amp;quot;" />;
-<div id='"&#39;<>&amp;quot;' />;
+<div id="&quot;&#39;<>&amp;quot;" />;
 <div id={"'\\"&quot;<>&amp;quot;"} />;
 <div id="123" />;
-<div id='&#39;"' />;
+<div id="&#39;&quot;" />;
 <div id={"'\\"\\\\'"} />;
 <div
   single="foo"
   single2={"foo"}
   double="bar"
   double2={"bar"}
-  singleDouble='"'
-  singleDouble2={'"'}
+  singleDouble="&quot;"
+  singleDouble2={"\\""}
   doubleSingle="'"
   doubleSingle2={"'"}
   singleEscaped={"'"}
   singleEscaped2="'"
-  doubleEscaped={'"'}
-  doubleEscaped2='"'
+  doubleEscaped={"\\""}
+  doubleEscaped2="&quot;"
   singleBothEscaped={"'\\""}
   singleBothEscaped2="'&quot;"
   singleBoth="' &quot;"
@@ -4478,21 +4410,21 @@ singleQuote: false
   double='bar'
   double2={"bar"}
   singleDouble='"'
-  singleDouble2={'"'}
-  doubleSingle="'"
+  singleDouble2={"\\""}
+  doubleSingle='&apos;'
   doubleSingle2={"'"}
   singleEscaped={"'"}
-  singleEscaped2="'"
-  doubleEscaped={'"'}
+  singleEscaped2='&apos;'
+  doubleEscaped={"\\""}
   doubleEscaped2='"'
   singleBothEscaped={"'\\""}
   singleBothEscaped2='&apos;"'
   singleBoth='&apos; "'
   singleBoth2={"' \\""}
-  singleBoth3="' ' &quot;"
+  singleBoth3='&apos; &apos; "'
   doubleBoth='" &apos;'
   doubleBoth2={"\\" '"}
-  doubleBoth3="&quot; ' '"
+  doubleBoth3='" &apos; &apos;'
 />;
 
 <p>
@@ -4557,24 +4489,24 @@ singleQuote: true
 
 =====================================output=====================================
 <div id="&quot;'<>&amp;quot;" />;
-<div id='"&#39;<>&amp;quot;' />;
+<div id="&quot;&#39;<>&amp;quot;" />;
 <div id={'\\'"&quot;<>&amp;quot;'} />;
 <div id="123" />;
-<div id='&#39;"' />;
-<div id={"'\\"\\\\'"} />;
+<div id="&#39;&quot;" />;
+<div id={'\\'"\\\\\\''} />;
 <div
   single="foo"
   single2={'foo'}
   double="bar"
   double2={'bar'}
-  singleDouble='"'
+  singleDouble="&quot;"
   singleDouble2={'"'}
   doubleSingle="'"
-  doubleSingle2={"'"}
-  singleEscaped={"'"}
+  doubleSingle2={'\\''}
+  singleEscaped={'\\''}
   singleEscaped2="'"
   doubleEscaped={'"'}
-  doubleEscaped2='"'
+  doubleEscaped2="&quot;"
   singleBothEscaped={'\\'"'}
   singleBothEscaped2="'&quot;"
   singleBoth="' &quot;"
@@ -4651,7 +4583,7 @@ singleQuote: true
 <div id={'\\'"&quot;<>&amp;quot;'} />;
 <div id='123' />;
 <div id='&#39;"' />;
-<div id={"'\\"\\\\'"} />;
+<div id={'\\'"\\\\\\''} />;
 <div
   single='foo'
   single2={'foo'}
@@ -4659,20 +4591,20 @@ singleQuote: true
   double2={'bar'}
   singleDouble='"'
   singleDouble2={'"'}
-  doubleSingle="'"
-  doubleSingle2={"'"}
-  singleEscaped={"'"}
-  singleEscaped2="'"
+  doubleSingle='&apos;'
+  doubleSingle2={'\\''}
+  singleEscaped={'\\''}
+  singleEscaped2='&apos;'
   doubleEscaped={'"'}
   doubleEscaped2='"'
   singleBothEscaped={'\\'"'}
   singleBothEscaped2='&apos;"'
   singleBoth='&apos; "'
   singleBoth2={'\\' "'}
-  singleBoth3="' ' &quot;"
+  singleBoth3='&apos; &apos; "'
   doubleBoth='" &apos;'
   doubleBoth2={'" \\''}
-  doubleBoth3="&quot; ' '"
+  doubleBoth3='" &apos; &apos;'
 />;
 
 <p>
@@ -4755,9 +4687,7 @@ const BreakingArrowExpression = () => (
   </div>
 );
 
-const NonBreakingArrowExpressionWBody = () => {
-  return <div />;
-};
+const NonBreakingArrowExpressionWBody = () => { return <div />; };
 
 const BreakingArrowExpressionWBody = () => {
   return (
@@ -4767,9 +4697,7 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function () {
-  return <div />;
-};
+const NonBreakingFunction = function () { return <div />; };
 
 const BreakingFunction = function () {
   return (
@@ -4780,9 +4708,7 @@ const BreakingFunction = function () {
 };
 
 class NonBreakingClass extends React.component {
-  render() {
-    return <div />;
-  }
+  render() { return <div />; }
 }
 
 class BreakingClass extends React.component {
@@ -4869,9 +4795,7 @@ const BreakingArrowExpression = () => (
   </div>
 );
 
-const NonBreakingArrowExpressionWBody = () => {
-  return <div />;
-};
+const NonBreakingArrowExpressionWBody = () => { return <div />; };
 
 const BreakingArrowExpressionWBody = () => {
   return (
@@ -4881,9 +4805,7 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function () {
-  return <div />;
-};
+const NonBreakingFunction = function () { return <div />; };
 
 const BreakingFunction = function () {
   return (
@@ -4894,9 +4816,7 @@ const BreakingFunction = function () {
 };
 
 class NonBreakingClass extends React.component {
-  render() {
-    return <div />;
-  }
+  render() { return <div />; }
 }
 
 class BreakingClass extends React.component {
@@ -4983,9 +4903,7 @@ const BreakingArrowExpression = () => (
   </div>
 );
 
-const NonBreakingArrowExpressionWBody = () => {
-  return <div />;
-};
+const NonBreakingArrowExpressionWBody = () => { return <div />; };
 
 const BreakingArrowExpressionWBody = () => {
   return (
@@ -4995,9 +4913,7 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function () {
-  return <div />;
-};
+const NonBreakingFunction = function () { return <div />; };
 
 const BreakingFunction = function () {
   return (
@@ -5008,9 +4924,7 @@ const BreakingFunction = function () {
 };
 
 class NonBreakingClass extends React.component {
-  render() {
-    return <div />;
-  }
+  render() { return <div />; }
 }
 
 class BreakingClass extends React.component {
@@ -5097,9 +5011,7 @@ const BreakingArrowExpression = () => (
   </div>
 );
 
-const NonBreakingArrowExpressionWBody = () => {
-  return <div />;
-};
+const NonBreakingArrowExpressionWBody = () => { return <div />; };
 
 const BreakingArrowExpressionWBody = () => {
   return (
@@ -5109,9 +5021,7 @@ const BreakingArrowExpressionWBody = () => {
   );
 };
 
-const NonBreakingFunction = function () {
-  return <div />;
-};
+const NonBreakingFunction = function () { return <div />; };
 
 const BreakingFunction = function () {
   return (
@@ -5122,9 +5032,7 @@ const BreakingFunction = function () {
 };
 
 class NonBreakingClass extends React.component {
-  render() {
-    return <div />;
-  }
+  render() { return <div />; }
 }
 
 class BreakingClass extends React.component {
@@ -5394,7 +5302,9 @@ singleQuote: false
   <div>
     <div
       className="js-structured-feedback js-trigger-feedback-negative-reasons item-feedback-button"
-      data-feedback-tags-url={\`/xhr/negative-feedback-tags/\${this.props.item.id}\`}
+      data-feedback-tags-url={\`/xhr/negative-feedback-tags/\${
+        this.props.item.id
+      }\`}
     >
       foo
     </div>
@@ -5426,7 +5336,9 @@ singleQuote: false
   <div>
     <div
       className='js-structured-feedback js-trigger-feedback-negative-reasons item-feedback-button'
-      data-feedback-tags-url={\`/xhr/negative-feedback-tags/\${this.props.item.id}\`}
+      data-feedback-tags-url={\`/xhr/negative-feedback-tags/\${
+        this.props.item.id
+      }\`}
     >
       foo
     </div>
@@ -5458,7 +5370,9 @@ singleQuote: true
   <div>
     <div
       className="js-structured-feedback js-trigger-feedback-negative-reasons item-feedback-button"
-      data-feedback-tags-url={\`/xhr/negative-feedback-tags/\${this.props.item.id}\`}
+      data-feedback-tags-url={\`/xhr/negative-feedback-tags/\${
+        this.props.item.id
+      }\`}
     >
       foo
     </div>
@@ -5490,7 +5404,9 @@ singleQuote: true
   <div>
     <div
       className='js-structured-feedback js-trigger-feedback-negative-reasons item-feedback-button'
-      data-feedback-tags-url={\`/xhr/negative-feedback-tags/\${this.props.item.id}\`}
+      data-feedback-tags-url={\`/xhr/negative-feedback-tags/\${
+        this.props.item.id
+      }\`}
     >
       foo
     </div>

@@ -149,10 +149,7 @@ var foo = new Foo;
 (foo.bar('hmmm'): number); // error
 
 =====================================output=====================================
-declare class Foo {
-  bar(x: "hmm"): number;
-  bar(x: string): string;
-}
+declare class Foo { bar(x: "hmm"): number; bar(x: string): string }
 var foo = new Foo();
 (foo.bar("hmm"): number); // OK
 (foo.bar("hmmm"): number); // error
@@ -226,9 +223,7 @@ var x1:number = foo(0)[0];
 var x2:string = foo([""])[0];
 
 =====================================output=====================================
-function foo<U>(x: $Either<Array<U>, U>): Array<U> {
-  return [];
-}
+function foo<U>(x: $Either<Array<U>, U>): Array<U> { return []; }
 
 var x1: number = foo(0)[0];
 var x2: string = foo([""])[0];

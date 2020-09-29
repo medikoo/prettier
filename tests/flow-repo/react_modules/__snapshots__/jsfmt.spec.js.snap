@@ -39,9 +39,7 @@ var React = require("react");
 var Hello = require("./createclass-module");
 
 var HelloLocal = React.createClass({
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-  },
+  propTypes: { name: React.PropTypes.string.isRequired },
 
   render: function (): React.Element<*> {
     return <div>{this.props.name}</div>;
@@ -90,9 +88,7 @@ module.exports = Hello;
 var React = require("react");
 
 var Hello = React.createClass({
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-  },
+  propTypes: { name: React.PropTypes.string.isRequired },
 
   render: function (): React.Element<*> {
     return <div>{this.props.name}</div>;
@@ -144,12 +140,8 @@ import Hello from "./es6class-proptypes-module";
 
 class HelloLocal extends React.Component<void, { name: string }, void> {
   defaultProps = {};
-  propTypes = {
-    name: React.PropTypes.string.isRequired,
-  };
-  render(): React.Element<*> {
-    return <div>{this.props.name}</div>;
-  }
+  propTypes = { name: React.PropTypes.string.isRequired };
+  render(): React.Element<*> { return <div>{this.props.name}</div>; }
 }
 
 class Callsite extends React.Component<void, {}, void> {
@@ -196,13 +188,9 @@ import React from "react";
 
 class Hello extends React.Component<void, { name: string }, void> {
   defaultProps = {};
-  propTypes = {
-    name: React.PropTypes.string.isRequired,
-  };
+  propTypes = { name: React.PropTypes.string.isRequired };
 
-  render(): React.Element<*> {
-    return <div>{this.props.name}</div>;
-  }
+  render(): React.Element<*> { return <div>{this.props.name}</div>; }
 }
 
 module.exports = Hello;
@@ -253,9 +241,7 @@ type Props = { name: string };
 class HelloLocal extends React.Component<void, Props, void> {
   props: Props;
 
-  render(): React.Element<*> {
-    return <div>{this.props.name}</div>;
-  }
+  render(): React.Element<*> { return <div>{this.props.name}</div>; }
 }
 
 class Callsite extends React.Component<void, Props, void> {
@@ -306,9 +292,7 @@ class Hello extends React.Component<{}, Props, void> {
   props: Props;
   static defaultProps: {};
 
-  render(): React.Element<*> {
-    return <div>{this.props.name}</div>;
-  }
+  render(): React.Element<*> { return <div>{this.props.name}</div>; }
 }
 
 module.exports = Hello;

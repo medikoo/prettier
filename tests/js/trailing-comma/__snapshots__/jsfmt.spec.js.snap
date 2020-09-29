@@ -239,12 +239,7 @@ a(
   a("long-nested-value", "long-nested-value2", "long-nested-value3"),
 );
 
-a.b().c(
-  {
-    d,
-  },
-  () => {},
-);
+a.b().c({ d }, () => {});
 
 ================================================================================
 `;
@@ -292,12 +287,7 @@ a(
   a("long-nested-value", "long-nested-value2", "long-nested-value3")
 );
 
-a.b().c(
-  {
-    d
-  },
-  () => {}
-);
+a.b().c({ d }, () => {});
 
 ================================================================================
 `;
@@ -344,12 +334,7 @@ a(
   a("long-nested-value", "long-nested-value2", "long-nested-value3")
 );
 
-a.b().c(
-  {
-    d,
-  },
-  () => {}
-);
+a.b().c({ d }, () => {});
 
 ================================================================================
 `;
@@ -370,13 +355,7 @@ trailingComma: "all"
 />;
 
 =====================================output=====================================
-<div
-  onClick={() =>
-    doSomething({
-      foo: bar,
-    })
-  }
-/>;
+<div onClick={() => doSomething({ foo: bar })} />;
 
 ================================================================================
 `;
@@ -397,13 +376,7 @@ trailingComma: "none"
 />;
 
 =====================================output=====================================
-<div
-  onClick={() =>
-    doSomething({
-      foo: bar
-    })
-  }
-/>;
+<div onClick={() => doSomething({ foo: bar })} />;
 
 ================================================================================
 `;
@@ -423,13 +396,7 @@ printWidth: 80
 />;
 
 =====================================output=====================================
-<div
-  onClick={() =>
-    doSomething({
-      foo: bar,
-    })
-  }
-/>;
+<div onClick={() => doSomething({ foo: bar })} />;
 
 ================================================================================
 `;
@@ -464,13 +431,7 @@ const bLong = {
 };
 
 =====================================output=====================================
-const a = {
-  b: true,
-  c: {
-    c1: "hello",
-  },
-  d: false,
-};
+const a = { b: true, c: { c1: "hello" }, d: false };
 
 const aLong = {
   bHasALongName: "a-long-value",
@@ -519,13 +480,7 @@ const bLong = {
 };
 
 =====================================output=====================================
-const a = {
-  b: true,
-  c: {
-    c1: "hello"
-  },
-  d: false
-};
+const a = { b: true, c: { c1: "hello" }, d: false };
 
 const aLong = {
   bHasALongName: "a-long-value",
@@ -573,13 +528,7 @@ const bLong = {
 };
 
 =====================================output=====================================
-const a = {
-  b: true,
-  c: {
-    c1: "hello",
-  },
-  d: false,
-};
+const a = { b: true, c: { c1: "hello" }, d: false };
 
 const aLong = {
   bHasALongName: "a-long-value",
@@ -676,23 +625,15 @@ function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB,
   // Comment
-) {
-  a;
-}
+) { a; }
 function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB,
   // Comment
-) {
-  a;
-}
+) { a; }
 
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
+this.getAttribute(function (s) /*string*/ { console.log(); });
+this.getAttribute(function (s) /*string*/ { console.log(); });
 
 ================================================================================
 `;
@@ -775,23 +716,15 @@ function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB
   // Comment
-) {
-  a;
-}
+) { a; }
 function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB
   // Comment
-) {
-  a;
-}
+) { a; }
 
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
+this.getAttribute(function (s) /*string*/ { console.log(); });
+this.getAttribute(function (s) /*string*/ { console.log(); });
 
 ================================================================================
 `;
@@ -873,23 +806,15 @@ function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB
   // Comment
-) {
-  a;
-}
+) { a; }
 function supersupersupersuperLongF(
   supersupersupersuperLongA,
   supersupersupersuperLongB
   // Comment
-) {
-  a;
-}
+) { a; }
 
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
-this.getAttribute(function (s) /*string*/ {
-  console.log();
-});
+this.getAttribute(function (s) /*string*/ { console.log(); });
+this.getAttribute(function (s) /*string*/ { console.log(); });
 
 ================================================================================
 `;

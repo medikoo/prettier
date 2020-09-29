@@ -17,13 +17,9 @@ const b = {
 
 =====================================output=====================================
 // #6235
-const a = {
-  "\\u2139": 'why "\\\\u2139" is converted to "i"?',
-};
+const a = { "\\u2139": "why \\"\\\\u2139\\" is converted to \\"i\\"?" };
 
-const b = {
-  "\\x66\\x69\\x73\\x6b\\x65\\x72": "\\x66\\x69\\x73\\x6b\\x65\\x72",
-};
+const b = { "\\x66\\x69\\x73\\x6b\\x65\\x72": "\\x66\\x69\\x73\\x6b\\x65\\x72" };
 
 ================================================================================
 `;
@@ -94,9 +90,7 @@ a = () => ({}.x);
 ({} = 0);
 ({} = 0), 1;
 
-const a1 = {
-  someKey: (shortName, shortName),
-};
+const a1 = { someKey: (shortName, shortName) };
 
 const a2 = {
   someKey:
@@ -155,9 +149,7 @@ group(
       options.tabWidth,
       concat([line, join(concat([",", line]), printed)])
     ),
-    options.trailingComma ? "," : "",
-    line,
-    ")",
+    options.trailingComma ? "," : "", line, ")",
   ]),
   { shouldBreak: true }
 );

@@ -33,25 +33,25 @@ catch(
 ) {}
 
 =====================================output=====================================
-try {
-} catch (
+try {}
+catch (
   // comment
   foo
 ) {}
 
-try {
-} catch (
+try {}
+catch (
   foo //comment
 ) {}
 
-try {
-} catch (/* comment */ foo) {}
+try {}
+catch (/* comment */ foo) {}
 
-try {
-} catch (foo /* comment */) {}
+try {}
+catch (foo /* comment */) {}
 
-try {
-} catch (
+try {}
+catch (
   foo
   /* comment */
 ) {}
@@ -76,13 +76,12 @@ try {
 }
 
 =====================================output=====================================
-try {
-} catch (e) {
-} finally {
-}
+try {}
+catch (e) {}
+finally {}
 
-try {
-} catch (e) {}
+try {}
+catch (e) {}
 
 ================================================================================
 `;

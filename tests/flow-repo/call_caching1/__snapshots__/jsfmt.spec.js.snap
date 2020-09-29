@@ -60,9 +60,7 @@ foo(
 =====================================output=====================================
 /* @flow */
 
-declare class Bar<K> {
-  update<K_>(updater: (value: this) => Bar<K_>): Bar<K_>;
-}
+declare class Bar<K> { update<K_>(updater: (value: this) => Bar<K_>): Bar<K_> }
 
 declare function foo<U>(
   initialValue: U,
@@ -103,16 +101,9 @@ outer.set(ImmBox(inner));
 =====================================output=====================================
 // @flow
 
-declare class ImmBox<T> {
-  static <U>(x: any): ImmBox<U>;
-  static (x: any): any;
-}
+declare class ImmBox<T> { static <U>(x: any): ImmBox<U>; static (x: any): any }
 
-declare class Box<T> {
-  constructor(x: T): void;
-  set(value: T): void;
-  get(): T;
-}
+declare class Box<T> { constructor(x: T): void; set(value: T): void; get(): T }
 
 const outer = new Box();
 const inner = outer.get();

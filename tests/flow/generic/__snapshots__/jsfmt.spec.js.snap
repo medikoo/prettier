@@ -142,12 +142,8 @@ interface A { 'C': string; }
 interface B { "D": boolean; }
 
 =====================================output=====================================
-interface A {
-  C: string;
-}
-interface B {
-  D: boolean;
-}
+interface A { C: string }
+interface B { D: boolean }
 
 ================================================================================
 `;
@@ -162,12 +158,8 @@ interface A { 'C': string; }
 interface B { "D": boolean; }
 
 =====================================output=====================================
-interface A {
-  C: string;
-}
-interface B {
-  D: boolean;
-}
+interface A { C: string }
+interface B { D: boolean }
 
 ================================================================================
 `;
@@ -193,10 +185,7 @@ function foo(): Promise<?boolean> {}
 function formatEntireFile(
   fileVersion: FileVersion,
   range: atom$Range,
-): Promise<?{
-  newCursor?: number,
-  formatted: string,
-}> {}
+): Promise<?{ newCursor?: number, formatted: string }> {}
 
 function foo(): Promise<?boolean> {}
 
@@ -223,10 +212,7 @@ function foo(): Promise<?boolean> {}
 function formatEntireFile(
   fileVersion: FileVersion,
   range: atom$Range
-): Promise<?{
-  newCursor?: number,
-  formatted: string,
-}> {}
+): Promise<?{ newCursor?: number, formatted: string }> {}
 
 function foo(): Promise<?boolean> {}
 

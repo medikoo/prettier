@@ -443,33 +443,23 @@ export interface ThirdVeryLongAndBoringInterfaceName extends A_AVeryLongAndBorin
 }
 
 =====================================output=====================================
-export interface I extends A, B, C {
-  c: string
-}
+export interface I extends A, B, C { c: string }
 
 export interface ThirdVeryLongAndBoringInterfaceName
-  extends ALongAndBoringInterfaceName {
-  c: string
-}
+  extends ALongAndBoringInterfaceName { c: string }
 
 export interface ThirdVeryLongAndBoringInterfaceName
   extends ALongAndBoringInterfaceName,
-    AnotherLongAndBoringInterfaceName {
-  c: string
-}
+    AnotherLongAndBoringInterfaceName { c: string }
 
 export interface ThirdVeryLongAndBoringInterfaceName
   extends AVeryLongAndBoringInterfaceName,
-    AnotherVeryLongAndBoringInterfaceName {
-  c: string
-}
+    AnotherVeryLongAndBoringInterfaceName { c: string }
 
 export interface ThirdVeryLongAndBoringInterfaceName
   extends A_AVeryLongAndBoringInterfaceName,
     B_AVeryLongAndBoringInterfaceName,
-    C_AVeryLongAndBoringInterfaceName {
-  c: string
-}
+    C_AVeryLongAndBoringInterfaceName { c: string }
 
 ================================================================================
 `;
@@ -501,33 +491,23 @@ export interface ThirdVeryLongAndBoringInterfaceName extends A_AVeryLongAndBorin
 }
 
 =====================================output=====================================
-export interface I extends A, B, C {
-  c: string;
-}
+export interface I extends A, B, C { c: string }
 
 export interface ThirdVeryLongAndBoringInterfaceName
-  extends ALongAndBoringInterfaceName {
-  c: string;
-}
+  extends ALongAndBoringInterfaceName { c: string }
 
 export interface ThirdVeryLongAndBoringInterfaceName
   extends ALongAndBoringInterfaceName,
-    AnotherLongAndBoringInterfaceName {
-  c: string;
-}
+    AnotherLongAndBoringInterfaceName { c: string }
 
 export interface ThirdVeryLongAndBoringInterfaceName
   extends AVeryLongAndBoringInterfaceName,
-    AnotherVeryLongAndBoringInterfaceName {
-  c: string;
-}
+    AnotherVeryLongAndBoringInterfaceName { c: string }
 
 export interface ThirdVeryLongAndBoringInterfaceName
   extends A_AVeryLongAndBoringInterfaceName,
     B_AVeryLongAndBoringInterfaceName,
-    C_AVeryLongAndBoringInterfaceName {
-  c: string;
-}
+    C_AVeryLongAndBoringInterfaceName { c: string }
 
 ================================================================================
 `;
@@ -563,17 +543,9 @@ declare module "selenium-webdriver" {
   }
 }
 
-export interface Edge {
-  cursor: {}
-  node: {
-    id: {}
-  }
-}
+export interface Edge { cursor: {}; node: { id: {} } }
 
-interface Test {
-  one: string
-  two: any[]
-}
+interface Test { one: string; two: any[] }
 
 ================================================================================
 `;
@@ -608,17 +580,9 @@ declare module "selenium-webdriver" {
   };
 }
 
-export interface Edge {
-  cursor: {};
-  node: {
-    id: {};
-  };
-}
+export interface Edge { cursor: {}; node: { id: {} } }
 
-interface Test {
-  one: string;
-  two: any[];
-}
+interface Test { one: string; two: any[] }
 
 ================================================================================
 `;

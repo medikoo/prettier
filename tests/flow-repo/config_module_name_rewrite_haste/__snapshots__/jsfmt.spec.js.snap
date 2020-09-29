@@ -59,9 +59,7 @@ module.exports = {
  * @flow
  */
 
-module.exports = {
-  numVal: 42,
-};
+module.exports = { numVal: 42 };
 
 ================================================================================
 `;

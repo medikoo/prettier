@@ -68,18 +68,11 @@ export default class Column<T> extends (RcTable.Column as React.ComponentClass<
 export const MobxTypedForm = class extends (Form as { new (): any }) {};
 export abstract class MobxTypedForm1 extends (Form as { new (): any }) {}
 ({} as {});
-function* g() {
-  const test = (yield "foo") as number;
-}
-async function g1() {
-  const test = (await "foo") as number;
-}
+function* g() { const test = (yield "foo") as number; }
+async function g1() { const test = (await "foo") as number; }
 ({} as X);
 () => ({} as X);
-const state = JSON.stringify({
-  next: window.location.href,
-  nonce,
-} as State);
+const state = JSON.stringify({ next: window.location.href, nonce } as State);
 
 (foo.bar as Baz) = [bar];
 (foo.bar as any)++;
@@ -98,8 +91,7 @@ const value4 = thisIsAReallyLongIdentifier as {
   prop3: number;
 }[];
 const value5 = thisIsAReallyReallyReallyReallyReallyReallyReallyReallyReallyLongIdentifier as [
-  string,
-  number
+  string, number
 ];
 
 const iter1 = createIterator(
@@ -181,9 +173,8 @@ this.previewPlayerHandle = (setInterval(async () => {
   }
 }, this.refreshDelay) as unknown) as number;
 
-this.intervalID = (setInterval(() => {
-  self.step();
-}, 30) as unknown) as number;
+this.intervalID = (setInterval(() => { self.step(); },
+30) as unknown) as number;
 
 ================================================================================
 `;
@@ -252,8 +243,8 @@ const annotate = (angular.injector as any).$$annotate as (
 ) => string[];
 
 const originalPrototype = originalConstructor.prototype as TComponent &
-    InjectionTarget,
-  propertyToServiceName = originalPrototype._inject;
+    InjectionTarget
+    , propertyToServiceName = originalPrototype._inject;
 
 ================================================================================
 `;
@@ -324,12 +315,7 @@ function foo() {
 }
 
 =====================================output=====================================
-function foo() {
-  return {
-    foo: 1,
-    bar: 2,
-  } as Foo;
-}
+function foo() { return { foo: 1, bar: 2 } as Foo; }
 
 ================================================================================
 `;

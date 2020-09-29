@@ -32,9 +32,7 @@ class foo {
 
 class A {
   "constructor": typeof A;
-  static Foo() {
-    return new A();
-  }
+  static "Foo"() { return new A(); }
 }
 
 ================================================================================
@@ -224,9 +222,7 @@ interface AudioBufferList {
 =====================================output=====================================
 class<T> implements Map<T> {}
 
-interface AudioBufferList {
-  mBuffers: interop.Reference<any /*AudioBuffer*/>;
-}
+interface AudioBufferList { mBuffers: interop.Reference<any /*AudioBuffer*/> }
 
 ================================================================================
 `;
@@ -254,9 +250,7 @@ class X {
   optionalMethod?() {}
 }
 
-interface Iterable<T> {
-  export [Symbol.iterator](): Iterator<T>;
-}
+interface Iterable<T> { export [Symbol.iterator](): Iterator<T> }
 
 export class Check {
   private static property = "test";
@@ -282,7 +276,7 @@ class A {
 
 =====================================output=====================================
 class X {
-  private foo? = undefined;
+  private "foo"? = undefined;
   "a-prop"?: boolean;
 }
 
@@ -353,13 +347,9 @@ class Square {
     }
   }
 
-  equals(other: any) {
-    return this.#sideLength === other.#sideLength;
-  }
+  equals(other: any) { return this.#sideLength === other.#sideLength; }
 
-  getArea() {
-    return this.#area + (this.#unit ?? "px") + "²";
-  }
+  getArea() { return this.#area + (this.#unit ?? "px") + "²"; }
 }
 
 ================================================================================

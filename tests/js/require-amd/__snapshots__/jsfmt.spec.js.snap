@@ -42,13 +42,8 @@ define(
 
 =====================================output=====================================
 require([
-  "jquery",
-  "common/global.context",
-  "common/log.event",
-  "some_project/square",
-  "some_project/rectangle",
-  "some_project/triangle",
-  "some_project/circle",
+  "jquery", "common/global.context", "common/log.event", "some_project/square",
+  "some_project/rectangle", "some_project/triangle", "some_project/circle",
   "some_project/star",
 ], function (
   $,
@@ -59,18 +54,11 @@ require([
   Triangle,
   Circle,
   Star
-) {
-  console.log("some code");
-});
+) { console.log("some code"); });
 
 define([
-  "jquery",
-  "common/global.context",
-  "common/log.event",
-  "some_project/square",
-  "some_project/rectangle",
-  "some_project/triangle",
-  "some_project/circle",
+  "jquery", "common/global.context", "common/log.event", "some_project/square",
+  "some_project/rectangle", "some_project/triangle", "some_project/circle",
   "some_project/star",
 ], function (
   $,
@@ -81,9 +69,7 @@ define([
   Triangle,
   Circle,
   Star
-) {
-  console.log("some code");
-});
+) { console.log("some code"); });
 
 ================================================================================
 `;

@@ -76,13 +76,7 @@ it('should group messages with same created time', () => {
 =====================================output=====================================
 export default (store) => {
   return callApi(endpoint, schema).then(
-    (response) =>
-      next(
-        actionWith({
-          response,
-          type: successType,
-        })
-      ),
+    (response) => next(actionWith({ response, type: successType })),
     (error) =>
       next(
         actionWith({
@@ -338,14 +332,10 @@ Something
   .getters();
 
 // Warm-up first
-measure().then(() => {
-  SomethingLong();
-});
+measure().then(() => { SomethingLong(); });
 
 measure() // Warm-up first
-  .then(() => {
-    SomethingLong();
-  });
+  .then(() => { SomethingLong(); });
 
 const configModel = this.baseConfigurationService
   .getCache()
@@ -412,9 +402,7 @@ nock(/test/)
 nock(/test/)
   .matchHeader("Accept", "application/json")
   [httpMethodNock(method)]("/foo")
-  .reply(200, {
-    foo: "bar",
-  });
+  .reply(200, { foo: "bar" });
 
 ================================================================================
 `;
@@ -640,11 +628,7 @@ export default function theFunction(action$, store) {
     Observable.webSocket({
       url: THE_URL,
       more: stuff(),
-      evenMore: stuff({
-        value1: true,
-        value2: false,
-        value3: false,
-      }),
+      evenMore: stuff({ value1: true, value2: false, value3: false }),
     })
       .filter((data) => theFilter(data))
       .map(({ theType, ...data }) => theMap(theType, data))
@@ -737,11 +721,7 @@ var jqxhr = $.ajax("example.php")
   .fail(failFn);
 
 =====================================output=====================================
-Object.keys(
-  availableLocales({
-    test: true,
-  })
-).forEach((locale) => {
+Object.keys(availableLocales({ test: true })).forEach((locale) => {
   // ...
 });
 
@@ -1065,21 +1045,16 @@ function HelloWorld() {
     authorizationToken: data.token,
   }).initVerify("foo_container");
 
-  fejax
-    .ajax({
-      url: "/verification/",
-      dataType: "json",
-    })
-    .then(
-      (data) => {
-        this.setState({ isLoading: false });
-        this.initWidget(data);
-      },
-      (data) => {
-        this.logImpression("foo_fetch_error", data);
-        Flash.error(I18n.t("offline_identity.foo_issue"));
-      }
-    );
+  fejax.ajax({ url: "/verification/", dataType: "json" }).then(
+    (data) => {
+      this.setState({ isLoading: false });
+      this.initWidget(data);
+    },
+    (data) => {
+      this.logImpression("foo_fetch_error", data);
+      Flash.error(I18n.t("offline_identity.foo_issue"));
+    }
+  );
 }
 
 action$
@@ -1091,9 +1066,9 @@ action$
       .takeUntil(action$.ofType(ActionTypes.CLEARED_SEARCH_RESULTS))
       .mergeMap(() =>
         Observable.merge(
-          Observable.of(replace(\`?q=\${q}\`)),
+          Observable.of(replace(\`?q=\${ q }\`)),
           ajax
-            .getJSON(\`https://api.github.com/search/users?q=\${q}\`)
+            .getJSON(\`https://api.github.com/search/users?q=\${ q }\`)
             .map((res) => res.items)
             .map(receiveUsers)
         )
@@ -1112,12 +1087,10 @@ it("gets triggered by mouseenter", () => {
 
 const a1 = x.a(true).b(null).c(123);
 const a2 = x.d("").e(\`\`).f(g);
-const a3 = x.d("").e(\`\${123}\`).f(g);
+const a3 = x.d("").e(\`\${ 123 }\`).f(g);
 const a4 = x.h(i.j).k(l()).m([n, o]);
 class X {
-  y() {
-    const j = x.a(this).b(super.cde()).f(/g/).h(new i()).j();
-  }
+  y() { const j = x.a(this).b(super.cde()).f(/g/).h(new i()).j(); }
 }
 
 // should break when call expressions get complex
@@ -1128,7 +1101,7 @@ x.a()
   .b(c(d(e())))
   .f();
 x.a()
-  .b(\`\${c(d())}\`)
+  .b(\`\${ c(d()) }\`)
   .f();
 
 xyz
@@ -1242,14 +1215,16 @@ if (testConfig.ENABLE_ONLINE_TESTS === "true") {
   describe("POST /users/me/pet", function () {
     it("saves pet", function () {
       function assert(pet) {
-        expect(pet).to.have.property("OwnerAddress").that.deep.equals({
-          AddressLine1: "Alexanderstrasse",
-          AddressLine2: "",
-          PostalCode: "10999",
-          Region: "Berlin",
-          City: "Berlin",
-          Country: "DE",
-        });
+        expect(pet)
+          .to.have.property("OwnerAddress")
+          .that.deep.equals({
+            AddressLine1: "Alexanderstrasse",
+            AddressLine2: "",
+            PostalCode: "10999",
+            Region: "Berlin",
+            City: "Berlin",
+            Country: "DE",
+          });
       }
     });
   });
@@ -1258,16 +1233,12 @@ if (testConfig.ENABLE_ONLINE_TESTS === "true") {
 wrapper
   .find("SomewhatLongNodeName")
   .prop("longPropFunctionName")()
-  .then(function () {
-    doSomething();
-  });
+  .then(function () { doSomething(); });
 
 wrapper
   .find("SomewhatLongNodeName")
   .prop("longPropFunctionName")("argument")
-  .then(function () {
-    doSomething();
-  });
+  .then(function () { doSomething(); });
 
 wrapper
   .find("SomewhatLongNodeName")
@@ -1275,9 +1246,7 @@ wrapper
     "longPropFunctionName",
     "second argument that pushes this group past 80 characters"
   )("argument")
-  .then(function () {
-    doSomething();
-  });
+  .then(function () { doSomething(); });
 
 wrapper
   .find("SomewhatLongNodeName")
@@ -1285,9 +1254,7 @@ wrapper
     "argument",
     "second argument that pushes this group past 80 characters"
   )
-  .then(function () {
-    doSomething();
-  });
+  .then(function () { doSomething(); });
 
 ================================================================================
 `;
@@ -1317,19 +1284,11 @@ of("test")
 =====================================output=====================================
 of("test")
   .pipe(throwIfEmpty())
-  .subscribe({
-    error(err) {
-      thrown = err;
-    },
-  });
+  .subscribe({ error(err) { thrown = err; } });
 
 of("test")
   .pipe(throwIfEmpty())
-  .subscribe({
-    get foo() {
-      bar();
-    },
-  });
+  .subscribe({ get foo() { bar(); } });
 
 ================================================================================
 `;

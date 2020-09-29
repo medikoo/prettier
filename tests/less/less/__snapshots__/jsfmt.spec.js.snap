@@ -3469,7 +3469,7 @@ printWidth: 80
 }
 
 .aa:hover::after {
-  content: '"';
+  content: "\\"";
 } // "
 
 .b {

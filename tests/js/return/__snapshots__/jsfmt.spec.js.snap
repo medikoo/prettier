@@ -51,7 +51,7 @@ function f() {
 
   return (
     !filePath.includes(coverageDirectory) &&
-    !filePath.endsWith(\`.\${SNAPSHOT_EXTENSION}\`)
+    !filePath.endsWith(\`.\${ SNAPSHOT_EXTENSION }\`)
   );
 }
 
@@ -107,9 +107,7 @@ fn(function f() {
 });
 
 =====================================output=====================================
-function f() {
-  return /* a */;
-}
+function f() { return /* a */; }
 
 function f() {
   return; // a

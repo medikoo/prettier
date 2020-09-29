@@ -142,9 +142,7 @@ const style2 = /**
  * @type {{
  *   width: number,
  * }}
- */ ({
-  width,
-});
+ */ ({ width });
 
 ================================================================================
 `;
@@ -279,9 +277,7 @@ const helpers = /** @type {Helpers} */ ((
 =====================================output=====================================
 const helpers1 = /** @type {Helpers} */ (((helpers = {}) => helpers)());
 
-const helpers2 = /** @type {Helpers} */ ((function () {
-  return something;
-})());
+const helpers2 = /** @type {Helpers} */ ((function () { return something; })());
 
 // TODO: @param is misplaced https://github.com/prettier/prettier/issues/5850
 const helpers = /** @type {Helpers} */ (/** @param {Partial<Helpers>} helpers */
@@ -372,9 +368,7 @@ foo = /** @type {!Foo} */ (/** @type {!Baz} */ (baz).bar);
 
 const BarImpl = /** @type {BarConstructor} */ (
   /** @type {unknown} */
-  (function Bar() {
-    throw new Error("Internal error: Illegal constructor");
-  })
+  (function Bar() { throw new Error("Internal error: Illegal constructor"); })
 );
 
 ================================================================================
@@ -419,9 +413,7 @@ z((x) => {
 });
 
 /** @type {number} */
-let q = z((x) => {
-  return 1;
-});
+let q = z((x) => { return 1; });
 
 const w1 = /** @typefoo Foo */ value;
 
@@ -449,16 +441,10 @@ const objectWithComment2 = /** @type MyType */ (  /* comment */  {
 =====================================output=====================================
 const objectWithComment = /** @type MyType */ (
   /* comment */
-  {
-    foo: bar,
-  }
+  { foo: bar }
 );
 
-const objectWithComment2 = /** @type MyType */ (
-  /* comment */ {
-    foo: bar,
-  }
-);
+const objectWithComment2 = /** @type MyType */ (/* comment */ { foo: bar });
 
 ================================================================================
 `;

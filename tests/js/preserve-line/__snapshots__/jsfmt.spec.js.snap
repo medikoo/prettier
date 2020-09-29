@@ -255,9 +255,7 @@ comments(
 );
 
 differentArgTypes(
-  () => {
-    return true;
-  },
+  () => { return true; },
 
   isTrue ? doSomething() : 12
 );
@@ -265,10 +263,7 @@ differentArgTypes(
 moreArgTypes(
   [1, 2, 3],
 
-  {
-    name: "Hello World",
-    age: 29,
-  },
+  { name: "Hello World", age: 29 },
 
   doSomething(
     // Hello world
@@ -306,18 +301,14 @@ foo.apply(
 bar.on(
   "readable",
 
-  () => {
-    doStuff();
-  }
+  () => { doStuff(); }
 );
 
 foo(
   ["A, B"],
 
   /* function here */
-  function doSomething() {
-    return true;
-  }
+  function doSomething() { return true; }
 );
 
 doSomething.apply(
@@ -331,19 +322,14 @@ doSomething.apply(
 doAnotherThing(
   "node",
 
-  {
-    solution_type,
-    time_frame,
-  }
+  { solution_type, time_frame }
 );
 
 stuff.doThing(
   someStuff,
 
   -1,
-  {
-    accept: (node) => doSomething(node),
-  }
+  { accept: (node) => doSomething(node) }
 );
 
 doThing(
@@ -351,15 +337,11 @@ doThing(
 
   // This is important
   true,
-  {
-    decline: (creditCard) => takeMoney(creditCard),
-  }
+  { decline: (creditCard) => takeMoney(creditCard) }
 );
 
 func(
-  () => {
-    thing();
-  },
+  () => { thing(); },
 
   { yes: true, no: 5 }
 );

@@ -392,13 +392,9 @@ Object.entries({
 }
 
 =====================================output=====================================
-const a = {
-  a: "a",
-};
+const a = { a: "a" };
 
-const b = {
-  b: "b",
-};
+const b = { b: "b" };
 
 const b2 = {
   // Escapes should stay as escapes and not be unquoted.
@@ -406,15 +402,9 @@ const b2 = {
   "\\u0031": "1",
 };
 
-const c = {
-  c1: "c1",
-  c2: "c2",
-};
+const c = { c1: "c1", c2: "c2" };
 
-const d = {
-  d1: "d1",
-  "d-2": "d2",
-};
+const d = { d1: "d1", "d-2": "d2" };
 
 // None of these should become quoted, regardless of the quoteProps value.
 const e = {
@@ -485,10 +475,7 @@ Object.entries({
 });
 
 // Negative numbers cannot be unquoted.
-!{
-  "-1": null,
-  "-1.5": null,
-};
+!{ "-1": null, "-1.5": null };
 
 ================================================================================
 `;
@@ -600,13 +587,9 @@ Object.entries({
 }
 
 =====================================output=====================================
-const a = {
-  a: 'a',
-};
+const a = { a: 'a' };
 
-const b = {
-  b: 'b',
-};
+const b = { b: 'b' };
 
 const b2 = {
   // Escapes should stay as escapes and not be unquoted.
@@ -614,15 +597,9 @@ const b2 = {
   '\\u0031': '1',
 };
 
-const c = {
-  c1: 'c1',
-  c2: 'c2',
-};
+const c = { c1: 'c1', c2: 'c2' };
 
-const d = {
-  'd1': 'd1',
-  'd-2': 'd2',
-};
+const d = { 'd1': 'd1', 'd-2': 'd2' };
 
 // None of these should become quoted, regardless of the quoteProps value.
 const e = {
@@ -693,10 +670,7 @@ Object.entries({
 });
 
 // Negative numbers cannot be unquoted.
-!{
-  '-1': null,
-  '-1.5': null,
-};
+!{ '-1': null, '-1.5': null };
 
 ================================================================================
 `;
@@ -807,13 +781,9 @@ Object.entries({
 }
 
 =====================================output=====================================
-const a = {
-  a: "a",
-};
+const a = { a: "a" };
 
-const b = {
-  b: "b",
-};
+const b = { b: "b" };
 
 const b2 = {
   // Escapes should stay as escapes and not be unquoted.
@@ -821,15 +791,9 @@ const b2 = {
   "\\u0031": "1",
 };
 
-const c = {
-  c1: "c1",
-  c2: "c2",
-};
+const c = { c1: "c1", c2: "c2" };
 
-const d = {
-  "d1": "d1",
-  "d-2": "d2",
-};
+const d = { "d1": "d1", "d-2": "d2" };
 
 // None of these should become quoted, regardless of the quoteProps value.
 const e = {
@@ -900,10 +864,7 @@ Object.entries({
 });
 
 // Negative numbers cannot be unquoted.
-!{
-  "-1": null,
-  "-1.5": null,
-};
+!{ "-1": null, "-1.5": null };
 
 ================================================================================
 `;
@@ -1014,13 +975,9 @@ Object.entries({
 }
 
 =====================================output=====================================
-const a = {
-  a: "a",
-};
+const a = { a: "a" };
 
-const b = {
-  "b": "b",
-};
+const b = { "b": "b" };
 
 const b2 = {
   // Escapes should stay as escapes and not be unquoted.
@@ -1028,15 +985,9 @@ const b2 = {
   "\\u0031": "1",
 };
 
-const c = {
-  c1: "c1",
-  "c2": "c2",
-};
+const c = { c1: "c1", "c2": "c2" };
 
-const d = {
-  d1: "d1",
-  "d-2": "d2",
-};
+const d = { d1: "d1", "d-2": "d2" };
 
 // None of these should become quoted, regardless of the quoteProps value.
 const e = {
@@ -1107,10 +1058,7 @@ Object.entries({
 });
 
 // Negative numbers cannot be unquoted.
-!{
-  "-1": null,
-  "-1.5": null,
-};
+!{ "-1": null, "-1.5": null };
 
 ================================================================================
 `;
@@ -1133,10 +1081,7 @@ class Foo {
 }
 
 =====================================output=====================================
-const obj = {
-  foo: "",
-  [foo.bar]: "",
-};
+const obj = { foo: "", [foo.bar]: "" };
 
 class Foo {
   foo() {}
@@ -1165,10 +1110,7 @@ class Foo {
 }
 
 =====================================output=====================================
-const obj = {
-  foo: '',
-  [foo.bar]: '',
-};
+const obj = { foo: '', [foo.bar]: '' };
 
 class Foo {
   foo() {}
@@ -1196,10 +1138,7 @@ class Foo {
 }
 
 =====================================output=====================================
-const obj = {
-  foo: "",
-  [foo.bar]: "",
-};
+const obj = { foo: "", [foo.bar]: "" };
 
 class Foo {
   foo() {}
@@ -1227,10 +1166,7 @@ class Foo {
 }
 
 =====================================output=====================================
-const obj = {
-  foo: "",
-  [foo.bar]: "",
-};
+const obj = { foo: "", [foo.bar]: "" };
 
 class Foo {
   foo() {}
@@ -1263,20 +1199,11 @@ obj = {
 };
 
 =====================================output=====================================
-obj = {
-  foo: "",
-  1: "",
-};
+obj = { foo: "", 1: "" };
 
-obj = {
-  bar: "",
-  1: "",
-};
+obj = { bar: "", 1: "" };
 
-obj = {
-  "foo-bar": "",
-  1: "",
-};
+obj = { "foo-bar": "", 1: "" };
 
 ================================================================================
 `;
@@ -1305,20 +1232,11 @@ obj = {
 };
 
 =====================================output=====================================
-obj = {
-  foo: '',
-  1: '',
-};
+obj = { foo: '', 1: '' };
 
-obj = {
-  bar: '',
-  1: '',
-};
+obj = { bar: '', 1: '' };
 
-obj = {
-  'foo-bar': '',
-  '1': '',
-};
+obj = { 'foo-bar': '', '1': '' };
 
 ================================================================================
 `;
@@ -1346,20 +1264,11 @@ obj = {
 };
 
 =====================================output=====================================
-obj = {
-  foo: "",
-  1: "",
-};
+obj = { foo: "", 1: "" };
 
-obj = {
-  bar: "",
-  1: "",
-};
+obj = { bar: "", 1: "" };
 
-obj = {
-  "foo-bar": "",
-  "1": "",
-};
+obj = { "foo-bar": "", "1": "" };
 
 ================================================================================
 `;
@@ -1387,20 +1296,11 @@ obj = {
 };
 
 =====================================output=====================================
-obj = {
-  foo: "",
-  1: "",
-};
+obj = { foo: "", 1: "" };
 
-obj = {
-  "bar": "",
-  1: "",
-};
+obj = { "bar": "", 1: "" };
 
-obj = {
-  "foo-bar": "",
-  1: "",
-};
+obj = { "foo-bar": "", 1: "" };
 
 ================================================================================
 `;

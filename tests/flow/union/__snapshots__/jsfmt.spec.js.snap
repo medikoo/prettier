@@ -6,348 +6,6 @@ parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
-// @flow
-
-export type Select = { expression: ArithmeticExpression, alias: ?string };
-
-export class Query {
-  _select: Array<Select> = [];
-
-  select(expr: ArithmeticExpression): this {
-    this._select.push({ expression: expr, alias: "" });
-    return this;
-  }
-}
-
-export class BinaryExpression<
-  T: ArithmeticExpression,
-  U: ArithmeticExpression
-> {}
-
-export type ArithmeticExpression = PlusOp | MinusOp | MulOp | DivOp | ModOp;
-
-export class PlusOp extends BinaryExpression<
-  ArithmeticExpression,
-  ArithmeticExpression
-> {}
-
-export class MinusOp extends BinaryExpression<
-  ArithmeticExpression,
-  ArithmeticExpression,
-  ArithmeticExpression,
-  ArithmeticExpression
-> {}
-
-export class MulOp extends BinaryExpression<
-  ArithmeticExpression,
-  ArithmeticExpression,
-  ArithmeticExpression,
-  ArithmeticExpression
-> {}
-
-export class DivOp extends BinaryExpression<
-  ArithmeticExpression,
-  ArithmeticExpression,
-  ArithmeticExpression,
-  ArithmeticExpression
-> {}
-
-export class ModOp extends BinaryExpression<
-  ArithmeticExpression,
-  ArithmeticExpression,
-  ArithmeticExpression,
-  ArithmeticExpression
-> {}
-
-================================================================================
-`;
-
-exports[`fields.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-class C {
-    x: ?number|string;
-    constructor() {
-        this.x = null;
-    }
-}
-
-=====================================output=====================================
-class C {
-  x: ?number | string;
-  constructor() { this.x = null; }
-}
-
-================================================================================
-`;
-
-exports[`fields2.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-class C { }
-
-class D {
-    content: string|C;
-    copyContent(content: C): string|C {
-        this.content = content;
-        return this.content;
-    }
-}
-
-=====================================output=====================================
-class C {}
-
-class D {
-  content: string | C;
-  copyContent(content: C): string | C {
-    this.content = content;
-    return this.content;
-  }
-}
-
-================================================================================
-`;
-
-exports[`issue-17.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-/* @flow */
-
-type T =
-    {type: "a"; a: number} |
-    {type: "b"; b: string};
-
-var l: Array<T> = [
-    {type: "a", a: 1},
-    {type: "a", a: 2},
-    {type: "a", a: 3},
-    {type: "a", a: 4},
-    {type: "b", b: "monkey"},
-    {type: "b", b: "gorilla"},
-    {type: "b", b: "giraffe"},
-    {type: "b", b: "penguin"},
-];
-
-=====================================output=====================================
-/* @flow */
-
-type T = { type: "a", a: number } | { type: "b", b: string };
-
-var l: Array<T> = [
-  { type: "a", a: 1 }, { type: "a", a: 2 }, { type: "a", a: 3 },
-  { type: "a", a: 4 }, { type: "b", b: "monkey" }, { type: "b", b: "gorilla" },
-  { type: "b", b: "giraffe" }, { type: "b", b: "penguin" },
-];
-
-================================================================================
-`;
-
-exports[`issue-198.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-var p = new Promise(function(resolve, reject) {
-    resolve(5);
-})
-    .then(function(num) {
-        return num.toFixed();
-    })
-    .then(function(str) {
-        // This should fail because str is string, not number
-        return str.toFixed();
-    });
-
-=====================================output=====================================
-var p = new Promise(function (resolve, reject) { resolve(5); })
-  .then(function (num) { return num.toFixed(); })
-  .then(function (str) {
-    // This should fail because str is string, not number
-    return str.toFixed();
-  });
-
-================================================================================
-`;
-
-exports[`issue-256.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-declare class Myclass {
-    myfun(myarray: Array<Function | string>): any;
-}
-declare var myclass: Myclass;
-
-myclass.myfun(["1", "2", "3", "4", "5", "6", function (ar) {}])
-myclass.myfun(["1", "2", "3", "4", "5", "6", "7", function (ar) {}])
-
-=====================================output=====================================
-declare class Myclass { myfun(myarray: Array<Function | string>): any }
-declare var myclass: Myclass;
-
-myclass.myfun(["1", "2", "3", "4", "5", "6", function (ar) {}]);
-myclass.myfun(["1", "2", "3", "4", "5", "6", "7", function (ar) {}]);
-
-================================================================================
-`;
-
-exports[`issue-323.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-var Foo = require("./issue-323-lib");
-var foo = new Foo();
-var foostr: Foo | string = foo;
-
-=====================================output=====================================
-var Foo = require("./issue-323-lib");
-var foo = new Foo();
-var foostr: Foo | string = foo;
-
-================================================================================
-`;
-
-exports[`issue-323-lib.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-/* @flow */
-class Foo {}
-module.exports = Foo;
-
-=====================================output=====================================
-/* @flow */
-class Foo {}
-module.exports = Foo;
-
-================================================================================
-`;
-
-exports[`issue-324.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-/* @flow */
-class Foo{};
-class Bar{};
-
-var foostr: Foo | string = new Foo();
-var barstr: Bar | string = new Bar();
-
-foostr = barstr;
-
-=====================================output=====================================
-/* @flow */
-class Foo {}
-class Bar {}
-
-var foostr: Foo | string = new Foo();
-var barstr: Bar | string = new Bar();
-
-foostr = barstr;
-
-================================================================================
-`;
-
-exports[`issue-325.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-class Tag {
-    constructor() {
-        var a1: Array<Tag|string> = [];
-        var a2: Array<Tag|string> = a1;
-    }
-}
-
-type Node = Tag_ | string;
-class Tag_ {
-    constructor() {
-        var a1: Array<Node> = [new Tag_];
-        var a2: Array<Node> = a1;
-    }
-}
-
-=====================================output=====================================
-class Tag {
-  constructor() {
-    var a1: Array<Tag | string> = [];
-    var a2: Array<Tag | string> = a1;
-  }
-}
-
-type Node = Tag_ | string;
-class Tag_ {
-  constructor() {
-    var a1: Array<Node> = [new Tag_()];
-    var a2: Array<Node> = a1;
-  }
-}
-
-================================================================================
-`;
-
-exports[`issue-326.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-var numberAndStringArr:Array<number|string> = [1,2];
-var stringArr:Array<string> = ['a','b'];
-
-var result = numberAndStringArr.concat(stringArr);  // no error
-
-=====================================output=====================================
-var numberAndStringArr: Array<number | string> = [1, 2];
-var stringArr: Array<string> = ["a", "b"];
-
-var result = numberAndStringArr.concat(stringArr); // no error
-
-================================================================================
-`;
-
-exports[`issue-582.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-/***
- * nested unions
- * @flow
- */
-
-// inline
-var nested1: ('foo' | 'bar') | 'baz' = 'baz';
-
-// through tvars
-type FooBar = 'foo' | 'bar';
-type Baz = 'baz';
-type FooBarBaz = FooBar | Baz;
-
-var nested2: FooBarBaz = 'baz';
-=======
 const myValue = (callcallcallcallcallcall(87689769876876897698768768976987687689769876):
                  // Comment
                  one | two| thre | jdkxhflksjdhfglkjsdhfglkjhsdkfljghskdjhfgkljshdfgkjhsdkljfhgkljshdfgjdfklgjhklj );
@@ -364,53 +22,45 @@ const myValue = (callcallcallcallcallcall(
 ================================================================================
 `;
 
-exports[`test-lib.js 1`] = `
+exports[`union.js format 1`] = `
 ====================================options=====================================
-parsers: ["flow"]
+parsers: ["flow", "babel"]
 printWidth: 80
                                                                                 | printWidth
 =====================================input======================================
-/* @providesModule test-lib */
-
-class C { }
-module.exports = C;
-
-=====================================output=====================================
-/* @providesModule test-lib */
-
-class C {}
-module.exports = C;
-
-================================================================================
-`;
-
-exports[`type-app.js 1`] = `
-====================================options=====================================
-parsers: ["flow"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-/**
- * @flow
- */
-
-class LocalClass<T> {}
-=======
 interface RelayProps {
-  articles:
-    | Array<{
-        __id: string,
-      } | null>
-    | null
-    | void
-    | 1;
+  articles: Array<{
+    __id: string,
+  } | null> | null | void | 1,
 }
 
 interface RelayProps2 {
   articles: Array<{
     __id: string,
-  } | null> | null | void;
+  } | null> | null | void,
 }
+
+export function aPrettyLongFunction(aRatherLongParamName: string | null): string {}
+
+export function aPrettyLongFunctionA(aRatherLongParameterName: {} | null): string[] {}
+export function aPrettyLongFunctionB(aRatherLongParameterName: Function | null): string[] {}
+export interface MyInterface {}
+export function aPrettyLongFunctionC(aRatherLongParameterName: MyInterface | null): string[] {}
+export type MyType = MyInterface
+export function aPrettyLongFunctionD(aRatherLongParameterName: MyType | null): string[] {}
+
+export function aShortFn(aShortParmName: MyType | null): string[] {}
+
+export function aPrettyLongFunctionE(aRatherLongParameterName: Array<{
+  __id: string,
+} | null> | null | void): string[] {}
+
+=====================================output=====================================
+interface RelayProps {
+  articles: Array<{ __id: string } | null> | null | void | 1;
+}
+
+interface RelayProps2 { articles: Array<{ __id: string } | null> | null | void }
 
 export function aPrettyLongFunction(
   aRatherLongParamName: string | null
@@ -434,69 +84,10 @@ export function aPrettyLongFunctionD(
 export function aShortFn(aShortParmName: MyType | null): string[] {}
 
 export function aPrettyLongFunctionE(
-  aRatherLongParameterName: Array<{
-    __id: string,
-  } | null> | null | void
+  aRatherLongParameterName: Array<{ __id: string } | null> | null | void
 ): string[] {}
 
 ================================================================================
-`;
-
-exports[`union.js format 1`] = `
-====================================options=====================================
-parsers: ["flow", "babel"]
-printWidth: 80
-                                                                                | printWidth
-=====================================input======================================
-interface RelayProps {
-  articles: Array<{
-    __id: string,
-  } | null> | null | void | 1,
-}
-
-interface RelayProps2 {
-  articles: Array<{
-    __id: string,
-  } | null> | null | void,
-}
-
-/***
- * unions with embedded intersections
- * @flow
- */
-
-type t1 = { p1: number };
-
-type t2 = { p2: number };
-
-type t3 = { p3: number };
-
-type intersected = t1 & t2;
-type union = intersected | t3;
-type union2 = t3 | intersected;
-
-const u1: union = { p3: 3 };
-
-const u2: union = { p1: 1, p2: 2 };
-
-const u3: union2 = { p1: 1, p2: 2 };
-=======
-export function aPrettyLongFunction(aRatherLongParamName: string | null): string {}
-
-export function aPrettyLongFunctionA(aRatherLongParameterName: {} | null): string[] {}
-export function aPrettyLongFunctionB(aRatherLongParameterName: Function | null): string[] {}
-export interface MyInterface {}
-export function aPrettyLongFunctionC(aRatherLongParameterName: MyInterface | null): string[] {}
-export type MyType = MyInterface
-export function aPrettyLongFunctionD(aRatherLongParameterName: MyType | null): string[] {}
-
-export function aShortFn(aShortParmName: MyType | null): string[] {}
-
-export function aPrettyLongFunctionE(aRatherLongParameterName: Array<{
-  __id: string,
-} | null> | null | void): string[] {}
-
-=====================================output=====================================
 `;
 
 exports[`within-tuple.js format 1`] = `

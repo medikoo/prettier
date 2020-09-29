@@ -430,7 +430,7 @@ gql\`
 
 gql\`
 query User {
-  user(id:\${id}){ name }
+  user(id:\${ id }){ name }
 }
 \`;
 
@@ -440,7 +440,7 @@ gql\`
 query User {
   user(id:5){ name }
 }
-#\${test}
+#\${ test }
 \`;
 
 // Comment on last line:
@@ -551,9 +551,7 @@ gql\`
   # and has a blank line in the middle
 
   \${FRIENDS_FRAGMENT}
-  \${generateFragment({
-    totally: "a good idea",
-  })}
+  \${generateFragment({ totally: "a good idea" })}
 
   \${fragment}
   #comment
@@ -612,7 +610,7 @@ gql\`
       a:   string
   }
 
-  \${stuff}
+  \${ stuff }
 
   "\\x"
   type  Bar   {

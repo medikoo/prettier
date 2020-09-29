@@ -92,9 +92,7 @@ var Qux = require("Qux");
 
 class Foo extends Qux {
   x: string;
-  constructor(x: string) {
-    this.x = x;
-  }
+  constructor(x: string) { this.x = x; }
 
   foo(y: string, z): number {
     this.x = y;
@@ -104,9 +102,7 @@ class Foo extends Qux {
     return v.bar(z, u);
   }
 
-  fooqux(x: string) {
-    this.x;
-  }
+  fooqux(x: string) { this.x; }
 }
 
 module.exports = Foo;
@@ -139,9 +135,7 @@ module.exports = Qux;
 class Qux {
   w: number;
 
-  qux() {
-    return this.w;
-  }
+  qux() { return this.w; }
 
   fooqux(x: number) {}
 }

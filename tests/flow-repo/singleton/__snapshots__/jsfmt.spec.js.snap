@@ -47,9 +47,7 @@ function alwaysFalsy(x: boolean): false {
 =====================================output=====================================
 /* @flow */
 
-function veryOptimistic(isThisAwesome: true): boolean {
-  return isThisAwesome;
-}
+function veryOptimistic(isThisAwesome: true): boolean { return isThisAwesome; }
 
 var x: boolean = veryOptimistic(true);
 var y: boolean = veryOptimistic(false); // error
@@ -128,9 +126,7 @@ highlander(2); // error
 
 type Foo = 1 | 2;
 
-function bar(num: Foo): number {
-  return num + 1;
-}
+function bar(num: Foo): number { return num + 1; }
 
 bar(1);
 bar(2);

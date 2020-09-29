@@ -321,25 +321,21 @@ function f() {
 // error if used prior to init
 function f() {
   var y: number = x; // error
-  try {
-    var x: number = 0;
-  } catch (e) {}
+  try { var x: number = 0; }
+  catch (e) {}
 }
 
 // another non-dominated post
 function f() {
-  try {
-    var x: number = 0;
-  } catch (e) {}
+  try { var x: number = 0; }
+  catch (e) {}
   var y: number = x; // error
 }
 
 // ditto
 function f() {
-  try {
-  } catch (e) {
-    var x: number = 0;
-  }
+  try {}
+  catch (e) { var x: number = 0; }
   var y: number = x; // error
 }
 
@@ -436,20 +432,15 @@ function corge(): string {
  */
 
 function foo(x: ?number): string {
-  try {
-  } catch (e) {
-    return "bar";
-  }
+  try {}
+  catch (e) { return "bar"; }
   console.log();
   return "foo";
 }
 
 function bar(): string {
-  try {
-    return "foo";
-  } catch (e) {
-    return "bar";
-  }
+  try { return "foo"; }
+  catch (e) { return "bar"; }
 }
 
 function baz(): string {
@@ -470,9 +461,8 @@ function qux(): string {
 }
 
 function quux(): string {
-  try {
-    return qux();
-  } catch (e) {}
+  try { return qux(); }
+  catch (e) {}
   return "bar";
 }
 

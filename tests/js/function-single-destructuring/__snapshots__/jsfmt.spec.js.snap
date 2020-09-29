@@ -34,75 +34,33 @@ promise.then(([firstResult, secondResult, thirdResult, fourthResult, fifthResult
 
 =====================================output=====================================
 function excludeFirstFiveResults([
-  first,
-  second,
-  third,
-  fourth,
-  fifth,
-  ...rest
-]) {
-  return rest;
-}
+  first, second, third, fourth, fifth, ...rest
+]) { return rest; }
 
 function excludeFirstFiveResults2([
-  first,
-  second,
-  third,
-  fourth,
-  fifth,
-  ...rest
-] = DEFAULT_FIVE_RESULTS) {
-  return rest;
-}
+  first, second, third, fourth, fifth, ...rest
+] = DEFAULT_FIVE_RESULTS) { return rest; }
 
 function excludeFirstFiveResults3(
   [
-    firstResult,
-    secondResult,
-    thirdResult,
-    fourthResult,
-    fifthResult,
-    ...rest
+    firstResult, secondResult, thirdResult, fourthResult, fifthResult, ...rest
   ] = [1, 2, 3, 4, 5]
-) {
-  return rest;
-}
+) { return rest; }
 
 const excludeFirstFiveResults5 = ([
-  first,
-  second,
-  third,
-  fourth,
-  fifth,
-  ...rest
-]) => {
-  return rest;
-};
+  first, second, third, fourth, fifth, ...rest
+]) => { return rest; };
 
 class A {
   excludeFirstFiveResults([
-    first,
-    second,
-    third,
-    fourth,
-    fifth,
-    ...restOfResults
-  ]) {
-    return restOfResults;
-  }
+    first, second, third, fourth, fifth, ...restOfResults
+  ]) { return restOfResults; }
 }
 
 promise.then(
   ([
-    firstResult,
-    secondResult,
-    thirdResult,
-    fourthResult,
-    fifthResult,
-    ...rest
-  ]) => {
-    return rest;
-  }
+    firstResult, secondResult, thirdResult, fourthResult, fifthResult, ...rest
+  ]) => { return rest; }
 );
 
 ================================================================================
@@ -183,9 +141,7 @@ function StatelessFunctionalComponent({
   searchFilters,
   title,
   items,
-}) {
-  return <div />;
-}
+}) { return <div />; }
 
 function StatelessFunctionalComponent2({
   isActive = true,
@@ -196,9 +152,7 @@ function StatelessFunctionalComponent2({
   searchFilters = null,
   title = "",
   items = [],
-} = {}) {
-  return <div />;
-}
+} = {}) { return <div />; }
 
 function StatelessFunctionalComponent3(
   {
@@ -210,12 +164,8 @@ function StatelessFunctionalComponent3(
     searchFilters = null,
     title = "",
     items = [],
-  } = {
-    isActive: true,
-  }
-) {
-  return <div />;
-}
+  } = { isActive: true }
+) { return <div />; }
 
 class C {
   StatelessFunctionalComponent({
@@ -227,9 +177,7 @@ class C {
     searchFilters,
     title,
     items,
-  }) {
-    return <div />;
-  }
+  }) { return <div />; }
 }
 
 ================================================================================

@@ -3706,9 +3706,7 @@ function taggedTemplate() {
   )
 }
 
-function inlineComment() {
-  return /* hi */ 42 || 42
-}
+function inlineComment() { return /* hi */ 42 || 42 }
 
 ================================================================================
 `;
@@ -3968,9 +3966,7 @@ function taggedTemplate() {
   );
 }
 
-function inlineComment() {
-  return /* hi */ 42 || 42;
-}
+function inlineComment() { return /* hi */ 42 || 42; }
 
 ================================================================================
 `;
@@ -4130,9 +4126,7 @@ semi: false
 var a = { /* comment */      
 b };
 =====================================output=====================================
-var a = {
-  /* comment */ b,
-}
+var a = { /* comment */ b }
 
 ================================================================================
 `;
@@ -4146,9 +4140,7 @@ printWidth: 80
 var a = { /* comment */      
 b };
 =====================================output=====================================
-var a = {
-  /* comment */ b,
-};
+var a = { /* comment */ b };
 
 ================================================================================
 `;
@@ -4163,9 +4155,7 @@ semi: false
 var a = { /* comment */
 b };
 =====================================output=====================================
-var a = {
-  /* comment */ b,
-}
+var a = { /* comment */ b }
 
 ================================================================================
 `;
@@ -4179,9 +4169,7 @@ printWidth: 80
 var a = { /* comment */
 b };
 =====================================output=====================================
-var a = {
-  /* comment */ b,
-};
+var a = { /* comment */ b };
 
 ================================================================================
 `;
@@ -4470,9 +4458,9 @@ d //comment
   a // comment
 }
 
-\${b /* comment */}
+\${ b /* comment */ }
 
-\${/* comment */ c /* comment */}
+\${ /* comment */ c /* comment */ }
 
 \${
   // comment
@@ -4508,9 +4496,9 @@ d //comment
   a // comment
 }
 
-\${b /* comment */}
+\${ b /* comment */ }
 
-\${/* comment */ c /* comment */}
+\${ /* comment */ c /* comment */ }
 
 \${
   // comment
@@ -4845,15 +4833,11 @@ const foo3 = 123
 =====================================output=====================================
 let obj1 =
   // Comment
-  {
-    key: "val",
-  }
+  { key: "val" }
 
 let obj2 =
   // Comment
-  {
-    key: "val",
-  }
+  { key: "val" }
 
 let obj3 = {
   // Comment
@@ -4909,8 +4893,8 @@ let // Comment
   foo1 = "val"
 
 let // Comment
-  foo2 = "val",
-  bar = "val"
+  foo2 = "val"
+  , bar = "val"
 
 const foo3 = 123
 // Nothing to see here.
@@ -4995,15 +4979,11 @@ const foo3 = 123
 =====================================output=====================================
 let obj1 =
   // Comment
-  {
-    key: "val",
-  };
+  { key: "val" };
 
 let obj2 =
   // Comment
-  {
-    key: "val",
-  };
+  { key: "val" };
 
 let obj3 = {
   // Comment
@@ -5059,8 +5039,8 @@ let // Comment
   foo1 = "val";
 
 let // Comment
-  foo2 = "val",
-  bar = "val";
+  foo2 = "val"
+  , bar = "val";
 
 const foo3 = 123;
 // Nothing to see here.

@@ -64,9 +64,7 @@ semi: false
     v-for="n in 10"
     v-for="{ a } in [0].map(() => ({ a: 1 }))"
     v-for="({ a }, [c]) in [0].map(() => 1)"
-    v-for="n in items.map((x) => {
-      return x
-    })"
+    v-for="n in items.map((x) => { return x })"
     @click="/* hello */"
     @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */ /* 5 */"
     @click="$emit('click')"
@@ -79,33 +77,17 @@ semi: false
       }
     "
     slot-scope="{ row }"
-    slot-scope="{
-      destructuring: {
-        a: { b },
-      },
-    }"
+    slot-scope="{ destructuring: { a: { b } } }"
     :class="{
       longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true,
     }"
-    :class="
-      (() => {
-        return 'hello'
-      })()
-    "
+    :class="(() => { return 'hello' })()"
     :key="index /* hello */"
     :key="
       index // hello
     "
-    @click="
-      () => {
-        console.log(test)
-      }
-    "
-    @click="
-      () => {
-        console.log(test)
-      }
-    "
+    @click="() => { console.log(test) }"
+    @click="() => { console.log(test) }"
     @click="doSomething()"
     @click="doSomething;"
     @click="a.b;"
@@ -183,9 +165,7 @@ trailingComma: "none"
     v-for="n in 10"
     v-for="{ a } in [0].map(() => ({ a: 1 }))"
     v-for="({ a }, [c]) in [0].map(() => 1)"
-    v-for="n in items.map((x) => {
-      return x;
-    })"
+    v-for="n in items.map((x) => { return x; })"
     @click="/* hello */"
     @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */ /* 5 */"
     @click="$emit('click')"
@@ -198,33 +178,17 @@ trailingComma: "none"
       }
     "
     slot-scope="{ row }"
-    slot-scope="{
-      destructuring: {
-        a: { b }
-      }
-    }"
+    slot-scope="{ destructuring: { a: { b } } }"
     :class="{
       longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true
     }"
-    :class="
-      (() => {
-        return 'hello';
-      })()
-    "
+    :class="(() => { return 'hello'; })()"
     :key="index /* hello */"
     :key="
       index // hello
     "
-    @click="
-      () => {
-        console.log(test);
-      }
-    "
-    @click="
-      () => {
-        console.log(test);
-      }
-    "
+    @click="() => { console.log(test); }"
+    @click="() => { console.log(test); }"
     @click="doSomething()"
     @click="doSomething;"
     @click="a.b;"
@@ -301,9 +265,7 @@ printWidth: 80
     v-for="n in 10"
     v-for="{ a } in [0].map(() => ({ a: 1 }))"
     v-for="({ a }, [c]) in [0].map(() => 1)"
-    v-for="n in items.map((x) => {
-      return x;
-    })"
+    v-for="n in items.map((x) => { return x; })"
     @click="/* hello */"
     @click="/* 1 */ $emit(/* 2 */ 'click' /* 3 */) /* 4 */ /* 5 */"
     @click="$emit('click')"
@@ -316,33 +278,17 @@ printWidth: 80
       }
     "
     slot-scope="{ row }"
-    slot-scope="{
-      destructuring: {
-        a: { b },
-      },
-    }"
+    slot-scope="{ destructuring: { a: { b } } }"
     :class="{
       longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong: true,
     }"
-    :class="
-      (() => {
-        return 'hello';
-      })()
-    "
+    :class="(() => { return 'hello'; })()"
     :key="index /* hello */"
     :key="
       index // hello
     "
-    @click="
-      () => {
-        console.log(test);
-      }
-    "
-    @click="
-      () => {
-        console.log(test);
-      }
-    "
+    @click="() => { console.log(test); }"
+    @click="() => { console.log(test); }"
     @click="doSomething()"
     @click="doSomething;"
     @click="a.b;"
@@ -446,9 +392,7 @@ const Store = gl.issueBoards.BoardsStore
 
 export default {
   name: "BoardsIssueCard",
-  components: {
-    "issue-card-inner": gl.issueBoards.IssueCardInner,
-  },
+  components: { "issue-card-inner": gl.issueBoards.IssueCardInner },
   props: {
     list: Object,
     issue: Object,
@@ -457,12 +401,7 @@ export default {
     index: Number,
     rootPath: String,
   },
-  data() {
-    return {
-      showDetail: false,
-      detailIssue: Store.detail,
-    }
-  },
+  data() { return { showDetail: false, detailIssue: Store.detail } },
   computed: {
     issueDetailVisible() {
       return (
@@ -471,12 +410,8 @@ export default {
     },
   },
   methods: {
-    mouseDown() {
-      this.showDetail = true
-    },
-    mouseMove() {
-      this.showDetail = false
-    },
+    mouseDown() { this.showDetail = true },
+    mouseMove() { this.showDetail = false },
     showIssue(e) {
       if (e.target.classList.contains("js-no-trigger")) return
 
@@ -612,9 +547,7 @@ const Store = gl.issueBoards.BoardsStore;
 
 export default {
   name: "BoardsIssueCard",
-  components: {
-    "issue-card-inner": gl.issueBoards.IssueCardInner
-  },
+  components: { "issue-card-inner": gl.issueBoards.IssueCardInner },
   props: {
     list: Object,
     issue: Object,
@@ -623,12 +556,7 @@ export default {
     index: Number,
     rootPath: String
   },
-  data() {
-    return {
-      showDetail: false,
-      detailIssue: Store.detail
-    };
-  },
+  data() { return { showDetail: false, detailIssue: Store.detail }; },
   computed: {
     issueDetailVisible() {
       return (
@@ -637,12 +565,8 @@ export default {
     }
   },
   methods: {
-    mouseDown() {
-      this.showDetail = true;
-    },
-    mouseMove() {
-      this.showDetail = false;
-    },
+    mouseDown() { this.showDetail = true; },
+    mouseMove() { this.showDetail = false; },
     showIssue(e) {
       if (e.target.classList.contains("js-no-trigger")) return;
 
@@ -777,9 +701,7 @@ const Store = gl.issueBoards.BoardsStore;
 
 export default {
   name: "BoardsIssueCard",
-  components: {
-    "issue-card-inner": gl.issueBoards.IssueCardInner,
-  },
+  components: { "issue-card-inner": gl.issueBoards.IssueCardInner },
   props: {
     list: Object,
     issue: Object,
@@ -788,12 +710,7 @@ export default {
     index: Number,
     rootPath: String,
   },
-  data() {
-    return {
-      showDetail: false,
-      detailIssue: Store.detail,
-    };
-  },
+  data() { return { showDetail: false, detailIssue: Store.detail }; },
   computed: {
     issueDetailVisible() {
       return (
@@ -802,12 +719,8 @@ export default {
     },
   },
   methods: {
-    mouseDown() {
-      this.showDetail = true;
-    },
-    mouseMove() {
-      this.showDetail = false;
-    },
+    mouseDown() { this.showDetail = true; },
+    mouseMove() { this.showDetail = false; },
     showIssue(e) {
       if (e.target.classList.contains("js-no-trigger")) return;
 
@@ -1030,14 +943,24 @@ semi: false
 <!-- #7396 -->
 <template>
   <MyComponent
-    :attr="\`loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${foo} template literal value\`"
+    :attr="\`loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+      foo
+    } template literal value\`"
   />
 </template>
 <template>
   <MyComponent
     :attr="
-      \`\${first} loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${template} \${literal}\` +
-      \`\${second} loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${template} \${literal}\`
+      \`\${
+        first
+      } loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+        template
+      } \${ literal }\` +
+      \`\${
+        second
+      } loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+        template
+      } \${ literal }\`
     "
   />
 </template>
@@ -1104,14 +1027,24 @@ trailingComma: "none"
 <!-- #7396 -->
 <template>
   <MyComponent
-    :attr="\`loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${foo} template literal value\`"
+    :attr="\`loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+      foo
+    } template literal value\`"
   />
 </template>
 <template>
   <MyComponent
     :attr="
-      \`\${first} loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${template} \${literal}\` +
-      \`\${second} loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${template} \${literal}\`
+      \`\${
+        first
+      } loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+        template
+      } \${ literal }\` +
+      \`\${
+        second
+      } loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+        template
+      } \${ literal }\`
     "
   />
 </template>
@@ -1177,14 +1110,24 @@ printWidth: 80
 <!-- #7396 -->
 <template>
   <MyComponent
-    :attr="\`loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${foo} template literal value\`"
+    :attr="\`loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+      foo
+    } template literal value\`"
   />
 </template>
 <template>
   <MyComponent
     :attr="
-      \`\${first} loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${template} \${literal}\` +
-      \`\${second} loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${template} \${literal}\`
+      \`\${
+        first
+      } loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+        template
+      } \${ literal }\` +
+      \`\${
+        second
+      } loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog \${
+        template
+      } \${ literal }\`
     "
   />
 </template>

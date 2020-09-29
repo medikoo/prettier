@@ -131,46 +131,28 @@ class H<T> {
 
 class A<T> {
   x: T;
-  constructor(x: T) {
-    this.x = x;
-  }
-  m<T>(x: T): A<T> {
-    return new A(x);
-  }
+  constructor(x: T) { this.x = x; }
+  m<T>(x: T): A<T> { return new A(x); }
 }
 
 class B<T> extends A<T> {
-  m<T>(x: T): B<T> {
-    return new B(x);
-  }
+  m<T>(x: T): B<T> { return new B(x); }
 }
 
-interface C<T> {
-  m<T>(x: T): C<T>;
-}
+interface C<T> { m<T>(x: T): C<T> }
 
-interface D<T> extends C<T> {
-  m<T>(x: T): D<T>;
-}
+interface D<T> extends C<T> { m<T>(x: T): D<T> }
 
-declare class E<T> {
-  m<T>(x: T): E<T>;
-}
+declare class E<T> { m<T>(x: T): E<T> }
 
-declare class F<T> extends E<T> {
-  m<T>(x: T): F<T>;
-}
+declare class F<T> extends E<T> { m<T>(x: T): F<T> }
 
 // Bounds can refer to parent type params (until they are shadowed).
 
 class G<T> {
   x: T;
-  constructor(x: T) {
-    this.x = x;
-  }
-  m<T: T>(x: T): G<T> {
-    return new G(x);
-  } // T-as-bound is G's T
+  constructor(x: T) { this.x = x; }
+  m<T: T>(x: T): G<T> { return new G(x); } // T-as-bound is G's T
 }
 
 declare var g: G<number | string>;

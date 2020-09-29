@@ -143,9 +143,7 @@ type T7 = ?(?(() => A));
 type T8 = ?(?() => A) | B;
 
 =====================================output=====================================
-type Banana = {
-  eat: string => boolean,
-};
+type Banana = { eat: string => boolean };
 
 type Hex = { n: 0x01 };
 
@@ -153,21 +151,15 @@ type T1 = { method: a => void };
 
 type T2 = { method(a): void };
 
-declare class X {
-  method(a): void;
-}
+declare class X { method(a): void }
 
 declare function f(a): void;
 
 var f: a => void;
 
-interface F1 {
-  m(string): number;
-}
+interface F1 { m(string): number }
 
-interface F2 {
-  m: string => number;
-}
+interface F2 { m: string => number }
 
 function f1(o: { f: string => void }) {}
 
@@ -280,9 +272,7 @@ type T7 = ?(?(() => A));
 type T8 = ?(?() => A) | B;
 
 =====================================output=====================================
-type Banana = {
-  eat: (string) => boolean,
-};
+type Banana = { eat: (string) => boolean };
 
 type Hex = { n: 0x01 };
 
@@ -290,21 +280,15 @@ type T1 = { method: (a) => void };
 
 type T2 = { method(a): void };
 
-declare class X {
-  method(a): void;
-}
+declare class X { method(a): void }
 
 declare function f(a): void;
 
 var f: (a) => void;
 
-interface F1 {
-  m(string): number;
-}
+interface F1 { m(string): number }
 
-interface F2 {
-  m: (string) => number;
-}
+interface F2 { m: (string) => number }
 
 function f1(o: { f: (string) => void }) {}
 
@@ -416,9 +400,7 @@ type T7 = ?(?(() => A));
 type T8 = ?(?() => A) | B;
 
 =====================================output=====================================
-type Banana = {
-  eat: (string) => boolean,
-};
+type Banana = { eat: (string) => boolean };
 
 type Hex = { n: 0x01 };
 
@@ -426,21 +408,15 @@ type T1 = { method: (a) => void };
 
 type T2 = { method(a): void };
 
-declare class X {
-  method(a): void;
-}
+declare class X { method(a): void }
 
 declare function f(a): void;
 
 var f: (a) => void;
 
-interface F1 {
-  m(string): number;
-}
+interface F1 { m(string): number }
 
-interface F2 {
-  m: (string) => number;
-}
+interface F2 { m: (string) => number }
 
 function f1(o: { f: (string) => void }) {}
 

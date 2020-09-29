@@ -116,10 +116,7 @@ interface E {
 // }
 
 =====================================output=====================================
-declare class A {
-  one: boolean;
-  two: { three: string } | number;
-}
+declare class A { one: boolean; two: { three: string } | number }
 
 // NOTE: Flow and Babel both fail to apply ASI here
 // declare class B {
@@ -128,10 +125,7 @@ declare class A {
 //     | number
 // }
 
-declare interface C {
-  one: boolean;
-  two: { three: string } | number;
-}
+declare interface C { one: boolean; two: { three: string } | number }
 
 // NOTE: Flow and Babel both fail to apply ASI here
 // declare interface D {
@@ -140,10 +134,7 @@ declare interface C {
 //     | number
 // }
 
-interface E {
-  one: boolean;
-  two: { three: string } | number;
-}
+interface E { one: boolean; two: { three: string } | number }
 
 // NOTE: Flow and Babel both fail to apply ASI here
 // interface F {
@@ -201,10 +192,7 @@ interface E {
 // }
 
 =====================================output=====================================
-declare class A {
-  one: boolean;
-  two: { three: string } | number;
-}
+declare class A { one: boolean; two: { three: string } | number }
 
 // NOTE: Flow and Babel both fail to apply ASI here
 // declare class B {
@@ -213,10 +201,7 @@ declare class A {
 //     | number
 // }
 
-declare interface C {
-  one: boolean;
-  two: { three: string } | number;
-}
+declare interface C { one: boolean; two: { three: string } | number }
 
 // NOTE: Flow and Babel both fail to apply ASI here
 // declare interface D {
@@ -225,10 +210,7 @@ declare interface C {
 //     | number
 // }
 
-interface E {
-  one: boolean;
-  two: { three: string } | number;
-}
+interface E { one: boolean; two: { three: string } | number }
 
 // NOTE: Flow and Babel both fail to apply ASI here
 // interface F {

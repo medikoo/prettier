@@ -29,9 +29,7 @@ function f<T>(foo, bar = foo): [T, T] {
 }
 
 =====================================output=====================================
-function f<T>(foo, bar = foo): [T, T] {
-  return [foo, bar];
-}
+function f<T>(foo, bar = foo): [T, T] { return [foo, bar]; }
 
 ================================================================================
 `;
@@ -75,9 +73,7 @@ function f<T:*>(x:T,y?:T) { x = y }
  * reasons to grow "optional x" -> "optional optional x" -> "optional optional
  * optional x", which thwarts reason-based caches that prevent nontermination.
  */
-function f<T: *>(x: T, y?: T) {
-  x = y;
-}
+function f<T: *>(x: T, y?: T) { x = y; }
 
 ================================================================================
 `;
@@ -93,9 +89,7 @@ function foo(x?: string): ?string {
 }
 
 =====================================output=====================================
-function foo(x?: string): ?string {
-  return x;
-}
+function foo(x?: string): ?string { return x; }
 
 ================================================================================
 `;
@@ -231,9 +225,7 @@ qux(0,...["",42]); // No error
 module.exports = qux;
 
 =====================================output=====================================
-function bar(x?, y?) {
-  x * 0;
-}
+function bar(x?, y?) { x * 0; }
 bar(0);
 
 var foo: (x?: number) => void = bar;
@@ -362,9 +354,7 @@ var i:I<number> = new I();
 var j:I<number> = i.map(id => id);
 
 =====================================output=====================================
-declare class I<V> {
-  map<M>(mapper: (value?: V) => M): I<M>;
-}
+declare class I<V> { map<M>(mapper: (value?: V) => M): I<M> }
 var i: I<number> = new I();
 var j: I<number> = i.map((id) => id);
 
@@ -389,9 +379,7 @@ bar(undefined); // ok
 function foo(x?: number) {}
 foo(undefined); // ok
 
-function bar(x = "bar"): string {
-  return x;
-}
+function bar(x = "bar"): string { return x; }
 bar(undefined); // ok
 
 ================================================================================
@@ -453,13 +441,9 @@ function bar() {
 =====================================output=====================================
 var x;
 
-function foo(bar? = undefined) {
-  x = bar;
-}
+function foo(bar? = undefined) { x = bar; }
 
-function bar() {
-  return x.duck;
-}
+function bar() { return x.duck; }
 
 ================================================================================
 `;
@@ -483,13 +467,9 @@ function bar() {
 =====================================output=====================================
 var x;
 
-function foo(bar?) {
-  x = bar;
-}
+function foo(bar?) { x = bar; }
 
-function bar() {
-  return x.duck;
-}
+function bar() { return x.duck; }
 
 ================================================================================
 `;

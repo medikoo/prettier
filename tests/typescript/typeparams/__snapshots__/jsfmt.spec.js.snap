@@ -191,9 +191,7 @@ export class Thing11 implements OtherThing {
 export class Thing12 implements OtherThing {
   do: (type: Type) => Provider<Prop> = memoize(function (
     type: ObjectType
-  ): Provider<Opts> {
-    return type;
-  });
+  ): Provider<Opts> { return type; });
 }
 
 export class Thing13 implements OtherThing {
@@ -221,25 +219,19 @@ export class Thing14 implements OtherThing {
 export class Thing15 implements OtherThing {
   do: (type: Type) => Provider<Prop> = memoize(function (
     type: ObjectType
-  ): Provider<Opts> {
-    return type.doSomething();
-  });
+  ): Provider<Opts> { return type.doSomething(); });
 }
 
 export class Thing16 implements OtherThing {
   do: (type: Type) => Provider<Prop> = memoize(function (
     type: ObjectType
-  ): Provider<Opts> {
-    return <any>type.doSomething();
-  });
+  ): Provider<Opts> { return <any>type.doSomething(); });
 }
 
 export class Thing17 implements OtherThing {
   do: (type: Type) => Provider<Prop> = memoize(function (
     type: ObjectType
-  ): Provider<Opts> {
-    return <Provider<Opts>>type.doSomething();
-  });
+  ): Provider<Opts> { return <Provider<Opts>>type.doSomething(); });
 }
 
 export class Thing18 implements OtherThing {
@@ -265,9 +257,7 @@ export class Thing20 implements OtherThing {
 export class Thing21 implements OtherThing {
   do: (type: Type) => Provider<Prop> = memoize(function (
     veryLongArgName: ObjectType
-  ): Provider<Options, MoreOptions> {
-    return veryLongArgName;
-  });
+  ): Provider<Options, MoreOptions> { return veryLongArgName; });
 }
 
 export class Thing22 implements OtherThing {

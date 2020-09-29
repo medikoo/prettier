@@ -36,9 +36,7 @@ class A {
     // ok - can use \`this\` in function default parameter values
   }
 
-  e() {
-    return this.b;
-  }
+  e() { return this.b; }
 
   f(g = this.e()) {
     // ok - can use \`this\` in function default parameter values

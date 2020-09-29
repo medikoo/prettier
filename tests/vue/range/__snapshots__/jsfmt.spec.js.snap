@@ -28,9 +28,7 @@ printWidth: 80
 </template>
 
 <script>
-let Prettier = (format) => {
-  your.js("though");
-};
+let Prettier = (format) => { your.js("though"); };
 </script>
 
 <style>

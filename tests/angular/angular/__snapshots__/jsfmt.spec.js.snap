@@ -444,9 +444,7 @@ printWidth: 80
   [target]="[1]"
   [target]="{a: 1}"
   [target]="{a: 1}"
-  [target]="{
-    trailingComma: 'notAllowed'
-  }"
+  [target]="{trailingComma: 'notAllowed'}"
   [target]="[
     longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong
   ]"
@@ -715,9 +713,7 @@ printWidth: 80
   [target]="[1]"
   [target]="{ a: 1 }"
   [target]="{ a: 1 }"
-  [target]="{
-    trailingComma: 'notAllowed'
-  }"
+  [target]="{ trailingComma: 'notAllowed' }"
   [target]="[
     longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong
   ]"
@@ -1585,9 +1581,7 @@ trailingComma: "none"
   [target]="[1]"
   [target]="{ a: 1 }"
   [target]="{ a: 1 }"
-  [target]="{
-    trailingComma: 'notAllowed'
-  }"
+  [target]="{ trailingComma: 'notAllowed' }"
   [target]="[
     longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong
   ]"
@@ -1855,9 +1849,7 @@ printWidth: 80
   [target]="[1]"
   [target]="{ a: 1 }"
   [target]="{ a: 1 }"
-  [target]="{
-    trailingComma: 'notAllowed'
-  }"
+  [target]="{ trailingComma: 'notAllowed' }"
   [target]="[
     longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong
   ]"

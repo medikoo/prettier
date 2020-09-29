@@ -46,9 +46,7 @@ const b: Promise<string> = fetch(myRequest); // incorrect
 
 var myInit = {
   method: "GET",
-  headers: {
-    "Content-Type": "image/jpeg",
-  },
+  headers: { "Content-Type": "image/jpeg" },
   mode: "cors",
   cache: "default",
 };
@@ -129,7 +127,7 @@ for (let v of e.entries()) {
 
 e.getAll("content-type"); // incorrect
 e.forEach((val: string) => val); // correct
-e.forEach((val: string, key: string) => \`\${key}: \${val}\`); // correct
+e.forEach((val: string, key: string) => \`\${ key }: \${ val }\`); // correct
 e.forEach((val: string, key: string, o: Headers) => {}); // correct
 e.forEach(() => {}, {}); // correct
 
@@ -220,9 +218,7 @@ new Request(new URL("http://example.org")); // correct
 
 const h: Request = new Request("http://example.org", {
   method: "GET",
-  headers: {
-    "Content-Type": "image/jpeg",
-  },
+  headers: { "Content-Type": "image/jpeg" },
   mode: "cors",
   cache: "default",
 }); // correct
@@ -236,25 +232,19 @@ h.arrayBuffer().then((ab: Buffer) => ab); // incorrect
 
 const i: Request = new Request("http://example.org", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/octet-stream",
-  },
+  headers: { "Content-Type": "application/octet-stream" },
   body: new ArrayBuffer(10),
 }); // correct
 
 const j: Request = new Request("http://example.org", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/octet-stream",
-  },
+  headers: { "Content-Type": "application/octet-stream" },
   body: new Uint8Array(10),
 }); // correct
 
 const k: Request = new Request("http://example.org", {
   method: "POST",
-  headers: {
-    "Content-Type": "image/jpeg",
-  },
+  headers: { "Content-Type": "image/jpeg" },
   body: new URLSearchParams("key=value"),
   mode: "cors",
   cache: "default",
@@ -343,23 +333,17 @@ const f: Response = new Response("responsebody", {
 
 const g: Response = new Response("responsebody", {
   status: 404,
-  headers: {
-    "Content-Type": "image/jpeg",
-  },
+  headers: { "Content-Type": "image/jpeg" },
 }); // correct
 
 const h: Response = new Response("responsebody", {
   status: 404,
-  headers: new Headers({
-    "Content-Type": "image/jpeg",
-  }),
+  headers: new Headers({ "Content-Type": "image/jpeg" }),
 }); // correct, if verbose
 
 const i: Response = new Response({
   status: 404,
-  headers: new Headers({
-    "Content-Type": "image/jpeg",
-  }),
+  headers: new Headers({ "Content-Type": "image/jpeg" }),
 }); // incorrect
 
 const ok: boolean = h.ok;
@@ -445,7 +429,7 @@ for (let v of e.entries()) {
 e.getAll("key1").forEach((v: string) => {}); // correct
 
 e.forEach((val: string) => val); // correct
-e.forEach((val: string, key: string) => \`\${key}: \${val}\`); // correct
+e.forEach((val: string, key: string) => \`\${ key }: \${ val }\`); // correct
 e.forEach((val: string, key: string, o: URLSearchParams) => {}); // correct
 e.forEach(() => {}, {}); // correct
 

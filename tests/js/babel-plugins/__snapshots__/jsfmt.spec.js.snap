@@ -331,15 +331,11 @@ class Bork {
 class Bork {
   //Property initializer syntax
   instanceProperty = "bork";
-  boundFunction = () => {
-    return this.instanceProperty;
-  };
+  boundFunction = () => { return this.instanceProperty; };
 
   //Static class properties
   static staticProperty = "babelIsCool";
-  static staticFunction = function () {
-    return Bork.staticProperty;
-  };
+  static staticFunction = function () { return Bork.staticProperty; };
 }
 
 let myBork = new Bork();
@@ -461,17 +457,13 @@ function enumerable(value) {
 @annotation
 class MyClass {}
 
-function annotation(target) {
-  target.annotated = true;
-}
+function annotation(target) { target.annotated = true; }
 
 @isTestable(true)
 class MyClass {}
 
 function isTestable(value) {
-  return function decorator(target) {
-    target.isTestable = value;
-  };
+  return function decorator(target) { target.isTestable = value; };
 }
 
 class C {
@@ -1071,13 +1063,7 @@ const ret = delete obj?.foo?.bar?.baz; // true
 =====================================output=====================================
 // https://babeljs.io/docs/en/babel-plugin-proposal-optional-chaining
 
-const obj = {
-  foo: {
-    bar: {
-      baz: 42,
-    },
-  },
-};
+const obj = { foo: { bar: { baz: 42 } } };
 
 const baz = obj?.foo?.bar?.baz; // 42
 
@@ -1090,15 +1076,7 @@ obj?.foo.bar?.baz; // Only access \`foo\` if \`obj\` exists, and \`baz\` if
 // Example usage with bracket notation:
 obj?.["foo"]?.bar?.baz; // 42
 
-const obj2 = {
-  foo: {
-    bar: {
-      baz() {
-        return 42;
-      },
-    },
-  },
-};
+const obj2 = { foo: { bar: { baz() { return 42; } } } };
 
 const baz2 = obj?.foo?.bar?.baz(); // 42
 
@@ -1108,20 +1086,12 @@ const safe4 = obj?.foo.bar.qux?.(); // undefined
 const willThrow = obj?.foo.bar.qux(); // Error: not a function
 
 // Top function can be called directly, too.
-function test() {
-  return 42;
-}
+function test() { return 42; }
 test?.(); // 42
 
 exists?.(); // undefined
 
-const obj3 = {
-  foo: {
-    bar: {
-      baz: class {},
-    },
-  },
-};
+const obj3 = { foo: { bar: { baz: class {} } } };
 
 const baz3 = new (obj?.foo?.bar?.baz)(); // baz instance
 
@@ -1136,11 +1106,7 @@ new Test(); // test instance
 
 new exists(); // undefined
 
-const obj = {
-  foo: {
-    bar: {},
-  },
-};
+const obj = { foo: { bar: {} } };
 
 const ret = delete obj?.foo?.bar?.baz; // true
 
@@ -1178,9 +1144,7 @@ super.f(?)        // partial application allowed for call on |SuperProperty|
 =====================================output=====================================
 // https://babeljs.io/docs/en/babel-plugin-proposal-partial-application
 
-function add(x, y) {
-  return x + y;
-}
+function add(x, y) { return x + y; }
 
 const addOne = add(1, ?); // apply from the left
 addOne(2); // 3
@@ -1452,9 +1416,7 @@ class C {
 
   get #getter() {}
 
-  static isC(obj) {
-    return #brand in obj && #method in obj && #getter in obj;
-  }
+  static isC(obj) { return #brand in obj && #method in obj && #getter in obj; }
 }
 
 // Invalid https://github.com/tc39/proposal-private-fields-in-in#try-statement
@@ -1533,11 +1495,7 @@ const record1 = #{
 const record2 = #{...record1, b: 5};
 
 =====================================output=====================================
-const record1 = #{
-  a: 1,
-  b: 2,
-  c: 3,
-};
+const record1 = #{ a: 1, b: 2, c: 3 };
 
 const record2 = #{ ...record1, b: 5 };
 
@@ -1650,9 +1608,7 @@ foo%bar()
 
 new %DebugPrint(null);
 
-function* foo() {
-  yield %StringParseInt("42", 10);
-}
+function* foo() { yield %StringParseInt("42", 10); }
 
 foo % bar();
 

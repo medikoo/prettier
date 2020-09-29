@@ -24,9 +24,7 @@ var lengthTest4: IHasLength = true; // bool doesn't have length
  * @flow
  */
 
-interface IHasLength {
-  length: number;
-}
+interface IHasLength { length: number }
 
 var lengthTest1: IHasLength = [];
 var lengthTest2: IHasLength = "hello";
@@ -75,17 +73,11 @@ class ClassWithXString {
   x: string;
 }
 
-interface IHasXString {
-  x: string;
-}
+interface IHasXString { x: string }
 
-interface IHasXNumber {
-  x: number;
-}
+interface IHasXNumber { x: number }
 
-interface IHasYString {
-  y: string;
-}
+interface IHasYString { y: string }
 
 var testInstance1: IHasXString = new ClassWithXString();
 var testInstance2: IHasXNumber = new ClassWithXString(); // Error wrong type
@@ -126,9 +118,7 @@ function propTest6(y: {[key: string]: number}) {
  * @flow
  */
 
-interface IHasXString {
-  x: string;
-}
+interface IHasXString { x: string }
 
 var propTest1: IHasXString = { x: "hello" };
 var propTest2: IHasXString = { x: 123 }; // Error string != number
@@ -168,10 +158,7 @@ var test3: HasOptional = { a: "hello", b: true }; // Error: boolean ~> number
 =====================================output=====================================
 /* @flow */
 
-interface HasOptional {
-  a: string;
-  b?: number;
-}
+interface HasOptional { a: string; b?: number }
 
 var test1: HasOptional = { a: "hello" };
 

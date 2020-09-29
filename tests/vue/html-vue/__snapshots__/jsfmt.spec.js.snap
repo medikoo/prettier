@@ -190,9 +190,7 @@ printWidth: 80
           contentPosition: function () {
             var dy = this.c.y - 160;
             var dampen = dy > 0 ? 2 : 4;
-            return {
-              transform: "translate3d(0," + dy / dampen + "px,0)",
-            };
+            return { transform: "translate3d(0," + dy / dampen + "px,0)" };
           },
         },
         methods: {
@@ -217,15 +215,8 @@ printWidth: 80
               this.dragging = false;
               dynamics.animate(
                 this.c,
-                {
-                  x: 160,
-                  y: 160,
-                },
-                {
-                  type: dynamics.spring,
-                  duration: 700,
-                  friction: 280,
-                }
+                { x: 160, y: 160 },
+                { type: dynamics.spring, duration: 700, friction: 280 }
               );
             }
           },
@@ -283,12 +274,7 @@ printWidth: 80
     </div>
 
     <script>
-      var app = new Vue({
-        el: "#app",
-        data: {
-          message: "Hello Vue!",
-        },
-      });
+      var app = new Vue({ el: "#app", data: { message: "Hello Vue!" } });
     </script>
   </body>
 </html>

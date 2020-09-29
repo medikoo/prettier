@@ -409,37 +409,19 @@ semi: false
 
 =====================================output=====================================
 <i18n lang="json">
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
-}
+{ "en": { "hello": "hello world!" }, "ja": { "hello": "こんにちは、世界！" } }
 </i18n>
 
 <i18n type="application/json">
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
-}
+{ "en": { "hello": "hello world!" }, "ja": { "hello": "こんにちは、世界！" } }
 </i18n>
 
 <custom lang="json">
-{
-  "a": 1
-}
+{ "a": 1 }
 </custom>
 
 <custom lang="json">
-{
-  "a": 1
-}
+{ "a": 1 }
 </custom>
 
 ================================================================================
@@ -489,37 +471,19 @@ trailingComma: "none"
 
 =====================================output=====================================
 <i18n lang="json">
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
-}
+{ "en": { "hello": "hello world!" }, "ja": { "hello": "こんにちは、世界！" } }
 </i18n>
 
 <i18n type="application/json">
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
-}
+{ "en": { "hello": "hello world!" }, "ja": { "hello": "こんにちは、世界！" } }
 </i18n>
 
 <custom lang="json">
-{
-  "a": 1
-}
+{ "a": 1 }
 </custom>
 
 <custom lang="json">
-{
-  "a": 1
-}
+{ "a": 1 }
 </custom>
 
 ================================================================================
@@ -569,37 +533,19 @@ vueIndentScriptAndStyle: true
 
 =====================================output=====================================
 <i18n lang="json">
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
-}
+{ "en": { "hello": "hello world!" }, "ja": { "hello": "こんにちは、世界！" } }
 </i18n>
 
 <i18n type="application/json">
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
-}
+{ "en": { "hello": "hello world!" }, "ja": { "hello": "こんにちは、世界！" } }
 </i18n>
 
 <custom lang="json">
-{
-  "a": 1
-}
+{ "a": 1 }
 </custom>
 
 <custom lang="json">
-{
-  "a": 1
-}
+{ "a": 1 }
 </custom>
 
 ================================================================================
@@ -648,37 +594,19 @@ printWidth: 80
 
 =====================================output=====================================
 <i18n lang="json">
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
-}
+{ "en": { "hello": "hello world!" }, "ja": { "hello": "こんにちは、世界！" } }
 </i18n>
 
 <i18n type="application/json">
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
-}
+{ "en": { "hello": "hello world!" }, "ja": { "hello": "こんにちは、世界！" } }
 </i18n>
 
 <custom lang="json">
-{
-  "a": 1
-}
+{ "a": 1 }
 </custom>
 
 <custom lang="json">
-{
-  "a": 1
-}
+{ "a": 1 }
 </custom>
 
 ================================================================================

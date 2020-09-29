@@ -225,9 +225,7 @@ class X {
       ::this.testLongNameMethodAndSomethingElseLallala
   }
 
-  testLongNameMethodAndSomethingElseLallala() {
-    return true
-  }
+  testLongNameMethodAndSomethingElseLallala() { return true }
 }
 
 ================================================================================
@@ -255,9 +253,7 @@ class X {
       ::this.testLongNameMethodAndSomethingElseLallala;
   }
 
-  testLongNameMethodAndSomethingElseLallala() {
-    return true;
-  }
+  testLongNameMethodAndSomethingElseLallala() { return true; }
 }
 
 ================================================================================
@@ -374,13 +370,9 @@ class X {
 }
 =====================================output=====================================
 class X {
-  constructor() {
-    this.shortMethod = ::this.shortMethod
-  }
+  constructor() { this.shortMethod = ::this.shortMethod }
 
-  shortMethod() {
-    return true
-  }
+  shortMethod() { return true }
 }
 
 ================================================================================
@@ -403,13 +395,9 @@ class X {
 }
 =====================================output=====================================
 class X {
-  constructor() {
-    this.shortMethod = ::this.shortMethod;
-  }
+  constructor() { this.shortMethod = ::this.shortMethod; }
 
-  shortMethod() {
-    return true;
-  }
+  shortMethod() { return true; }
 }
 
 ================================================================================

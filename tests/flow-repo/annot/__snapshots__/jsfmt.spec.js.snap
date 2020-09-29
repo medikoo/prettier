@@ -68,14 +68,10 @@ function foobar(n : ?number) : number | null | void { return n; }
 function barfoo(n : number | null | void) : ?number { return n; }
 
 =====================================output=====================================
-function foo(str: string, i: number): string {
-  return str;
-}
+function foo(str: string, i: number): string { return str; }
 var bar: (str: number, i: number) => string = foo;
 
-var qux = function (str: string, i: number): number {
-  return foo(str, i);
-};
+var qux = function (str: string, i: number): number { return foo(str, i); };
 
 var obj: { str: string, i: number, j: boolean } = {
   str: "...",
@@ -89,8 +85,7 @@ var arr: Array<number> = [1, 2, "..."];
 var array: number[] = [1, 2, "..."];
 
 var matrix: number[][] = [
-  [1, 2],
-  [3, 4],
+  [1, 2], [3, 4],
 ];
 var matrix_parens: number[][] = matrix;
 
@@ -100,8 +95,7 @@ var nullable_array_parens: ?(number[]) = nullable_array;
 var array_of_nullable: (?number)[] = [null, 3];
 
 var array_of_tuple: [number, string][] = [
-  [0, "foo"],
-  [1, "bar"],
+  [0, "foo"], [1, "bar"],
 ];
 var array_of_tuple_parens: [number, string][] = array_of_tuple;
 
@@ -137,12 +131,8 @@ var toz: null = 3;
 
 var zer: null = null;
 
-function foobar(n: ?number): number | null | void {
-  return n;
-}
-function barfoo(n: number | null | void): ?number {
-  return n;
-}
+function foobar(n: ?number): number | null | void { return n; }
+function barfoo(n: number | null | void): ?number { return n; }
 
 ================================================================================
 `;
@@ -179,9 +169,7 @@ class MyClass {} // looked up above
 
 function foo() {
   let myClassInstance: MyClass = mk(); // ok (no confusion across scopes)
-  function mk() {
-    return new MyClass();
-  }
+  function mk() { return new MyClass(); }
 
   class MyClass {} // looked up above
 }
@@ -252,13 +240,9 @@ function bar(y: MyObj): string {
 
 type MyObj = Object;
 
-function foo(x: { [key: string]: mixed }) {
-  bar(x);
-}
+function foo(x: { [key: string]: mixed }) { bar(x); }
 
-function bar(y: MyObj): string {
-  return y.foo;
-}
+function bar(y: MyObj): string { return y.foo; }
 
 ================================================================================
 `;
@@ -334,9 +318,7 @@ function insertMany<K, V>(
 
 class Foo<A> {
   bar<B>() {
-    return function <C>(a: A, b: B, c: C): void {
-      ([a, b, c]: [A, B, C]);
-    };
+    return function <C>(a: A, b: B, c: C): void { ([a, b, c]: [A, B, C]); };
   }
 }
 

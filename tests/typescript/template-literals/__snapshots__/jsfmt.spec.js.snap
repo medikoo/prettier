@@ -13,7 +13,7 @@ const b = \`\${(foo + bar) as veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLo
 const b = \`\${(veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongFoo + veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongBar) as veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongBaz}\`;
 
 =====================================output=====================================
-const a = \`\${(foo + bar) as baz}\`;
+const a = \`\${ (foo + bar) as baz }\`;
 const b = \`\${
   (veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongFoo + bar) as baz
 }\`;

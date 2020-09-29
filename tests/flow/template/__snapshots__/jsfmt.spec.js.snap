@@ -37,17 +37,11 @@ printWidth: 80
   \`;
 
 =====================================output=====================================
-(): {
-  someLong: boolean,
-  t: boolean,
-} => \`
+(): { someLong: boolean, t: boolean } => \`
   a
 \`;
 
-(): {
-  someLong: boolean,
-  t: boolean,
-} =>
+(): { someLong: boolean, t: boolean } =>
   \`
     a
   \`;

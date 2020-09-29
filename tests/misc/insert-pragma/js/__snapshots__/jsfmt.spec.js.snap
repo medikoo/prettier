@@ -33,9 +33,7 @@ const fruit = 'tomatoes';
 =====================================output=====================================
 /** @format */
 
-function foo(bar) {
-  return bar + 3 + 4;
-}
+function foo(bar) { return bar + 3 + 4; }
 
 /**
  * Some notes that should not be appended to
@@ -93,9 +91,7 @@ function foo(bar) {
  * @format
  */
 
-function foo(bar) {
-  return bar + 3 + 4;
-}
+function foo(bar) { return bar + 3 + 4; }
 
 ================================================================================
 `;
@@ -114,9 +110,7 @@ function foo(bar) {
 =====================================output=====================================
 /** @format */
 
-function foo(bar) {
-  return bar + 3 + 4;
-}
+function foo(bar) { return bar + 3 + 4; }
 
 ================================================================================
 `;
@@ -146,9 +140,7 @@ function foo(bar) {
  * @flow
  */
 
-function foo(bar) {
-  return bar + 3 + 4;
-}
+function foo(bar) { return bar + 3 + 4; }
 
 ================================================================================
 `;

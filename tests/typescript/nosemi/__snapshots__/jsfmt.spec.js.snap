@@ -38,19 +38,11 @@ interface MultiLine {
 interface InlineMultiple { x: string; y: string }
 
 =====================================output=====================================
-interface Inline {
-  x: string
-}
+interface Inline { x: string }
 
-interface MultiLine {
-  x: string
-  y: string
-}
+interface MultiLine { x: string; y: string }
 
-interface InlineMultiple {
-  x: string
-  y: string
-}
+interface InlineMultiple { x: string; y: string }
 
 ================================================================================
 `;

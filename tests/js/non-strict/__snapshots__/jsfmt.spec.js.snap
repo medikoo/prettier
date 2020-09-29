@@ -9,9 +9,7 @@ printWidth: 80
 function f(a,a){return a}
 
 =====================================output=====================================
-function f(a, a) {
-  return a;
-}
+function f(a, a) { return a; }
 
 ================================================================================
 `;
@@ -37,9 +35,7 @@ var package = require("../package");
 /**
  * My amazing comment
  */
-function myFunction() {
-  return "StringGainz";
-}
+function myFunction() { return "StringGainz"; }
 
 ================================================================================
 `;

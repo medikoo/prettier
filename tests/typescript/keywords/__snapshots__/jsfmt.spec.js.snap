@@ -58,15 +58,12 @@ module Y3 {
   // Apparently this parses :P
   export private public protected static readonly abstract async enum X {}
 
-  interface x {
-    export private static readonly [x: any]: any;
-  }
+  interface x { export private static readonly [x: any]: any }
 }
 
 module Y4 {
   public enum Color {
-    Blue,
-    Red,
+    Blue, Red,
   }
 }
 
@@ -80,8 +77,7 @@ module YY3 {
 
 module YY4 {
   private enum Color {
-    Blue,
-    Red,
+    Blue, Red,
   }
 }
 
@@ -95,8 +91,7 @@ module YYY3 {
 
 module YYY4 {
   static enum Color {
-    Blue,
-    Red,
+    Blue, Red,
   }
 }
 

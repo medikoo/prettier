@@ -72,9 +72,7 @@ class a1 extends (() => {}) {}
 class a2 extends (b = c) {}
 
 // "AwaitExpression"
-async function f() {
-  class a extends (await b) {}
-}
+async function f() { class a extends (await b) {} }
 
 // "BinaryExpression"
 class a3 extends (b + c) {}
