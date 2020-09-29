@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = data => {
+module.exports = (data) => {
   const stack = [data];
   let out = "";
 

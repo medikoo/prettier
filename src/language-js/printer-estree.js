@@ -1366,7 +1366,7 @@ function printPathNoParens(path, options, print, args) {
       fields.forEach((field) => {
         let anyStringKey = false;
         if (field === "properties") {
-          path.each(childPath => {
+          path.each((childPath) => {
             if (anyStringKey) {
               return;
             }
@@ -1795,7 +1795,7 @@ function printPathNoParens(path, options, print, args) {
         firstVariable
           ? (isParentForLoop ? concat : customizations.identity)([
               " ",
-              firstVariable
+              firstVariable,
             ])
           : "",
         (isParentForLoop ? indent : customizations.identity)(
@@ -1814,7 +1814,7 @@ function printPathNoParens(path, options, print, args) {
                         customizations[
                           `post${capitalize.call(n.kind)}BreakInstruction`
                         ],
-                        p
+                        p,
                       ]
                 )
               )
@@ -2086,8 +2086,8 @@ function printPathNoParens(path, options, print, args) {
     case "TryStatement": {
       let isLineBreaking = false;
       // Check if try {} is line breaking
-      path.call(blockPath => {
-        blockPath.call(bodyPath => {
+      path.call((blockPath) => {
+        blockPath.call((bodyPath) => {
           isLineBreaking = customizations.isPathLineBreaking(
             bodyPath,
             printStatementSequence,
@@ -2099,8 +2099,8 @@ function printPathNoParens(path, options, print, args) {
       if (!isLineBreaking && n.handler) {
         // check if catch {} is line breaking
         path.call(
-          blockPath => {
-            blockPath.call(bodyPath => {
+          (blockPath) => {
+            blockPath.call((bodyPath) => {
               isLineBreaking = customizations.isPathLineBreaking(
                 bodyPath,
                 printStatementSequence,
@@ -2115,8 +2115,8 @@ function printPathNoParens(path, options, print, args) {
       }
       if (!isLineBreaking && n.finalizer) {
         // check if finally {} is line breaking
-        path.call(blockPath => {
-          blockPath.call(bodyPath => {
+        path.call((blockPath) => {
+          blockPath.call((bodyPath) => {
             isLineBreaking = customizations.isPathLineBreaking(
               bodyPath,
               printStatementSequence,
@@ -2139,7 +2139,7 @@ function printPathNoParens(path, options, print, args) {
           ? concat([
               isLineBreaking ? " " : line,
               "finally ",
-              path.call(print, "finalizer")
+              path.call(print, "finalizer"),
             ])
           : "",
       ]);
@@ -4282,7 +4282,7 @@ function printArgumentsList(path, options, print) {
     path.each((argPath) => {
       if (shouldGroupFirst && i === 0) {
         printedExpanded = [
-          argPath.call((p) => print(p, { expandFirstArg: true }))
+          argPath.call((p) => print(p, { expandFirstArg: true })),
         ].concat(printedArguments.slice(1));
       }
       if (shouldGroupLast && i === args.length - 1) {
@@ -6166,7 +6166,7 @@ function printReturnAndThrowArgument(path, options, print) {
           " (",
           indent(concat([hardline, path.call(print, "argument")])),
           hardline,
-          ")"
+          ")",
         ])
       );
     } else if (
@@ -6180,7 +6180,7 @@ function printReturnAndThrowArgument(path, options, print) {
             ifBreak(" (", " "),
             indent(concat([softline, path.call(print, "argument")])),
             softline,
-            ifBreak(")")
+            ifBreak(")"),
           ])
         )
       );

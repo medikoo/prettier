@@ -2,8 +2,8 @@
 
 const { indent } = require("../document/doc-builders");
 
-module.exports = items =>
-  items.some(item => {
+module.exports = (items) =>
+  items.some((item) => {
     if (!item.parts[0].contents) {
       return false;
     }

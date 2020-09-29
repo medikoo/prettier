@@ -2,5 +2,5 @@
 
 const tokensToString = require("./tokens-to-string");
 
-module.exports = parts =>
+module.exports = (parts) =>
   tokensToString({ type: "concat", parts }).includes("=");

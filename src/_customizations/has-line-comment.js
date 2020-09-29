@@ -7,12 +7,12 @@ const ignoredKeys = new Set([
   "directives",
   "guardedHandlers",
   "innerComments",
-  "loc"
+  "loc",
 ]);
 
 const commentLineTypes = new Set(["CommentLine", "Line"]);
 
-module.exports = function(data) {
+module.exports = function (data) {
   const stack = [data];
 
   while (stack.length) {
@@ -28,11 +28,11 @@ module.exports = function(data) {
       continue;
     }
     if (item.comments) {
-      if (item.comments.some(comment => commentLineTypes.has(comment.type))) {
+      if (item.comments.some((comment) => commentLineTypes.has(comment.type))) {
         return true;
       }
     }
-    Object.keys(item).forEach(key => {
+    Object.keys(item).forEach((key) => {
       if (ignoredKeys.has(key)) {
         return;
       }

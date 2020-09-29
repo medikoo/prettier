@@ -10,7 +10,7 @@
 const mainGroupTypes = new Set(["concat", "group", "indent"]);
 const lineBreakTypes = new Set(["line", "if-break"]);
 
-module.exports = function({
+module.exports = function ({
   ind,
   MODE_FLAT,
   width,
@@ -18,7 +18,7 @@ module.exports = function({
   doc,
   options,
   fits,
-  cmds
+  cmds,
 }) {
   const contents = { type: "concat" };
   const next = [ind, MODE_FLAT, contents];
@@ -77,8 +77,8 @@ module.exports = function({
                   parts: doc.parts.slice(
                     currentGroupStartIndex,
                     currentGroupLastItemEndIndex
-                  )
-                }
+                  ),
+                },
               },
               // line
               ...doc.parts.slice(
@@ -128,8 +128,8 @@ module.exports = function({
         break: false,
         contents: {
           type: "concat",
-          parts: doc.parts.slice(currentGroupStartIndex)
-        }
+          parts: doc.parts.slice(currentGroupStartIndex),
+        },
       });
     } else if (doc.parts.length > currentGroupStartIndex) {
       groupedParts.push(...doc.parts.slice(currentGroupStartIndex));

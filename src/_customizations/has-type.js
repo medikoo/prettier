@@ -1,11 +1,10 @@
 "use strict";
 
 const isObject = require("es5-ext/object/is-object");
-const isArray = Array.isArray;
 
 const ignoredKeys = new Set(["directives", "guardedHandlers", "loc"]);
 
-module.exports = function(data, type) {
+module.exports = function (data, type) {
   const stack = [data];
 
   while (stack.length) {
@@ -14,7 +13,7 @@ module.exports = function(data, type) {
     if (!isObject(item)) {
       continue;
     }
-    if (isArray(item)) {
+    if (Array.isArray(item)) {
       for (let i = item.length - 1; i >= 0; i--) {
         stack.push(item[i]);
       }
@@ -23,7 +22,7 @@ module.exports = function(data, type) {
     if (item.type === type) {
       return true;
     }
-    Object.keys(item).forEach(key => {
+    Object.keys(item).forEach((key) => {
       if (ignoredKeys.has(key)) {
         return;
       }

@@ -5,7 +5,7 @@ module.exports = {
   docPrinter: require("./doc-printer"),
   hasLineComment: require("./has-line-comment"),
   hasType: require("./has-type"),
-  identity: i => i,
+  identity: (i) => i,
   includesAssignment: require("./includes-assignment"),
   indentVarAssignment: require("./indent-var-assignment"),
   isNakedLineBreaking: require("./is-naked-line-breaking"),
@@ -15,18 +15,18 @@ module.exports = {
   preVarBreakInstruction: {
     type: "if-break",
     breakContents: "",
-    flatContents: ","
+    flatContents: ",",
   },
   postVarBreakInstruction: {
     type: "if-break",
     breakContents: `${" ".repeat("var".length - 1)}, `,
-    flatContents: ""
+    flatContents: "",
   },
   postConstBreakInstruction: {
     type: "if-break",
     breakContents: `${" ".repeat("const".length - 1)}, `,
-    flatContents: ""
-  }
+    flatContents: "",
+  },
 };
 
 module.exports.postLetBreakInstruction = module.exports.postVarBreakInstruction;

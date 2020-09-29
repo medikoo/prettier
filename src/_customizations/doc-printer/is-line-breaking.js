@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(doc, mode, MODE_BREAK, MODE_FLAT) {
+module.exports = function (doc, mode, MODE_BREAK, MODE_FLAT) {
   const remaining = [doc];
   while (remaining.length) {
     const current = remaining.pop();

@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = doc => {
+module.exports = (doc) => {
   switch (doc.type) {
     case "concat":
       return {
@@ -11,7 +11,7 @@ module.exports = doc => {
               ? part.parts.map(self)
               : module.exports(part);
           })
-          .flat(Infinity)
+          .flat(Infinity),
       };
     case "indent":
     case "group":
@@ -19,7 +19,7 @@ module.exports = doc => {
         ...doc,
         contents: module.exports(doc.contents),
         expandedStates:
-          doc.expandedStates && doc.expandedStates.map(module.exports)
+          doc.expandedStates && doc.expandedStates.map(module.exports),
       };
   }
   return doc;

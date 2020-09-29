@@ -2,5 +2,5 @@
 
 module.exports = {
   groupLines: require("./group-lines"),
-  isLineBreaking: require("./is-line-breaking")
+  isLineBreaking: require("./is-line-breaking"),
 };
