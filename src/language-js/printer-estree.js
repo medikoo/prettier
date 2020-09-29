@@ -1191,7 +1191,7 @@ function printPathNoParens(path, options, print, args) {
       if (canBeInline) {
         parts.push(group(concat(contentParts)));
       } else {
-        parts.push.apply(parts, contentParts);
+        parts.push(...contentParts);
       }
       parts.push("}");
       return concat(parts);
