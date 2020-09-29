@@ -21,6 +21,12 @@ module.exports = (doc) => {
         expandedStates:
           doc.expandedStates && doc.expandedStates.map(module.exports),
       };
+    case "if-break":
+      return {
+        ...doc,
+        breakContents: doc.breakContents && module.exports(doc.breakContents),
+        flatContents: doc.flatContents && module.exports(doc.flatContents),
+      }
   }
   return doc;
 };
