@@ -5,9 +5,11 @@ const path = require("path");
 const raw = require("jest-snapshot-serializer-raw").wrap;
 const { isCI } = require("ci-info");
 
-const { TEST_STANDALONE, TEST_CRLF } = process.env;
+const { TEST_STANDALONE } = process.env;
 const AST_COMPARE = isCI || process.env.AST_COMPARE;
 const DEEP_COMPARE = isCI || process.env.DEEP_COMPARE;
+const TEST_CRLF =
+  (isCI && process.platform === "win32") || process.env.TEST_CRLF;
 
 const CURSOR_PLACEHOLDER = "<|>";
 const RANGE_START_PLACEHOLDER = "<<<PRETTIER_RANGE_START>>>";
@@ -26,15 +28,7 @@ const unstableTests = new Map(
     "comments/return-statement.js",
     "comments/tagged-template-literal.js",
     "comments_closure_typecast/iife.js",
-    "css_atrule/include.css",
     "graphql_interface/separator-detection.graphql",
-    [
-      "html_angular/attributes.component.html",
-      (options) => options.printWidth === 1,
-    ],
-    "html_prettier_ignore/cases.html",
-    "js_empty/semicolon.js",
-    "jsx_ignore/jsx_ignore.js",
     "markdown_footnoteDefinition/multiline.md",
     "markdown_spec/example-234.md",
     "markdown_spec/example-235.md",

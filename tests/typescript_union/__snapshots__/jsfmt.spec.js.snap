@@ -366,10 +366,8 @@ type State = { sharedProperty: any } & (
   | { discriminant: "BAZ"; baz: any }
 );
 
-const foo1 = [abc, def, ghi, jkl, mno, pqr, stu, vwx, yz] as (
-  | string
-  | undefined
-)[];
+const foo1 =
+  [abc, def, ghi, jkl, mno, pqr, stu, vwx, yz] as (string | undefined)[];
 
 const foo2: (
   | AAAAAAAAAAAAAAAAAAAAAA

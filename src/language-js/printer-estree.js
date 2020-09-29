@@ -499,7 +499,10 @@ function printPathNoParens(path, options, print, args) {
       );
 
       // Only force a trailing newline if there were any contents.
-      if (n.body.length || n.comments) {
+      if (
+        !n.body.every(({ type }) => type === "EmptyStatement") ||
+        n.comments
+      ) {
         parts.push(hardline);
       }
 
@@ -558,7 +561,9 @@ function printPathNoParens(path, options, print, args) {
       );
     case "BinaryExpression":
     case "LogicalExpression":
-    case "NGPipeExpression": {
+    case "NGPipeExpression":
+    case "TSAsExpression": {
+      const { rightNodeName, operator } = getBinaryishNodeNames(n);
       const parent = path.getParentNode();
       const parentParent = path.getParentNode(1);
       const isInsideParenthesis =
@@ -614,13 +619,13 @@ function printPathNoParens(path, options, print, args) {
 
       // Avoid indenting sub-expressions in some cases where the first sub-expression is already
       // indented accordingly. We should indent sub-expressions where the first case isn't indented.
-      const shouldNotIndent =
+      let shouldNotIndent =
         parent.type === "TemplateLiteral" ||
         parent.type === "ReturnStatement" ||
         parent.type === "ThrowStatement" ||
         (parent.type === "JSXExpressionContainer" &&
           parentParent.type === "JSXAttribute") ||
-        (n.operator !== "|" && parent.type === "JsExpressionRoot") ||
+        (operator !== "|" && parent.type === "JsExpressionRoot") ||
         (n.type !== "NGPipeExpression" &&
           ((parent.type === "NGRoot" && options.parser === "__ng_binding") ||
             (parent.type === "NGMicrosyntaxExpression" &&
@@ -635,23 +640,25 @@ function printPathNoParens(path, options, print, args) {
           parentParent.type !== "OptionalCallExpression") ||
         parent.type === "TemplateLiteral";
 
-      const shouldIndentIfInlining =
-        parent.type === "AssignmentExpression" ||
-        parent.type === "VariableDeclarator" ||
-        parent.type === "ClassProperty" ||
-        parent.type === "TSAbstractClassProperty" ||
-        parent.type === "ClassPrivateProperty" ||
-        parent.type === "ObjectProperty" ||
-        parent.type === "Property";
+      if (!shouldNotIndent) {
+        if (shouldInlineLogicalExpression(n)) {
+          const samePrecedenceSubExpression =
+            isBinaryish(n.left) && shouldFlatten(operator, n.left.operator);
+          shouldNotIndent = !samePrecedenceSubExpression;
+        } else {
+          const shouldIndentIfInlining =
+            parent.type === "AssignmentExpression" ||
+            parent.type === "VariableDeclarator" ||
+            parent.type === "ClassProperty" ||
+            parent.type === "TSAbstractClassProperty" ||
+            parent.type === "ClassPrivateProperty" ||
+            parent.type === "ObjectProperty" ||
+            parent.type === "Property";
+          shouldNotIndent = shouldIndentIfInlining;
+        }
+      }
 
-      const samePrecedenceSubExpression =
-        isBinaryish(n.left) && shouldFlatten(n.operator, n.left.operator);
-
-      if (
-        shouldNotIndent ||
-        (shouldInlineLogicalExpression(n) && !samePrecedenceSubExpression) ||
-        (!shouldInlineLogicalExpression(n) && shouldIndentIfInlining)
-      ) {
+      if (shouldNotIndent) {
         return group(concat(parts));
       }
 
@@ -668,7 +675,7 @@ function printPathNoParens(path, options, print, args) {
       //     </Foo>
       //   )
 
-      const hasJSX = isJSXNode(n.right);
+      const hasJSX = isJSXNode(n[rightNodeName]);
       const rest = concat(hasJSX ? parts.slice(1, -1) : parts.slice(1));
 
       const groupId = Symbol("logicalChain-" + ++uid);
@@ -800,7 +807,6 @@ function printPathNoParens(path, options, print, args) {
       return concat(["%", n.name]);
     case "SpreadElement":
     case "SpreadElementPattern":
-    case "RestProperty":
     case "SpreadProperty":
     case "SpreadPropertyPattern":
     case "RestElement":
@@ -1422,17 +1428,39 @@ function printPathNoParens(path, options, print, args) {
         });
 
       if (n.inexact) {
-        props.push(concat(separatorParts.concat(group("..."))));
+        let printed;
+        if (hasDanglingComments(n)) {
+          const hasLineComments = !n.comments.every(
+            handleComments.isBlockComment
+          );
+          const printedDanglingComments = comments.printDanglingComments(
+            path,
+            options,
+            /* sameIndent */ true
+          );
+          printed = concat([
+            printedDanglingComments,
+            hasLineComments ||
+            hasNewline(
+              options.originalText,
+              options.locEnd(n.comments[n.comments.length - 1])
+            )
+              ? hardline
+              : line,
+            "...",
+          ]);
+        } else {
+          printed = "...";
+        }
+        props.push(concat(separatorParts.concat(printed)));
       }
 
       const lastElem = getLast(n[propertiesField]);
 
       const canHaveTrailingSeparator = !(
-        lastElem &&
-        (lastElem.type === "RestProperty" ||
-          lastElem.type === "RestElement" ||
-          hasNodeIgnoreComment(lastElem) ||
-          n.inexact)
+        n.inexact ||
+        (lastElem &&
+          (lastElem.type === "RestElement" || hasNodeIgnoreComment(lastElem)))
       );
 
       let content;
@@ -1763,8 +1791,7 @@ function printPathNoParens(path, options, print, args) {
       const isParentForLoop =
         parentNode.type === "ForStatement" ||
         parentNode.type === "ForInStatement" ||
-        parentNode.type === "ForOfStatement" ||
-        parentNode.type === "ForAwaitStatement";
+        parentNode.type === "ForOfStatement";
 
       const hasValue = n.declarations.some((decl) => decl.init);
 
@@ -2006,16 +2033,10 @@ function printPathNoParens(path, options, print, args) {
       );
 
     case "ForOfStatement":
-    case "ForAwaitStatement": {
-      // Babel 7 removed ForAwaitStatement in favor of ForOfStatement
-      // with `"await": true`:
-      // https://github.com/estree/estree/pull/138
-      const isAwait = n.type === "ForAwaitStatement" || n.await;
-
       return group(
         concat([
           "for",
-          isAwait ? " await" : "",
+          n.await ? " await" : "",
           " (",
           path.call(print, "left"),
           " of ",
@@ -2024,7 +2045,6 @@ function printPathNoParens(path, options, print, args) {
           adjustClause(n.body, path.call(print, "body")),
         ])
       );
-    }
 
     case "DoWhileStatement": {
       const clause = adjustClause(n.body, path.call(print, "body"));
@@ -2308,26 +2328,24 @@ function printPathNoParens(path, options, print, args) {
     case "JSXExpressionContainer": {
       const parent = path.getParentNode(0);
 
-      const preventInline =
-        parent.type === "JSXAttribute" &&
-        n.expression.comments &&
-        n.expression.comments.length > 0;
+      const hasComments =
+        n.expression.comments && n.expression.comments.length > 0;
 
       const shouldInline =
-        !preventInline &&
-        (n.expression.type === "ArrayExpression" ||
-          n.expression.type === "ObjectExpression" ||
-          n.expression.type === "ArrowFunctionExpression" ||
-          n.expression.type === "CallExpression" ||
-          n.expression.type === "OptionalCallExpression" ||
-          n.expression.type === "FunctionExpression" ||
-          n.expression.type === "JSXEmptyExpression" ||
-          n.expression.type === "TemplateLiteral" ||
-          n.expression.type === "TaggedTemplateExpression" ||
-          n.expression.type === "DoExpression" ||
-          (isJSXNode(parent) &&
-            (n.expression.type === "ConditionalExpression" ||
-              isBinaryish(n.expression))));
+        n.expression.type === "JSXEmptyExpression" ||
+        (!hasComments &&
+          (n.expression.type === "ArrayExpression" ||
+            n.expression.type === "ObjectExpression" ||
+            n.expression.type === "ArrowFunctionExpression" ||
+            n.expression.type === "CallExpression" ||
+            n.expression.type === "OptionalCallExpression" ||
+            n.expression.type === "FunctionExpression" ||
+            n.expression.type === "TemplateLiteral" ||
+            n.expression.type === "TaggedTemplateExpression" ||
+            n.expression.type === "DoExpression" ||
+            (isJSXNode(parent) &&
+              (n.expression.type === "ConditionalExpression" ||
+                isBinaryish(n.expression)))));
 
       if (shouldInline) {
         return group(
@@ -3316,12 +3334,6 @@ function printPathNoParens(path, options, print, args) {
       return "unknown";
     case "TSVoidKeyword":
       return "void";
-    case "TSAsExpression":
-      return concat([
-        path.call(print, "expression"),
-        " as ",
-        path.call(print, "typeAnnotation"),
-      ]);
     case "TSArrayType":
       return concat([path.call(print, "elementType"), "[]"]);
     case "TSPropertySignature": {
@@ -3731,7 +3743,7 @@ function printPathNoParens(path, options, print, args) {
     case "NGEmptyExpression":
       return "";
     case "NGQuotedExpression":
-      return concat([n.prefix, ":", n.value]);
+      return concat([n.prefix, ": ", n.value.trim()]);
     case "NGMicrosyntax":
       return concat(
         path.map(
@@ -5841,6 +5853,20 @@ function shouldInlineLogicalExpression(node) {
   return false;
 }
 
+function getBinaryishNodeNames(node) {
+  const leftNodeName = node.type === "TSAsExpression" ? "expression" : "left";
+  const rightNodeName =
+    node.type === "TSAsExpression" ? "typeAnnotation" : "right";
+  const operator =
+    node.type === "NGPipeExpression"
+      ? "|"
+      : node.type === "TSAsExpression"
+      ? "as"
+      : node.operator;
+
+  return { leftNodeName, rightNodeName, operator };
+}
+
 // For binary expressions to be consistent, we need to group
 // subsequent operators with the same precedence level under a single
 // group. Otherwise they will be nested such that some of them break
@@ -5859,8 +5885,12 @@ function printBinaryishExpressions(
   let parts = [];
   const node = path.getValue();
 
-  // We treat BinaryExpression and LogicalExpression nodes the same.
+  // We treat BinaryExpression, LogicalExpression, NGPipeExpression and TSAsExpression the same.
   if (isBinaryish(node)) {
+    const { leftNodeName, rightNodeName, operator } = getBinaryishNodeNames(
+      node
+    );
+
     // Put all operators with the same precedence level in the same
     // group. The reason we only need to do this with the `left`
     // expression is because given an expression like `1 + 2 - 3`, it
@@ -5870,7 +5900,11 @@ function printBinaryishExpressions(
     // precedence level and should be treated as a separate group, so
     // print them normally. (This doesn't hold for the `**` operator,
     // which is unique in that it is right-associative.)
-    if (shouldFlatten(node.operator, node.left.operator)) {
+    if (
+      node.type === "NGPipeExpression" ||
+      (node.type !== "TSAsExpression" &&
+        shouldFlatten(operator, node[leftNodeName].operator))
+    ) {
       // Flatten them out by recursively calling this function.
       parts = parts.concat(
         path.call(
@@ -5882,21 +5916,24 @@ function printBinaryishExpressions(
               /* isNested */ true,
               isInsideParenthesis
             ),
-          "left"
+          leftNodeName
         )
       );
     } else {
-      parts.push(path.call(print, "left"));
+      parts.push(path.call(print, leftNodeName));
     }
 
     const shouldInline = shouldInlineLogicalExpression(node);
     const lineBeforeOperator =
-      (node.operator === "|>" ||
+      (operator === "|>" ||
         node.type === "NGPipeExpression" ||
-        (node.operator === "|" && options.parser === "__vue_expression")) &&
-      !hasLeadingOwnLineComment(options.originalText, node.right, options);
+        (operator === "|" && options.parser === "__vue_expression")) &&
+      !hasLeadingOwnLineComment(
+        options.originalText,
+        node[rightNodeName],
+        options
+      );
 
-    const operator = node.type === "NGPipeExpression" ? "|" : node.operator;
     const rightSuffix =
       node.type === "NGPipeExpression" && node.arguments.length !== 0
         ? group(
@@ -5916,12 +5953,12 @@ function printBinaryishExpressions(
         : "";
 
     const right = shouldInline
-      ? concat([operator, " ", path.call(print, "right"), rightSuffix])
+      ? concat([operator, " ", path.call(print, rightNodeName), rightSuffix])
       : concat([
           lineBeforeOperator ? softline : "",
           operator,
           lineBeforeOperator ? " " : line,
-          path.call(print, "right"),
+          path.call(print, rightNodeName),
           rightSuffix,
         ]);
 
@@ -5931,8 +5968,8 @@ function printBinaryishExpressions(
     const shouldGroup =
       !(isInsideParenthesis && node.type === "LogicalExpression") &&
       parent.type !== node.type &&
-      node.left.type !== node.type &&
-      node.right.type !== node.type;
+      node[leftNodeName].type !== node.type &&
+      node[rightNodeName].type !== node.type;
 
     parts.push(" ", shouldGroup ? group(right) : right);
 
@@ -6179,8 +6216,7 @@ function printReturnAndThrowArgument(path, options, print) {
         ])
       );
     } else if (
-      node.argument.type === "LogicalExpression" ||
-      node.argument.type === "BinaryExpression" ||
+      isBinaryish(node.argument) ||
       node.argument.type === "SequenceExpression"
     ) {
       parts.push(
