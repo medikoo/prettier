@@ -88,6 +88,7 @@ async function preparePackage() {
   pkg.prettierVersion = pkg.version;
   pkg.description = "Prettier (code formatter) with elastic vars formatting";
   pkg.repository = "medikoo/prettier-elastic";
+  pkg.author += " & Mariusz Nowak";
   delete pkg.homepage;
   await util.writeJson("dist/package.json", pkg);
 
