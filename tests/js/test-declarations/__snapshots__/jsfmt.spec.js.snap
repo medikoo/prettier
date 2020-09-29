@@ -1004,8 +1004,7 @@ it("succeeds if the test finishes in time", () =>
 
 it(
   "succeeds if the test finishes in time",
-  () => new Promise(resolve => setTimeout(resolve, 10)),
-  250
+  () => new Promise(resolve => setTimeout(resolve, 10)), 250
 );
 
 ================================================================================
@@ -1267,8 +1266,7 @@ it("succeeds if the test finishes in time", () =>
 
 it(
   "succeeds if the test finishes in time",
-  () => new Promise((resolve) => setTimeout(resolve, 10)),
-  250
+  () => new Promise((resolve) => setTimeout(resolve, 10)), 250
 );
 
 ================================================================================

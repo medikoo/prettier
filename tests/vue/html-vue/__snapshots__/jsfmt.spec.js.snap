@@ -214,8 +214,7 @@ printWidth: 80
             if (this.dragging) {
               this.dragging = false;
               dynamics.animate(
-                this.c,
-                { x: 160, y: 160 },
+                this.c, { x: 160, y: 160 },
                 { type: dynamics.spring, duration: 700, friction: 280 }
               );
             }

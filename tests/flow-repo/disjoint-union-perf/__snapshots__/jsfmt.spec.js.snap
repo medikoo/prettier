@@ -276,9 +276,7 @@ export function emitExpression(node: TypedNode): t.Expression {
       return b.literal(node.value);
     case "variable":
       return b.memberExpression(
-        b.identifier("vars"),
-        b.identifier(node.name),
-        false
+        b.identifier("vars"), b.identifier(node.name), false
       );
     case "binary_op": {
       const lhs = emitExpression(node.lhs);
@@ -293,9 +291,7 @@ export function emitExpression(node: TypedNode): t.Expression {
     }
     case "function_invocation": {
       const callee = b.memberExpression(
-        b.identifier("fns"),
-        b.identifier(node.name),
-        false
+        b.identifier("fns"), b.identifier(node.name), false
       );
 
       const args = node.parameters.map((n) => emitExpression(n));

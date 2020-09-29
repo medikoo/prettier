@@ -24,10 +24,7 @@ export default class AddAssetHtmlPlugin {
         "html-webpack-plugin-before-html",
         (callback: Callback<any>) => {
           addAllAssetsToCompilation(
-            this.assets,
-            compilation,
-            htmlPluginData,
-            callback
+            this.assets, compilation, htmlPluginData, callback
           );
         }
       );

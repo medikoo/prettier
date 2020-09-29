@@ -2004,9 +2004,7 @@ singleQuote: false
 <BookingIntroPanel
   logClick={(data) =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 />;
@@ -2014,9 +2012,7 @@ singleQuote: false
 <BookingIntroPanel
   logClick={(data) => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 />;
@@ -2037,9 +2033,7 @@ singleQuote: false
 <BookingIntroPanel>
   {(data) =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 </BookingIntroPanel>;
@@ -2047,9 +2041,7 @@ singleQuote: false
 <BookingIntroPanel>
   {(data) => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 </BookingIntroPanel>;
@@ -2288,9 +2280,7 @@ singleQuote: false
 <BookingIntroPanel
   logClick={(data) =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 />;
@@ -2298,9 +2288,7 @@ singleQuote: false
 <BookingIntroPanel
   logClick={(data) => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 />;
@@ -2321,9 +2309,7 @@ singleQuote: false
 <BookingIntroPanel>
   {(data) =>
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     )
   }
 </BookingIntroPanel>;
@@ -2331,9 +2317,7 @@ singleQuote: false
 <BookingIntroPanel>
   {(data) => {
     doLogClick(
-      "long_name_long_name_long_name",
-      "long_name_long_name_long_name",
-      data
+      "long_name_long_name_long_name", "long_name_long_name_long_name", data
     );
   }}
 </BookingIntroPanel>;
@@ -2572,9 +2556,7 @@ singleQuote: true
 <BookingIntroPanel
   logClick={(data) =>
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     )
   }
 />;
@@ -2582,9 +2564,7 @@ singleQuote: true
 <BookingIntroPanel
   logClick={(data) => {
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     );
   }}
 />;
@@ -2605,9 +2585,7 @@ singleQuote: true
 <BookingIntroPanel>
   {(data) =>
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     )
   }
 </BookingIntroPanel>;
@@ -2615,9 +2593,7 @@ singleQuote: true
 <BookingIntroPanel>
   {(data) => {
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     );
   }}
 </BookingIntroPanel>;
@@ -2856,9 +2832,7 @@ singleQuote: true
 <BookingIntroPanel
   logClick={(data) =>
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     )
   }
 />;
@@ -2866,9 +2840,7 @@ singleQuote: true
 <BookingIntroPanel
   logClick={(data) => {
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     );
   }}
 />;
@@ -2889,9 +2861,7 @@ singleQuote: true
 <BookingIntroPanel>
   {(data) =>
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     )
   }
 </BookingIntroPanel>;
@@ -2899,9 +2869,7 @@ singleQuote: true
 <BookingIntroPanel>
   {(data) => {
     doLogClick(
-      'long_name_long_name_long_name',
-      'long_name_long_name_long_name',
-      data
+      'long_name_long_name_long_name', 'long_name_long_name_long_name', data
     );
   }}
 </BookingIntroPanel>;

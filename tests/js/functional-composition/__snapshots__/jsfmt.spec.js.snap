@@ -52,50 +52,23 @@ this.subscriptions.add(
         )
 
 =====================================output=====================================
-compose(
-  sortBy((x) => x),
-  flatten,
-  map((x) => [x, x * 2])
-);
+compose(sortBy((x) => x), flatten, map((x) => [x, x * 2]));
 
-somelib.compose(
-  sortBy((x) => x),
-  flatten,
-  map((x) => [x, x * 2])
-);
+somelib.compose(sortBy((x) => x), flatten, map((x) => [x, x * 2]));
 
-composeFlipped(
-  sortBy((x) => x),
-  flatten,
-  map((x) => [x, x * 2])
-);
+composeFlipped(sortBy((x) => x), flatten, map((x) => [x, x * 2]));
 
-somelib.composeFlipped(
-  sortBy((x) => x),
-  flatten,
-  map((x) => [x, x * 2])
-);
+somelib.composeFlipped(sortBy((x) => x), flatten, map((x) => [x, x * 2]));
 
 // no regression (#4602)
 const hasValue = hasOwnProperty(a, b);
 
-this.compose(
-  sortBy((x) => x),
-  flatten
-);
-this.a.b.c.compose(
-  sortBy((x) => x),
-  flatten
-);
+this.compose(sortBy((x) => x), flatten);
+this.a.b.c.compose(sortBy((x) => x), flatten);
 someObj.someMethod(this.field.compose(a, b));
 
 class A extends B {
-  compose() {
-    super.compose(
-      sortBy((x) => x),
-      flatten
-    );
-  }
+  compose() { super.compose(sortBy((x) => x), flatten); }
 }
 
 this.subscriptions.add(
@@ -164,21 +137,13 @@ bar(6);
 =====================================output=====================================
 import { flow } from "lodash";
 
-const foo = flow(
-  (x) => x + 1,
-  (x) => x * 3,
-  (x) => x - 6
-);
+const foo = flow((x) => x + 1, (x) => x * 3, (x) => x - 6);
 
 foo(6);
 
 import * as _ from "lodash";
 
-const bar = _.flow(
-  (x) => x + 1,
-  (x) => x * 3,
-  (x) => x - 6
-);
+const bar = _.flow((x) => x + 1, (x) => x * 3, (x) => x - 6);
 
 bar(6);
 
@@ -214,21 +179,13 @@ bar(6);
 =====================================output=====================================
 import { flowRight } from "lodash";
 
-const foo = flowRight(
-  (x) => x + 1,
-  (x) => x * 3,
-  (x) => x - 6
-);
+const foo = flowRight((x) => x + 1, (x) => x * 3, (x) => x - 6);
 
 foo(6);
 
 import * as _ from "lodash";
 
-const bar = _.flowRight(
-  (x) => x + 1,
-  (x) => x * 3,
-  (x) => x - 6
-);
+const bar = _.flowRight((x) => x + 1, (x) => x * 3, (x) => x - 6);
 
 bar(6);
 
@@ -503,10 +460,7 @@ var get = R.curry((propName, obj) => Maybe(obj[propName]));
 
 //  getStateCode :: Maybe String -> Maybe String
 var getStateCode = R.composeK(
-  R.compose(Maybe.of, R.toUpper),
-  get("state"),
-  get("address"),
-  get("user")
+  R.compose(Maybe.of, R.toUpper), get("state"), get("address"), get("user")
 );
 getStateCode({ user: { address: { state: "ny" } } }); //=> Maybe.Just("NY")
 getStateCode({}); //=> Maybe.Nothing()
@@ -527,8 +481,7 @@ followersForUser("JOE").then((followers) =>
 
 const mapStateToProps = (state) => ({
   users: R.compose(
-    R.filter(R.propEq("status", "active")),
-    R.values
+    R.filter(R.propEq("status", "active")), R.values
   )(state.users),
 });
 
@@ -575,10 +528,7 @@ f(3, 4); // -(3^4) + 1
 
 //  getStateCode :: Maybe String -> Maybe String
 var getStateCode = R.pipeK(
-  parseJson,
-  get("user"),
-  get("address"),
-  get("state"),
+  parseJson, get("user"), get("address"), get("state"),
   R.compose(Maybe.of, R.toUpper)
 );
 
@@ -620,8 +570,7 @@ import DevTools from "./containers/DevTools";
 import reducer from "../reducers";
 
 const store = createStore(
-  reducer,
-  compose(applyMiddleware(thunk), DevTools.instrument())
+  reducer, compose(applyMiddleware(thunk), DevTools.instrument())
 );
 
 ================================================================================
@@ -637,9 +586,7 @@ const ArtistInput = connect(mapStateToProps, mapDispatchToProps, mergeProps)(Com
 
 =====================================output=====================================
 const ArtistInput = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
+  mapStateToProps, mapDispatchToProps, mergeProps
 )(Component);
 
 ================================================================================
@@ -704,9 +651,7 @@ const source$ = range(0, 10);
 
 source$
   .pipe(
-    filter((x) => x % 2 === 0),
-    map((x) => x + x),
-    scan((acc, x) => acc + x, 0)
+    filter((x) => x % 2 === 0), map((x) => x + x), scan((acc, x) => acc + x, 0)
   )
   .subscribe((x) => console.log(x));
 

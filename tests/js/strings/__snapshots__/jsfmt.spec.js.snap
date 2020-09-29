@@ -276,8 +276,7 @@ const env = \${
       asdfasff: "wefwefw",
       fefef: "sf sdfs fdsfdsf s dfsfds",
     },
-    null,
-    "\\t",
+    null, "\\t",
   )
 });
 \`;
@@ -456,8 +455,7 @@ const env = \${
       asdfasff: "wefwefw",
       fefef: "sf sdfs fdsfdsf s dfsfds",
     },
-    null,
-    "\\t"
+    null, "\\t"
   )
 });
 \`;

@@ -95,14 +95,10 @@ const value5 = thisIsAReallyReallyReallyReallyReallyReallyReallyReallyReallyLong
 ];
 
 const iter1 = createIterator(
-  this.controller,
-  child,
-  this.tag as SyncFunctionComponent
+  this.controller, child, this.tag as SyncFunctionComponent
 );
 const iter2 = createIterator(
-  self.controller,
-  child,
-  self.tag as SyncFunctionComponent
+  self.controller, child, self.tag as SyncFunctionComponent
 );
 
 ================================================================================
@@ -160,9 +156,9 @@ export const LOG_LEVEL = {
 const TYPE_MAP = {
   "character device": "special",
   "character special file": "special",
-  directory: "directory",
+  "directory": "directory",
   "regular file": "file",
-  socket: "socket",
+  "socket": "socket",
   "symbolic link": "link",
 } as Foo;
 
@@ -173,8 +169,9 @@ this.previewPlayerHandle = (setInterval(async () => {
   }
 }, this.refreshDelay) as unknown) as number;
 
-this.intervalID = (setInterval(() => { self.step(); },
-30) as unknown) as number;
+this.intervalID = (setInterval(() => {
+  self.step();
+}, 30) as unknown) as number;
 
 ================================================================================
 `;

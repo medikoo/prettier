@@ -30,6 +30,8 @@ const {
   utils: { willBreak },
 } = require("../../document");
 
+const flatten = require("es5-ext/array/#/flatten");
+
 function printCallArguments(path, options, print) {
   const node = path.getValue();
   const isDynamicImport = node.type === "ImportExpression";
@@ -93,6 +95,7 @@ function printCallArguments(path, options, print) {
   let shouldBreakForArrowFunction = false;
   let hasEmptyLineFollowingFirstArg = false;
   const lastArgIndex = args.length - 1;
+  const separators = [];
   const printArgument = (argPath, index) => {
     const arg = argPath.getNode();
     const parts = [print(argPath)];
@@ -105,9 +108,9 @@ function printCallArguments(path, options, print) {
       }
 
       anyArgEmptyLine = true;
-      parts.push(",", hardline, hardline);
+      separators.push([",", hardline, hardline]);
     } else {
-      parts.push(",", line);
+      separators.push([",", line]);
     }
 
     shouldBreakForArrowFunction = shouldBreakForArrowFunctionInArguments(
@@ -128,24 +131,35 @@ function printCallArguments(path, options, print) {
       ? ","
       : "";
 
+  const joinPrinted = (target, index = 0, end = 0) => {
+    const res = [];
+
+    for (let i = index; i < target.length; i++) {
+      if (i !== 0) {
+        if (separators[i - 1]) {
+          res.push(...separators[i - 1]);
+        }
+      }
+      if (i === target.length + end) {
+        break;
+      }
+      res.push(target[i]);
+    }
+
+    return concat(res);
+  };
+
   function allArgsBrokenOut() {
     return group(
       concat([
         "(",
-        indent(concat([line, concat(printedArguments)])),
+        indent(concat([line, joinPrinted(printedArguments)])),
         maybeTrailingComma,
         line,
         ")",
       ]),
       { shouldBreak: true }
     );
-  }
-
-  if (
-    path.getParentNode().type !== "Decorator" &&
-    isFunctionCompositionArgs(args)
-  ) {
-    return allArgsBrokenOut();
   }
 
   const shouldGroupFirst = shouldGroupFirstArg(args);
@@ -164,12 +178,7 @@ function printCallArguments(path, options, print) {
     const printArgument = (argPath) => {
       if (shouldGroupFirst && i === 0) {
         printedExpanded = [
-          concat([
-            argPath.call((p) => print(p, { expandFirstArg: true })),
-            printedArguments.length > 1 ? "," : "",
-            hasEmptyLineFollowingFirstArg ? hardline : line,
-            hasEmptyLineFollowingFirstArg ? hardline : "",
-          ]),
+          argPath.call((p) => print(p, { expandFirstArg: true })),
         ].concat(printedArguments.slice(1));
       }
       if (shouldGroupLast && i === args.length - 1) {
@@ -188,7 +197,7 @@ function printCallArguments(path, options, print) {
 
     const somePrintedArgumentsWillBreak = printedArguments.some(willBreak);
 
-    const simpleConcat = concat(["(", concat(printedExpanded), ")"]);
+    const simpleConcat = concat(["(", joinPrinted(printedExpanded), ")"]);
 
     return concat([
       somePrintedArgumentsWillBreak ? breakParent : "",
@@ -203,12 +212,12 @@ function printCallArguments(path, options, print) {
             ? concat([
                 "(",
                 group(printedExpanded[0], { shouldBreak: true }),
-                concat(printedExpanded.slice(1)),
+                joinPrinted(printedExpanded, 1),
                 ")",
               ])
             : concat([
                 "(",
-                concat(printedArguments.slice(0, -1)),
+                joinPrinted(printedArguments, 0, -1),
                 group(getLast(printedExpanded), {
                   shouldBreak: true,
                 }),
@@ -221,9 +230,20 @@ function printCallArguments(path, options, print) {
     ]);
   }
 
+  const printedArgumentsConcat = concat(
+    flatten.call(
+      printedArguments.map((concat, index) =>
+        !separators[index - 1]
+          ? concat.parts
+          : separators[index - 1].concat(concat.parts)
+      )
+    )
+  );
+  printedArgumentsConcat.groupLines = true;
+
   const contents = concat([
     "(",
-    indent(concat([softline, concat(printedArguments)])),
+    indent(concat([softline, printedArgumentsConcat])),
     ifBreak(maybeTrailingComma),
     softline,
     ")",

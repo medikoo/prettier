@@ -183,9 +183,7 @@ function y() {
   >["first", "second", "third"];
 
   const insideFuncCall = myFunc(
-    param1,
-    <Immutable.Map<string, any>>param2,
-    param3
+    param1, <Immutable.Map<string, any>>param2, param3
   );
 }
 
@@ -262,9 +260,7 @@ function x() {
   >["first", "second", "third"];
 
   const insideFuncCall = myFunc(
-    param1,
-    <PermissionsChecker<any> | undefined>param2,
-    param3
+    param1, <PermissionsChecker<any> | undefined>param2, param3
   );
 }
 

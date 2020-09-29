@@ -85,8 +85,7 @@ const style2 =/**
 =====================================output=====================================
 // test to make sure comments are attached correctly
 let inlineComment = /* some comment */ someReallyLongFunctionCall(
-  withLots,
-  ofArguments
+  withLots, ofArguments
 );
 
 let object = {
@@ -120,9 +119,7 @@ test(/** @type {!Array} */ (arrOrString).length + 1);
 test(/** @type {!Array} */ (arrOrString).length + 1);
 
 const data = functionCall(
-  arg1,
-  arg2,
-  /** @type {{height: number, width: number}} */ (arg3)
+  arg1, arg2, /** @type {{height: number, width: number}} */ (arg3)
 );
 
 const style = /** @type {{
@@ -320,9 +317,7 @@ const test =
   (goog.partial(NewThing.onTemplateChange, rationaleField, typeField));
 
 const test = /** @type (function (*): ?|undefined) */ (goog.partial(
-  NewThing.onTemplateChange,
-  rationaleField,
-  typeField
+  NewThing.onTemplateChange, rationaleField, typeField
 ));
 
 const model = /** @type {?{getIndex: Function}} */ (model);

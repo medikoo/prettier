@@ -53,16 +53,14 @@ function pipeline() {
 }
 
 bifornCringerMoshedPerplexSawder(
-  askTrovenaBeenaDependsRowans,
-  glimseGlyphsHazardNoopsTieTie,
+  askTrovenaBeenaDependsRowans, glimseGlyphsHazardNoopsTieTie,
   averredBathersBoxroomBuggyNurl
 ) // comment
   |> kochabCooieGameOnOboleUnweave
   |> glimseGlyphsHazardNoopsTieTie;
 
 bifornCringerMoshedPerplexSawder(
-  askTrovenaBeenaDependsRowans,
-  glimseGlyphsHazardNoopsTieTie
+  askTrovenaBeenaDependsRowans, glimseGlyphsHazardNoopsTieTie
 )
   |> foo // comment
   |> kochabCooieGameOnOboleUnweave
