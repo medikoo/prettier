@@ -1,6 +1,7 @@
 "use strict";
 
 const isNakedLineBreaking = require("./is-naked-line-breaking");
+const hasLineComment = require("./has-line-comment")
 
 const allowedStatements = new Set([
   "EmptyStatement",
@@ -13,5 +14,6 @@ module.exports = function (path, printStatementSequence, options, print) {
   if (type && type.endsWith("Statement") && !allowedStatements.has(type)) {
     return true;
   }
-  return isNakedLineBreaking(printStatementSequence(path, options, print));
+  if (isNakedLineBreaking(printStatementSequence(path, options, print))) return true;
+  return hasLineComment(path.getNode());
 };
