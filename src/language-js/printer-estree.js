@@ -4171,7 +4171,6 @@ function printFunctionDeclaration(path, print, options) {
     printFunctionTypeParameters(path, options, print),
     group(
       concat([
-        "",
         printFunctionParams(path, print, options),
         printReturnType(path, print, options),
       ])
