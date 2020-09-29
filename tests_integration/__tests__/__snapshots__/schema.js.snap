@@ -7,7 +7,7 @@ Object {
     "optionsDefinition": Object {
       "properties": Object {
         "arrowParens": Object {
-          "default": "avoid",
+          "default": "always",
           "description": "Include parentheses around a sole arrow function parameter.",
           "oneOf": Array [
             Object {
@@ -337,7 +337,7 @@ in order for it to be formatted.",
           "type": "integer",
         },
         "trailingComma": Object {
-          "default": "none",
+          "default": "es5",
           "description": "Print trailing commas wherever possible when multi-line.",
           "oneOf": Array [
             Object {

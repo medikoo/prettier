@@ -60,7 +60,7 @@ Format options:
 
   --arrow-parens <always|avoid>
                            Include parentheses around a sole arrow function parameter.
-                           Defaults to avoid.
+                           Defaults to always.
   --no-bracket-spacing     Do not print spaces between brackets.
   --end-of-line <lf|crlf|cr|auto>
                            Which end of line characters to apply.
@@ -89,7 +89,7 @@ Format options:
                            Defaults to 2.
   --trailing-comma <es5|none|all>
                            Print trailing commas wherever possible when multi-line.
-                           Defaults to none.
+                           Defaults to es5.
   --use-tabs               Indent with tabs instead of spaces.
                            Defaults to false.
   --vue-indent-script-and-style
@@ -216,7 +216,7 @@ Format options:
 
   --arrow-parens <always|avoid>
                            Include parentheses around a sole arrow function parameter.
-                           Defaults to avoid.
+                           Defaults to always.
   --no-bracket-spacing     Do not print spaces between brackets.
   --end-of-line <lf|crlf|cr|auto>
                            Which end of line characters to apply.
@@ -245,7 +245,7 @@ Format options:
                            Defaults to 2.
   --trailing-comma <es5|none|all>
                            Print trailing commas wherever possible when multi-line.
-                           Defaults to none.
+                           Defaults to es5.
   --use-tabs               Indent with tabs instead of spaces.
                            Defaults to false.
   --vue-indent-script-and-style

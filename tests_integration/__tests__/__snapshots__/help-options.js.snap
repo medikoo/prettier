@@ -12,7 +12,7 @@ Valid options:
   always   Always include parens. Example: \`(x) => x\`
   avoid    Omit parens when possible. Example: \`x => x\`
 
-Default: avoid
+Default: always
 "
 `;
 
@@ -559,7 +559,7 @@ Valid options:
   none   No trailing commas.
   all    Trailing commas wherever possible (including function arguments).
 
-Default: none
+Default: es5
 "
 `;
 
