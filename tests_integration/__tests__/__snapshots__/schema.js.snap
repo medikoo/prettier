@@ -296,7 +296,7 @@ Multiple values are accepted.",
           ],
         },
         "quoteProps": Object {
-          "default": "consistent",
+          "default": "as-needed",
           "description": "Change when properties in objects are quoted.",
           "oneOf": Array [
             Object {

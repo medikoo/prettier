@@ -156,9 +156,9 @@ export const LOG_LEVEL = {
 const TYPE_MAP = {
   "character device": "special",
   "character special file": "special",
-  "directory": "directory",
+  directory: "directory",
   "regular file": "file",
-  "socket": "socket",
+  socket: "socket",
   "symbolic link": "link",
 } as Foo;
 

@@ -194,7 +194,7 @@ Object {
         "consistent",
         "preserve",
       ],
-      "default": "consistent",
+      "default": "as-needed",
       "type": "choice",
     },
     "rangeEnd": Object {
@@ -862,7 +862,7 @@ exports[`CLI --support-info (stdout) 1`] = `
           \\"value\\": \\"preserve\\"
         }
       ],
-      \\"default\\": \\"consistent\\",
+      \\"default\\": \\"as-needed\\",
       \\"description\\": \\"Change when properties in objects are quoted.\\",
       \\"name\\": \\"quoteProps\\",
       \\"pluginDefaults\\": {},
