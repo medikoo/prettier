@@ -333,7 +333,10 @@ function format(text, options) {
     return "";
   });
 
-  const result = prettier.formatWithCursor(input, options);
+  const result = prettier.formatWithCursor(input, {
+    quoteProps: "as-needed",
+    ...options
+  });
   const output = result.formatted;
 
   const outputWithCursor =
