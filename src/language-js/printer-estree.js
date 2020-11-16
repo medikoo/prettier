@@ -980,7 +980,7 @@ function printPathNoParens(path, options, print, args) {
         contentParts.push(indent(concat([lineMode, naked])));
       }
 
-      contentParts.push(comments.printDanglingComments(path, options));
+      contentParts.push(comments.printDanglingComments(path, options, null, null, true));
       contentParts.push(lineMode);
 
       if (canBeInline) {

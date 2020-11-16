@@ -1170,9 +1170,7 @@ var b = {
 var b = [
   /* dangling */
 ]
-function d() {
-  /* dangling */
-}
+function d() { /* dangling */ }
 new Thing(/* dangling */)
 Thing(/* dangling */)
 export /* dangling */{}
@@ -1208,9 +1206,7 @@ var b = {
 var b = [
   /* dangling */
 ];
-function d() {
-  /* dangling */
-}
+function d() { /* dangling */ }
 new Thing(/* dangling */);
 Thing(/* dangling */);
 export /* dangling */{};

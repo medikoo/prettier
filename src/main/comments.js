@@ -449,7 +449,9 @@ function printTrailingComment(commentPath, options) {
   return printed;
 }
 
-function printDanglingComments(path, options, sameIndent, filter) {
+const commentBlockTypes = new Set(['CommentBlock', 'Block']);
+
+function printDanglingComments(path, options, sameIndent, filter, allowSoftLine) {
   const parts = [];
   const node = path.getValue();
 
@@ -457,8 +459,10 @@ function printDanglingComments(path, options, sameIndent, filter) {
     return "";
   }
 
+  let isCommentBlock = false;
   path.each((commentPath) => {
     const comment = commentPath.getValue();
+    isCommentBlock = allowSoftLine && comment && commentBlockTypes.has(comment.type);
     if (
       comment &&
       !comment.leading &&
@@ -476,7 +480,7 @@ function printDanglingComments(path, options, sameIndent, filter) {
   if (sameIndent) {
     return join(hardline, parts);
   }
-  return indent(concat([hardline, join(hardline, parts)]));
+  return indent(concat([isCommentBlock ? line : hardline, join(hardline, parts)]));
 }
 
 function prependCursorPlaceholder(path, options, printed) {
