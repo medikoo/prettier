@@ -242,7 +242,7 @@ Object {
         "none",
         "all",
       ],
-      "default": "es5",
+      "default": "none",
       "type": "choice",
     },
     "useTabs": Object {
@@ -939,7 +939,7 @@ exports[`CLI --support-info (stdout) 1`] = `
           \\"value\\": \\"all\\"
         }
       ],
-      \\"default\\": \\"es5\\",
+      \\"default\\": \\"none\\",
       \\"description\\": \\"Print trailing commas wherever possible when multi-line.\\",
       \\"name\\": \\"trailingComma\\",
       \\"pluginDefaults\\": {},
