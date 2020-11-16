@@ -1876,6 +1876,8 @@ function printPathNoParens(path, options, print, args) {
       ]);
     case "TryStatement": {
       let isLineBreaking = false;
+      let isCatchEmpty;
+      let isFinallyEmpty;
       // Check if try {} is line breaking
       path.call((blockPath) => {
         blockPath.call((bodyPath) => {
@@ -1887,10 +1889,31 @@ function printPathNoParens(path, options, print, args) {
           );
         }, "body");
       }, "block");
-      if (!isLineBreaking && n.handler) {
-        // check if catch {} is line breaking
-        path.call(
-          (blockPath) => {
+      if (n.handler) {
+        isCatchEmpty = Array.isArray(n.handler.body.body) && !n.handler.body.body.length;
+        if (!isLineBreaking && !isCatchEmpty) {
+          // check if catch {} is line breaking
+          path.call(
+            (blockPath) => {
+              blockPath.call((bodyPath) => {
+                isLineBreaking = customizations.isPathLineBreaking(
+                  bodyPath,
+                  printStatementSequence,
+                  options,
+                  print
+                );
+              }, "body");
+            },
+            "handler",
+            "body"
+          );
+        }
+      }
+      if (n.finalizer) {
+        isFinallyEmpty = Array.isArray(n.finalizer.body) && !n.finalizer.body.length;
+        if (!isLineBreaking && !isFinallyEmpty) {
+          // check if finally {} is line breaking
+          path.call((blockPath) => {
             blockPath.call((bodyPath) => {
               isLineBreaking = customizations.isPathLineBreaking(
                 bodyPath,
@@ -1899,23 +1922,8 @@ function printPathNoParens(path, options, print, args) {
                 print
               );
             }, "body");
-          },
-          "handler",
-          "body"
-        );
-      }
-      if (!isLineBreaking && n.finalizer) {
-        // check if finally {} is line breaking
-        path.call((blockPath) => {
-          blockPath.call((bodyPath) => {
-            isLineBreaking = customizations.isPathLineBreaking(
-              bodyPath,
-              printStatementSequence,
-              options,
-              print
-            );
-          }, "body");
-        }, "finalizer");
+          }, "finalizer");
+        }
       }
       if (!isLineBreaking) {
         n.isInlineBlockOk = true;
