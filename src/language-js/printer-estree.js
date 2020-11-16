@@ -112,8 +112,7 @@ const {
 } = require("./utils");
 
 const customizations = require("../_customizations");
-const capitalize = require("es5-ext/string/#/capitalize");
-const flatten = require("es5-ext/array/#/flatten");
+const { capitalize, flatten } = require("../_customizations/utils");
 
 const printMemberChain = require("./print/member-chain");
 const printCallArguments = require("./print/call-arguments");

@@ -1,6 +1,6 @@
 "use strict";
 
-const count = require("es5-ext/string/#/count");
+const { count } = require("./utils");
 const tokensToString = require("./tokens-to-string");
 
 const resolveLengthCorrection = (identifier) => {

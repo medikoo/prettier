@@ -30,7 +30,7 @@ const {
   utils: { willBreak },
 } = require("../../document");
 
-const flatten = require("es5-ext/array/#/flatten");
+const { flatten } = require("../../_customizations/utils");
 
 function printCallArguments(path, options, print) {
   const node = path.getValue();
