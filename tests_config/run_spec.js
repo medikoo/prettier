@@ -334,6 +334,7 @@ function format(text, options) {
   });
 
   const result = prettier.formatWithCursor(input, {
+    arrowParens: "always",
     quoteProps: "as-needed",
     ...options
   });
