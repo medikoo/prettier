@@ -62,9 +62,7 @@ foo = class extends (
 };
 
 module.exports = class A extends B {
-  method() {
-    console.log("foo");
-  }
+  method() { console.log("foo"); }
 };
 
 ================================================================================
