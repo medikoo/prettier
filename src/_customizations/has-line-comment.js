@@ -10,7 +10,7 @@ const ignoredKeys = new Set([
   "loc",
 ]);
 
-const commentLineTypes = new Set(["CommentLine", "Line"]);
+const commentLineTypes = new Set(["CommentLine", "Line", "SingleLine"]);
 
 module.exports = function (data) {
   const stack = [data];

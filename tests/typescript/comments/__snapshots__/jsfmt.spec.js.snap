@@ -678,9 +678,7 @@ function foo</* comment */>() {}
 interface Foo { </* comment */>(arg): any }
 type T = </* comment */>(arg) => any;
 
-functionName<
-  A // comment
->();
+functionName<A>(); // comment
 const a: T<
   // comment
 > = 1;

@@ -1173,7 +1173,7 @@ var b = [
 function d() { /* dangling */ }
 new Thing(/* dangling */)
 Thing(/* dangling */)
-export /* dangling */{}
+export /* dangling */ {}
 
 ================================================================================
 `;
@@ -1209,7 +1209,7 @@ var b = [
 function d() { /* dangling */ }
 new Thing(/* dangling */);
 Thing(/* dangling */);
-export /* dangling */{};
+export /* dangling */ {};
 
 ================================================================================
 `;
@@ -1472,9 +1472,9 @@ export {
 
 =====================================output=====================================
 export //comment
-{}
+ {}
 
-export /* comment */{}
+export /* comment */ {}
 
 const foo = ""
 export {
@@ -1528,9 +1528,9 @@ export {
 
 =====================================output=====================================
 export //comment
-{};
+ {};
 
-export /* comment */{};
+export /* comment */ {};
 
 const foo = "";
 export {
@@ -5073,6 +5073,9 @@ while(true) {} // comment
 
 while(true) /* comment */ ++x; 
 
+while(1) // Comment
+  foo();
+
 =====================================output=====================================
 while (
   true
@@ -5097,6 +5100,10 @@ while (
 while (true) {} // comment
 
 while (true) /* comment */ ++x
+
+while (1)
+  // Comment
+  foo()
 
 ================================================================================
 `;
@@ -5128,6 +5135,9 @@ while(true) {} // comment
 
 while(true) /* comment */ ++x; 
 
+while(1) // Comment
+  foo();
+
 =====================================output=====================================
 while (
   true
@@ -5152,6 +5162,10 @@ while (
 while (true) {} // comment
 
 while (true) /* comment */ ++x;
+
+while (1)
+  // Comment
+  foo();
 
 ================================================================================
 `;

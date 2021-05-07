@@ -10,8 +10,8 @@ Object {
       "css",
     ],
     "Flow": Array [
-      "babel",
       "flow",
+      "babel-flow",
     ],
     "GraphQL": Array [
       "graphql",
@@ -33,11 +33,21 @@ Object {
     ],
     "JSX": Array [
       "babel",
+      "babel-flow",
+      "babel-ts",
       "flow",
+      "typescript",
+      "espree",
+      "meriyah",
     ],
     "JavaScript": Array [
       "babel",
+      "espree",
+      "meriyah",
+      "babel-flow",
+      "babel-ts",
       "flow",
+      "typescript",
     ],
     "Less": Array [
       "less",
@@ -144,6 +154,8 @@ Object {
         "babel-flow",
         "babel-ts",
         "typescript",
+        "espree",
+        "meriyah",
         "css",
         "less",
         "scss",
@@ -271,16 +283,19 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"extensions\\": [
         \\".js\\", \\"._js\\", \\".bones\\", \\".cjs\\", \\".es\\", \\".es6\\", \\".frag\\", \\".gs\\", \\".jake\\",
         \\".jsb\\", \\".jscad\\", \\".jsfl\\", \\".jsm\\", \\".jss\\", \\".mjs\\", \\".njs\\", \\".pac\\",
-        \\".sjs\\", \\".ssjs\\", \\".xsjs\\", \\".xsjslib\\"
+        \\".sjs\\", \\".ssjs\\", \\".xsjs\\", \\".xsjslib\\", \\".wxs\\"
       ],
       \\"filenames\\": [\\"Jakefile\\"],
       \\"interpreters\\": [
-        \\"chakra\\", \\"d8\\", \\"gjs\\", \\"js\\", \\"node\\", \\"qjs\\", \\"rhino\\", \\"v8\\", \\"v8-shell\\",
-        \\"nodejs\\"
+        \\"chakra\\", \\"d8\\", \\"gjs\\", \\"js\\", \\"node\\", \\"nodejs\\", \\"qjs\\", \\"rhino\\", \\"v8\\",
+        \\"v8-shell\\"
       ],
       \\"linguistLanguageId\\": 183,
       \\"name\\": \\"JavaScript\\",
-      \\"parsers\\": [\\"babel\\", \\"flow\\"],
+      \\"parsers\\": [
+        \\"babel\\", \\"espree\\", \\"meriyah\\", \\"babel-flow\\", \\"babel-ts\\", \\"flow\\",
+        \\"typescript\\"
+      ],
       \\"since\\": \\"0.0.0\\",
       \\"tmScope\\": \\"source.js\\",
       \\"type\\": \\"programming\\",
@@ -295,11 +310,12 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"extensions\\": [\\".js.flow\\"],
       \\"filenames\\": [],
       \\"interpreters\\": [
-        \\"chakra\\", \\"d8\\", \\"gjs\\", \\"js\\", \\"node\\", \\"qjs\\", \\"rhino\\", \\"v8\\", \\"v8-shell\\"
+        \\"chakra\\", \\"d8\\", \\"gjs\\", \\"js\\", \\"node\\", \\"nodejs\\", \\"qjs\\", \\"rhino\\", \\"v8\\",
+        \\"v8-shell\\"
       ],
       \\"linguistLanguageId\\": 183,
       \\"name\\": \\"Flow\\",
-      \\"parsers\\": [\\"babel\\", \\"flow\\"],
+      \\"parsers\\": [\\"flow\\", \\"babel-flow\\"],
       \\"since\\": \\"0.0.0\\",
       \\"tmScope\\": \\"source.js\\",
       \\"type\\": \\"programming\\",
@@ -313,7 +329,10 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"group\\": \\"JavaScript\\",
       \\"linguistLanguageId\\": 178,
       \\"name\\": \\"JSX\\",
-      \\"parsers\\": [\\"babel\\", \\"flow\\"],
+      \\"parsers\\": [
+        \\"babel\\", \\"babel-flow\\", \\"babel-ts\\", \\"flow\\", \\"typescript\\", \\"espree\\",
+        \\"meriyah\\"
+      ],
       \\"since\\": \\"0.0.0\\",
       \\"tmScope\\": \\"source.js.jsx\\",
       \\"type\\": \\"programming\\",
@@ -370,7 +389,7 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"codemirrorMode\\": \\"javascript\\",
       \\"extensions\\": [
         \\".json\\", \\".avsc\\", \\".geojson\\", \\".gltf\\", \\".har\\", \\".ice\\",
-        \\".JSON-tmLanguage\\", \\".jsonl\\", \\".mcmeta\\", \\".tfstate\\", \\".tfstate.backup\\",
+        \\".JSON-tmLanguage\\", \\".mcmeta\\", \\".tfstate\\", \\".tfstate.backup\\",
         \\".topojson\\", \\".webapp\\", \\".webmanifest\\", \\".yy\\", \\".yyp\\"
       ],
       \\"filenames\\": [
@@ -400,8 +419,8 @@ exports[`CLI --support-info (stdout) 1`] = `
       ],
       \\"filenames\\": [
         \\".babelrc\\", \\".eslintrc.json\\", \\".jscsrc\\", \\".jshintrc\\", \\".jslintrc\\",
-        \\"jsconfig.json\\", \\"language-configuration.json\\", \\"tsconfig.json\\",
-        \\".eslintrc\\"
+        \\"devcontainer.json\\", \\"jsconfig.json\\", \\"language-configuration.json\\",
+        \\"tsconfig.json\\", \\"tslint.json\\", \\".eslintrc\\"
       ],
       \\"group\\": \\"JSON\\",
       \\"linguistLanguageId\\": 423,
@@ -430,7 +449,7 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"codemirrorMimeType\\": \\"text/css\\",
       \\"codemirrorMode\\": \\"css\\",
       \\"color\\": \\"#563d7c\\",
-      \\"extensions\\": [\\".css\\"],
+      \\"extensions\\": [\\".css\\", \\".wxss\\"],
       \\"linguistLanguageId\\": 50,
       \\"name\\": \\"CSS\\",
       \\"parsers\\": [\\"css\\"],
@@ -455,8 +474,8 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"aceMode\\": \\"less\\",
       \\"codemirrorMimeType\\": \\"text/css\\",
       \\"codemirrorMode\\": \\"css\\",
+      \\"color\\": \\"#1d365d\\",
       \\"extensions\\": [\\".less\\"],
-      \\"group\\": \\"CSS\\",
       \\"linguistLanguageId\\": 198,
       \\"name\\": \\"Less\\",
       \\"parsers\\": [\\"less\\"],
@@ -469,8 +488,8 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"aceMode\\": \\"scss\\",
       \\"codemirrorMimeType\\": \\"text/x-scss\\",
       \\"codemirrorMode\\": \\"css\\",
+      \\"color\\": \\"#c6538c\\",
       \\"extensions\\": [\\".scss\\"],
-      \\"group\\": \\"CSS\\",
       \\"linguistLanguageId\\": 329,
       \\"name\\": \\"SCSS\\",
       \\"parsers\\": [\\"scss\\"],
@@ -481,6 +500,7 @@ exports[`CLI --support-info (stdout) 1`] = `
     },
     {
       \\"aceMode\\": \\"text\\",
+      \\"color\\": \\"#e10098\\",
       \\"extensions\\": [\\".graphql\\", \\".gql\\", \\".graphqls\\"],
       \\"linguistLanguageId\\": 139,
       \\"name\\": \\"GraphQL\\",
@@ -495,6 +515,7 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"aliases\\": [\\"pandoc\\"],
       \\"codemirrorMimeType\\": \\"text/x-gfm\\",
       \\"codemirrorMode\\": \\"gfm\\",
+      \\"color\\": \\"#083fa1\\",
       \\"extensions\\": [
         \\".md\\", \\".markdown\\", \\".mdown\\", \\".mdwn\\", \\".mkd\\", \\".mkdn\\", \\".mkdown\\",
         \\".ronn\\", \\".workbook\\"
@@ -514,6 +535,7 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"aliases\\": [\\"pandoc\\"],
       \\"codemirrorMimeType\\": \\"text/x-gfm\\",
       \\"codemirrorMode\\": \\"gfm\\",
+      \\"color\\": \\"#083fa1\\",
       \\"extensions\\": [\\".mdx\\"],
       \\"filenames\\": [],
       \\"linguistLanguageId\\": 222,
@@ -591,6 +613,7 @@ exports[`CLI --support-info (stdout) 1`] = `
       \\"aliases\\": [\\"yml\\"],
       \\"codemirrorMimeType\\": \\"text/x-yaml\\",
       \\"codemirrorMode\\": \\"yaml\\",
+      \\"color\\": \\"#cb171e\\",
       \\"extensions\\": [
         \\".yml\\", \\".mir\\", \\".reek\\", \\".rviz\\", \\".sublime-syntax\\", \\".syntax\\", \\".yaml\\",
         \\".yaml-tmlanguage\\", \\".yaml.sed\\", \\".yml.mysql\\"
@@ -761,6 +784,8 @@ exports[`CLI --support-info (stdout) 1`] = `
           \\"since\\": \\"1.4.0\\",
           \\"value\\": \\"typescript\\"
         },
+        { \\"description\\": \\"JavaScript\\", \\"since\\": \\"2.2.0\\", \\"value\\": \\"espree\\" },
+        { \\"description\\": \\"JavaScript\\", \\"since\\": \\"2.2.0\\", \\"value\\": \\"meriyah\\" },
         { \\"description\\": \\"CSS\\", \\"since\\": \\"1.7.1\\", \\"value\\": \\"css\\" },
         { \\"description\\": \\"Less\\", \\"since\\": \\"1.7.1\\", \\"value\\": \\"less\\" },
         { \\"description\\": \\"SCSS\\", \\"since\\": \\"1.7.1\\", \\"value\\": \\"scss\\" },
